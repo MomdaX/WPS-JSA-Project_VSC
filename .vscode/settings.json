@@ -1,0 +1,26 @@
+{
+  "files.encoding": "utf8",
+  "files.autoGuessEncoding": false,
+  "code-runner.runInTerminal": true,
+  "code-runner.preserveFocus": false,
+  "code-runner.clearPreviousOutput": false,
+  "code-runner.fileDirectoryAsCwd": true,
+  "code-runner.executorMap": {
+    "javascript": "node"
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell UTF-8",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell UTF-8": {
+      "source": "PowerShell",
+      "args": [
+        "-NoExit",
+        "-Command",
+        "$OutputEncoding = [Console]::OutputEncoding = [Console]::InputEncoding = [System.Text.Encoding]::UTF8"
+      ]
+    },
+    "Command Prompt UTF-8": {
+      "path": "cmd.exe",
+      "args": ["/K", "chcp 65001 > nul"]
+    }
+  }
+}
