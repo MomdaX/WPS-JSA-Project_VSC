@@ -1,0 +1,84 @@
+{
+  "name": "QueryTables",
+  "summary": "<p>每一个 <strong>QueryTable</strong> 对象都代表一个利用从外部数据源返回的数据生成的工作表表格。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示第一张工作表上第一张查询表的名称并删除该查询表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> qyTable = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">QueryTables</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(qyTable.<span class=\"hljs-property\">Name</span>)\n    qyTable.<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在第一张工作表上新增查询表，并设置其数据连接文件。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> connection = <span class=\"hljs-string\">&quot;ODBC;DSN=MS Access Database;DBQ=D:\\\\示例\\\\test1.accdb;DefaultDir=D:\\\\示例\\\\;DriverId=25;FIL=MS Access;MaxBufferSize=2048;PageTimeout=5;&quot;</span>\n    <span class=\"hljs-keyword\">let</span> qyTable = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">QueryTables</span>.<span class=\"hljs-title class_\">Add</span>(connection, <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>), <span class=\"hljs-string\">&quot;SELECT * FROM `student`&quot;</span>)\n    qyTable.<span class=\"hljs-property\">SourceConnectionFile</span> = <span class=\"hljs-string\">&quot;D:\\\\我的数据源\\\\test1.accdb student.odc&quot;</span>\n    qyTable.<span class=\"hljs-title class_\">Refresh</span>()\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p><strong>QueryTable</strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong>对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>){\n        <span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">ActiveWorkbook</span>\n    <span class=\"hljs-keyword\">if</span>(myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n            <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n        }<span class=\"hljs-keyword\">else</span> {\n            <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n        }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示���动工作表上查询表的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`查询表的数量：<span class=\"hljs-subst\">${ActiveSheet.QueryTables.Count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "<p>由本方法创建的查询将在调用 <strong>Refresh</strong> 方法后运行。</p>\n",
+      "description": "<p>新建一个查询表。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在第一张工作簿上第一张工作表上创建一个查询表。为了向后兼容，此示例保留了现有的列排序和筛选设置以及布局信息。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> connection = <span class=\"hljs-string\">&quot;ODBC;DSN=MS Access Database;DBQ=D:\\\\示例\\\\test1.accdb;DefaultDir=D:\\\\示例\\\\;DriverId=25;FIL=MS Access;MaxBufferSize=2048;PageTimeout=5;&quot;</span>\n    <span class=\"hljs-keyword\">let</span> qyTable = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">QueryTables</span>.<span class=\"hljs-title class_\">Add</span>(connection, <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>), <span class=\"hljs-string\">&quot;SELECT * FROM `student`&quot;</span>)\n    qyTable.<span class=\"hljs-property\">Name</span> = <span class=\"hljs-string\">&quot;Contact List&quot;</span>\n    qyTable.<span class=\"hljs-property\">FieldNames</span> = <span class=\"hljs-literal\">true</span>\n    qyTable.<span class=\"hljs-property\">RowNumbers</span> = <span class=\"hljs-literal\">false</span>\n    qyTable.<span class=\"hljs-property\">FillAdjacentFormulas</span> = <span class=\"hljs-literal\">false</span>\n    qyTable.<span class=\"hljs-property\">PreserveFormatting</span> = <span class=\"hljs-literal\">true</span>\n    qyTable.<span class=\"hljs-property\">RefreshOnFileOpen</span> = <span class=\"hljs-literal\">false</span>\n    qyTable.<span class=\"hljs-property\">BackgroundQuery</span> = <span class=\"hljs-literal\">true</span>\n    qyTable.<span class=\"hljs-property\">RefreshStyle</span> = xlInsertDeleteCells\n    qyTable.<span class=\"hljs-property\">SavePassword</span> = <span class=\"hljs-literal\">true</span>\n    qyTable.<span class=\"hljs-property\">SaveData</span> = <span class=\"hljs-literal\">true</span>\n    qyTable.<span class=\"hljs-property\">AdjustColumnWidth</span> = <span class=\"hljs-literal\">true</span>\n    qyTable.<span class=\"hljs-property\">RefreshPeriod</span> = <span class=\"hljs-number\">0</span>\n    qyTable.<span class=\"hljs-property\">PreserveColumnInfo</span> = <span class=\"hljs-literal\">true</span>\n    qyTable.<span class=\"hljs-title class_\">Refresh</span>(<span class=\"hljs-literal\">false</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例向第一个工作簿中第一张工作表上新的查询表中导入固定宽度的文本文件。该文本文件的第一列为 5 个字符宽，作为文本导入。第二列为 4 个字符宽，被跳过。其余部分则导入第三列中，并对其应用常规格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sheet = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-keyword\">let</span> qyTable = sheet.<span class=\"hljs-property\">QueryTables</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;TEXT;D:\\\\示例\\\\test.txt&quot;</span>, sheet.<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">9</span>))\n    qyTable.<span class=\"hljs-property\">TextFileParseType</span> = xlFixedWidth\n    qyTable.<span class=\"hljs-property\">TextFileFixedColumnWidths</span> = [<span class=\"hljs-number\">5</span>, <span class=\"hljs-number\">4</span>]\n    qyTable.<span class=\"hljs-property\">TextFileColumnDataTypes</span> = [xlTextFormat, xlSkipColumn, xlGeneralFormat]\n    qyTable.<span class=\"hljs-title class_\">Refresh</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在活动工作表上新建查询表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sql = <span class=\"hljs-string\">&quot;SELECT * FROM `student`&quot;</span>\n    <span class=\"hljs-keyword\">let</span> connection = <span class=\"hljs-string\">&quot;ODBC;DSN=MS Access Database;DBQ=D:\\\\示例\\\\test1.accdb;DefaultDir=D:\\\\示例\\\\;DriverId=25;FIL=MS Access;MaxBufferSize=2048;PageTimeout=5;&quot;</span>\n    <span class=\"hljs-keyword\">let</span> qyTable = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">QueryTables</span>.<span class=\"hljs-title class_\">Add</span>(connection, <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>), sql)\n    qyTable.<span class=\"hljs-title class_\">Refresh</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Connection",
+          "type": "any",
+          "description": "<p>查询表的数据源。可为以下情形之一： 一个包含 OLE DB 或 ODBC 连接字符串的字符串。ODBC 连接字符串的格式为“ODBC;&lt;连接字符串&gt;”。 一个 QueryTable 对象，该对象表示查询信息的初始复制源，包括连接字符串和 SQL 文本，但不包括 Destination 区域。指定 QueryTable 对象会导致 Sql 参数被忽略。 一个 ADO 或 DAO Recordset 对象。从 ADO 或 DAO 记录集中读取数据。ET 会保留该记录集，直到该查询表被删除或 SQL 连接发生更改。不能对产生的查询表进行编辑。 一个 Web 查询，“URL;”格式的字符串，其中“URL;”是必需的，但不进行本地化，字符串的其余部分作为 Web 查询的 URL。 数据查找程序。“FINDER;&lt;数据查找程序文件路径&gt;”格式的字符串，其中“FINDER;”是必需的，但不能本地化。字符串的其余部分为数据查找程序文件（*.dqy 或 *.iqy）的路径和名称。使用 Add 方法时将读取该文件；之后，对查询表的 Connection 属性的调用将相应地返回以“ODBC”或“URL”开头的字符串。 一个文本文件。“TEXT;&lt;文本文件路径和名称&gt;”格式的字符串，其中 TEXT 是必需的，但不能本地化。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Destination",
+          "type": "Range",
+          "description": "<p>查询表目标区域（生成的查询表的放置区域）左上角的单元格。目标区域必须位于 expression 指定的 QueryTables 对象所在的工作表中。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Sql",
+          "type": "any",
+          "description": "<p>在 ODBC 数据源上运行的 SQL 查询字符串。当使用的数据源为 ODBC 数据源时，该参数可选（如果不在此处指定该参数，则应该在查询表刷新之前使用查询表的 Sql 属性进行设置）。当将 QueryTable 对象、文本文件、ADO 或 DAO Recordset 对象指定为数据源时，不能使用该参数。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>一个代表新查询表的 QueryTable 对象。</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例对工作表 Sheet1 上第一张查询表进行设置，以便查询表右侧的公式在每次刷新时都可以进行自动更新。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">QueryTables</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">FillAdjacentFormulas</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表上第一张查询表是否将连续分隔符看作是一个分隔符。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> qyTable = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">QueryTables</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(qyTable.<span class=\"hljs-property\">TextFileConsecutiveDelimiter</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>包含在集合中的一个 QueryTable 对象。</p>\n"
+    }
+  ]
+}

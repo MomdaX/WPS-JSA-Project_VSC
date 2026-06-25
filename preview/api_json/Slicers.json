@@ -1,0 +1,90 @@
+{
+  "name": "Slicers",
+  "summary": "<p>每个 <strong>Slicer</strong> 对象都代表工作簿中的一个切片器。切片器的作用是筛选数据。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCache/SlicerCache .htm#SlicerCache.Slicers\">Slicers</a></strong> 属性可返回 <strong>Slicers</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿中第一个切片器缓存中的切片器数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">SlicerCaches</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><p>使用 <strong>Slicers</strong> (<em>index</em>)（其中 <em>index</em> 是切片器的索引号或名称）可返回切片器集合中的单个 <strong>Slicer</strong> 对象。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将第一个切片器缓存中第一个切片器的标题更改为“My Slicer”。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">SlicerCaches</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Caption</span> = <span class=\"hljs-string\">&quot;My Slicer&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p><strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Slicer/Slicer .htm#Slicer.Slicer\">Slicer</a></strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上数据透视表中切片器的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>创建新的切片器，并返回 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Slicer/Slicer .htm#Slicer.Slicer\">Slicer</a></strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作簿上添加新的切片器缓存，并基于该切片器缓存创建新的切片器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtTable = <span class=\"hljs-title class_\">ActiveCell</span>.<span class=\"hljs-property\">PivotCell</span>.<span class=\"hljs-property\">PivotTable</span>\n    <span class=\"hljs-keyword\">let</span> sliCache = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">SlicerCaches</span>.<span class=\"hljs-title class_\">Add</span>2(pvtTable, pvtTable.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;id&quot;</span>), <span class=\"hljs-string\">&quot;Slicer_id&quot;</span>, xlSlicer)\n    sliCache.<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">ActiveSheet</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-string\">&quot;Nameid&quot;</span>, <span class=\"hljs-string\">&quot;nameid&quot;</span>, <span class=\"hljs-number\">252</span>, <span class=\"hljs-number\">522</span>, <span class=\"hljs-number\">144</span>, <span class=\"hljs-number\">216</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例基于工作表 Sheet1 上数据透视表的第一个切片器的缓存在工作表 Sheet2 上创建新的切片器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sliCache = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">SlicerCache</span>\n    sliCache.<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet2&quot;</span>), <span class=\"hljs-literal\">null</span>, <span class=\"hljs-string\">&quot;Name1&quot;</span>, <span class=\"hljs-string\">&quot;name1&quot;</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">150</span>, <span class=\"hljs-number\">200</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "SlicerDestination",
+          "type": "any",
+          "description": "<p>一个指定工作表名称的 <strong>String</strong>，或是一个代表工作表（将在其中放置生成的切片器）的 <strong>Worksheet</strong> 对象。目标工作表必须位于表达式指定的 <strong>Slicers</strong> 对象所在的工作簿中。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Level",
+          "type": "any",
+          "description": "<p>如果是 OLAP 数据源，则为创建切片器所基于的级别的序号或多维表达式 (MDX) 名称。非 OLAP 数据源不支持此参数。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Name",
+          "type": "any",
+          "description": "<p>切片器的名称。如果未指定，ET 会自动生成一个名称。该名称必须在工作簿中的所有切片器中是唯一的。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Caption",
+          "type": "any",
+          "description": "<p>切片器的标题。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Top",
+          "type": "any",
+          "description": "<p>切片器相对于工作表上单元格 A1 左上角的初始垂直位置（以磅为单位）。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Left",
+          "type": "any",
+          "description": "<p>切片器相对于工作表上单元格 A1 左上角的初始水平位置（以磅为单位）。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Width",
+          "type": "any",
+          "description": "<p>切片器控件的初始宽度（以磅为单位）。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Height",
+          "type": "any",
+          "description": "<p>切片器控件的初始高度（以磅为单位）。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>Slicer</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Slicer/Slicer .htm#Slicer.Slicer\">Slicer</a></strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上名为“切片器_id”的切片器缓存中第一个切片器的高度。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">SlicerCaches</span>(<span class=\"hljs-string\">&quot;切片器_id&quot;</span>).<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Height</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动工作表上数据透视表的第一个切片器内的列数设置为 2。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> slicer = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    slicer.<span class=\"hljs-property\">NumberOfColumns</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p><strong>Slicer</strong> 对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Slicer"
+    }
+  ]
+}

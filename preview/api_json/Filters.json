@@ -1,0 +1,57 @@
+{
+  "name": "Filters",
+  "summary": "<p>使用 <strong>Filters</strong> 属性可返回 <strong>Filters</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例创建一个列表，其中包含第一张工作表中已自动筛选的区域内所有筛选的条件和运算符。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> filter = <span class=\"hljs-literal\">null</span>\n    <span class=\"hljs-keyword\">let</span> op = <span class=\"hljs-literal\">null</span>\n    <span class=\"hljs-keyword\">let</span> c1 = <span class=\"hljs-literal\">null</span>\n    <span class=\"hljs-keyword\">let</span> c2 = <span class=\"hljs-literal\">null</span>\n    <span class=\"hljs-keyword\">let</span> ns = <span class=\"hljs-string\">&quot;Not set&quot;</span>\n\n    <span class=\"hljs-keyword\">let</span> worksheet1 = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>)\n    <span class=\"hljs-keyword\">let</span> worksheet2 = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet2&quot;</span>)\n    <span class=\"hljs-keyword\">let</span> rw = <span class=\"hljs-number\">1</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= worksheet1.<span class=\"hljs-property\">AutoFilter</span>.<span class=\"hljs-property\">Filters</span>.<span class=\"hljs-property\">Count</span>; i++) {\n        filter = worksheet1.<span class=\"hljs-property\">AutoFilter</span>.<span class=\"hljs-property\">Filters</span>.<span class=\"hljs-title class_\">Item</span>(i)\n        <span class=\"hljs-keyword\">if</span> (filter.<span class=\"hljs-property\">On</span>) {\n            <span class=\"hljs-keyword\">let</span> c1 = filter.<span class=\"hljs-property\">Criteria1</span>.<span class=\"hljs-title function_\">substr</span>(filter.<span class=\"hljs-property\">Criteria1</span>.<span class=\"hljs-property\">length</span> - <span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">1</span>)\n            <span class=\"hljs-keyword\">if</span> (filter.<span class=\"hljs-property\">Operator</span>) {\n                op = filter.<span class=\"hljs-property\">Operator</span>\n                c2 = filter.<span class=\"hljs-property\">Criteria2</span>.<span class=\"hljs-title function_\">substr</span>(filter.<span class=\"hljs-property\">Criteria2</span>.<span class=\"hljs-property\">length</span> - <span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">1</span>)\n            } <span class=\"hljs-keyword\">else</span> {\n                op = ns\n                c2 = ns\n            }\n        } <span class=\"hljs-keyword\">else</span> {\n            c1 = ns\n            op = ns\n            c2 = ns\n        }\n        worksheet2.<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(rw, <span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value2</span> = c1\n        worksheet2.<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(rw, <span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Value2</span> = op\n        worksheet2.<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(rw, <span class=\"hljs-number\">3</span>).<span class=\"hljs-property\">Value2</span> = c2\n        rw = rw + <span class=\"hljs-number\">1</span>\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将一个变量设置为第一张工作表上的筛选区域中第一列的筛选的 On 属性的值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> worksheet = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-keyword\">if</span> (worksheet.<span class=\"hljs-property\">AutoFilterMode</span>) {\n        <span class=\"hljs-keyword\">let</span> filterIsOn = worksheet.<span class=\"hljs-property\">AutoFilter</span>.<span class=\"hljs-property\">Filters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">On</span>\n    }\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>由多个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Filter/Filter .htm#Filter.Filter\">Filter</a>**对象组成的集合，这些对象代表自动筛选区域内的所有筛选。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a>**对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/* 本示例显示一条有关创建 myObject 的应用程序的消息*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n    <span class=\"hljs-keyword\">if</span>(myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n    }\n    <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上自动筛选中应用的筛选器数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">AutoFilter</span>.<span class=\"hljs-property\">Filters</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例将一个变量设置为第一张工作表上的筛选区域中第一列的筛选的 On 属性的值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> worksheet = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-keyword\">if</span> (worksheet.<span class=\"hljs-property\">AutoFilterMode</span>) {\n        <span class=\"hljs-keyword\">let</span> filterIsOn = worksheet.<span class=\"hljs-property\">AutoFilter</span>.<span class=\"hljs-property\">Filters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">On</span>\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上筛选区域中第一列的筛选的 Criteria1 属性值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">AutoFilter</span>.<span class=\"hljs-property\">Filters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Criteria1</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "number（int4 精度）",
+          "description": "<p>对象的索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Filter"
+    }
+  ]
+}

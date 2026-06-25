@@ -1,0 +1,72 @@
+{
+  "name": "TableStyles",
+  "summary": "<p>表格样式提供了一种为整个表格或数据透视图设置格式的方式。表格样式取代了用于为整个表格设置格式的现有的自动套用格式功能。</p>\n<p>表格样式与自动套用格式在以下几个方面不同：</p>\n<ul>\n<li>可以创建和重用自定义表格样式。</li>\n<li>表格样式可处理主题。</li>\n<li>如果更改文档主题的配色方案和/或字体方案，则将更改内置表格样式的外观。</li>\n<li>当对象发生变化时，表格样式可以将样式重新应用于像数据透视表和表格之类的对象。该表格将记住应用于对象的样式，在添加、删除、隐藏和显示单元格时，表格将相应地进行重新显示。</li>\n<li>表格样式在功能区中具有可见的用户界面。</li>\n</ul>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作簿中所使用的样式数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">TableStyles</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向活动工作簿的表格样式中添加“样式1”。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;样式1&quot;</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表可应用于表格的样式。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p>您可以将此属性与 OLE 自动化对象一起使用以返回该对象的应用程序。</p>\n",
+      "description": "<p>如果不与对象识别符一起使用，则此属性返回代表 ET 应用程序的 <strong>Application</strong>对象。如果与对象识别符一起使用，则此属性返回代表指定对象的创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回集合中对象的数目。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿中所使用的样式总数。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>创建新的 <strong>TableStyle</strong> 对象，并将其添加到集合中。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向活动工作簿的表格样式中添加“样式一”。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;样式一&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作簿的表格样式中添加“TableStyle2”样式，并显示新添加样式的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyle = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">TableStyles</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;TableStyle2&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(tableStyle.<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "TableStyleName",
+          "type": "string",
+          "description": "<p>表样式的名称。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>TableStyle</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿的表格样式中第一个样式名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作簿的表格样式中第二个样式是否在数据透视表样式的库中显示。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyle = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">TableStyles</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-title function_\">alert</span>(tableStyle.<span class=\"hljs-property\">ShowAsAvailablePivotTableStyle</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>TableStyle</p>\n"
+    }
+  ]
+}

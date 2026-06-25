@@ -1,0 +1,104 @@
+{
+  "name": "SortFields",
+  "summary": "<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为活动工作表创建两个新的排序字段。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>), <span class=\"hljs-literal\">null</span>, xlDescending)\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1&quot;</span>), <span class=\"hljs-literal\">null</span>, xlDescending)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例清除第一张工作表上所有的 SortField 对象，并创建新的排序字段。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>.<span class=\"hljs-title class_\">Clear</span>()\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A11&quot;</span>), xlSortOnValues, xlAscending)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>**<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SortFields/SortFields .htm#SortFields.SortFields\">SortFields</a>**集合是 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SortField/SortField .htm#SortField.SortField\">SortField</a>**对象的集合。开发人员可以使用该集合存储工作簿、列表和自动筛选的排序状态。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p>您可以将此属性与 OLE 自动化对象一起使用以返回该对象的应用程序。</p>\n",
+      "description": "<p>如果不与对象识别符一起使用，则此属性返回代表 ET 应用程序的 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a>**对象。如果与对象识别符一起使用，则此属性返回代表指定对象的创建者的 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a>**对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回集合中对象的数目。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表排序字段集合的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在工作表Sheet1添加两个排序字段，并显示排序字段集合的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sort = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>\n    sort.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:D1&quot;</span>))\n    sort.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A2:D2&quot;</span>))\n    <span class=\"hljs-title function_\">alert</span>(sort.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>创建新的排序字段，并返回一个 <strong>SortFields</strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表创建新的排序字段，并显示排序字段的键值地址。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sort = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:D1&quot;</span>), xlSortOnCellColor)\n    <span class=\"hljs-title function_\">alert</span>(sort.<span class=\"hljs-property\">Key</span>.<span class=\"hljs-title class_\">Address</span>())\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在第一张工作表创建新的排序字段*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A11&quot;</span>), xlSortOnValues, xlAscending, <span class=\"hljs-literal\">null</span>, xlSortNormal)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Key",
+          "type": "Range",
+          "description": "<p>指定用于排序的键值。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "SortOn",
+          "type": "any",
+          "description": "<p>要进行排序的字段。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Order",
+          "type": "any",
+          "description": "<p>指定排序次序。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "CustomOrder",
+          "type": "any",
+          "description": "<p>指定是否应使用自定义排序次序。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "DataOption",
+          "type": "any",
+          "description": "<p>指定数据选项。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>SortField</p>\n"
+    },
+    {
+      "name": "Clear",
+      "summary": "",
+      "description": "<p>清除所有 <strong>SortField</strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例清除活动工作表上所有 SortField 对象。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>.<span class=\"hljs-title class_\">Clear</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例清除活动工作簿上每一张工作表上所有 SortField 对象。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= <span class=\"hljs-title class_\">Sheets</span>.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>.<span class=\"hljs-title class_\">Clear</span>()\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "void"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>返回一个 <strong>SortField</strong> 对象，该对象代表可在工作簿中排序的项的集合。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断如果活动工作表SortField对象数量大于1，则删除第二个SortField对象。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sortfields = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>\n    <span class=\"hljs-keyword\">if</span> (sortfields.<span class=\"hljs-property\">Count</span> &gt; <span class=\"hljs-number\">1</span>) {\n        sortfields.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-title class_\">Delete</span>()\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表新建排序字段，并显示第一个SortField对象的键值地址。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sortfields = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-property\">Sort</span>.<span class=\"hljs-property\">SortFields</span>\n    sortfields.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A4&quot;</span>), xlSortOnValues)\n    <span class=\"hljs-title function_\">alert</span>(sortfields.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Key</span>.<span class=\"hljs-title class_\">Address</span>())\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>排序字段的索引值。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "SortField"
+    }
+  ]
+}

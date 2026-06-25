@@ -1,0 +1,63 @@
+{
+  "name": "SlicerPivotTables",
+  "summary": "<p><strong>SlicerPivotTables</strong> 集合包含有关切片器缓存当前正在筛选的数据透视表的信息。它提供的属性可用来确定与该切片器关联的数据透视表的数量，可用来检索表示正被筛选的数据透视表的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotTable/PivotTable .htm#PivotTable.PivotTable\">PivotTable</a></strong> 对象。它还提供了在 <strong>SlicerPivotTables</strong> 集合中添加和删除数据透视表的方法。如果与指定的 <strong>SlicerCache</strong> 关联的切片器未连接到任何数据透视表，那么 <strong>SlicerPivotTables</strong> 集合将为空。</p>\n<p>使用 <strong>SlicerCache</strong> 对象的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCache/SlicerCache .htm#SlicerCache.PivotTables\">PivotTables</a></strong> 属性可返回与 <strong>SlicerCache</strong> 关联的 <strong>SlicerPivotTables</strong> 集合，而 SlicerCache 又可能与一个或多个切片器关联。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上数据透视表的第一个切片器关联的缓存中第二个数据透视表的值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sliCache = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">SlicerCache</span>\n    <span class=\"hljs-title function_\">alert</span>(sliCache.<span class=\"hljs-property\">PivotTables</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Value</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上名为“切片器_name”的切片器缓存关联的数据透视表的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtTables = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">SlicerCaches</span>(<span class=\"hljs-string\">&quot;切片器_name&quot;</span>).<span class=\"hljs-property\">PivotTables</span>\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`数据透视表的数量：<span class=\"hljs-subst\">${pvtTables.Count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>表示与指定的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCache/SlicerCache .htm#SlicerCache.SlicerCache\">SlicerCache</a></strong> 对象关联的数据透视表集合相关的信息。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回集合中对象的数目。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上数据透视表的第一个切片器的缓存关联的数据透视表的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sliCache = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">SlicerCache</span>\n    <span class=\"hljs-title function_\">alert</span>(sliCache.<span class=\"hljs-property\">PivotTables</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "AddPivotTable",
+      "summary": "<p>当数据透视表添加到 <strong>SlicerPivotTables</strong> 集合时，可按其父级 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCache/SlicerCache .htm#SlicerCache.SlicerCache\">SlicerCache</a></strong> 及其关联的切片器进行筛选。</p>\n",
+      "description": "<p>将对数据透视表的引用添加到 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerPivotTables/SlicerPivotTables .htm#SlicerPivotTables.SlicerPivotTables\">SlicerPivotTables</a></strong> 集合。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表 Sheet1 上数据透视表 pivot2 添加到活动工作簿上名为“切片器_id”的切片器缓存中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtTables = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">SlicerCaches</span>(<span class=\"hljs-string\">&quot;切片器_id&quot;</span>).<span class=\"hljs-property\">PivotTables</span>\n    pvtTables.<span class=\"hljs-title class_\">AddPivotTable</span>(<span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-string\">&quot;pivot2&quot;</span>))\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表 Sheet1 上数据透视表 pivot3 添加到与活动工作表上数据透视表 pivot1 的第一个切片器关联的切片器缓存中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtTables = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-string\">&quot;pivot1&quot;</span>).<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">SlicerCache</span>.<span class=\"hljs-property\">PivotTables</span>\n    pvtTables.<span class=\"hljs-title class_\">AddPivotTable</span>(<span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-string\">&quot;pivot3&quot;</span>))\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "PivotTable",
+          "type": "PivotTable",
+          "description": "<p>一个代表要添加的数据透视表的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotTable/PivotTable .htm#PivotTable.PivotTable\">PivotTable</a></strong> 对象。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>void</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotTable/PivotTable .htm#PivotTable.PivotTable\">PivotTable</a></strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿第一个切片器缓存关联的第一个数据透视表的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtTables = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">SlicerCaches</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">PivotTables</span>\n    <span class=\"hljs-title function_\">alert</span>(pvtTables.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上数据透视表的第一个切片器的缓存关联的第二个数据透视表的数据源。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sliCache = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">SlicerCache</span>\n    <span class=\"hljs-title function_\">alert</span>(sliCache.<span class=\"hljs-property\">PivotTables</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">SourceData</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "PivotTable"
+    },
+    {
+      "name": "RemovePivotTable",
+      "summary": "<p>从 <strong>SlicerPivotTables</strong> 集合中删除数据透视表时，将不能再按其父级 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCache/SlicerCache .htm#SlicerCache.SlicerCache\">SlicerCache</a></strong> 以及与之关联的切片器进行筛选。</p>\n",
+      "description": "<p>从 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerPivotTables/SlicerPivotTables .htm#SlicerPivotTables.SlicerPivotTables\">SlicerPivotTables</a></strong> 集合中删除对数据透视表的引用。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例从与活动工作簿上名为“切片器_name”的切片器关联的缓存中删除 pivot2。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtTables = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">SlicerCaches</span>(<span class=\"hljs-string\">&quot;切片器_name&quot;</span>).<span class=\"hljs-property\">PivotTables</span>\n    pvtTables.<span class=\"hljs-title class_\">RemovePivotTable</span>(<span class=\"hljs-string\">&quot;pivot2&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例从与活动工作表上数据透视表的第一个切片器关联的缓存中删除 pivot3。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sliCache = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">Slicers</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">SlicerCache</span>\n    sliCache.<span class=\"hljs-property\">PivotTables</span>.<span class=\"hljs-title class_\">RemovePivotTable</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-string\">&quot;pivot3&quot;</span>))\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "PivotTable",
+          "type": "any",
+          "description": "<p>表示要删除的数据透视表的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotTable/PivotTable .htm#PivotTable.PivotTable\">PivotTable</a></strong> 对象，或者数据透视表在集合中的名称或索引。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>void</p>\n"
+    }
+  ]
+}

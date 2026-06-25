@@ -1,0 +1,17 @@
+{
+    "type": "module",
+    "main": "index.js",
+    "dependencies": {
+        "@types/lodash": "^4.17.24",
+        "acorn": "^8.15.0",
+        "cnchar": "^3.2.6",
+        "et-jsapi-declare": "^2.5.0",
+        "node-window-manager": "^2.2.4",
+        "nodemon": "^3.1.11",
+        "pinyin-pro": "^3.28.1",
+        "robotjs": "^0.7.1"
+    },
+    "scripts": {
+        "jsa": "nodemon -q index.js"
+    }
+}

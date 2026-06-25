@@ -1,0 +1,33 @@
+{
+  "name": "CategoryCollection",
+  "summary": "<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示工作表 Sheet1 第一个内嵌图表中第一个图表组中可见类别的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartgroup = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">ChartGroups</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(chartgroup.<span class=\"hljs-title class_\">CategoryCollection</span>().<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示图表工作表 Chart1 第一个图表组的第四个类别是否筛选出序列。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartgroup = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">ChartGroups</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(chartgroup.<span class=\"hljs-title class_\">CategoryCollection</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">4</span>).<span class=\"hljs-property\">IsFiltered</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>表示图表中可见图表类别的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，该值代表 <strong>CategoryCollection</strong> 中的对象数（返回图表中可见的类别数）。此为只读属性。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示图表工作表 Chart1 第一个图表组中可见类别的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartgroup = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">ChartGroups</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(chartgroup.<span class=\"hljs-title class_\">CategoryCollection</span>().<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从 <strong>CategoryCollection</strong> 对象返回单个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示工作表 Sheet1 第一个内嵌图表中第一个图表组的第三个类别是否筛选出序列。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartgroup = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">ChartGroups</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(chartgroup.<span class=\"hljs-title class_\">CategoryCollection</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-property\">IsFiltered</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例判断图表工作表 Chart1 第一个图表组的第二个类别是否筛选出序列，并通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartgroup = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">ChartGroups</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-keyword\">if</span> (chartgroup.<span class=\"hljs-title class_\">CategoryCollection</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">IsFiltered</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;筛选出序列&quot;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;未筛选出序列&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p><strong>ChartCategory</strong> 对象</p>\n"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "SheetViews",
+  "summary": "<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动窗口的工作表视图数量*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> count = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">SheetViews</span>.<span class=\"hljs-property\">Count</span>\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`活动窗口的工作表视图数量是 <span class=\"hljs-subst\">${count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例更改第一个工作表视图所在的工作表名称，并显示出来。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sheetview = <span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">SheetViews</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    sheetview.<span class=\"hljs-property\">Sheet</span>.<span class=\"hljs-property\">Name</span> = <span class=\"hljs-string\">&quot;成绩表&quot;</span>\n    <span class=\"hljs-title function_\">alert</span>(sheetview.<span class=\"hljs-property\">Sheet</span>.<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>指定的或活动工作簿窗口中所有工作表视图的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p>您可以将此属性与 OLE 自动化对象一起使用以返回该对象的应用程序。</p>\n",
+      "description": "<p>如果不与对象识别符一起使用，则此属性返回代表 ET 应用程序的 <strong>Application</strong>对象。如果与对象识别符一起使用，则此属性返回代表指定对象的创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回集合中对象的数目。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动窗口的工作表视图数量*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> count = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">SheetViews</span>.<span class=\"hljs-property\">Count</span>\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`活动窗口的工作表视图数量是 <span class=\"hljs-subst\">${count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>返回一个 <strong>SheetView</strong> 对象，该对象代表工作簿的视图。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例激活工作表Sheet1，并隐藏第一个工作表视图的标题。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Activate</span>()\n    <span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">SheetViews</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">DisplayHeadings</span> = <span class=\"hljs-literal\">false</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例更改第二个工作表视图所在的工作表名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sheetView = <span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">SheetViews</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>)\n    sheetView.<span class=\"hljs-property\">Sheet</span>.<span class=\"hljs-property\">Name</span> = <span class=\"hljs-string\">&quot;成绩表&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>视图的索引值。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Object"
+    }
+  ]
+}

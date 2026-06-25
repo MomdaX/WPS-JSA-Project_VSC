@@ -1,0 +1,63 @@
+{
+  "name": "Axes",
+  "summary": "<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为图表工作表 Chart1 中分类轴设置标题文本。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> axis = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">Axes</span>().<span class=\"hljs-title class_\">Item</span>(xlValue)\n    axis.<span class=\"hljs-property\">AxisTitle</span>.<span class=\"hljs-property\">Caption</span> = <span class=\"hljs-string\">&quot;成绩&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 中第一张图表的坐标轴的数量是否为2。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> axes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">Axes</span>()\n    <span class=\"hljs-title function_\">alert</span>(axes.<span class=\"hljs-property\">Count</span> == <span class=\"hljs-number\">2</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>指定图表中所有 <strong>Axis</strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#jsObject_Application\">Application</a></strong> 对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个代表指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 中第一张图表的坐标轴的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> axes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">Axes</span>()\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`坐标轴的数量：<span class=\"hljs-subst\">${axes.Count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示包含 myAxis 的图表的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>){\n    <span class=\"hljs-keyword\">let</span> myAxis = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Axes</span>(xlValue)\n    <span class=\"hljs-title function_\">alert</span>(myAxis.<span class=\"hljs-property\">Parent</span>.<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从 <strong>Axes</strong> 集合中返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Axis/Axis .htm#jsObject_Axis\">Axis</a></strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为 Chart1 中分类轴设置标题文本。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> axis = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">Axes</span>().<span class=\"hljs-title class_\">Item</span>(xlCategory)\n    axis.<span class=\"hljs-property\">HasTitle</span> = <span class=\"hljs-literal\">true</span>\n    axis.<span class=\"hljs-property\">AxisTitle</span>.<span class=\"hljs-property\">Caption</span> = <span class=\"hljs-string\">&quot;1994&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表 Sheet1 中第一张图表的数值轴的主要刻度线设置为跨轴，并将其颜色设置为红色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> axes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">Axes</span>()\n    axes.<span class=\"hljs-title class_\">Item</span>(xlValue).<span class=\"hljs-property\">MajorTickMark</span> = xlTickMarkCross\n    axes.<span class=\"hljs-title class_\">Item</span>(xlValue).<span class=\"hljs-property\">Border</span>.<span class=\"hljs-property\">ColorIndex</span> = <span class=\"hljs-number\">3</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Type",
+          "type": "XlAxisType",
+          "description": "<p>坐标轴类型。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "AxisGroup",
+          "type": "XlAxisGroup",
+          "description": "<p>坐标轴。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "Axis"
+    }
+  ]
+}

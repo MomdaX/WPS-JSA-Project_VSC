@@ -1,0 +1,209 @@
+{
+  "name": "Pane",
+  "summary": "<p><strong>Pane</strong> 对象只对于工作表和 ET 4.0 宏表存在。<strong>Pane</strong> 对象是 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Panes/Panes .htm#Panes.Panes\">Panes</a></strong> 集合的成员。<strong>Panes</strong> 集合包含在一个窗口中显示的所有窗格。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Panes/Panes .htm#Panes.Panes\">Panes</a></strong>(<em>index</em> )（其中 <em>index</em> 是窗格索引号）可返回一个 <strong>Pane</strong> 对象。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例激活第一个窗口为活动窗口，拆分该窗口，然后滚动左下角的窗格，直至第五行处于该窗格的顶端。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Activate</span>()\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">Split</span> = <span class=\"hljs-literal\">true</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-property\">ScrollRow</span> = <span class=\"hljs-number\">5</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动窗口的第三个窗格中第七行移动到窗格顶部。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-property\">ScrollRow</span> = <span class=\"hljs-number\">7</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表窗口中的窗格。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a></strong> 对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n<span class=\"hljs-keyword\">if</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n}\n<span class=\"hljs-keyword\">else</span> {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Index",
+      "summary": "",
+      "description": "<p>返回 <strong>Long</strong> 值，它代表对象在其同类对象所组成的集合内的索引号。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动窗口中活动窗格的索引。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;活动窗格的索引为：&quot;</span> + <span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">ActivePane</span>.<span class=\"hljs-property\">Index</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例获取第一个窗口中最后一个窗格的索引，并通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> paneIndex = <span class=\"hljs-title class_\">Windows</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Panes</span>(<span class=\"hljs-title class_\">Windows</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-property\">Count</span>).<span class=\"hljs-property\">Index</span>\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;最后一个窗格的索引为：&quot;</span> + paneIndex)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "ScrollColumn",
+      "summary": "<p>如果窗口处于拆分状态，则 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Window/Window .htm#Window.Window\">Window</a></strong> 对象的 <strong>ScrollColumn</strong> 属性表示左上方的窗格。如果某些窗格处于冻结状态，则 <strong>Window</strong> 对象的 <strong>ScrollColumn</strong> 属性将不包括冻结的区域。</p>\n",
+      "description": "<p>返回或设置指定窗格或窗口最左边的列号。<strong>Long</strong> 型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示活动窗口中活动窗格最左边的列号。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">ActivePane</span>.<span class=\"hljs-property\">ScrollColumn</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将活动窗口中第一个窗格最左边的列号设置为6。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">ScrollColumn</span> = <span class=\"hljs-number\">6</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": false
+    },
+    {
+      "name": "ScrollRow",
+      "summary": "<p>如果窗口处于拆分状态，则 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Window/Window .htm#Window.Window\">Window</a></strong> 对象的 <strong>ScrollRow</strong> 属性表示左上方的窗格。如果某些窗格处于冻结状态，则 <strong>Window</strong> 对象的 <strong>ScrollRow</strong> 属性将不包括冻结的区域。</p>\n",
+      "description": "<p>返回或设置指定窗格或窗口最上面显示的行号。<strong>Long</strong> 型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动窗口的第三个窗格中第十行移动到窗格顶部。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-property\">ScrollRow</span> = <span class=\"hljs-number\">10</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动窗口的活动窗格最上面显示的行号。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">ActivePane</span>.<span class=\"hljs-property\">ScrollRow</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": false
+    },
+    {
+      "name": "VisibleRange",
+      "summary": "",
+      "description": "<p>返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Range/Range .htm#Range.Range\">Range</a></strong> 对象，它代表显示在窗口或窗格中的单元格区域。如果列或行只显示了一部分，则说明它是包括在区域之内的。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示第一个窗口中活动窗格的可见单元格的数目。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;There are &quot;</span> + <span class=\"hljs-title class_\">Windows</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">ActivePane</span>.<span class=\"hljs-property\">VisibleRange</span>.<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-property\">Count</span> + <span class=\"hljs-string\">&quot; cells visible&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将活动窗口中第二个窗格的可见范围的所有单元格的背景颜色设置为红色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">VisibleRange</span>.<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Color</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>);\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Range",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Activate",
+      "summary": "",
+      "description": "<p>激活窗格。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动窗口的第二个窗格激活为活动窗格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-title class_\">Activate</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例激活第一个窗口的第三个窗格为活动窗格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Windows</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-title class_\">Activate</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "<p>Boolean</p>\n"
+    },
+    {
+      "name": "LargeScroll",
+      "summary": "<p>如果同时指定了 <em>Down</em> 和 <em>Up</em>，窗口内容的滚动量由这两个参数的差值决定。例如，如果 <em>Down</em> 为 3，<em>Up</em> 为 6，则窗口向上滚动三页。</p>\n<p>如果同时指定了 <em>ToLeft</em> 和 <em>ToRight</em>，窗口内容的滚动量由这两个参数的差值决定。例如，如果 <em>ToLeft</em> 为 3，<em>ToRight</em> 为 6，则窗口向右滚动三页。</p>\n<p>以上任何参数均可为负数。</p>\n",
+      "description": "<p>按页滚动窗口内容。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动窗口中活动窗格向下滚动一页。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">ActivePane</span>.<span class=\"hljs-title class_\">LargeScroll</span>(<span class=\"hljs-number\">1</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动窗口中第一个窗格向下滚动两页，向右滚动三页。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">LargeScroll</span>(<span class=\"hljs-number\">3</span>, <span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">4</span>, <span class=\"hljs-number\">1</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Down",
+          "type": "any",
+          "description": "<p>向下滚动内容的页数。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Up",
+          "type": "any",
+          "description": "<p>向上滚动内容的页数。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ToRight",
+          "type": "any",
+          "description": "<p>向右滚动内容的页数。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ToLeft",
+          "type": "any",
+          "description": "<p>向左滚动内容的页数。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>Variant</p>\n"
+    },
+    {
+      "name": "PointsToScreenPixelsX",
+      "summary": "",
+      "description": "<p>返回屏幕上的像素点。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例用活动窗格将单元格 C3 的数值转换为屏幕像素X坐标，并显示。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">ActivePane</span>.<span class=\"hljs-title class_\">PointsToScreenPixels</span>X(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;C3&quot;</span>).<span class=\"hljs-property\">Value2</span>))\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例通过活动窗口中第一个窗格将10转为屏幕上的像素X坐标，并显示。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pane = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(pane.<span class=\"hljs-title class_\">PointsToScreenPixels</span>X(<span class=\"hljs-number\">10</span>))\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Points",
+          "type": "number（int4 精度）",
+          "description": "<p>屏幕像素的位置。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Long</p>\n"
+    },
+    {
+      "name": "PointsToScreenPixelsY",
+      "summary": "",
+      "description": "<p>返回屏幕像素的位置。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例用活动窗格将单元格 E2 的数值转换为屏幕像素Y坐标，并显示。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">ActivePane</span>.<span class=\"hljs-title class_\">PointsToScreenPixels</span>Y(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;E2&quot;</span>).<span class=\"hljs-property\">Value2</span>))\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例通过活动窗口中第一个窗格将30转为屏幕上的像素Y坐标，并显示。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pane = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(pane.<span class=\"hljs-title class_\">PointsToScreenPixels</span>Y(<span class=\"hljs-number\">30</span>))\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Points",
+          "type": "number（int4 精度）",
+          "description": "<p>起始点的位置。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Long</p>\n"
+    },
+    {
+      "name": "ScrollIntoView",
+      "summary": "<p>当矩形比文档窗口或窗格大时，<em>Start</em> 参数对调整屏幕显示很有用处。</p>\n",
+      "description": "<p>滚动文档窗口，使指定矩形区域中的内容显示在文档窗口或窗格的左上角或右下角（取决于 <em>Start</em> 参数值）。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在活动窗口的活动窗格中定义一个 100x200 像素的矩形，其位置为距窗口顶部 20 像素，距窗口左边缘 50 像素。然后将文档向左、向上滚动，以使矩形的左上角与窗格的左上角对齐。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">ActivePane</span>.<span class=\"hljs-title class_\">ScrollIntoView</span>(<span class=\"hljs-number\">50</span>, <span class=\"hljs-number\">20</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">200</span>, <span class=\"hljs-literal\">true</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在第一个窗口的第一个窗格中定义一个 300x500 像素的矩形，其位置为距窗口顶部 200 像素，距窗口左边缘 1000 像素。然后将文档向右、向下滚动，以使矩形的右下角与窗格的右下角对齐。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Windows</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">ScrollIntoView</span>(<span class=\"hljs-number\">1000</span>, <span class=\"hljs-number\">200</span>, <span class=\"hljs-number\">300</span>, <span class=\"hljs-number\">500</span>, <span class=\"hljs-literal\">false</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Left",
+          "type": "number（int4 精度）",
+          "description": "<p>矩形距离文档窗口或窗格左边的水平位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Top",
+          "type": "number（int4 精度）",
+          "description": "<p>矩形距离文档窗口或窗格上边的垂直位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Width",
+          "type": "number（int4 精度）",
+          "description": "<p>矩形的宽度（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "type": "number（int4 精度）",
+          "description": "<p>矩形的高度（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Start",
+          "type": "any",
+          "description": "<p>如果为 True，则使矩形的左上角位于文档窗口或窗格的左上角。如果为 False，则使矩形的右下角位于文档窗口或窗格的右下角。默认值是 True。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "SmallScroll",
+      "summary": "<p>如果同时指定了 <em>Down</em> 和 <em>Up</em>，窗口内容的滚动量由这两个参数的差值决定。例如，如果 <em>Down</em> 为 3，<em>Up</em> 为 6，则窗口向上滚动三行。</p>\n<p>如果同时指定了 <em>ToLeft</em> 和 <em>ToRight</em>，窗口内容的滚动量由这两个参数的差值决定。例如，如果 <em>ToLeft</em> 为 3，<em>ToRight</em> 为 6，则窗口内容向右滚动三列。</p>\n<p>任何参数均可为负数。</p>\n",
+      "description": "<p>按行或按列滚动窗口内容。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将活动窗口中活动窗格的内容向下滚动三行。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">ActivePane</span>.<span class=\"hljs-title class_\">SmallScroll</span>(<span class=\"hljs-number\">3</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将活动窗口中第一个窗格向上滚动五十行向左滚动五列。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWindow</span>.<span class=\"hljs-property\">Panes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">SmallScroll</span>(<span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">60</span>, <span class=\"hljs-number\">4</span>, <span class=\"hljs-number\">9</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Down",
+          "type": "any",
+          "description": "<p>将内容向下滚动的行数。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Up",
+          "type": "any",
+          "description": "<p>将内容向上滚动的行数。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ToRight",
+          "type": "any",
+          "description": "<p>将内容向右滚动的列数。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ToLeft",
+          "type": "any",
+          "description": "<p>将内容向左滚动的列数。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>Variant</p>\n"
+    }
+  ]
+}

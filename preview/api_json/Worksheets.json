@@ -1,0 +1,184 @@
+{
+  "name": "Worksheets",
+  "summary": "<p><strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Worksheet/Worksheet .htm#Worksheet.Worksheet\">Worksheet</a><strong>对象也是</strong>Sheets</strong>集合的成员。**<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Sheets/Sheets .htm#Sheets.Sheets\">Sheets</a>**集合包含工作簿中所有的工作表（图表工作表和工作表）。</p>\n<p>使用 <strong>Workbook</strong> 对象的 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbook/Workbook .htm#Workbook.Worksheets\">Worksheets</a> 属性可返回 <strong>Worksheets</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将所有工作表移到工作簿尾部。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Move</span>(<span class=\"hljs-literal\">null</span>, <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-property\">Count</span>))\n}</code></pre></td></tr></tbody></table></div><p>使用 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Worksheets/Worksheets .htm#Worksheets.Add\">Add</a> 方法可创建一个新工作表并将它添加到集合。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将两个新工作表添加到活动工作簿的第一张工作表之前。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>), <span class=\"hljs-literal\">null</span>, <span class=\"hljs-number\">2</span>)\n}</code></pre></td></tr></tbody></table></div><p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Worksheets/Worksheets .htm#Worksheets.Worksheets\">Worksheets</a></strong>(<em>index</em>)（其中 <em>index</em> 是工作表索引号或名称）可返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Worksheet/Worksheet .htm#Worksheet.Worksheet\">Worksheet</a></strong> 对象。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例隐藏活动工作簿中的第一张工作表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">false</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>指定的或活动工作簿中所有 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Worksheet/Worksheet .htm#Worksheet.Worksheet\">Worksheet</a>对象的集合。每个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Worksheet/Worksheet .htm#Worksheet.Worksheet\">Worksheet</a>**对象都代表一个工作表。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application </a>对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>){\n  <span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n  <span class=\"hljs-keyword\">let</span> <span class=\"hljs-title class_\">Wsheet</span> = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n  <span class=\"hljs-keyword\">if</span>(<span class=\"hljs-title class_\">Wsheet</span>.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>){\n     <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n  }\n  <span class=\"hljs-keyword\">else</span> {\n     <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n  }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示当前工作簿中工作表的数量*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;当前工作簿中工作表数量: &quot;</span> + <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-property\">Count</span>);\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "HPageBreaks",
+      "summary": "<p>每张工作表最多有 1026 个水平分页符。</p>\n",
+      "description": "<p>返回一个 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/HPageBreaks/HPageBreaks .htm#HPageBreaks.HPageBreaks\">HPageBreaks</a>集合，它代表工作表上的水平分页符。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示全屏水平分页符和打印区水平分页符的个数。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> cFull = <span class=\"hljs-number\">0</span>\n    <span class=\"hljs-keyword\">let</span> cPartial = <span class=\"hljs-number\">0</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-property\">HPageBreaks</span>.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-property\">HPageBreaks</span>.<span class=\"hljs-property\">Extent</span> == xlPageBreakFull) {\n            cFull++\n        } <span class=\"hljs-keyword\">else</span> {\n            cPartial++\n        }\n    }\n    <span class=\"hljs-title function_\">alert</span>(cFull + <span class=\"hljs-string\">&quot; full-screen page breaks, &quot;</span> + cPartial + <span class=\"hljs-string\">&quot; print-area page breaks&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在F12单元格上方添加一条水平分页符。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-property\">HPageBreaks</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;F12&quot;</span>))\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "HPageBreaks",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "VPageBreaks",
+      "summary": "",
+      "description": "<p>返回一个 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/VPageBreaks/VPageBreaks .htm#VPageBreaks.VPageBreaks\">VPageBreaks</a>集合，它代表工作表上的垂直分页符。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示全屏垂直分页符和打印区域垂直分页符的总数。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> cFull = <span class=\"hljs-number\">0</span>\n    <span class=\"hljs-keyword\">let</span> cPartial = <span class=\"hljs-number\">0</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-property\">Extent</span> == xlPageBreakFull) {\n            cFull++\n        } <span class=\"hljs-keyword\">else</span> {\n            cPartial++\n        }\n    }\n    <span class=\"hljs-title function_\">alert</span>(cFull + <span class=\"hljs-string\">&quot; full-screen page breaks, &quot;</span> + cPartial + <span class=\"hljs-string\">&quot; print-area page breaks&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在C3单元格左侧添加一条垂直分页符。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;C3&quot;</span>))\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "VPageBreaks",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "<p>如果同时省略 <em>Before</em> 和 <em>After</em>，则新工作表插入到活动工作表之前。</p>\n",
+      "description": "<p>新建工作表、图表或宏表。新建的工作表将成为活动工作表。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在第一张工作表前新建1张图表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>), <span class=\"hljs-literal\">null</span>, <span class=\"hljs-number\">1</span>, xlChart)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在第一张工作表后新建2张工作表，并将其中一张工作表命名为成绩表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-literal\">null</span>, <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>), <span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Name</span> = <span class=\"hljs-string\">&quot;成绩表&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Before",
+          "type": "any",
+          "description": "<p>指定工作表的对象，新建的工作表将置���此工作表之前。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "After",
+          "type": "any",
+          "description": "<p>指定工作表的对象，新建的工作表将置于此工作表之后。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Count",
+          "type": "any",
+          "description": "<p>要添加的工作表数。默认值为 1。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Type",
+          "type": "any",
+          "description": "<p>指定工作表类型。可以为下列 XlSheetType 常量之一：xlWorksheet、xlChart、xlExcel4MacroSheet 或 xlExcel4IntlMacroSheet。如果基于现有模板插入工作表，则指定该模板的路径。默认值为 xlWorksheet。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>一个 Object 值，它代表新的工作表、图表或宏表。</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "<p>有关返回集合中单个成员的详细信息，请参阅返回集合中的对象。</p>\n",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例删除第一张工作表*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第三个工作表的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Object"
+    },
+    {
+      "name": "PrintOut",
+      "summary": "<p><em>From</em> 和 <em>To</em> 所描述的“页”指的是要打印的页，并非指定工作表或工作簿中的全部页。</p>\n",
+      "description": "<p>打印对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例打印所有工作表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">PrintOut</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例通过打印到文件方式打印所有工作表的第2页到第4页，并在打印前调用打印预览*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">PrintOut</span>(<span class=\"hljs-number\">2</span>, <span class=\"hljs-number\">4</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">true</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">true</span>, <span class=\"hljs-literal\">false</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">true</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "From",
+          "type": "any",
+          "description": "<p>打印的开始页号。如果省略此参数，则从起始位置开始打印。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "To",
+          "type": "any",
+          "description": "<p>打印的终止页号。如果省略此参数，则打印至最后一页。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Copies",
+          "type": "any",
+          "description": "<p>打印份数。如果省略此参数，则只打印一份。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Preview",
+          "type": "any",
+          "description": "<p>如果为 True，ET 将在打印对象之前调用打印预览。如果为 False（或省略该参数），则立即打印对象。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ActivePrinter",
+          "type": "any",
+          "description": "<p>设置活动打印机的名称。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "PrintToFile",
+          "type": "any",
+          "description": "<p>如果为 True，则打印到文件。如果没有指定 PrToFileName，ET 将提示用户输入要使用的输出文件的文件名。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Collate",
+          "type": "any",
+          "description": "<p>如果为 True，则逐份打印多个副本。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "PrToFileName",
+          "type": "any",
+          "description": "<p>如果PrintToFile 设为 True，则该参数指定要打印到的文件名。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "IgnorePrintAreas",
+          "type": "any",
+          "description": "<p>如果为 True，则忽略打印区域并打印整个对象。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>Variant</p>\n"
+    },
+    {
+      "name": "PrintPreview",
+      "summary": "",
+      "description": "<p>按对象打印后的外观效果显示对象的预览。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在打印预览中显示工作表，且允许更改页面设置选项。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">PrintPreview</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例开启工作表的打印预览，且禁止更改页面设置选项。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">PrintPreview</span>(<span class=\"hljs-literal\">false</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "EnableChanges",
+          "type": "any",
+          "description": "<p>传递 Boolean 值，以指定用户是否可更改边距和打印预览中可用的其他页面设置选项。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "void"
+    }
+  ]
+}

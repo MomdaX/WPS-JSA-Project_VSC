@@ -1,0 +1,73 @@
+{
+  "name": "RectangularGradient",
+  "summary": "<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>使用 RectangularGradient 对象时，请考虑以下几点：</th>\n</tr>\n</thead><tbody></tbody></table></div><ul>\n<li>试图访问不具有现有渐变填充的 <strong>Interior</strong> 对象的 Gradient 属性会引起运行时错误。访问 Gradient 属性之前请注意 <code>Interior.Pattern</code> 属性。</li>\n<li>如果将 Interior.Pattern从渐变类型更改为非渐变类型，Gradient 对象将采用默认值进行填充。</li>\n</ul>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置活动工作表上单元格区域 A1:A6 中渐变填充第一个ColorStop的颜色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A6&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    gradient.<span class=\"hljs-property\">ColorStops</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Color</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">255</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上单元格区域 A1:A8 中渐变填充的 RectangleRight 属性值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A8&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    <span class=\"hljs-title function_\">alert</span>(gradient.<span class=\"hljs-property\">RectangleRight</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p><strong>RectangularGradient</strong> 对象沿特定角度以线性方式在一系列颜色间转换。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不与对象识别符一起使用，则此属性返回代表 ET 应用程序的 <strong>Application</strong>对象。如果与对象识别符一起使用，则此属性返回代表指定对象的创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "ColorStops",
+      "summary": "",
+      "description": "<p>返回 <strong>RectangularGradient</strong> 对象的 <strong>ColorStops</strong> 集合。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示单元格区域 A1:A10 中渐变填充的ColorStop对象的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    <span class=\"hljs-title function_\">alert</span>(gradient.<span class=\"hljs-property\">ColorStops</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置活动工作表上单元格区域 A1:A5 中渐变填充第一个ColorStop的颜色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A5&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    gradient.<span class=\"hljs-property\">ColorStops</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Color</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "ColorStops",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。Creator 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "RectangleBottom",
+      "summary": "<p>与 <strong>RectangleLeft</strong>、<strong>RectangleRight</strong> 和 <strong>RectangleTop</strong> 一起使用。下表中列出了有效值。</p>\n<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>属性</th>\n<th>值</th>\n</tr>\n</thead><tbody><tr>\n<td>RectangleLeft</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleRight</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleTop</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleBottom</td>\n<td>0-1</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>代表渐变填充收敛到的点或矢量。可读/写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上单元格区域 A1:A5 中渐变填充的RectangleBottom属性值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A5&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    <span class=\"hljs-title function_\">alert</span>(gradient.<span class=\"hljs-property\">RectangleBottom</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置单元格区域 A1:A10 中渐变填充的RectangleBottom属性值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    gradient.<span class=\"hljs-property\">RectangleBottom</span> = <span class=\"hljs-number\">0.5</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（double 精度）",
+      "readonly": false
+    },
+    {
+      "name": "RectangleLeft",
+      "summary": "<p>与 <strong>RectangleBottom</strong>、<strong>RectangleRight</strong> 和 <strong>RectangleTop</strong> 一起使用。下表中列出了有效值。</p>\n<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>属性</th>\n<th>值</th>\n</tr>\n</thead><tbody><tr>\n<td>RectangleLeft</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleRight</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleTop</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleBottom</td>\n<td>0-1</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>代表渐变填充收敛到的点或矢量。可读/写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上单元格区域 A1:A6 中渐变填充的RectangleLeft属性值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A6&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    <span class=\"hljs-title function_\">alert</span>(gradient.<span class=\"hljs-property\">RectangleLeft</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置单元格区域 A1:A10 中渐变填充的RectangleLeft属性值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    gradient.<span class=\"hljs-property\">RectangleLeft</span> = <span class=\"hljs-number\">0.5</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（double 精度）",
+      "readonly": false
+    },
+    {
+      "name": "RectangleRight",
+      "summary": "<p>与 RectangleLeft、RectangleTop 和 RectangleBottom 一起使用。下表中列出了有效值。  </p>\n<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>属性</th>\n<th>值</th>\n</tr>\n</thead><tbody><tr>\n<td>RectangleLeft</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleRight</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleTop</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleBottom</td>\n<td>0-1</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>代表渐变填充收敛到的点或矢量。可读/写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上单元格区域 A1:A8 中渐变填充的 RectangleRight 属性值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A8&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    <span class=\"hljs-title function_\">alert</span>(gradient.<span class=\"hljs-property\">RectangleRight</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置单元格区域 A1:A10 中渐变填充的 RectangleRight 属性值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    gradient.<span class=\"hljs-property\">RectangleRight</span> = <span class=\"hljs-number\">0.5</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（double 精度）",
+      "readonly": false
+    },
+    {
+      "name": "RectangleTop",
+      "summary": "<p>与 RectangleLeft、RectangleRight 和 RectangleBottom 一起使用。下表中列出了有效值。  </p>\n<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>属性</th>\n<th>值</th>\n</tr>\n</thead><tbody><tr>\n<td>RectangleLeft</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleRight</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleTop</td>\n<td>0-1</td>\n</tr>\n<tr>\n<td>RectangleBottom</td>\n<td>0-1</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>代表渐变填充收敛到的点或矢量。可读/写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上单元格区域 A1:A9 中渐变填充的 RectangleTop 属性值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A9&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    <span class=\"hljs-title function_\">alert</span>(gradient.<span class=\"hljs-property\">RectangleTop</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置单元格区域 A1:A10 中渐变填充的 RectangleTop 属性值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> gradient = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    gradient.<span class=\"hljs-property\">RectangleTop</span> = <span class=\"hljs-number\">0.9</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（double 精度）",
+      "readonly": false
+    }
+  ],
+  "functions": []
+}

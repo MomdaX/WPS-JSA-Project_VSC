@@ -1,0 +1,57 @@
+{
+  "name": "AutoRecover",
+  "summary": "<p><strong>AutoRecover</strong> 对象的属性确定备份所有文件的路径和时间间隔。</p>\n<p>使用 <strong>Application</strong> 对象的 <strong>AutoRecover</strong> 属性可返回 <strong>AutoRecover</strong> 对象。</p>\n<p>使用 <strong>AutoRecover</strong> 对象的 <strong>Path</strong> 属性可设置“自动恢复”文件的保存路径。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将“自动恢复”文件的路径设置为驱动器 D。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AutoRecover</span>.<span class=\"hljs-property\">Path</span> = <span class=\"hljs-string\">&quot;D:\\\\&quot;</span>\n}</code></pre></td></tr></tbody></table></div><p>使用 <strong>AutoRecover</strong> 对象的 <strong>Time</strong> 属性可设置备份所有文件的时间间隔。<strong>Time</strong> 属性的单位是分钟。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将“自动恢复”的时间间隔设置为 5 分钟。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AutoRecover</span>.<span class=\"hljs-property\">Time</span> = <span class=\"hljs-number\">5</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表工作簿的自动恢复功能。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong> 对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个代表指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Enabled",
+      "summary": "",
+      "description": "<p>如果启用对象，则为 <strong>True</strong>。<strong>Boolean</strong> 类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示是否启用工作簿的自动恢复功能。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AutoRecover</span>.<span class=\"hljs-property\">Enabled</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;已启用工作簿的自动恢复功能&quot;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;未启用工作簿的自动恢复功能&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例启用工作簿的自动恢复功能，并显示是否启用成功。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AutoRecover</span>.<span class=\"hljs-property\">Enabled</span> = <span class=\"hljs-literal\">true</span>\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AutoRecover</span>.<span class=\"hljs-property\">Enabled</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "boolean",
+      "readonly": false
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Path",
+      "summary": "",
+      "description": "<p>返回或设置一个 <strong>String</strong> 值，它代表 ET 将要存储“自动恢复”临时文件的位置的完整路径。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将“自动恢复”文件的路径设置为驱动器 D。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AutoRecover</span>.<span class=\"hljs-property\">Path</span> = <span class=\"hljs-string\">&quot;D:\\\\&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示“自动恢复”文件的完整路径。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AutoRecover</span>.<span class=\"hljs-property\">Path</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": false
+    },
+    {
+      "name": "Time",
+      "summary": "<p>输入的小数值将舍入为最接近的整数。例如，输入的 5.5 与 6 等价。</p>\n<p>如果输入有效区域以外的时间值，则 ET 将使用上一次使用的时间值。</p>\n",
+      "description": "<p>设置或返回 <strong>AutoRecover</strong> 对象的时间间隔。允许的值为从 1 到 120 分钟的整数。默认值为 10 分钟。<strong>Long</strong> 类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将“自动恢复”的时间间隔设置为 5 分钟，并通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AutoRecover</span>.<span class=\"hljs-property\">Time</span> = <span class=\"hljs-number\">5</span>\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;The AutoRecover time interval is set at &quot;</span> + <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AutoRecover</span>.<span class=\"hljs-property\">Time</span> + <span class=\"hljs-string\">&quot; minutes.&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将“自动恢复”的时间间隔赋值到A1单元格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">Value2</span> = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AutoRecover</span>.<span class=\"hljs-property\">Time</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": false
+    }
+  ],
+  "functions": []
+}

@@ -1,0 +1,74 @@
+{
+  "name": "PivotFormula",
+  "summary": "<p>本对象及其相关属性和方法对于 OLAP（OLAP：为查询和报表（而不是处理事务）而进行了优化的数据库技术。OLAP 数据是按分级结构组织的，它存储在多维数据集而不是表中。） 数据源无效，这是因为它不支持计算字段和计算项。</p>\n<p>使用 <strong>PivotFormulas</strong> (<em>index</em>)（其中 <em>index</em> 是公式左侧的公式号或字符串）可返回 <strong>PivotFormula</strong> 对象。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将更改公式一（第一张工作表的第一个数据透视表中）的索引号，使其在公式二计算完毕后再进行计算。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">PivotFormulas</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Index</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除第一张工作表中数据透视表的第二个公式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFormula = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFormulas</span>(<span class=\"hljs-number\">2</span>)\n    pvtFormula.<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表在数据透视表中用于计算的公式。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong>对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code>*本示例显示一条有关创建 myObject 的应用程序的消息。*/\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n\t<span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n\t<span class=\"hljs-keyword\">if</span> (myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n\t} <span class=\"hljs-keyword\">else</span> {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n\t}\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Formula",
+      "summary": "<p>此属性对于 OLAP（OLAP：为查询和报表（而不是处理事务）而进行了优化的数据库技术。OLAP 数据是按分级结构组织的，它存储在多维数据集而不是表中。） 数据源无效。</p>\n<p>如果单元格包含一个常量，此属性返回该常量。如果单元格为空，此属性返回空字符串。如果单元格包含公式，<strong>Formula</strong> 属性将该公式作为字符串返回，所用格式与在编辑栏（包括等号）中显示时的格式相同。</p>\n<p>如果将单元格的值或者公式设置为日期类型，则 ET 将检查此单元格的数字格式是否符合日期或者时间格式。如果不符合，ET 将把数字格式设置为默认的短日期格式。</p>\n<p>如果指定区域是一维或二维区域，则可将公式指定为 Javascript 中相同维数的数组。同样，也可在 Javascript 数组中使用公式。</p>\n<p>如果为多单元格区域设置公式，则会用公式填充该区域所有的单元格。</p>\n",
+      "description": "<p>返回或设置一个 <strong>String</strong> 值，它代表 A1 样式表示法和宏语言中的对象的公式。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表中第一张数据透视表名为“示例数据”的公式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFormula = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFormulas</span>(<span class=\"hljs-string\">&quot;示例数据&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtFormula.<span class=\"hljs-property\">Formula</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表的第一张数据透视表中第二个公式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFormula = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFormulas</span>(<span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtFormula.<span class=\"hljs-property\">Formula</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": false
+    },
+    {
+      "name": "Index",
+      "summary": "",
+      "description": "<p>返回或设置一个 <strong>Long</strong> 值，它代表 <strong>PivotFormula</strong> 对象在 <strong>PivotFormulas</strong> 集合中的索引号。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表中数据透视表名为“公式1”的公式的索引。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFormula = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFormulas</span>(<span class=\"hljs-string\">&quot;公式1&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtFormula.<span class=\"hljs-property\">Index</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将第一张工作表的第一张数据透视表中第二个公式的索引设置为 1 并显示。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFormula = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">PivotFormulas</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>)\n    pvtFormula.<span class=\"hljs-property\">Index</span> = <span class=\"hljs-number\">1</span>\n    <span class=\"hljs-title function_\">alert</span>(pvtFormula.<span class=\"hljs-property\">Index</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": false
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "StandardFormula",
+      "summary": "<p><strong>StandardFormula</strong>属性主要影响具有日期或数字格式的项目名称。该属性提供了一种方法可指定或查询给定计算项的公式。</p>\n<p><strong>StandardFormula</strong> 属性是国际通用的，<strong>Formula</strong> 属性则不是。</p>\n",
+      "description": "<p>返回或设置一个 <strong>String</strong> 值，该值指定使用标准英语（美国）格式的公式。可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上数据透视表中名为“公式2”的公式的内容。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFormula = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFormulas</span>(<span class=\"hljs-string\">&quot;公式2&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtFormula.<span class=\"hljs-property\">StandardFormula</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表上数据透视表中名为“公式1”的公式的内容。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFormula = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFormulas</span>(<span class=\"hljs-string\">&quot;公式1&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtFormula.<span class=\"hljs-property\">StandardFormula</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": false
+    },
+    {
+      "name": "Value",
+      "summary": "",
+      "description": "<p>返回或设置一个 <strong>String</strong> 值，它代表数据透视表中指定的公式的名称。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表中第一张数据透视表第一个公式的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFormula = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFormulas</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtFormula.<span class=\"hljs-property\">Value</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表中数据透视表第二个公式的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFormula = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFormulas</span>(<span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtFormula.<span class=\"hljs-property\">Value</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": false
+    }
+  ],
+  "functions": [
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>删除对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除第一张工作表中数据透视表的第一个公式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFormula = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFormulas</span>(<span class=\"hljs-number\">1</span>)\n    pvtFormula.<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除活动工作表的第一张数据透视表中名为“示例数据”的公式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFormula = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFormulas</span>(<span class=\"hljs-string\">&quot;示例数据&quot;</span>)\n    pvtFormula.<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "void"
+    }
+  ]
+}

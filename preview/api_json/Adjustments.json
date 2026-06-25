@@ -1,0 +1,57 @@
+{
+  "name": "Adjustments",
+  "summary": "<p>每个调整值代表一种调整控点的调整方法。由于某些调整控点可以按两种方法调整（例如，某些控点既可以水平调整也可以垂直调整），所以形状的调整值数量可以大于调整控点数量。一个形状最多可以有八个调整值。</p>\n<p>使用 <strong>Adjustments</strong> 属性可返回 <strong>Adjustments</strong> 对象。使用 <strong>Adjustments</strong>(<em>index</em>)（其中 <em>index</em> 是调整值的索引号）可返回单个调整值。</p>\n<p>不同的形状具有不同数目的调整值，不同类型的调整值在不同的方向上调整形状的几何性质，不同类型的调整值有不同的取值范围。例如，下面的图示显示了右箭头标注的四个调整值各对该标注的几何形状起什么作用。</p>\n<p><img src=\"https://qn.cache.wpscdn.cn/encs/doc/office_v13/topics/WPS%20%E5%9F%BA%E7%A1%80%E6%8E%A5%E5%8F%A3/%E8%A1%A8%E6%A0%BC%20API%20%E5%8F%82%E8%80%83/gif/adjlabel_ZA06051188.gif\" alt=\"具有不同调整控点的右箭头标注\"></p>\n<p>由于每个形状有不同的调整值集，校验指定形状的调整行为的最好方法是手动创建一个图例，在打开宏记录器的情况下作调整，然后检查记录的代码。</p>\n<p>下表概括了不同类型的调整值的有效取值范围。多数情况下，如果指定的调整值超出了有效取值范围，就将用最接近的有效值来代替。</p>\n<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>调整类型</th>\n<th>有效值</th>\n</tr>\n</thead><tbody><tr>\n<td>线性（水平或垂直）</td>\n<td>通常 0.0 值代表形状的左边界或上边界，而 1.0 值代表形状的右边界或下边界。有效值对应于有效的手动调整。例如，如果只能将调整控点手动拖动形状的一半宽度，则相应的调整值最大为 0.5。对于象连接符和标注这样的形状，0.0 和 1.0 值代表由它们的起始和终止点定义的矩形界限，此时负值和大于 1.0 的值是有效的。</td>\n</tr>\n<tr>\n<td>射线图</td>\n<td>调整值 1.0 对应于形状宽度。最大值为 0.5，或形状宽度的一半。</td>\n</tr>\n<tr>\n<td>角</td>\n<td>值以度表示。如果指定的值超过了 -180 到 180 的范围，则将其折算为该范围内的值。</td>\n</tr>\n</tbody></table></div><p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表中添加右箭头标注，并且设置该标注的调整值。请注意，尽管形状只有三个调整控点，但是它有四个调整值。第三和第四个调整值都和箭头头部和颈部间的调整句柄相对应。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">AddShape</span>(msoShapeRightArrowCallout, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">250</span>, <span class=\"hljs-number\">190</span>)\n    <span class=\"hljs-comment\">//adjusts width of text box</span>\n    shape.<span class=\"hljs-property\">Adjustments</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">0.5</span>)\n    <span class=\"hljs-comment\">//adjusts width of arrow head</span>\n    shape.<span class=\"hljs-property\">Adjustments</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>, <span class=\"hljs-number\">0.15</span>)\n    <span class=\"hljs-comment\">//adjusts length of arrow head</span>\n    shape.<span class=\"hljs-property\">Adjustments</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>, <span class=\"hljs-number\">0.8</span>)\n    <span class=\"hljs-comment\">//adjusts width of arrow neck</span>\n    shape.<span class=\"hljs-property\">Adjustments</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">4</span>, <span class=\"hljs-number\">0.4</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将第一张工作表上第一个形状的所有调整值设置为0.015。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> adjustments = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Adjustments</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= adjustments.<span class=\"hljs-property\">Count</span>; i++) {\n        adjustments.<span class=\"hljs-title class_\">Item</span>(i, <span class=\"hljs-number\">0.015</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>它包含指定的自选图形、艺术字对象或连接符的调整值的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong> 对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个代表指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n  <span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n  <span class=\"hljs-keyword\">if</span>(myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n      <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n  }\n  <span class=\"hljs-keyword\">else</span> {\n      <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n  }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Integer</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上第一个形状的调整值的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(shape.<span class=\"hljs-property\">Adjustments</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "<p>自选图形、连接符和艺术字对象最多可有八个调整。</p>\n<p>对于线性调整，调整值 0.0 通常对应于形状的左边缘或上边缘，值 1.0 通常对应于形状的右边缘或下边缘。不过，对于某些形状，调整可以超越边界。对于径向调整，调整值 1.0 对应于形状的宽度。对于角度的调整，调整值为指定的角度。<strong>Item</strong> 属性只应用于 具有调整的形状。</p>\n",
+      "description": "<p>返回或设置由 <strong>Index</strong> 参数指定的调整值。<strong>Single</strong> 型，可读写。</p>\n<strong>注意：</strong>为 <strong>Item</strong> 赋值，须将新值追加到参数中，如下分别为赋值与取值的 TypeScript 函数声明：<br><code><span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-title class_\">Index</span>: <span class=\"hljs-built_in\">number</span>, <span class=\"hljs-title class_\">Val</span>: <span class=\"hljs-built_in\">number</span>): <span class=\"hljs-built_in\">void</span>;<br><span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-title class_\">Index</span>: <span class=\"hljs-built_in\">number</span>): <span class=\"hljs-built_in\">number</span>;<br></code>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上第一个形状的第一个调整值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(shape.<span class=\"hljs-property\">Adjustments</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>))\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将第一张工作表上第二个形状的第一个调整值设置为 0.15。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>)\n    shape.<span class=\"hljs-property\">Adjustments</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">0.15</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "number（int 精度）",
+          "description": "<p><strong>Long</strong> 型。调整的索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "number（float 精度）"
+    }
+  ]
+}

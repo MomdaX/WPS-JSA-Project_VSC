@@ -1,0 +1,54 @@
+{
+  "name": "XmlMaps",
+  "summary": "<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/XmlMaps/XmlMaps .htm#XmlMaps.Add\">Add</a></strong> 方法可将 XML 映射添加到工作簿。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向活动工作簿添加XML映射。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">XmlMaps</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;D:\\\\example.xsd&quot;</span>, <span class=\"hljs-string\">&quot;Root&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上第一项XmlMap被刷新时是否自动调整列宽为最适合的宽度。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> xmlMap = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">XmlMaps</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(xmlMap.<span class=\"hljs-property\">AdjustColumnWidth</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表已添加到工作簿的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/XmlMap/XmlMap .htm#XmlMap.XmlMap\">XmlMap</a></strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上 XML 映射的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">XmlMaps</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>添加 XML 映射到指定的工作簿。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向活动工作簿添加 XML 映射。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">XmlMaps</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;D:\\\\example.xml&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作簿添加 XML 映射，并显示该映射的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> xmlMap = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">XmlMaps</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;D:\\\\example1.xml&quot;</span>, <span class=\"hljs-string\">&quot;Invoice&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(xmlMap.<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Schema",
+          "type": "string",
+          "description": "<p>要作为 XML 映射添加的架构。该字符串可以是架构文件的路径，也可以是架构本身。路径以通用命名约定 (UNC) 或统一资源定位符 (URL) 格式进行指定。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "RootElementName",
+          "type": "any",
+          "description": "<p>根元素的名称。如果架构仅包含一个根元素，则此参数可忽略。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>一个代表新的 XML 映射的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/XmlMap/XmlMap .htm#XmlMap.XmlMap\">XmlMap</a></strong> 对象。</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上第一项XmlMap被刷新时是否保留筛选。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> xmlMap = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">XmlMaps</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(xmlMap.<span class=\"hljs-property\">PreserveColumnFilter</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将第一张工作簿上第一项XmlMap的名称和根元素的名称分别赋值给A8和A9单元格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> xmlMap = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">XmlMaps</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A8&quot;</span>).<span class=\"hljs-property\">Value2</span> = xmlMap.<span class=\"hljs-property\">Name</span>\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A9&quot;</span>).<span class=\"hljs-property\">Value2</span> = xmlMap.<span class=\"hljs-property\">RootElementName</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "XmlMap"
+    }
+  ]
+}

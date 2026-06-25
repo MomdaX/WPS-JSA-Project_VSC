@@ -1,0 +1,553 @@
+{
+  "name": "Shapes",
+  "summary": "<p>每个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a>**对象都代表绘图层中的一个对象，如自选图形、任意多边形、OLE 对象或图片。</p>\n<p><strong>注释：</strong> 如果您想处理文档中的一部分形状（例如，只针对文档中的自选图形或只对选定的形状进行一些操作），则必须构造一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/ShapeRange/ShapeRange .htm#ShapeRange.ShapeRange\">ShapeRange</a>**集合，其中包含您要处理的形状。</p>\n<p>使用 <strong>Shapes</strong> 属性可返回 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shapes/Shapes .htm#Shapes.Shapes\">Shapes</a>**集合。下例选定 myDocument 上的所有形状。</p>\n<p><strong>注释：</strong> 如果您要同时对工作表上的所有形状进行操作（例如删除或设置属性），请选定所有形状，然后对选定区域使用 <strong>ShapeRange</strong> 属性，以创建一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/ShapeRange/ShapeRange .htm#ShapeRange.ShapeRange\">ShapeRange</a>**对象，该对象包含工作表上的所有形状，然后对 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/ShapeRange/ShapeRange .htm#ShapeRange.ShapeRange\">ShapeRange</a></strong> 对象应用相应的属性或方法。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例选中第一张工作表中所有形状。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    shapes.<span class=\"hljs-title class_\">SelectAll</span>()\n}</code></pre></td></tr></tbody></table></div><p><strong>使用 <code>Shapes</code>(<em>index</em>)（其中 <em>index</em> 是形状的名称或索引号）可返回一个 Shape 对象。下例设置 <code>myDocument</code> 上形状一的预设阴影的填充。</strong></p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置第一张工作表上形状一的预设阴影的填充。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    shapes.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-title class_\">PresetGradient</span>(msoGradientHorizontal, <span class=\"hljs-number\">1</span>, msoGradientBrass)\n}</code></pre></td></tr></tbody></table></div><p><strong>使用 <code>Shapes.Range</code>(<em>index</em>)（其中 <em>index</em> 是形状的名称或索引号，或是它们的一个数组）可返回一个 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/ShapeRange/ShapeRange .htm#ShapeRange.ShapeRange\">ShapeRange</a> 集合，该集合代表 Shapes 集合的一个子集。下例设置 <em>myDocument</em> 上形状一和三的填充图案。</strong></p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置第一张工作表上形状一和三的填充图案。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    shapes.<span class=\"hljs-title class_\">Range</span>([<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">3</span>]).<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-title class_\">Patterned</span>(msoPatternHorizontalBrick)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动工作表上名为“Check Box 1”的复选框设置为选中状态。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-title class_\">Shapes</span>(<span class=\"hljs-string\">&quot;Check Box 1&quot;</span>).<span class=\"hljs-property\">ControlFormat</span>.<span class=\"hljs-property\">Value</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>指定的工作表上的所有 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a>**对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a>**对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n    <span class=\"hljs-keyword\">if</span>(myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>){\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n    }\n    <span class=\"hljs-keyword\">else</span>{\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将第一张工作表中所有形状的宽度扩大至原来的1.2倍。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= shapes.<span class=\"hljs-property\">Count</span>; i++) {\n        shapes.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Width</span> *= <span class=\"hljs-number\">1.2</span>\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表中形状的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-title function_\">alert</span>(shapes.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "AddChart2",
+      "summary": "",
+      "description": "<p>向文档添加图表。 返回一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a>**对象，该对象代表图表并将其添加到指定的集合。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向活动工作表中添加一个图表框。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">AddChart</span>2()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表中指定位置添加一个长度、高度都为150磅的图表框。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">AddChart</span>2(<span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">150</span>, <span class=\"hljs-number\">150</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Style",
+          "type": "any",
+          "description": "<p>图表样式。 使用“-1”获取 XlChartType 中指定的图表类型的默认样式。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "XlChartType",
+          "type": "any",
+          "description": "<p>图表类型。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Left",
+          "type": "any",
+          "description": "<p>图表左边缘相对于定位点的位置（以 磅为单位）。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Top",
+          "type": "any",
+          "description": "<p>图表上边缘距离定位点的以磅为单位的位置。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Width",
+          "type": "any",
+          "description": "<p>以磅为单位的图表宽度。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Height",
+          "type": "any",
+          "description": "<p>以磅为单位的图表高度。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "NewLayout",
+          "type": "any",
+          "description": "<p>如果 NewLayout 为 True，则使用新的动态格式设置规则插入图表， (标题处于打开状态，并且仅当有多个系列) 时，图例才会打开。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>Shape</p>\n"
+    },
+    {
+      "name": "AddConnector",
+      "summary": "<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th><strong>MsoConnectorType</strong> 可以是下列 <strong>MsoConnectorType</strong> 常量之一。</th>\n</tr>\n</thead><tbody><tr>\n<td><strong>msoConnectorElbow</strong></td>\n</tr>\n<tr>\n<td><strong>msoConnectorTypeMixed</strong></td>\n</tr>\n<tr>\n<td><strong>msoConnectorCurve</strong></td>\n</tr>\n<tr>\n<td><strong>msoConnectorStraight</strong></td>\n</tr>\n</tbody></table></div><p>将连接符连接到形状上时，连接符的大小和位置将自动进行必要的调整。因此，将连接符连接到其他形状上时，添加连接符时所指定的初始大小和位置是无关紧要的。</p>\n",
+      "description": "<p>创建一个连接符。返回一个代表新连接符的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a></strong> 对象。添加一个连接符时，它没有连接到任何对象。使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/ConnectorFormat/ConnectorFormat .htm#ConnectorFormat.BeginConnect\">BeginConnect</a></strong> 和 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/ConnectorFormat/ConnectorFormat .htm#ConnectorFormat.EndConnect\">EndConnect</a></strong> 方法可将连接符的头和尾连接到文档中的其他形状上。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表添加直线连接线。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-keyword\">let</span> connector = shapes.<span class=\"hljs-title class_\">AddConnector</span>(msoConnectorStraight, <span class=\"hljs-number\">150</span>, <span class=\"hljs-number\">150</span>, <span class=\"hljs-number\">200</span>, <span class=\"hljs-number\">200</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向活动工作表添加肘形连接符。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">AddConnector</span>(msoConnectorElbow, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">400</span>, <span class=\"hljs-number\">200</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Type",
+          "type": "MsoConnectorType",
+          "description": "<p>要添加的连接符类型。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "BeginX",
+          "type": "number（float 精度）",
+          "description": "<p>连接符的起点相对于文档左上角的水平位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "BeginY",
+          "type": "number（float 精度）",
+          "description": "<p>连接符的起点相对于文档左上角的垂直位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "EndX",
+          "type": "number（float 精度）",
+          "description": "<p>连接符的终点相对于文档左上角的水平位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "EndY",
+          "type": "number（float 精度）",
+          "description": "<p>连接符的终点相对于文档左上角的垂直位置（以磅为单位）。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Shape</p>\n"
+    },
+    {
+      "name": "AddFormControl",
+      "summary": "<p>对 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/OLEObjects/OLEObjects .htm#OLEObjects.OLEObjects\">OLEObjects</a></strong> 集合使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shapes/Shapes .htm#Shapes.AddOLEObject\">AddOLEObject</a></strong> 方法或者 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/OLEObjects/OLEObjects .htm#OLEObjects.Add\">Add</a></strong> 方法可创建一个 ActiveX 控件（ActiveX 控件：一种控件，如复选框或按钮，向用户提供选项或运行使任务自动化的宏或脚本。）。</p>\n",
+      "description": "<p>创建一个 ET 控件 （ET 控件：ET 本身具有的控件，而不是 ActiveX 控件。）。将返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a></strong> 对象，该对象代表新建的控件。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将列表框添加到第一张工作表中，并为该列表框设置填充区域。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-keyword\">let</span> lb = shapes.<span class=\"hljs-title class_\">AddFormControl</span>(xlListBox, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>)\n    lb.<span class=\"hljs-property\">ControlFormat</span>.<span class=\"hljs-property\">ListFillRange</span> = <span class=\"hljs-string\">&quot;A1:A10&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将单选按钮控件添加到活动工作表中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-keyword\">let</span> lb = shapes.<span class=\"hljs-title class_\">AddFormControl</span>(xlOptionButton, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">150</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">20</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Type",
+          "type": "XlFormControl",
+          "description": "<p>ET 控件 （ET 控件：ET 本身具有的控件，而不是 ActiveX 控件。）类型。无法在工作表上创建编辑框。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Left",
+          "type": "number（int4 精度）",
+          "description": "<p>新对象相对于工作表 A1 单元格左上角或图表左上角的初始坐标（以磅 （磅：指打印的字符的高度的度量单位。1 磅等于 1/72 英寸，或大约等于 1 厘米的 1/28。）为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Top",
+          "type": "number（int4 精度）",
+          "description": "<p>新对象相对于工作表 A1 单元格左上角或图表左上角的初始坐标（以磅 （磅：指打印的字符的高度的度量单位。1 磅等于 1/72 英寸，或大约等于 1 厘米的 1/28。）为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Width",
+          "type": "number（int4 精度）",
+          "description": "<p>新对象的初始大小（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "type": "number（int4 精度）",
+          "description": "<p>新对象的初始大小（以磅为单位）。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Shape</p>\n"
+    },
+    {
+      "name": "AddLabel",
+      "summary": "",
+      "description": "<p>创建一个连接符。返回一个代表新连接符的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a></strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将包含文本“Test Label”的垂直标签添加到第一张工作表中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-keyword\">let</span> label = shapes.<span class=\"hljs-title class_\">AddLabel</span>(msoTextOrientationVertical, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">60</span>, <span class=\"hljs-number\">150</span>)\n    label.<span class=\"hljs-property\">TextFrame</span>.<span class=\"hljs-title class_\">Characters</span>().<span class=\"hljs-property\">Text</span> = <span class=\"hljs-string\">&quot;Test Label&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将包含实线样式的水平标签添加到活动工作表中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> label = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">AddLabel</span>(msoTextOrientationHorizontal, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">50</span>, <span class=\"hljs-number\">50</span>)\n    label.<span class=\"hljs-property\">Line</span>.<span class=\"hljs-property\">Weight</span> = <span class=\"hljs-number\">2</span>\n    label.<span class=\"hljs-property\">Line</span>.<span class=\"hljs-property\">DashStyle</span> = msoLineSolid\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Orientation",
+          "type": "MsoTextOrientation",
+          "description": "<p>标签中文本的方向。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Left",
+          "type": "number（float 精度）",
+          "description": "<p>标签左上角相对于文档左上角的位置（以磅为���位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Top",
+          "type": "number（float 精度）",
+          "description": "<p>标签左上角相对于文档顶部的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Width",
+          "type": "number（float 精度）",
+          "description": "<p>标签的宽度（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "type": "number（float 精度）",
+          "description": "<p>标签的高度（以磅为单位）。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Shape</p>\n"
+    },
+    {
+      "name": "AddLine",
+      "summary": "",
+      "description": "<p>当本方法应用于 <strong>Shapes</strong> 对象时，返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a></strong> 对象，该对象表示工作表中的新线条。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表添加一条蓝色虚线。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-keyword\">let</span> line = shapes.<span class=\"hljs-title class_\">AddLine</span>(<span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">250</span>, <span class=\"hljs-number\">250</span>).<span class=\"hljs-property\">Line</span>\n    line.<span class=\"hljs-property\">DashStyle</span> = msoLineDashDotDot\n    line.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">50</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">128</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向活动工作表添加一条带箭头的直线。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">AddLine</span>(<span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>).<span class=\"hljs-property\">Line</span>.<span class=\"hljs-property\">EndArrowheadStyle</span> = msoArrowheadOpen\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "BeginX",
+          "type": "number（float 精度）",
+          "description": "<p>线条的起点相对于文档左上角的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "BeginY",
+          "type": "number（float 精度）",
+          "description": "<p>线条的起点相对于文档左上角的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "EndX",
+          "type": "number（float 精度）",
+          "description": "<p>线条的终点相对于文档左上角的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "EndY",
+          "type": "number（float 精度）",
+          "description": "<p>线条的终点相对于文档左上角的位置（以磅为单位）。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Shape</p>\n"
+    },
+    {
+      "name": "AddOLEObject",
+      "summary": "",
+      "description": "<p>创建 OLE 对象。返回一个代表新 OLE 对象的 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a>**对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向活动工作表中添加链接的 WPS 文档。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>\n    shapes.<span class=\"hljs-title class_\">Add</span>OLEObject(<span class=\"hljs-literal\">null</span>, <span class=\"hljs-string\">&quot;c:\\\\my documents\\\\testing.doc&quot;</span>, <span class=\"hljs-literal\">true</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">200</span>, <span class=\"hljs-number\">300</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表中添加新的命令按钮。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    shapes.<span class=\"hljs-title class_\">Add</span>OLEObject(<span class=\"hljs-string\">&quot;Forms.CommandButton.1&quot;</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">200</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "ClassType",
+          "type": "any",
+          "description": "<p>（必须指定 ClassType 或 FileName）。该字符串包含要创建的对象的程序标识符。如果指定了 ClassType 参数，则忽略 FileName 和 Link。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Filename",
+          "type": "any",
+          "description": "<p>创建对象所用的文件名称。如果未指定路径，则使用当前的工作文件夹。必须为对象指定 ClassType 或 FileName 参数，但不能同时指定。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Link",
+          "type": "any",
+          "description": "<p>如果为 True，则将 OLE 对象链接到创建该对象所使用的文件；如果为 False，则 OLE 对象成为该文件的独立副本。如果为 ClassType 指定值，则该参数必须为 False。默认值为 False。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "DisplayAsIcon",
+          "type": "any",
+          "description": "<p>如果为 True，则将 OLE 对象显示为图标。默认值为 False。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "IconFileName",
+          "type": "any",
+          "description": "<p>包含将要显示的图标的文件。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "IconIndex",
+          "type": "any",
+          "description": "<p>IconFileName 内的图标索引。指定文件中图标的顺序与图标在“更改图标”对话框中出现的顺序相对应（选中“显示为图标”复选框后，可从“对象”对话框访问该对话框）。文件中的第一个图标的索引号为 0（零）。如果 IconFileName 中不存在给定索引号的图标，则使用索引号为 1 的图标（即文件中的第二个图标）。默认值为 0（零）。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "IconLabel",
+          "type": "any",
+          "description": "<p>显示在图标下面的标签（题注）。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Left",
+          "type": "any",
+          "description": "<p>新对象的左上角相对于文档左上角的位置（以磅为单位）。默认值为 0（零）。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Top",
+          "type": "any",
+          "description": "<p>新对象的左上角相对于文档顶部的位置 (以磅为单位)。 默认值为 0（零）。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Width",
+          "type": "any",
+          "description": "<p>以磅为单位给出 OLE 对象的初始尺寸。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Height",
+          "type": "any",
+          "description": "<p>以磅为单位给出 OLE 对象的初始尺寸。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>Shape</p>\n"
+    },
+    {
+      "name": "AddPicture",
+      "summary": "",
+      "description": "<p>现有文件创建图片。返回一个代表新图片的 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a>**对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表中添加由文件“p1.png”创建的图片。插入的图片链接到创建该图片的文件，并与工作表一起保存。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    shapes.<span class=\"hljs-title class_\">AddPicture</span>(<span class=\"hljs-string\">&quot;D:/Pictures/p1.png&quot;</span>, msoTrue, msoTrue, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">70</span>, <span class=\"hljs-number\">70</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向活动工作表中添加由文件“p2.png”创建的图片。图片不随工作表保存，仅保留链接信息，并保留图片原有尺寸。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>\n    shapes.<span class=\"hljs-title class_\">AddPicture</span>(<span class=\"hljs-string\">&quot;D:\\\\Pictures\\\\p2.png&quot;</span>, msoTrue, msoFalse, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>, -<span class=\"hljs-number\">1</span>, -<span class=\"hljs-number\">1</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Filename",
+          "type": "string",
+          "description": "<p>要在其中创建 OLE 对象的文件。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "LinkToFile",
+          "type": "MsoTriState",
+          "description": "<p>要链接至的文件。 使用 msoFalse 使图片成为文件的独立副本。 使用 msoTrue 将图片链接到从中创建图片的文件。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "SaveWithDocument",
+          "type": "MsoTriState",
+          "description": "<p>将图片与文档一起保存。 使用 msoFalse 仅存储文档中的链接信息。 使用 msoTrue 将链接图片与插入到的文档一起保存。 如果 LinkToFile 为 msoFalse，则此参数必须为 msoTrue。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Left",
+          "type": "number（float 精度）",
+          "description": "<p>图片左上角相对于文档左上角的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Top",
+          "type": "number（float 精度）",
+          "description": "<p>图片左上角相对于文档顶部的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Width",
+          "type": "number（float 精度）",
+          "description": "<p>图片的宽度（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "type": "number（float 精度）",
+          "description": "<p>图片的高度（以磅为单位）。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Shape。</p>\n"
+    },
+    {
+      "name": "AddShape",
+      "summary": "<p>要更改已添加的自选形状的类型，请设置 <strong>AutoShapeType</strong> 属性。</p>\n",
+      "description": "<p>返回一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a>**对象，该对象表示工作表中的新自选形状。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表中添加矩形。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">AddShape</span>(msoShapeRectangle, <span class=\"hljs-number\">50</span>, <span class=\"hljs-number\">50</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">200</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将十字添加到活动工作表中，然后将其边框设置为8磅厚和红色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-keyword\">let</span> shape = shapes.<span class=\"hljs-title class_\">AddShape</span>(msoShapeCross, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">50</span>, <span class=\"hljs-number\">70</span>)\n    shape.<span class=\"hljs-property\">Line</span>.<span class=\"hljs-property\">Weight</span> = <span class=\"hljs-number\">8</span>\n    shape.<span class=\"hljs-property\">Line</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Type",
+          "type": "MsoAutoShapeType",
+          "description": "<p>指定要创建的自选形状的类型。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Left",
+          "type": "number（float 精度）",
+          "description": "<p>自选形状边框的左上角相对于文档左上角的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Top",
+          "type": "number（float 精度）",
+          "description": "<p>自选形状边框的左上角相对于文档顶部的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Width",
+          "type": "number（float 精度）",
+          "description": "<p>自选形状边框的宽度（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "type": "number（float 精度）",
+          "description": "<p>自选形状边框的高度（以磅为单位）。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Shape。</p>\n"
+    },
+    {
+      "name": "AddTextEffect",
+      "summary": "<p>向文档添加艺术字对象时，该对象的高度和宽度将自动根据所指定的文字的大小和数量来设置。</p>\n",
+      "description": "<p>创建艺术字对象。返回一个代表新艺术字对象的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a></strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表中添加包含文本“Test”的艺术字。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">AddTextEffect</span>(msoTextEffect1, <span class=\"hljs-string\">&quot;Test&quot;</span>, <span class=\"hljs-string\">&quot;Arial Black&quot;</span>, <span class=\"hljs-number\">36</span>, msoFalse, msoFalse, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">10</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向活动工作表中添加包含文本“Test2”的艺术字，并将其字号再修改为 25 磅。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">AddTextEffect</span>(msoTextEffect17, <span class=\"hljs-string\">&quot;Test2&quot;</span>, <span class=\"hljs-string\">&quot;Arial&quot;</span>, <span class=\"hljs-number\">36</span>, msoFalse, msoFalse, <span class=\"hljs-number\">200</span>, <span class=\"hljs-number\">200</span>)\n    shape.<span class=\"hljs-property\">TextEffect</span>.<span class=\"hljs-property\">FontSize</span> = <span class=\"hljs-number\">25</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "PresetTextEffect",
+          "type": "MsoPresetTextEffect",
+          "description": "<p>预置文字效果。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Text",
+          "type": "string",
+          "description": "<p>艺术字中的文字。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "FontName",
+          "type": "string",
+          "description": "<p>艺术字中所用字体的名称。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "FontSize",
+          "type": "number（float 精度）",
+          "description": "<p>艺术字中所用字体的大小（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "FontBold",
+          "type": "MsoTriState",
+          "description": "<p>在艺术字中要加粗的字体。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "FontItalic",
+          "type": "MsoTriState",
+          "description": "<p>在艺术字中要倾斜的字体。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Left",
+          "type": "number（float 精度）",
+          "description": "<p>艺术字边框左上角相对于文档左上角的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Top",
+          "type": "number（float 精度）",
+          "description": "<p>艺术字边框左上角相对于文档顶部的位置（以磅为单位）。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Shape</p>\n"
+    },
+    {
+      "name": "AddTextbox",
+      "summary": "",
+      "description": "<p>创建一个文本框。返回一个代表新文本框的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a></strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将包含文本“Test Box”的文本框添加到第一张工作表中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-keyword\">let</span> textbox = shapes.<span class=\"hljs-title class_\">AddTextbox</span>(msoTextOrientationHorizontal, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">200</span>, <span class=\"hljs-number\">50</span>)\n    textbox.<span class=\"hljs-property\">TextFrame</span>.<span class=\"hljs-title class_\">Characters</span>().<span class=\"hljs-property\">Text</span> = <span class=\"hljs-string\">&quot;Test Box&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将带有红色边框的文本框添加到活动工作表中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-keyword\">let</span> textbox = shapes.<span class=\"hljs-title class_\">AddTextbox</span>(msoTextOrientationVertical, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">200</span>, <span class=\"hljs-number\">50</span>)\n    textbox.<span class=\"hljs-property\">Line</span>.<span class=\"hljs-property\">Weight</span> = <span class=\"hljs-number\">2</span>\n    textbox.<span class=\"hljs-property\">Line</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Orientation",
+          "type": "MsoTextOrientation",
+          "description": "<p>文本框的方向。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Left",
+          "type": "number（float 精度）",
+          "description": "<p>文本框左上角相对于文档左上角的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Top",
+          "type": "number（float 精度）",
+          "description": "<p>文本框左上角相对于文档顶部的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Width",
+          "type": "number（float 精度）",
+          "description": "<p>文本框的宽度（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "type": "number（float 精度）",
+          "description": "<p>文本框的高度（以磅为单位）。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Shape</p>\n"
+    },
+    {
+      "name": "BuildFreeform",
+      "summary": "",
+      "description": "<p>建立一个任意多边形对象。返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/FreeformBuilder/FreeformBuilder .htm#FreeformBuilder.FreeformBuilder\">FreeformBuilder</a></strong> 对象，该对象代表正在创建的任意多边形。用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/FreeformBuilder/FreeformBuilder .htm#FreeformBuilder.AddNodes\">AddNodes</a></strong> 方法向任意多边形添加线段。如果任意多边形中已包含了一个以上的线段，则可用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/FreeformBuilder/FreeformBuilder .htm#FreeformBuilder.ConvertToShape\">ConvertToShape</a></strong> 方法将 <strong>FreeformBuilder</strong> 对象转换为 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a></strong> 对象，该对象将具有在 <strong>FreeformBuilder</strong> 对象中定义的几何属性。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将一个有五个顶点的黑色任意多边形添加到第一张工作表中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> builder = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">BuildFreeform</span>(msoEditingCorner, <span class=\"hljs-number\">360</span>, <span class=\"hljs-number\">200</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingCorner, <span class=\"hljs-number\">380</span>, <span class=\"hljs-number\">230</span>, <span class=\"hljs-number\">400</span>, <span class=\"hljs-number\">250</span>, <span class=\"hljs-number\">450</span>, <span class=\"hljs-number\">300</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingAuto, <span class=\"hljs-number\">480</span>, <span class=\"hljs-number\">200</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">480</span>, <span class=\"hljs-number\">400</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">360</span>, <span class=\"hljs-number\">200</span>)\n    <span class=\"hljs-keyword\">let</span> s = builder.<span class=\"hljs-title class_\">ConvertToShape</span>()\n    s.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表中创建一个具有三个顶点的红色任意多边形。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> builder = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">BuildFreeform</span>(msoEditingSmooth, <span class=\"hljs-number\">380</span>, <span class=\"hljs-number\">220</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingAuto, <span class=\"hljs-number\">460</span>, <span class=\"hljs-number\">260</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingAuto, <span class=\"hljs-number\">480</span>, <span class=\"hljs-number\">320</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingAuto, <span class=\"hljs-number\">380</span>, <span class=\"hljs-number\">220</span>)\n    <span class=\"hljs-keyword\">let</span> s = builder.<span class=\"hljs-title class_\">ConvertToShape</span>()\n    s.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "EditingType",
+          "type": "MsoEditingType",
+          "description": "<p>第一个节点的编辑属性。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "X1",
+          "type": "number（float 精度）",
+          "description": "<p>任意图形中第一个节点相对于文档左上角的位置（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Y1",
+          "type": "number（float 精度）",
+          "description": "<p>任意图形中第一个节点相对于文档左上角的位置（以磅为单位）。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>FreeformBuilder</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "<p>对象的文本名称就是 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Name/Name .htm#Name.Name\">Name</a></strong> 属性的值。</p>\n",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例对 Shapes 集合中第二个形状的 OnAction 属性进行设置。如果变量 ss 代表的不是 Shapes 对象，则本示例无效。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> ss = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    ss.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">OnAction</span> = <span class=\"hljs-string\">&quot;ShapeAction&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动工作表中不包含图表的形状删除。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= shapes.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-keyword\">if</span> (shapes.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">HasChart</span>) {\n            shapes.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-title class_\">Delete</span>()\n        }\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>包含在集合中的一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a>**对象。</p>\n"
+    },
+    {
+      "name": "Range",
+      "summary": "<p>虽然使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Range/Range .htm#Range.Range\">Range</a></strong> 属性可返回任意数量的形状，但如果要返回集合中单个成员时，用 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shapes/Shapes .htm#Shapes.Item\"><strong>Item</strong></a> 方法更加简单。例如，<code>Shapes(1)</code> 比 <code>Shapes.Range(1)</code> 简单。</p>\n<p>可为 <strong>Index</strong> 指定整数或字符串数组。例如，以下指令返回用名称指定的两个形状。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-keyword\">let</span> arShapes = [<span class=\"hljs-string\">&quot;Oval 4&quot;</span>, <span class=\"hljs-string\">&quot;Rectangle 5&quot;</span>]\n<span class=\"hljs-keyword\">let</span> objRange = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Range</span>(arShapes)</code></pre></td></tr></tbody></table></div><p>在 ET 中，不能用此属性返回包含工作表上的所有 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\"><strong>Shape</strong></a> 对象的 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/ShapeRange/ShapeRange .htm#ShapeRange.ShapeRange\"><strong>ShapeRange</strong></a> 对象。如果要达到该目的，可用下列代码：</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">SelectAll</span>() <span class=\"hljs-comment\">//select all shapes </span>\n<span class=\"hljs-keyword\">let</span> sr = <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-property\">ShapeRange</span> <span class=\"hljs-comment\">//create ShapeRange</span></code></pre></td></tr></tbody></table></div>",
+      "description": "<p>返回一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/ShapeRange/ShapeRange .htm#ShapeRange.ShapeRange\">ShapeRange</a>**对象，它代表 <strong>Shapes</strong> 集合中形状的子集。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置第一张工作表中第一个形状和第三个形状的填充图案。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shpRange = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Range</span>([<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">3</span>])\n    shpRange.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-title class_\">Patterned</span>(msoPatternHorizontalBrick)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置活动工作表中的第一个形状的填充颜色为红色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>\n    <span class=\"hljs-keyword\">let</span> range = shapes.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-number\">1</span>)\n    range.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>包含在该区域中的各单个形状。可以是指定形状索引号的整数、指定形状名称的字符串，也可以是包含整数或字符串的数组。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "ShapeRange"
+    },
+    {
+      "name": "SelectAll",
+      "summary": "",
+      "description": "<p>选择指定的 <strong>Shapes</strong> 集合中的所有形状。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例选择第一张工作表中的所有形状，并创建包含所有这些形状的 ShapeRange 集合。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    shapes.<span class=\"hljs-title class_\">SelectAll</span>()\n    <span class=\"hljs-keyword\">let</span> sr = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Selection</span>.<span class=\"hljs-property\">ShapeRange</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动工作表的所有形状的边框粗细设置为 8 磅，颜色为红色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>\n    shapes.<span class=\"hljs-title class_\">SelectAll</span>()\n    <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-property\">ShapeRange</span>.<span class=\"hljs-property\">Line</span>.<span class=\"hljs-property\">Weight</span> = <span class=\"hljs-number\">8</span>\n    <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-property\">ShapeRange</span>.<span class=\"hljs-property\">Line</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "void"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "GroupShapes",
+  "summary": "<p>每个形状都由一个 <strong>Shape</strong> 对象代表。将 <strong>Item</strong>方法与此对象一起使用，您可以在不取消分组的情况下处理组合的各个形状。</p>\n<p>使用 <strong>GroupItems</strong> 属性可返回 <strong>GroupShapes</strong> 集合。使用 <strong>GroupItems</strong>(<em>index</em>)（其中 <em>index</em> 是分组的形状中单个形状的编号）可从 <strong>GroupShapes</strong> 集合中返回单个形状。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表添加三个三角形，将它们分成一组，设置整个组的预设纹理填充效果，然后只更改第二个三角形的预设纹理填充效果。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shapes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>\n    shapes.<span class=\"hljs-title class_\">AddShape</span>(msoShapeIsoscelesTriangle, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>).<span class=\"hljs-property\">Name</span> = <span class=\"hljs-string\">&quot;shpOne&quot;</span>\n    shapes.<span class=\"hljs-title class_\">AddShape</span>(msoShapeIsoscelesTriangle, <span class=\"hljs-number\">150</span>, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>).<span class=\"hljs-property\">Name</span> = <span class=\"hljs-string\">&quot;shpTwo&quot;</span>\n    shapes.<span class=\"hljs-title class_\">AddShape</span>(msoShapeIsoscelesTriangle, <span class=\"hljs-number\">300</span>, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>).<span class=\"hljs-property\">Name</span> = <span class=\"hljs-string\">&quot;shpThree&quot;</span>\n    <span class=\"hljs-keyword\">let</span> shape = shapes.<span class=\"hljs-title class_\">Range</span>([<span class=\"hljs-string\">&quot;shpOne&quot;</span>, <span class=\"hljs-string\">&quot;shpTwo&quot;</span>, <span class=\"hljs-string\">&quot;shpThree&quot;</span>]).<span class=\"hljs-title class_\">Group</span>()\n    shape.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-title class_\">PresetTextured</span>(msoTextureBlueTissuePaper)\n    shape.<span class=\"hljs-property\">GroupItems</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-title class_\">PresetTextured</span>(msoTextureGreenMarble)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示 GroupShapes 集合中第一个形状的宽度。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(shape.<span class=\"hljs-property\">GroupItems</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Width</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>用于访问组合形状中的单个形状。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong>对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code>*本示例显示一条有关创建 myObject 的应用程序的消息。*/\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n\t<span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n\t<span class=\"hljs-keyword\">if</span> (myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n\t} <span class=\"hljs-keyword\">else</span> {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n\t}\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示 GroupShapes 集合中形状的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(shape.<span class=\"hljs-property\">GroupItems</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例对 GroupShapes 集合中第二个形状的 OnAction 属性进行设置。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    shape.<span class=\"hljs-property\">GroupItems</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">OnAction</span> = <span class=\"hljs-string\">&quot;ShapeAction&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示 GroupShapes 集合中第一个形状的高度。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(shape.<span class=\"hljs-property\">GroupItems</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Height</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>包含在集合中的一个 Shape 对象。</p>\n"
+    },
+    {
+      "name": "Range",
+      "summary": "<p>虽然使用 <strong>Range</strong>属性可返回任意数量的形状，但如果要返回集合的单个成员，用 <strong>Item</strong> 方法更加简单。例如，<code>GroupItems(1)</code> 比 <code>GroupItems.Range(1)</code> 简单。</p>\n",
+      "description": "<p>返回一个 <strong>ShapeRange</strong> 对象，它代表 <strong>Shapes</strong>集合中形状的子集。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示 GroupShapes 集合中第一个形状的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(shape.<span class=\"hljs-property\">GroupItems</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例选中 GroupShapes 集合中第一个形状。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    shape.<span class=\"hljs-property\">GroupItems</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Select</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>包含在该区域中的各单个形状。可以是指定形状索引号的整数、指定形状名称的字符串，也可以是包含整数或字符串的数组。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "ShapeRange"
+    }
+  ]
+}

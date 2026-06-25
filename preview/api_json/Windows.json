@@ -1,0 +1,113 @@
+{
+  "name": "Windows",
+  "summary": "<p><strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a></strong> 对象的 <strong>Windows</strong> 集合包含应用程序中的所有窗口，而 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbook/Workbook .htm#Workbook.Workbook\">Workbook</a></strong> 对象的 <strong>Windows</strong> 集合只包含指定工作簿中的窗口。</p>\n<p>使用 <strong>Windows</strong> 属性可返回 <strong>Windows</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例层叠当前在 ET 中显示的所有窗口。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-title class_\">Arrange</span>(xlCascade)\n}</code></pre></td></tr></tbody></table></div><p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbook/Workbook .htm#Workbook.NewWindow\">NewWindow</a></strong> 方法可返回一个新窗口并将它添加到集合。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在活动工作簿新建一个窗口。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">NewWindow</span>()\n}</code></pre></td></tr></tbody></table></div><p>使用 <strong>Windows</strong>(<em>index</em>)（其中 <em>index</em> 是窗口名称或索引号）可返回一个 <strong>Window</strong> 对象。</p>\n<p>注意，活动窗口总是 <code>Windows(1)</code>。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将活动窗口最大化。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">WindowState</span> = xlMaximized\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>ET 中所有 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Window/Window .htm#Window.Window\">Window</a></strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a></strong> 对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span> ) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n    }\n    <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*以下示例关闭除第一个窗口外的所有窗口。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> wins = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Windows</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">2</span>; i &lt;= wins.<span class=\"hljs-property\">Count</span>; i++) {\n        wins.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-title class_\">Close</span>()\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "SyncScrollingSideBySide",
+      "summary": "",
+      "description": "<p>如果为 <strong>True</strong>，在对文档进行并排比较的同时启用窗口内容的滚动功能。若为 <strong>False</strong>，则在对文档进行并排比较的同时禁用窗口内容的滚动功能。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在对文档进行并排比较的同时启用窗口内容的滚动功能。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-property\">SyncScrollingSideBySide</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在对文档进行并排比较的同时禁用窗口内容的滚动功能，并通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-property\">SyncScrollingSideBySide</span> = <span class=\"hljs-literal\">false</span>\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;已关闭窗口内容的滚动功能&quot;</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "boolean",
+      "readonly": false
+    }
+  ],
+  "functions": [
+    {
+      "name": "Arrange",
+      "summary": "<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th><strong>XlArrangeStyle</strong> 可为以下 <strong>XlArrangeStyle</strong> 常量之一。</th>\n</tr>\n</thead><tbody><tr>\n<td><strong>xlArrangeStyleCascade</strong> 对窗口进行层叠。</td>\n</tr>\n<tr>\n<td><strong>xlArrangeStyleTiled</strong> 默认值 平铺窗口。</td>\n</tr>\n<tr>\n<td><strong>xlArrangeStyleHorizontal</strong>。水平排列所有窗口。</td>\n</tr>\n<tr>\n<td><strong>xlArrangeStyleVertical</strong> 垂直排列所有窗口。</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>对屏幕上的窗口进行排列。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例平铺应用程序中的所有窗口。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-title class_\">Arrange</span>(xlArrangeStyleTiled)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例水平排列应用程序中的可见窗口。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-title class_\">Arrange</span>(xlArrangeStyleHorizontal, <span class=\"hljs-literal\">true</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "ArrangeStyle",
+          "type": "XlArrangeStyle",
+          "description": "<p><strong>XlArrangeStyle</strong> 常量之一，指定窗口排列方式。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ActiveWorkbook",
+          "type": "any",
+          "description": "<p>如果为 <strong>True</strong>，则只排列活动工作簿的可见窗口。如果为 <strong>False</strong>，则排列所有窗口。默认值为 <strong>False</strong>。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "SyncHorizontal",
+          "type": "any",
+          "description": "<p>如果 <em>ActiveWorkbook</em> 为 <strong>False</strong> 或省略，则忽略此参数。如果为 <strong>True</strong>，则在水平滚动时同步活动工作簿的窗口。如果为 <strong>False</strong>，则不同步窗口。默认值为 <strong>False</strong>。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "SyncVertical",
+          "type": "any",
+          "description": "<p>如果 <em>ActiveWorkbook</em> 为 <strong>False</strong> 或省略，则忽略此参数。如果为 <strong>True</strong>，则在垂直滚动时同步活动工作簿的窗口。如果为 <strong>False</strong>，则不同步窗口。默认值为 <strong>False</strong>。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>Variant</p>\n"
+    },
+    {
+      "name": "BreakSideBySide",
+      "summary": "",
+      "description": "<p>使用此方法可结束两个窗口的并排模式。返回一个表明此方法是否成功的 <strong>Boolean</strong> 值。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例结束正在进行比较的两个窗口的并排模式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-title class_\">BreakSideBySide</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例结束当前活动工作簿正在进行的并排模式，并判断执行成功通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-title class_\">BreakSideBySide</span>()) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;已结束当前活动工作簿正在进行并排比较的两个工作表窗口的并排模式&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "<p>Boolean</p>\n"
+    },
+    {
+      "name": "CompareSideBySideWith",
+      "summary": "<p>不能将 <strong>CompareSideBySideWith</strong> 方法用于 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a></strong> 对象或 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.ActiveWorkbook\">ActiveWorkbook</a></strong> 属性。</p>\n",
+      "description": "<p>以并排模式打开两个窗口。返回一个 <strong>Boolean</strong> 值。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例以并排模式打开当前所在工作簿和考勤表两个窗口。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Windows</span>.<span class=\"hljs-title class_\">CompareSideBySideWith</span>(<span class=\"hljs-string\">&quot;考勤表.xlsx&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例以并排模式打开当前所在工作簿和成绩簿两个窗口，并判断执行成功通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Windows</span>.<span class=\"hljs-title class_\">CompareSideBySideWith</span>(<span class=\"hljs-string\">&quot;成绩簿.xlsx&quot;</span>)) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;成功用并排模式打开当前工作簿和成绩簿两个窗口&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "WindowName",
+          "type": "any",
+          "description": "<p>窗口的名称。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Boolean</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将第一个窗口最大化。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">WindowState</span> = xlMaximized\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例关闭第二个窗口。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Windows</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-title class_\">Close</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Window"
+    },
+    {
+      "name": "ResetPositionsSideBySide",
+      "summary": "<p>使用 <strong>ResetPositionsSideBySide</strong> 方法可重置正在进行并排比较的两个工作表的位置。例如，如果用户将正在进行比较的两个工作表窗口中的其中一个窗框最小化或最大化，就可以使用 <strong>ResetPositionsSideBySide</strong> 方法重置显示，以便这两个窗口再次并排显示。</p>\n",
+      "description": "<p>重置正在进行并排比较的两个工作表窗口的位置。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例重置正在进行并排比较的两个工作表窗口的位置。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-title class_\">ResetPositionsSideBySide</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例重置当前活动工作簿正在进行并排比较的两个工作表窗口的位置。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Windows</span>.<span class=\"hljs-title class_\">ResetPositionsSideBySide</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "void"
+    }
+  ]
+}

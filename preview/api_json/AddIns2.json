@@ -1,0 +1,54 @@
+{
+  "name": "AddIns2",
+  "summary": "<p><strong>AddIns2</strong> 集合的内容对应于 <strong>“加载项”</strong> 对话框（<strong>“开发工具”</strong> 选项卡上的 <strong>“加载项”</strong> 命令）中显示的加载项列表，以及当前打开的任何加载项。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例创建了一个列表，包含所有可用加载宏的名称和安装状态。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Activate</span>()\n    <span class=\"hljs-keyword\">let</span> addIns = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AddIns2</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= addIns.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(i, <span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value2</span> = addIns.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Name</span>\n        <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(i, <span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Value2</span> = addIns.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Installed</span>\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例添加并安装未显示的加载项。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> addin = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AddIns2</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;D:\\\\示例\\\\ANALYS32.XLL&quot;</span>)\n    addin.<span class=\"hljs-property\">Installed</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p><strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/AddIn/AddIn .htm#AddIn.AddIn\">AddIn</a></strong> 对象组成的集合，这些对象表示 ET 中当前可用或打开的所有加载项，而不考虑它们是否已安装。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，该值表示集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示加载项的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`加载项的数量：<span class=\"hljs-subst\">${Application.AddIns2.Count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>将新加载项添加到加载项列表。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将新加载宏文件添加到加载宏列表中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AddIns2</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;D:\\\\ANALYS32.XLL&quot;</span>, <span class=\"hljs-literal\">true</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将新加载宏文件添加到加载宏列表中并安装。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AddIns2</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;D:\\\\ANALYS32.XLL&quot;</span>).<span class=\"hljs-property\">Installed</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Filename",
+          "type": "string",
+          "description": "<p>文件名，该文件包含要添加到 <strong>“加载项”</strong> 对话框中的列表的加载项。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "CopyFile",
+          "type": "any",
+          "description": "<p>如果加载项文件位于可移动媒体上，指定是否要将该加载项复制到本地硬盘。指定 <strong>True</strong> 将加载项复制到硬盘。指定 <strong>False</strong> 将加载项保留在可移动媒体上。如果省略此参数，ET 将显示一个对话框，并要求用户选择是否要复制加载项文件。如果该加载项文件已位于硬盘上，那么将忽略此参数。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>AddIn</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示“ANALYS32”加载宏的状态。。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> addIn = <span class=\"hljs-title class_\">ThisWorkbook</span>.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">AddIns2</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;ANALYS32&quot;</span>)\n    <span class=\"hljs-keyword\">if</span> (addIn.<span class=\"hljs-property\">Installed</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;ANALYS32 add-in is installed&quot;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;ANALYS32 add-in is not installed&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断第一个加载项是否处于打开状态，并通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">AddIns2</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">IsOpen</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;加载项当前处于打开状态&quot;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;加载项当前处于关闭状态&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "AddIn"
+    }
+  ]
+}

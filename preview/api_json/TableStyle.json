@@ -1,0 +1,113 @@
+{
+  "name": "TableStyle",
+  "summary": "<p>表格样式为表格、数据透视表或切片器的一个或所有元素定义格式。例如，列是表格的元素。表格样式可以规定使用交替格式（也称为条带或条纹）对表格中的列进行格式设置。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除第一张工作簿上的表格样式中的最后一个样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyles = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">TableStyles</span>\n    tableStyles.<span class=\"hljs-title class_\">Item</span>(tableStyles.<span class=\"hljs-property\">Count</span>).<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表上第一张列表的表样式是否为内置样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> listObj = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">ListObjects</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(listObj.<span class=\"hljs-property\">TableStyle</span>.<span class=\"hljs-property\">BuiltIn</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表可应用于表格或切片器的单个样式。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p>您可以将此属性与 OLE 自动化对象一起使用以返回该对象的应用程序。</p>\n",
+      "description": "<p>如果不与对象识别符一起使用，则此属性返回代表 ET 应用程序的 <strong>Application</strong>对象。如果与对象识别符一起使用，则此属性返回代表指定对象的创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "BuiltIn",
+      "summary": "",
+      "description": "<p>如果样式为内置样式，则为 <strong>True</strong>。只读 <strong>Boolean</strong> 类型。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 上第一张列表的表样式是否为内置样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> listObj = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">ListObjects</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(listObj.<span class=\"hljs-property\">TableStyle</span>.<span class=\"hljs-property\">BuiltIn</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上的表格样式中的最后一个样式是否为内置样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyles = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>\n    <span class=\"hljs-title function_\">alert</span>(tableStyles.<span class=\"hljs-title class_\">Item</span>(tableStyles.<span class=\"hljs-property\">Count</span>).<span class=\"hljs-property\">BuiltIn</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "boolean",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Name",
+      "summary": "",
+      "description": "<p>返回对象的名称。只读 <strong>String</strong> 类型。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上包含 C3 单元格的列表的表样式的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> listObj = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;C3&quot;</span>).<span class=\"hljs-property\">ListObject</span>\n    <span class=\"hljs-title function_\">alert</span>(listObj.<span class=\"hljs-property\">TableStyle</span>.<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将第一张工作簿的表格样式中第一个样式名称赋值给D2单元格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;D2&quot;</span>).<span class=\"hljs-property\">Value2</span> = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">TableStyles</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Name</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": true
+    },
+    {
+      "name": "NameLocal",
+      "summary": "<p>如果样式为内置样式，则此属性以当前��统所使用的地区语言返回样式的名称。</p>\n",
+      "description": "<p>以用户语言返回对象的名称。只读 <strong>String</strong> 类型。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表 Sheet1 上第一张列表的表样式的名称（用户语言表示）赋值给A3单元格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> listObj = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">ListObjects</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A3&quot;</span>).<span class=\"hljs-property\">Value2</span> = listObj.<span class=\"hljs-property\">TableStyle</span>.<span class=\"hljs-property\">NameLocal</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上的表格样式中的第一个样式名称（用户语言表示）。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyles = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>\n    <span class=\"hljs-title function_\">alert</span>(tableStyles.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">NameLocal</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "ShowAsAvailablePivotTableStyle",
+      "summary": "<p>如果在数据透视表样式库中显示样式，则返回 <strong>True</strong>。  </p>\n<p>即使已将样式应用于表格或数据透视表，用户仍可以将 <strong>ShowAsAvailableTableStyle</strong> 或 <strong>ShowAsAvailablePivotTableStyle</strong> 属性设置为 <strong>False</strong>。在这种情况下，当活动单元格位于表格或数据透视表中时，库将不会显示样式并且没有样式显示为选中的样式。</p>\n",
+      "description": "<p>设置或返回一个值，该值表示是否在数据透视表样式库中显示样式，可读/写 <strong>Boolean</strong> 类型。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 上第一张列表的表样式是否在数据透视表样式库中显示样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> listObj = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">ListObjects</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(listObj.<span class=\"hljs-property\">TableStyle</span>.<span class=\"hljs-property\">ShowAsAvailablePivotTableStyle</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动工作簿上的表格样式中的最后一个样式设置为在数据透视表样式库中显示样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyles = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>\n    tableStyles.<span class=\"hljs-title class_\">Item</span>(tableStyles.<span class=\"hljs-property\">Count</span>).<span class=\"hljs-property\">ShowAsAvailablePivotTableStyle</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "boolean",
+      "readonly": false
+    },
+    {
+      "name": "ShowAsAvailableSlicerStyle",
+      "summary": "",
+      "description": "<p>返回或设置指定的表样式是否作为可用的表样式在切片器样式库中显示。可读/写</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动工作簿上指定的表样式设置为可用的表样式在切片器样式库中显示。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyles = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>\n    tableStyles.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">286</span>).<span class=\"hljs-property\">ShowAsAvailableSlicerStyle</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 上第一张列表的表样式是否作为可用的表样式在切片器样式库中显示。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> listObj = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">ListObjects</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(listObj.<span class=\"hljs-property\">TableStyle</span>.<span class=\"hljs-property\">ShowAsAvailableSlicerStyle</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "boolean",
+      "readonly": false
+    },
+    {
+      "name": "ShowAsAvailableTableStyle",
+      "summary": "<p>如果为 <strong>True</strong>，则此样式显示在表样式库中。  </p>\n<p>即使样式已应用于表，也可以将此属性设置为 <strong>False</strong>。这种情况下，库中将不会显示该样式，活动单元格在该表中时，样式状态不会显示为选中。</p>\n",
+      "description": "<p>返回或设置在表样式库中显示为可用的表样式。可读/写 <strong>Boolean</strong> 类型。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动工作簿上的表格样式中的最后一个样式设置为在表样式库中显示为可用的表样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyles = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>\n    tableStyles.<span class=\"hljs-title class_\">Item</span>(tableStyles.<span class=\"hljs-property\">Count</span>).<span class=\"hljs-property\">ShowAsAvailableTableStyle</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 上第一张列表的表样式在表样式库中是否显示为可用的表样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> listObj = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">ListObjects</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(listObj.<span class=\"hljs-property\">TableStyle</span>.<span class=\"hljs-property\">ShowAsAvailableTableStyle</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "boolean",
+      "readonly": false
+    },
+    {
+      "name": "TableStyleElements",
+      "summary": "",
+      "description": "<p>返回 <strong>TableStyleElements</strong>对象，只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表上第一张列表的表样式元素的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> listObj = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">ListObjects</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(listObj.<span class=\"hljs-property\">TableStyle</span>.<span class=\"hljs-property\">TableStyleElements</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动工作簿上所有表样式中第一列的字体加粗。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyles = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= tableStyles.<span class=\"hljs-property\">Count</span>; i++) {\n        tableStyles.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">TableStyleElements</span>.<span class=\"hljs-title class_\">Item</span>(xlFirstColumn).<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Bold</span> = <span class=\"hljs-literal\">true</span>\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "TableStyleElements",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>删除 <strong>TableStyle</strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除活动工作簿上的表格样式中的最后一个样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyles = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>\n    tableStyles.<span class=\"hljs-title class_\">Item</span>(tableStyles.<span class=\"hljs-property\">Count</span>).<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除第一张工作簿中指定索引的表格样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">TableStyles</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">285</span>).<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "<p>void</p>\n"
+    },
+    {
+      "name": "Duplicate",
+      "summary": "<p>如果未指定名称，则 <strong>Duplicate</strong> 方法将使用与用户界面默认名称相同的默认名称。</p>\n",
+      "description": "<p>复制 <strong>TableStyle</strong> 对象，并返回对新复制对象的引用。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例复制活动工作簿上的表格样式中的最后一个样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyles = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">TableStyles</span>\n    tableStyles.<span class=\"hljs-title class_\">Item</span>(tableStyles.<span class=\"hljs-property\">Count</span>).<span class=\"hljs-title class_\">Duplicate</span>(<span class=\"hljs-string\">&quot;样式5&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例复制第一张工作簿中指定索引的表格样式，并显示复制样式的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> tableStyle = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">TableStyles</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Duplicate</span>(<span class=\"hljs-string\">&quot;样式三&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(tableStyle.<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "NewTableStyleName",
+          "type": "any",
+          "description": "<p>新表样式的名称。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>TableStyle</p>\n"
+    }
+  ]
+}

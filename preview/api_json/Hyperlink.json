@@ -1,0 +1,153 @@
+{
+  "name": "Hyperlink",
+  "summary": "<p><strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Hyperlink/Hyperlink .htm#Hyperlink.Hyperlink\">Hyperlink</a></strong> 对象是 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Hyperlinks/Hyperlinks .htm#Hyperlinks.Hyperlinks\">Hyperlinks</a></strong> 集合的成员。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Hyperlink/Hyperlink .htm#Hyperlink.Hyperlink\">Hyperlink</a></strong> 属性可返回某个形状的超链接（一个形状只能有一个超链接）。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例加载附于第一个形状（第一张工作表中）的超链接*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Hyperlink</span>.<span class=\"hljs-title class_\">Follow</span>(<span class=\"hljs-literal\">true</span>)\n}</code></pre></td></tr></tbody></table></div><p>区域或工作表可以有多个超链接。使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Hyperlinks/Hyperlinks .htm#Hyperlinks.Hyperlinks\">Hyperlinks</a></strong>(<em>index</em>) 可返回单个 <strong>Hyperlink</strong> 对象，其中 <em>index</em> 是超链接编号。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例打开活动工作表中 A1:B2 区域中的第二个超链接*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:B2&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-title class_\">Follow</span>()\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表一个超链接。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Address",
+      "summary": "",
+      "description": "<p>返回或设置一个 <strong>String</strong> 型，它代表目标文档的地址。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示单元格B2中第一项超链接的地址*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B2&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">`超链接的目标地址是 <span class=\"hljs-subst\">${hl.Address}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例修改工作表Sheet1中第一项超链接的地址*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    hl.<span class=\"hljs-property\">Address</span> = <span class=\"hljs-string\">&quot;https://wps.cn/&quot;</span>\n    <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">`超链接的地址已修改为 <span class=\"hljs-subst\">${hl.Address}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": false
+    },
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a></strong> 对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/* 本示例显示一条有关创建 myObject 的应用程序的消息*/</span>\n<span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n<span class=\"hljs-keyword\">if</span>(myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n}\n<span class=\"hljs-keyword\">else</span> {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "EmailSubject",
+      "summary": "<p>该属性常与电子邮件超链接一起使用。</p>\n<p>该属性的值优先于使用同一 <strong>Hyperlink</strong> 对象的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Hyperlink/Hyperlink .htm#Hyperlink.Address\">Address</a></strong> 属性指定的任何电子邮件主题行。</p>\n",
+      "description": "<p>返回或设置指定超链接的电子邮件主题行的文本字符串。主题行是添加到超链接地址上的。<strong>String</strong> 类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置第一张工作表中第一个超链接的电子邮件主题行*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">EmailSubject</span> = <span class=\"hljs-string\">&quot;Quote Request&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置单元格G1中的第一项超链接的电子邮件主题行*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;G1&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    hl.<span class=\"hljs-property\">EmailSubject</span> = <span class=\"hljs-string\">&quot;活动报名&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": false
+    },
+    {
+      "name": "Name",
+      "summary": "",
+      "description": "<p>返回一个 <strong>String</strong> 值，它代表对象的名称。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表Sheet1中第一项超链接的名称*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">`超链接的名称是 <span class=\"hljs-subst\">${hl.Name}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示单元格B2中第一项超链接的名称*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B2&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">`超链接的名称是 <span class=\"hljs-subst\">${hl.Name}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Range",
+      "summary": "",
+      "description": "<p>返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Range/Range .htm#Range.Range\">Range</a></strong> 对象，它代表附加的指定超链接的区域。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示工作表Sheet1中第二个超链接所在单元格区域的地址*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Range</span>.<span class=\"hljs-title class_\">Address</span>())\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例滚动工作簿窗口，直至超链接区域位于活动窗口的左上角*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Activate</span>()\n    <span class=\"hljs-keyword\">let</span> range = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Range</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">ScrollRow</span> = range.<span class=\"hljs-property\">Row</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWindow</span>.<span class=\"hljs-property\">ScrollColumn</span> = range.<span class=\"hljs-property\">Column</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Range",
+      "readonly": true
+    },
+    {
+      "name": "ScreenTip",
+      "summary": "<p>在将文档保存到网页中之后，如果在 Web 浏览器中查看该文档，则当鼠标移动到超链接上时，“屏幕提示”文字就会显示。某些浏览器可能不支持“屏幕提示”。</p>\n",
+      "description": "<p>返回或设置指定超链接的屏幕提示文字。<strong>String</strong> 类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例修改活动工作表上第一个超链接的屏幕提示*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">ScreenTip</span> = <span class=\"hljs-string\">&quot;Return to the home page&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例修改C7单元格的第一个超链接的屏幕提示并显示出来*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;C7&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    hl.<span class=\"hljs-property\">ScreenTip</span> = <span class=\"hljs-string\">&quot;BACKHOME&quot;</span>\n    <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">`屏幕提示为 <span class=\"hljs-subst\">${hl.ScreenTip}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": false
+    },
+    {
+      "name": "Shape",
+      "summary": "",
+      "description": "<p>返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Shape/Shape .htm#Shape.Shape\">Shape</a></strong> 对象，它代表附加到指定超链接的形状。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例获取第一个超链接所在的形状并设置填充颜色为红色*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shape</span>\n    shape.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例获取第二个超链接所在的形状并显示其名称*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> shape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Shape</span>\n    <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">`超链接所在形状的名称是 <span class=\"hljs-subst\">${shape.Name}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Shape",
+      "readonly": true
+    },
+    {
+      "name": "SubAddress",
+      "summary": "",
+      "description": "<p>返回或设置文档中与指定超链接相关联的位置。<strong>String</strong> 类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将一个区域位置添加到第一个形状的超链接中*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Hyperlink</span>.<span class=\"hljs-property\">SubAddress</span> = <span class=\"hljs-string\">&quot;A1:B10&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将单元格G12的第一个超链接的子地址设置为&quot;/home/&quot;。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;G12&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    hl.<span class=\"hljs-property\">SubAddress</span> = <span class=\"hljs-string\">&quot;/home/&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": false
+    },
+    {
+      "name": "TextToDisplay",
+      "summary": "",
+      "description": "<p>返回或设置要为指定超链接显示的文本。默认值为超链接的地址。<strong>String</strong> 类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为活动工作表上第一个超链接设置要显示的文本*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">TextToDisplay</span> = <span class=\"hljs-string\">&quot;Company Home Page&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例修改B5单元格中第一个超链接要显示的文本*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B5&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    hl.<span class=\"hljs-property\">TextToDisplay</span> = <span class=\"hljs-string\">&quot;点击跳转&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": false
+    },
+    {
+      "name": "Type",
+      "summary": "",
+      "description": "<p>返回一个包含 <strong>MsoHyperlinkType</strong> 常量的 <strong>Long</strong> 值，它代表 HTML 框架的位置。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断工作表Sheet1中第一项超链接是否在单元格中*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-keyword\">if</span> (hl.<span class=\"hljs-property\">Type</span> == msoHyperlinkRange) {\n        <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">&#x27;超链接在单元格中&#x27;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">&#x27;超链接不在单元格中&#x27;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一个形状的超链接是否属于 Shape 对象。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Hyperlink</span>\n    <span class=\"hljs-title class_\">MsgBox</span>(hl.<span class=\"hljs-property\">Type</span> == msoHyperlinkShape)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>删除对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例取消单元格A1中的第一项超链接*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    hl.<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例取消工作表Sheet1中的第二项超链接*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>)\n    hl.<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "void"
+    },
+    {
+      "name": "Follow",
+      "summary": "",
+      "description": "<p>如果已经下载指定文档，则显示缓冲区中的该文档。否则，本方法对指定超链接进行处理以下载目标文档，然后将该文档在适当的应用程序中显示出来。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例加载附于第一个形状（第一张工作表中）的超链接的文档*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Hyperlink</span>.<span class=\"hljs-title class_\">Follow</span>(<span class=\"hljs-literal\">true</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例打开单元格C5的第一项超���接*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> hl = <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;C5&quot;</span>).<span class=\"hljs-property\">Hyperlinks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    hl.<span class=\"hljs-title class_\">Follow</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "NewWindow",
+          "type": "any",
+          "description": "<p>如果为 True，则在新窗口中显示目标应用程序。默认值为 False。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "AddHistory",
+          "type": "any",
+          "description": "<p>未使用。保留供将来使用。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ExtraInfo",
+          "type": "any",
+          "description": "<p>指定解析超链接时要使用的 HTTP 附加信息的 String 或字节数组。例如，可以使用 ExtraInfo 指定图像的坐标、窗体的内容或 FAT 文件名。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Method",
+          "type": "any",
+          "description": "<p>指定附加 ExtraInfo 的方法。可以是下列 MsoExtraInfoMethod 常量之一。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "HeaderInfo",
+          "type": "any",
+          "description": "<p>指定 HTTP 请求的标题信息的 String。默认值为空字符串。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "void"
+    }
+  ]
+}

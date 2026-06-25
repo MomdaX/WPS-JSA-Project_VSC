@@ -1,0 +1,346 @@
+{
+  "name": "Workbooks",
+  "summary": "<p>有关使用一个 <strong>Workbook</strong> 对象的详细信息，请参阅 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbook/Workbook .htm#Workbook.Workbook\">Workbook</a>对象。<br>使用 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbooks/Workbooks .htm#Workbooks.Workbooks\">Workbooks</a> 属性可返回 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbooks/Workbooks .htm#Workbooks.Workbooks\">Workbooks</a> 集合。<br>使用 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbooks/Workbooks .htm#Workbooks.Add\">Add</a> 方法可创建一个新空工作簿并将它添加到集合。<br>使用 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbooks/Workbooks .htm#Workbooks.Open\">Open</a> 方法可打开一个文件。这样会为打开的文件创建一个新工作簿。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例关闭所有打开的工作簿。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Close</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例给 ET 添加一个新空工作簿。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Add</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将文件 Array.xlsx 打开为只读工作簿。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Open</span>(<span class=\"hljs-string\">&quot;D:\\\\Array.xlsx&quot;</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">true</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>ET 应用程序中当前打开的所有 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbook/Workbook .htm#Workbook.Workbook\">Workbook</a>对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application </a>对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n    <span class=\"hljs-keyword\">if</span>(myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n    }<span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例演示工作簿的总数。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;工作簿的数量为：&quot;</span> + <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "<p>如果 <em>Template</em> 参数指定的是文件，则该文件名可包含路径。</p>\n",
+      "description": "<p>新建一个工作簿。新工作簿将成为活动工作簿。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例演示新建一个新工作簿。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Add</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例新建一个包含图表工作表的工作簿。，并通知用户其名字。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> wb = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Add</span>(xlWBATChart)\n    <span class=\"hljs-title function_\">alert</span>(wb.<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Template",
+          "type": "any",
+          "description": "<p>确定如何创建新工作簿。如果此参数为指定现有 ET 文件名的字符串，那么创建新工作簿将以该指定的文件作为模板。如果此参数为常量，新工作簿将包含一个指定类型的工作表。可为以下 XlWBATemplate 常量之一：xlWBATChart、xlWBATExcel4IntlMacroSheet、xlWBATExcel4MacroSheet 或 xlWBATWorksheet。如果省略此参数，ET 将创建包含一定数目空白工作表的新工作簿（该数目由 SheetsInNewWorkbook 属性设置）。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>一个代表新工作簿的 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbook/Workbook .htm#Workbook.Workbook\">Workbook</a> 对象。</p>\n"
+    },
+    {
+      "name": "Close",
+      "summary": "<p>通过 JavaScript 关闭工作簿时不在工作簿中运行任何 Auto_Close 宏。 使用 <strong>RunAutoMacros</strong> 方法运行自动关闭宏。</p>\n",
+      "description": "<p>关闭对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例关闭所有打开的工作簿。如果某个打开的工作簿有改动，ET 将显示询问是否保存更改的对话框和相应提示。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Close</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断如果工作簿数量大于0，则关闭所有工作簿。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-property\">Count</span> &gt; <span class=\"hljs-number\">0</span>) {\n        <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Close</span>()\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "void"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将变量 wb 设置为 Myaddin.xla 的工作簿。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> wb = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;myaddin.xla&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例演示第一个工作簿的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Workbook"
+    },
+    {
+      "name": "Open",
+      "summary": "<p>默认情况下，以编程方式打开文件时将启用宏。使用 <a href=\"topics/WPS 基础接口/表格 API 参考/枚举/MsoAutomationSecurity 枚举.html\">AutomationSecurity</a> 属性可设置以编程方式打开文件时所用的宏安全模式。</p>\n<p>可在 <em>UpdateLinks</em> 参数中指定下面的一个值，以确定在工作簿打开时是否更新外部引用（链接）：</p>\n<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>值</th>\n<th>含义</th>\n</tr>\n</thead><tbody><tr>\n<td>0</td>\n<td>工作簿打开时不更新外部引用（链接）。</td>\n</tr>\n<tr>\n<td>3</td>\n<td>工作簿打开时更新外部引用（链接）。</td>\n</tr>\n</tbody></table></div><p>您可在 <em>Format</em> 参数中指定下面的一个值，以确定文件的分隔字符：</p>\n<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>Value</th>\n<th>分隔符</th>\n</tr>\n</thead><tbody><tr>\n<td>1</td>\n<td>标签</td>\n</tr>\n<tr>\n<td>2</td>\n<td>逗号</td>\n</tr>\n<tr>\n<td>3</td>\n<td>空格</td>\n</tr>\n<tr>\n<td>4</td>\n<td>分号</td>\n</tr>\n<tr>\n<td>5</td>\n<td>null</td>\n</tr>\n<tr>\n<td>6</td>\n<td>自定义字符（请参阅 Delimiter 参数）</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>打开一个工作簿。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例打开 Analysis.xls 工作簿，然后运行它的 Auto_Open 宏。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Open</span>(<span class=\"hljs-string\">&quot;Analysis.xls&quot;</span>)\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">RunAutoMacros</span>(xlAutoOpen)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断如果活动工作簿的名称不是Analysis.xlsx，则以只读方式打开Analysis.xlsx。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Name</span> != <span class=\"hljs-string\">&quot;Analysis.xlsx&quot;</span>) {\n        <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Open</span>(<span class=\"hljs-string\">&quot;D:\\\\Analysis.xlsx&quot;</span>, <span class=\"hljs-literal\">undefined</span>, <span class=\"hljs-literal\">true</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Filename",
+          "type": "string",
+          "description": "<p>String. 要打开的工作簿的文件名。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "UpdateLinks",
+          "type": "any",
+          "description": "<p>指定更新文件中外部引用（链接）的方式，如下面的公式 =SUM([Budget.xls]Annual!C10:C25) 中对 Budget.xls 工作簿中某个区域的引用。如果省略此参数，则提示用户指定链接的更新方式。有关此参数所用值的详细信息，请参阅“说明”部分。如果 ET 正在打开 WKS、WK1 或 WK3 格式的文件，并且 UpdateLinks 参数为 0，则不创建任何图表；否则 ET 根据附加于该文件的图形生成图表。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ReadOnly",
+          "type": "any",
+          "description": "<p>如果为 True，则以只读模式打开工作簿。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Format",
+          "type": "any",
+          "description": "<p>如果 ET 正在打开文本文件，则由此参数指定分隔符。如果省略此参数，则使用当前的分隔符。有关此参数值的详细信息，请参阅“备注”部分。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Password",
+          "type": "any",
+          "description": "<p>一个字符串，包含打开受保护工作簿所需的密码。如果省略此参数并且工作簿已设置密码，则提示用户输入密码。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "WriteResPassword",
+          "type": "any",
+          "description": "<p>{description} 一个字符串，包含写入受保护工作簿所需的密码。如果省略此参数并且工作簿已设置密码，则提示用户输入密码。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "IgnoreReadOnlyRecommended",
+          "type": "any",
+          "description": "<p>如果为 True，则不让 ET 显示只读的建议消息（如果该工作簿以“建议只读”选项保存）。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Origin",
+          "type": "any",
+          "description": "<p>如果该文件为文本文件，则此参数用于指示该文件来源于何种操作系统（以便正确映射代码页和回车/换行符 (CR/LF)）。可为以下 XlPlatform 常量之一：xlMacintosh、xlWindows 或 xlMSDOS。如果省略此参数，则使用当前操作系统。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Delimiter",
+          "type": "any",
+          "description": "<p>如果该文件为文本文件并且 Format 参数为 6，则此参数是一个字符串，指定用作分隔符的字符。例如，可使用 Chr(9) 代表制表符，使用“,”代表逗号，使用“;”代表分号，或者使用自定义字符。只使用字符串的第一个字符。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Editable",
+          "type": "any",
+          "description": "<p>如果文件为 ET 4.0 加载宏，则此参数为 True 时可打开该加载宏以使其在窗口中可见。如果此参数为 False 或被省略，则以��藏方式打开加载宏，并且无法设为可见。本选项不能应用于由 ET 5.0 或更高版本的 ET 创建的加载宏。如果文件是 ET 模板，则参数值为 True 时，会打开指定模板进行编辑。参数值为 False 时，可根据指定模板打开新的工作簿。默认值为 False。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Notify",
+          "type": "any",
+          "description": "<p>当文件不能以可读写模式打开时，如果此参数为 True，则可将该文件添加到文件通知列表。ET 将以只读模式打开该文件并轮询文件通知列表，并在文件可用时向用户发出通知。如果此参数为 False 或被省略，则不请求任何通知，并且不能打开任何不可用的文件。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Converter",
+          "type": "any",
+          "description": "<p>打开文件时试用的第一个文件转换器的索引。首先试用的是指定的文件转换器；如果该转换器不能识别此文件，则试用所有其他转换器。转换器索引由 FileConverters 属性返回的转换器行号组成。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "AddToMru",
+          "type": "any",
+          "description": "<p>如果为 True，则将该工作簿添加到最近使用的文件列表中。默认值为 False。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Local",
+          "type": "any",
+          "description": "<p>如果为 True，则以 ET（包括控制面板设置）的语言保存文件。如果为 False（默认值），则以 示例代码 (VBA) 语言保存文件。VBA 通常为美国英语版本，除非从中运行 Workbooks.Open 的 VBA 项目是旧的国际化 XL5/95 VBA 项目。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "CorruptLoad",
+          "type": "any",
+          "description": "<p>可为以下常量之一：xlNormalLoad、xlRepairFile 和 xlExtractData。如果未指定任何值，则默认行为是 xlNormalLoad，并且当通过 OM 启动时不尝试恢复状态。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>一个代表打开的工作簿的 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbook/Workbook .htm#Workbook.Workbook\">Workbook</a>对象。</p>\n"
+    },
+    {
+      "name": "OpenDatabase",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Workbook</strong> 对象，该对象代表一个数据库。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例中，ET 打开了“northwind.mdb”文件。本示例假定“northwind.mdb”文件存在于 D 盘上。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-comment\">//Open the Northwind database in the background and create a PivotTable</span>\n    <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">OpenDatabase</span>(<span class=\"hljs-string\">&quot;D:\\\\Northwind.mdb&quot;</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">true</span>, xlPivotTableReport)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例中，ET 打开了“人员.mdb”文件,以查询表的形式返回数据。本示例假定“人员.mdb”文件存在于 D 盘上。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">OpenDatabase</span>(<span class=\"hljs-string\">&quot;D:\\\\人员.mdb&quot;</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">true</span>, xlQueryTable)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Filename",
+          "type": "string",
+          "description": "<p>包含数据库位置和文件名的连接字符串。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "CommandText",
+          "type": "any",
+          "description": "<p>查询的命令文本。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "CommandType",
+          "type": "any",
+          "description": "<p>查询的命令类型。指定 <strong><a href=\"topics/WPS 基础接口/表格 API 参考/枚举/XlCmdType 枚举.html\">XlCmdType</a></strong> 枚举的常量之一：<strong>xlCmdCube</strong>、<strong>xlCmdList</strong>、<strong>xlCmdSql</strong>、<strong>xlCmdTable</strong> 和 <strong>xlCmdDefault</strong>。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "BackgroundQuery",
+          "type": "any",
+          "description": "<p>此参数是一个 Variant 数据类型，但您只能传递布尔值。如果传递 <strong>True</strong>，将在后台（异步）执行查询。默认值为 <strong>False</strong>。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ImportDataAs",
+          "type": "any",
+          "description": "<p>此参数使用 <strong><a href=\"topics/WPS 基础接口/表格 API 参考/枚举/XlImportDataAs 枚举.html\">XlImportDataAs</a></strong> 枚举值之一。此枚举的两个值为 <strong>xlPivotTableReport</strong> 和 <strong>xlQueryTable</strong>。传递这两个值之一以便以数据透视表或查询表的形式返回数据。默认值为 <strong>xlQueryTable</strong>。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>Workbook</p>\n"
+    },
+    {
+      "name": "OpenText",
+      "summary": "<h3>FieldInfo 参数信息</h3>\n<p>只有在安装并选定了中国台湾地区语言支持时才可使用 <strong>xlEMDFormat</strong>。<strong>xlEMDFormat</strong> 常量指定使用中国台湾地区纪元日期。</p>\n<p>列说明符可为任意顺序。输入数据中如果某列没有列说明符，则用常规设置对该列进行分列处理。</p>\n<p><strong>注释：</strong></p>\n<ul>\n<li>在指定要跳过的列时，必须明确说明其余各列的类型，否则数据不能正确拆分。</li>\n<li>如果数据中包含可识别的日期，则工作表中单元格的格式就会设置为“日期”，即便为该列设置的格式为“常规”。此外，如果您为某一列指定了以上日期格式中的一种格式，而数据中并不包含可识别的日期，那么工作表中单元格的格式为“常规”。</li>\n</ul>\n<p>如果源数据为定宽列，则每个两元数组的第一个元素指定起始元素在列中的位置，（用整数表示，第一个字符为 0 (零)），第二个元素用 0 到 9 的数字指定分列选项，如前表所示。</p>\n<h3>ThousandsSeparator 参数信息</h3>\n<p>下表显示了使用不同的导入设置向 ET 中导入文本时的结果。数字结果显示在最右边的列中。</p>\n<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>系统小数分隔符</th>\n<th>系统千位分隔符</th>\n<th>小数分隔符值</th>\n<th>千位分隔符值</th>\n<th>导入的文本</th>\n<th>单元格的值（数据类型）</th>\n</tr>\n</thead><tbody><tr>\n<td>句号</td>\n<td>逗号</td>\n<td>逗号</td>\n<td>句号</td>\n<td>123.123,45</td>\n<td>123,123.45（数字）</td>\n</tr>\n<tr>\n<td>句号</td>\n<td>逗号</td>\n<td>逗号</td>\n<td>逗号</td>\n<td>123.123,45</td>\n<td>123.123,45（文本）</td>\n</tr>\n<tr>\n<td>逗号</td>\n<td>句号</td>\n<td>句号</td>\n<td>逗号</td>\n<td>123,123.45</td>\n<td>123,123.45（数字）</td>\n</tr>\n<tr>\n<td>句号</td>\n<td>逗号</td>\n<td>句号</td>\n<td>逗号</td>\n<td>123 123.45</td>\n<td>123 123.45（文本）</td>\n</tr>\n<tr>\n<td>句号</td>\n<td>逗号</td>\n<td>句号</td>\n<td>空格</td>\n<td>123 123.45</td>\n<td>123,123.45（数字）</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>载入一个文本文件，并将其作为包含单个工作表的新工作簿进行分列处理，然后在此工作表中放入经过分列处理的文本文件数据。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例打开 DATA.TXT 文件并将制表符作为分隔符对此文件进行分列处理，将其转换成为工作表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">OpenText</span>(<span class=\"hljs-string\">&quot;C:\\\\DATA.TXT&quot;</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, xlDelimited, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">true</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例指定本文件来源为xlWindows，并设置空格作为分隔符将文件分隔。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">OpenText</span>(<span class=\"hljs-string\">&quot;D:\\\\test.txt&quot;</span>, xlWindows, <span class=\"hljs-literal\">null</span>, xlDelimited, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">true</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Filename",
+          "type": "string",
+          "description": "<p>指定要打开和分列的文本文件的名称。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Origin",
+          "type": "any",
+          "description": "<p>指定文本文件来源。可为以下 XlPlatform 常量之一：xlMacintosh、xlWindows 或 xlMSDOS。此外，它还可以是一个整数，表示所需代码页的代码页编号。例如，“1256”指定源文本文件的编码是阿拉伯语 (Windows)。如果省略该参数，则此方法将使用“文本导入向导”中“文件原始格式”选项的当前设置。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "StartRow",
+          "type": "any",
+          "description": "<p>文本分列处理的起始行号。默认值�� 1。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "DataType",
+          "type": "any",
+          "description": "<p>指定文件中数据的列格式。可为以下 XlTextParsingType 常量之一：xlDelimited 或 xlFixedWidth。如果未指定该参数，则 ET 将尝试在打开文件时确定列格式。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "TextQualifier",
+          "type": "XlTextQualifier",
+          "description": "<p>指定文本识别符号。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ConsecutiveDelimiter",
+          "type": "any",
+          "description": "<p>如果为 True，则将连续分隔符视为一个分隔符。默认值为 False。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Tab",
+          "type": "any",
+          "description": "<p>如果为 True，则将制表符用作分隔符（DataType 必须为 xlDelimited）。默认值为 False。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Semicolon",
+          "type": "any",
+          "description": "<p>如果为 True，则将分号用作分隔符（DataType 必须为 xlDelimited）。默认值为 False。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Comma",
+          "type": "any",
+          "description": "<p>如果为 True，则将逗号用作分隔符（DataType 必须为 xlDelimited）。默认值为 False。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Space",
+          "type": "any",
+          "description": "<p>如果为 True，则将空格用作分隔符（DataType 必须为 xlDelimited）。默认值为 False。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Other",
+          "type": "any",
+          "description": "<p>如果为 True，则将 OtherChar 参数指定的字符用作分隔符（DataType 必须为 xlDelimited）。默认值为 False。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "OtherChar",
+          "type": "any",
+          "description": "<p>（如果 Other 为 True，则为必选项）。当 Other 为 True 时，指定分隔符。如果指定了多个字符，则仅使用字符串中的第一个字符而忽略剩余字符。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "FieldInfo",
+          "type": "any",
+          "description": "<p>包含单列数据相关分列信息的数组。对该参数的解释取决于 DataType 的值。如果此数据由分隔符分隔，则该参数为由两元素数组组成的数组，其中每个两元素数组指定一个特定列的转换选项。第一个元素为列标（从 1 开始），第二个元素是 XlColumnDataType 的常量之一，用于指定分列方式。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "TextVisualLayout",
+          "type": "any",
+          "description": "<p>文本的可视布局。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "DecimalSeparator",
+          "type": "any",
+          "description": "<p>识别数字时，ET 使用的小数分隔符。默认设置为系统设置。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ThousandsSeparator",
+          "type": "any",
+          "description": "<p>识别数字时， ET 使用的千位分隔符。默认设置为系统设置。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "TrailingMinusNumbers",
+          "type": "any",
+          "description": "<p>如果应将结尾为减号字符的数字视为负数处理，则指定为 True。如果为 False 或省略该参数，则将结尾为减号字符的数字视为文本处理。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Local",
+          "type": "any",
+          "description": "<p>如果分隔符、数字和数据格式应使用计算机的区域设置，则指定为 True。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "OpenXML",
+      "summary": "<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th><strong>XlXmlLoadOption</strong> 可以是下列 <strong>XlXmlLoadOption</strong> 常量之一。</th>\n</tr>\n</thead><tbody><tr>\n<td><strong>xlXmlLoadImportToList</strong> 自动创建一个 XML 列表并将数据导入该列表中。</td>\n</tr>\n<tr>\n<td><strong>xlXmlLoadMapXml</strong> 将 XML 文件加载到 <strong>“XML源”</strong> 任务窗格中。</td>\n</tr>\n<tr>\n<td><strong>xlXmlLoadOpenXml</strong> 打开 XML 文件的方式与 ET 2002 打开 XML 文件的方式相同（只为提供向后兼容）。</td>\n</tr>\n<tr>\n<td><strong>xlXmlLoadPromptUser</strong> 提示用户并允许用户选择 Import 方法。</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>打开一个 XML 数据文件。返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbook/Workbook .htm#Workbook.Workbook\">Workbook</a></strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下面的代码打开 XML 数据文件“customers.xml”并在 XML 列表中显示此文件的内容。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Open</span>XML(<span class=\"hljs-string\">&quot;Customers.xml&quot;</span>, <span class=\"hljs-literal\">undefined</span>, xlXmlLoadImportToList)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例打开“data.xml”文件，并将 XML 数据文件的打开方式设置为xlXmlLoadOpenXml。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Workbooks</span>.<span class=\"hljs-title class_\">Open</span>XML(<span class=\"hljs-string\">&quot;D:\\\\data.xml&quot;</span>, <span class=\"hljs-literal\">null</span>, xlXmlLoadOpenXml)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Filename",
+          "type": "string",
+          "description": "<p>要打开的文件的名称。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Stylesheets",
+          "type": "any",
+          "description": "<p>单个值或值的数组，用于指定要应用的 XSL 转换 (XSLT) （XSL 转换 (XSLT)：用来将 XML 文档转换为其他类型的文档的语言，例如，HTML 或 XML。其用途为执行部分 XSL 功能。）样式表处理指令。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "LoadOption",
+          "type": "any",
+          "description": "<p>指定 ET 打开 XML 数据文件的方式。可以是下列 <strong><a href=\"topics/WPS 基础接口/表格 API 参考/枚举/XlXmlLoadOption 枚举.html\">XlXmlLoadOption</a></strong> 常量之一。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>Workbook</p>\n"
+    }
+  ]
+}

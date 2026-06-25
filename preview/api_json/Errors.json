@@ -1,0 +1,49 @@
+{
+  "name": "Errors",
+  "summary": "<p>使用 <strong>Range</strong> 对象的 <strong>Errors</strong> 属性可返回 <strong>Errors</strong> 对象。</p>\n<p>返回 <strong>Errors</strong> 对象后，可使用 <strong>Error</strong> 对象的 <strong>Value</strong> 属性检查特定的错误检查条件。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例将一个数字作为文本放在单元格 A1 中，然后当单元格 A1 的值包含文本格式的数字时通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-comment\">//Place a number written as text in cell A1.</span>\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">Formula</span> = <span class=\"hljs-string\">&quot;&#x27;1&quot;</span>\n\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">Errors</span>.<span class=\"hljs-title class_\">Item</span>(xlNumberAsText).<span class=\"hljs-property\">Value</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;Cell A1 has a number as text.&quot;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;Cell A1 is a number.&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例禁用单元格 B1 的错误检查选项。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1&quot;</span>).<span class=\"hljs-title class_\">Select</span>()\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1&quot;</span>).<span class=\"hljs-property\">Errors</span>.<span class=\"hljs-title class_\">Item</span>(xlEmptyCellReferences).<span class=\"hljs-property\">Ignore</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表区域内的各种电子表格错误。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong>对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n\t<span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n\t<span class=\"hljs-keyword\">if</span> (myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n\t} <span class=\"hljs-keyword\">else</span> {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n\t}\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "<p><em>Index</em> 可以是以下常量之一。  </p>\n<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th><strong>xlEvaluateToError</strong>：单元格计算为错误值。</th>\n</tr>\n</thead><tbody><tr>\n<td><strong>xlTextDate</strong>：单元格包含用 2 位数表示年份的文本日期。</td>\n</tr>\n<tr>\n<td><strong>xlNumberAsText</strong>：单元格包含以文本形式存储的数字。</td>\n</tr>\n<tr>\n<td><strong>xlInconsistentFormula</strong>：单元格包含一个区域中不一致的公式。</td>\n</tr>\n<tr>\n<td><strong>xlOmittedCells</strong>：单元格包含一个忽略了区域中某个单元格的公式。</td>\n</tr>\n<tr>\n<td><strong>xlUnlockedFormulaCells</strong>：取消锁定的单元格包含一个公式。</td>\n</tr>\n<tr>\n<td><strong>xlEmptyCellReferences</strong>：单元格包含一个引用空单元格的公式。</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>返回 <strong>Error</strong>对象的单个成员。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例使用 TextDate 属性启用对两位数年份文本日期的错误检查，并通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> range = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1&quot;</span>)\n\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1&quot;</span>).<span class=\"hljs-property\">Formula</span> = <span class=\"hljs-string\">&quot;&#x27;00/5/31&quot;</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ErrorCheckingOptions</span>.<span class=\"hljs-property\">TextDate</span> = <span class=\"hljs-literal\">true</span>\n\n    <span class=\"hljs-comment\">//Perform check to see if 2 digit year TextDate check is on.</span>\n    <span class=\"hljs-keyword\">if</span> (range.<span class=\"hljs-property\">Errors</span>.<span class=\"hljs-title class_\">Item</span>(xlTextDate).<span class=\"hljs-property\">Value</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;The text date error checking feature is enabled.&quot;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;The text date error checking feature is not on.&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为检查空单元格引用而禁用单元格 A1 中的忽略标记。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-title class_\">Select</span>()\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">Errors</span>.<span class=\"hljs-title class_\">Item</span>(xlEmptyCellReferences).<span class=\"hljs-property\">Ignore</span>) {\n        <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">Errors</span>.<span class=\"hljs-title class_\">Item</span>(xlEmptyCellReferences).<span class=\"hljs-property\">Ignore</span> = <span class=\"hljs-literal\">false</span>\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>成员的索引。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Error"
+    }
+  ]
+}

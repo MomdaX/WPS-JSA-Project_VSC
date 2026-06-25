@@ -1,0 +1,65 @@
+{
+  "name": "PivotLine",
+  "summary": "<p>PivotLine 只包含可见项，因此 <strong>PivotLine</strong> 集合中不存在折叠的项目子项以及隐藏级别中的项目。</p>\n<p>PivotLine 在所有位置始终具有一个 PivotItem。这意味着与普通 PivotLine 相比，代表数据透视表中分类汇总的 PivotLine 包含较少的 PivotItem。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 中第一张数据透视表中列轴上第二条数据透视线的PivotLineCells属性中PivotCell对象的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtLine = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">PivotColumnAxis</span>.<span class=\"hljs-title class_\">PivotLines</span>(<span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtLine.<span class=\"hljs-property\">PivotLineCells</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上数据透视表中列轴上第九条数据透视线的类型是否为“xlPivotLineGrandTotal”。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtLine = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">PivotColumnAxis</span>.<span class=\"hljs-title class_\">PivotLines</span>(<span class=\"hljs-number\">9</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtLine.<span class=\"hljs-property\">LineType</span> == xlPivotLineGrandTotal)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p><strong>PivotLine</strong> 对象是 ET 数据透视表中的行或列的线条。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p>您可以将此属性与 OLE 自动化对象一起使用以返回该对象的应用程序。</p>\n",
+      "description": "<p>如果不与对象识别符一起使用，则此属性返回代表 ET 应用程序的 <strong>Application</strong>对象。如果与对象识别符一起使用，则此属性返回代表指定对象的创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "LineType",
+      "summary": "",
+      "description": "<p>返回一个表示 PivotLine 类型的 <strong>XlPivotLineType</strong> 常量。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上数据透视表中列轴上第一条数据透视线的类型是否为“xlPivotLineRegular”。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtLine = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">PivotColumnAxis</span>.<span class=\"hljs-title class_\">PivotLines</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtLine.<span class=\"hljs-property\">LineType</span> == xlPivotLineRegular)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断工作表 Sheet1 中第一张数据透视表中行轴上第二条数据透视线的类型是否为“xlPivotLineGrandTotal”，并通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtLine = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">PivotRowAxis</span>.<span class=\"hljs-title class_\">PivotLines</span>(<span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-keyword\">if</span> (pvtLine.<span class=\"hljs-property\">LineType</span> == xlPivotLineGrandTotal) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;数据透视线的类型是 xlPivotLineGrandTotal&quot;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;数据透视线的类型不是 xlPivotLineGrandTotal&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "XlPivotLineType",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定 <strong>PivotLine</strong> 对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "PivotLineCells",
+      "summary": "",
+      "description": "<p>返回 PivotLine 中 <strong>PivotCell</strong> 对象的集合。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 上第一张数据透视表中行轴上第一条数据透视线“PivotCell”对象的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtLine = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">PivotRowAxis</span>.<span class=\"hljs-title class_\">PivotLines</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtLine.<span class=\"hljs-property\">PivotLineCells</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上数据透视表中列轴上第一条数据透视线的PivotLineCells属性中第一个PivotCell应用区域的值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtLine = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">PivotColumnAxis</span>.<span class=\"hljs-title class_\">PivotLines</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtLine.<span class=\"hljs-property\">PivotLineCells</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Range</span>.<span class=\"hljs-property\">Value2</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "PivotLineCells",
+      "readonly": true
+    },
+    {
+      "name": "PivotLineCellsFull",
+      "summary": "",
+      "description": "<p>检索所有数据透视线单元格，包括以压缩形式隐藏的单元格。 此为只读属性。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上数据透视表中列轴上第一条数据透视线检索单元格的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtLine = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">PivotColumnAxis</span>.<span class=\"hljs-title class_\">PivotLines</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtLine.<span class=\"hljs-property\">PivotLineCellsFull</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 上第一张数据透视表中行轴上第二条数据透视线是否检索所有隐藏的单元格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtLine = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">PivotRowAxis</span>.<span class=\"hljs-title class_\">PivotLines</span>(<span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtLine.<span class=\"hljs-property\">PivotLineCellsFull</span>.<span class=\"hljs-property\">Full</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "PivotLineCells",
+      "readonly": true
+    },
+    {
+      "name": "Position",
+      "summary": "",
+      "description": "<p>返回 <strong>PivotLine</strong> 对象的位置。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上数据透视表中列轴上第一条数据透视线的位置。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtLine = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-property\">PivotColumnAxis</span>.<span class=\"hljs-title class_\">PivotLines</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtLine.<span class=\"hljs-property\">Position</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 上第一张数据透视表中行轴上第一条数据透视线的位置。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtLine = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">PivotRowAxis</span>.<span class=\"hljs-title class_\">PivotLines</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtLine.<span class=\"hljs-property\">Position</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

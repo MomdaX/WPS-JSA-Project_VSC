@@ -1,0 +1,93 @@
+{
+  "name": "SparklineGroups",
+  "summary": "<p><strong>SparklineGroups</strong> 对象可包含多个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SparklineGroup/SparklineGroup .htm#SparklineGroup.SparklineGroup\">SparklineGroup</a></strong> 对象。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Range/Range .htm#Range.Range\">Range</a></strong> 对象的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Range/Range .htm#Range.SparklineGroups\">SparklineGroups</a></strong> 属性可从现有 <strong>SparklineGroups</strong> 集合的父区域中返回该集合。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SparklineGroups/SparklineGroups .htm#SparklineGroups.Add\">Add</a></strong> 方法可创建一组新迷你图。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SparklineGroups/SparklineGroups .htm#SparklineGroups.Group\">Group</a></strong> 方法可创建一组现有迷你图。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例选择区域 A1:A4 并组合该区域中的迷你图，然后将该区域中第一个迷你图组的正数据点设置为可见，并将其颜色设置为红色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A4&quot;</span>).<span class=\"hljs-title class_\">Select</span>()\n    <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">Group</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>))\n    <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Points</span>.<span class=\"hljs-property\">Markers</span>.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span>\n    <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Points</span>.<span class=\"hljs-property\">Markers</span>.<span class=\"hljs-property\">Color</span>.<span class=\"hljs-property\">Color</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例取消组合活动工作表上区域 A1:A4 上迷你图组，并删除 A1 单元格中迷你图组。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sparklineGroups = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A4&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>\n    sparklineGroups.<span class=\"hljs-title class_\">Ungroup</span>()\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">ClearGroups</span>()\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表迷你图组的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回关联的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Range/Range .htm#Range.Range\">Range</a></strong> 对象中的迷你图组的计数。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示单元格区域 A1:A4 上迷你图组的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A4&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>创建一个新的迷你图组并返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SparklineGroup/SparklineGroup .htm#SparklineGroup.SparklineGroup\">SparklineGroup</a></strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例向区域 A1:A4 中添加一个迷你图组。该组中的迷你图为列迷你图并且绑定到区域 B1:E4 中的数据。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A4&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">Add</span>(xlSparkColumn, <span class=\"hljs-string\">&quot;Sheet1!B1:E4&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例向活动工作表上区域 A1:A2 中添加一个迷你图组，并显示该工作表上单元格 A1 中迷你图组的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A2&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">Add</span>(xlSparkLine, <span class=\"hljs-string\">&quot;B1:D2&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Type",
+          "type": "XlSparkType",
+          "description": "<p>迷你图的类型。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "SourceData",
+          "type": "string",
+          "description": "<p>代表要用于创建迷你图的区域。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>SparklineGroup</p>\n"
+    },
+    {
+      "name": "Clear",
+      "summary": "",
+      "description": "<p>清除选定的迷你图。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例清除活动工作表上区域 A1:A2 上迷你图组的迷你图。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sparklineGroups = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A2&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>\n    sparklineGroups.<span class=\"hljs-title class_\">Clear</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例清除第一张工作表上区域 A1:A2 上迷你图组的迷你图，并显示该区域上迷你图组的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sparklineGroups = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A2&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>\n    sparklineGroups.<span class=\"hljs-title class_\">Clear</span>()\n    <span class=\"hljs-title function_\">alert</span>(sparklineGroups.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "<p>void</p>\n"
+    },
+    {
+      "name": "ClearGroups",
+      "summary": "",
+      "description": "<p>清除选定的迷你图组。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例清除活动单元格上迷你图组。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveCell</span>.<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">ClearGroups</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例清除活动工作表上单元格 H1 中迷你图组，并显示该区域上迷你图组的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sparklineGroups = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;H1&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>\n    sparklineGroups.<span class=\"hljs-title class_\">ClearGroups</span>()\n    <span class=\"hljs-title function_\">alert</span>(sparklineGroups.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "<p>void</p>\n"
+    },
+    {
+      "name": "Group",
+      "summary": "",
+      "description": "<p>组合选定的迷你图。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例选择区域 A1:A4 并组合该区域中的迷你图。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A4&quot;</span>).<span class=\"hljs-title class_\">Select</span>()\n    <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">Group</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>))\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例组合活动工作表上区域 A1:A4 上迷你图组。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sparklineGroups = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A4&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>\n    sparklineGroups.<span class=\"hljs-title class_\">Group</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A3:A4&quot;</span>))\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Location",
+          "type": "Range",
+          "description": "<p>组中第一个单元格的位置。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>void</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SparklineGroup/SparklineGroup .htm#SparklineGroup.SparklineGroup\">SparklineGroup</a></strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除活动工作表上单元格 H1 中第一个迷你图组，并显示单元格 H1 中迷你图组的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sparklineGroup = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;H1&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    sparklineGroup.<span class=\"hljs-title class_\">Delete</span>()\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;H1&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置活动工作表上单元格 H1 中第一个迷你图组的主系列颜色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sparklineGroup = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;H1&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    sparklineGroup.<span class=\"hljs-property\">SeriesColor</span>.<span class=\"hljs-property\">Color</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>指定元素在集合中的位置。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>SparklineGroup</p>\n"
+    },
+    {
+      "name": "Ungroup",
+      "summary": "",
+      "description": "<p>对选定迷你图组中的迷你图取消组合。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例选择区域 A1:A4 并对该区域中的迷你图取消组合。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A4&quot;</span>).<span class=\"hljs-title class_\">Select</span>()\n    <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">Ungroup</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例组合活动工作表上区域 A1:A4 上迷你图组，并取消对 A1 单元格中迷你图组的组合。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sparklineGroups = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A4&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>\n    sparklineGroups.<span class=\"hljs-title class_\">Group</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A3&quot;</span>))\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">SparklineGroups</span>.<span class=\"hljs-title class_\">Ungroup</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "<p>void</p>\n"
+    }
+  ]
+}

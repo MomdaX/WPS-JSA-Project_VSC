@@ -1,0 +1,114 @@
+{
+  "name": "PivotFilters",
+  "summary": "<p><strong>PivotFilters</strong>集合包含用于添加新筛选器、计算集合中现有筛选器个数以及引用特定 <strong>PivotFilter</strong>对象的属性和方法。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为活动工作表的数据透视表的的字段“date”添加筛选器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;date&quot;</span>).<span class=\"hljs-property\">PivotFilters</span>.<span class=\"hljs-title class_\">Add</span>2(xlDateThisWeek)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 中数据透视表字段“name”的第一个筛选器中作为筛选依据的值字段。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFilter = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;name&quot;</span>).<span class=\"hljs-property\">PivotFilters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtFilter.<span class=\"hljs-property\">DataField</span>.<span class=\"hljs-property\">Value</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p><strong>PivotFilters</strong> 对象是 <strong>PivotFilter</strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p>您可以将此属性与 OLE 自动化对象一起使用以返回该对象的应用程序。</p>\n",
+      "description": "<p>如果不与对象识别符一起使用，则此属性返回代表 ET 应用程序的 <strong>Application</strong>对象。如果与对象识别符一起使用，则此属性返回代表指定对象的创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回 <strong>PivotFilters</strong> 集合中的项数。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表中第一张数据透视表的字段“score”的筛选器的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;score&quot;</span>).<span class=\"hljs-property\">PivotFilters</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表中数据透视表的字段“id”的筛选器的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFilters = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;id&quot;</span>).<span class=\"hljs-property\">PivotFilters</span>\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`筛选器的数量：<span class=\"hljs-subst\">${pvtFilters.Count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定 <strong>PivotFilters</strong> 对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add2",
+      "summary": "",
+      "description": "<p>将新筛选添加到 <strong>PivotFilters</strong> 集合。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为活动工作表的数据透视表的字段“date”添加筛选器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;date&quot;</span>).<span class=\"hljs-property\">PivotFilters</span>.<span class=\"hljs-title class_\">Add</span>2(xlDateThisWeek)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为活动工作表的数据透视表的字段“name”添加值筛选器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;name&quot;</span>).<span class=\"hljs-property\">PivotFilters</span>.<span class=\"hljs-title class_\">Add</span>2(xlValueIsGreaterThanOrEqualTo, <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">DataFields</span>(<span class=\"hljs-number\">1</span>), <span class=\"hljs-number\">95</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为活动工作表中数据透视表的字段“id”添加值筛选器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;id&quot;</span>).<span class=\"hljs-property\">PivotFilters</span>.<span class=\"hljs-title class_\">Add</span>2(xlTopCount, <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">DataFields</span>(<span class=\"hljs-string\">&quot;求和项:score&quot;</span>), <span class=\"hljs-number\">3</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为活动工作表中数据透视表的字段“id”添加标签筛选器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;id&quot;</span>).<span class=\"hljs-property\">PivotFilters</span>.<span class=\"hljs-title class_\">Add</span>2(xlCaptionIsNotBetween, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-string\">&quot;1&quot;</span>, <span class=\"hljs-string\">&quot;5&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为活动工作表的数据透视表的字段“name”添加值筛选器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;name&quot;</span>).<span class=\"hljs-property\">PivotFilters</span>.<span class=\"hljs-title class_\">Add</span>2(xlValueIsGreaterThanOrEqualTo, <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">DataFields</span>(<span class=\"hljs-string\">&quot;求和项:期中成绩&quot;</span>), <span class=\"hljs-number\">75.5</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Type",
+          "type": "XlPivotFilterType",
+          "description": "<p>要求 XlPivotFilterType 类型的筛选。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "DataField",
+          "type": "any",
+          "description": "<p>筛选附加到的字段。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Value1",
+          "type": "any",
+          "description": "<p>筛选值 1。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Value2",
+          "type": "any",
+          "description": "<p>筛选值 1。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Order",
+          "type": "any",
+          "description": "<p>筛选数据的顺序。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Name",
+          "type": "any",
+          "description": "<p>筛选的名称。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Description",
+          "type": "any",
+          "description": "<p>筛选的简要说明</p>\n",
+          "optional": true
+        },
+        {
+          "name": "MemberPropertyField",
+          "type": "any",
+          "description": "<p>指定标签筛选所基于的成员属性字段。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>PivotFilter</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>根据 <strong>PivotFilters</strong> 集合对象特定元素在集合中的位置返回该特定元素。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 中数据透视表字段“score”的第一个筛选器应用的筛选器类型是否为“xlCaptionIsGreaterThan”。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtFilter = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;score&quot;</span>).<span class=\"hljs-property\">PivotFilters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtFilter.<span class=\"hljs-property\">FilterType</span> == xlCaptionIsGreaterThan)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表中数据透视表的字段“id”的第一个筛选器的参数。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtField = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;id&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtField.<span class=\"hljs-property\">PivotFilters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value1</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>指定集合的元素的位置。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "PivotFilter"
+    }
+  ]
+}

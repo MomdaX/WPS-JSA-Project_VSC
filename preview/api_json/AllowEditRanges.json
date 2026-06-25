@@ -1,0 +1,53 @@
+{
+  "name": "AllowEditRanges",
+  "summary": "<p>使用 <strong>Protection</strong> 对象的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Protection/Protection .htm#Protection.AllowEditRanges\">AllowEditRanges</a></strong> 属性可返回 <strong>AllowEditRanges</strong> 集合。</p>\n<p>返回 <strong>AllowEditRanges</strong> 集合后，可以使用 <strong>Add</strong> 方法添加可在受保护的工作表上编辑的区域。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*在本示例中，ET 允许用户编辑活动工作表上的区域 A1:A4，并将指定区域的标题和地址通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sheet = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>\n\n    <span class=\"hljs-comment\">// Unprotect worksheet.</span>\n    sheet.<span class=\"hljs-title class_\">Unprotect</span>()\n    wksPassword = <span class=\"hljs-title class_\">InputBox</span>(<span class=\"hljs-string\">&quot;Enter password for the worksheet&quot;</span>)\n\n    <span class=\"hljs-comment\">// Establish a range that can allow edits on the protected worksheet.</span>\n    sheet.<span class=\"hljs-property\">Protection</span>.<span class=\"hljs-property\">AllowEditRanges</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;Classified&quot;</span>, <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A4&quot;</span>), wksPassword)\n\n    <span class=\"hljs-comment\">//Notify the user the title and address of the range.</span>\n    <span class=\"hljs-keyword\">let</span> allowEditRange = sheet.<span class=\"hljs-property\">Protection</span>.<span class=\"hljs-property\">AllowEditRanges</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`Title of range: <span class=\"hljs-subst\">${allowEditRange.Title}</span>`</span>)\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`Address of range: <span class=\"hljs-subst\">${allowEditRange.Range.Address()}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表上是否存在可编辑单元格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Protection</span>.<span class=\"hljs-property\">AllowEditRanges</span>.<span class=\"hljs-property\">Count</span> &gt; <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>所有 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/AllowEditRange/AllowEditRange .htm#AllowEditRange.AllowEditRange\">AllowEditRange</a>对象的集合，这些对象代表受保护工作表上的可编辑单元格。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表上 AllowEditRange 对象的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Protection</span>.<span class=\"hljs-property\">AllowEditRanges</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>在受保护的工作表中添加可编辑的单元格区域。返回 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/AllowEditRange/AllowEditRange .htm#AllowEditRange.AllowEditRange\">AllowEditRange</a>对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在活动工作表上添加可编辑的单元格区域。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Protection</span>.<span class=\"hljs-property\">AllowEditRanges</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;AllowEditRange3&quot;</span>, <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;C1:C4&quot;</span>), <span class=\"hljs-string\">&quot;Y6dh!et5&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在第一张工作表上添加可编辑的单元格区域。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Protection</span>.<span class=\"hljs-property\">AllowEditRanges</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;AllowEditRange4&quot;</span>, <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;D1:D4&quot;</span>))\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Title",
+          "type": "string",
+          "description": "<p>单元格区域的标题。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Range",
+          "type": "Range",
+          "description": "<p>Range 对象。允许编辑的单元格区域。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Password",
+          "type": "any",
+          "description": "<p>单元格区域的密码。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "AllowEditRange"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将第一张工作表上第一个 AllowEditRange 对象删除。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Protection</span>.<span class=\"hljs-property\">AllowEditRanges</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上第二个 AllowEditRange 对象的标题。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Protection</span>.<span class=\"hljs-property\">AllowEditRanges</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Title</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "AllowEditRange"
+    }
+  ]
+}

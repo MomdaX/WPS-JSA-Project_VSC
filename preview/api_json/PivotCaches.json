@@ -1,0 +1,84 @@
+{
+  "name": "PivotCaches",
+  "summary": "<p>每一个内存缓存都由一个 <strong>PivotCache</strong> 对象代表。</p>\n<p>使用 <strong>PivotCaches</strong> 方法可返回 <strong>PivotCaches</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动工作簿上所有数据透视缓存设置为自动进行更新。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtCaches = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">PivotCaches</span>()\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= pvtCaches.<span class=\"hljs-property\">Count</span>; i++) {\n        pvtCaches.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">RefreshOnFileOpen</span> = <span class=\"hljs-literal\">true</span>\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在第一张工作簿上创建新的 PivotCache ，并以该 PivotCache 创建新的数据透视表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtCache = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotCaches</span>().<span class=\"hljs-title class_\">Create</span>(xlDatabase, <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">UsedRange</span>, xlPivotTableVersion15)\n    pvtCache.<span class=\"hljs-title class_\">CreatePivotTable</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>), <span class=\"hljs-string\">&quot;pivot1&quot;</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表工作簿中数据透视表的内存缓存的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong>对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code>*本示例显示一条有关创建 myObject 的应用程序的消息。*/\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n\t<span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n\t<span class=\"hljs-keyword\">if</span> (myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n\t} <span class=\"hljs-keyword\">else</span> {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n\t}\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿中的数据透视表缓存的总数。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;PivotCaches集合的总数:&quot;</span> + <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">PivotCaches</span>().<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Create",
+      "summary": "<p>使用此方法创建 PivotCache 时，不支持以下两个 <strong>xlPivotTableSourceType</strong> 常量：<strong>xlPivotTable</strong> 和 <strong>xlScenario</strong>。如果提供这两个常量之一，将返回运行时错误。  </p>\n<p>如果 <em>SourceType</em> 不为 <strong>xlExternal</strong>，则 <em>SourceData</em> 参数为必需。该参数可以为 <strong>Range</strong> 对象（当 <em>SourceType</em> 为 <strong>xlConsolidation</strong> 或 <strong>xlDatabase</strong> 时），或为 ET 工作簿连接对象（当 <em>SourceType</em> 为 <strong>xlExternal</strong> 时）。</p>\n<p>如果不提供数据透视表的版本，则版本默认为 <strong>xlPivotTableVersion12</strong>。不允许使用 <strong>xlPivotTableVersionCurrent</strong> 常量，如果提供该常量，将返回运行时错误。</p>\n",
+      "description": "<p>创建新的 PivotCache。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作簿上创建新的 PivotCache ，并以该 PivotCache 创建新的数据透视表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtCache = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">PivotCaches</span>().<span class=\"hljs-title class_\">Create</span>(xlDatabase, <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:D9&quot;</span>))\n    pvtCache.<span class=\"hljs-title class_\">CreatePivotTable</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A11&quot;</span>), <span class=\"hljs-string\">&quot;pivot1&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在第一张工作簿上创建新的 PivotCache ，并显示该 PivotCache 的数据源。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtCache = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotCaches</span>().<span class=\"hljs-title class_\">Create</span>(xlDatabase, <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:C8&quot;</span>), xlPivotTableVersion15)\n    <span class=\"hljs-title function_\">alert</span>(pvtCache.<span class=\"hljs-property\">SourceData</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "SourceType",
+          "type": "XlPivotTableSourceType",
+          "description": "<p>SourceType 可以为以下 xlPivotTableSourceType 常量之一：xlConsolidation、xlDatabase 或 xlExternal。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "SourceData",
+          "type": "any",
+          "description": "<p>新数据透视表缓存的数据。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Version",
+          "type": "any",
+          "description": "<p>数据透视表的版本。可以为 xlPivotTableVersionList 常量之一。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>PivotCache</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例刷新第一个数据透视缓存。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">PivotCaches</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Refresh</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一个数据透视缓存的数据源。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">PivotCaches</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">SourceData</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>包含在集合中的一个 PivotCache 对象。</p>\n"
+    }
+  ]
+}

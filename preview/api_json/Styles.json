@@ -1,0 +1,87 @@
+{
+  "name": "Styles",
+  "summary": "<p>每一个 <strong>Style</strong> 对象都代表对某区域的样式描述。<strong>Style</strong> 对象包含样式的所有属性（字体、数字格式、对齐方式，等等）。有几种内置的样式，包括“常规”、“货币”和“百分比”。</p>\n<p>使用 <strong>Styles</strong> 属性可返回 <strong>Styles</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在第一个工作表上创建活动工作簿中样式名的列表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(i, <span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value2</span> = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Name</span>\n    }\n}</code></pre></td></tr></tbody></table></div><p>使用 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Styles/Styles .htm#Styles.Add\"><strong>Add</strong></a> 方法可创建一个新的样式并将它添加到集合。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例基于“常规”样式创建一个新的样式，修改边框和字体，然后将该新样式应用到单元格 A25:A30。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> style = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;Bookman Top Border&quot;</span>)\n    style.<span class=\"hljs-property\">Borders</span>.<span class=\"hljs-title class_\">Item</span>(xlEdgeTop).<span class=\"hljs-property\">LineStyle</span> = xlDouble\n    style.<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Bold</span> = <span class=\"hljs-literal\">true</span>\n    style.<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Name</span> = <span class=\"hljs-string\">&quot;Bookman&quot;</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A25:A30&quot;</span>).<span class=\"hljs-property\">Style</span> = <span class=\"hljs-string\">&quot;Bookman Top Border&quot;</span>\n}</code></pre></td></tr></tbody></table></div><p>使用 <strong>Styles</strong>(<em>index</em>)（其中 <em>index</em> 是样式索引号或名称）可从工作簿的 <strong>Style</strong> 集合中返回一个 <strong>Styles</strong> 对象。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例通过设置活动工作簿中“常规”样式的 Bold 属性来更改该样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Normal&quot;</span>).<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Bold</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>指定工作簿或活动工作簿中所有 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Style/Style .htm#Style.Style\">Style</a></strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a>**对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a>**对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>){\n  <span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n  <span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n  <span class=\"hljs-keyword\">if</span>(myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>){\n      <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n  }\n  <span class=\"hljs-keyword\">else</span>{\n      <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n  }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿中样式集合中样式的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>新建样式并将其添加到当前工作簿的可用样式列表中。返回一个代表新样式的 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Style/Style .htm#Style.Style\">Style</a>**对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例定义新样式，并将工作表 Sheet1 中的单元格 A1 改为此样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> <span class=\"hljs-title class_\">Sty</span> = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;theNewStyle&quot;</span>)\n    <span class=\"hljs-title class_\">Sty</span>.<span class=\"hljs-property\">IncludeNumber</span> = <span class=\"hljs-literal\">false</span>\n    <span class=\"hljs-title class_\">Sty</span>.<span class=\"hljs-property\">IncludeFont</span> = <span class=\"hljs-literal\">true</span>\n    <span class=\"hljs-title class_\">Sty</span>.<span class=\"hljs-property\">IncludeAlignment</span> = <span class=\"hljs-literal\">false</span>\n    <span class=\"hljs-title class_\">Sty</span>.<span class=\"hljs-property\">IncludeBorder</span> = <span class=\"hljs-literal\">false</span>\n    <span class=\"hljs-title class_\">Sty</span>.<span class=\"hljs-property\">IncludePatterns</span> = <span class=\"hljs-literal\">false</span>\n    <span class=\"hljs-title class_\">Sty</span>.<span class=\"hljs-property\">IncludeProtection</span> = <span class=\"hljs-literal\">false</span>\n    <span class=\"hljs-title class_\">Sty</span>.<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Name</span> = <span class=\"hljs-string\">&quot;Arial&quot;</span>\n    <span class=\"hljs-title class_\">Sty</span>.<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Size</span> = <span class=\"hljs-number\">18</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">Style</span> = <span class=\"hljs-string\">&quot;theNewStyle&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例为活动工作簿添加一个新的样式，并设置该样式内部填充颜色为绿色，再将单元格区域A5:A10改用此样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sty = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;新样式&quot;</span>)\n    sty.<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Color</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>)\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A5:A10&quot;</span>).<span class=\"hljs-property\">Style</span> = <span class=\"hljs-string\">&quot;新样式&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Name",
+          "type": "string",
+          "description": "<p>新样式的名称。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Style"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例通过设置“常规”样式的 Bold 属性来更改活动工作簿中的该样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Normal&quot;</span>).<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Bold</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿第一个样式是否包含合并的单元格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">MergeCells</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Style"
+    },
+    {
+      "name": "Merge",
+      "summary": "",
+      "description": "<p>将另一张工作簿中的样式合并到 <strong>Styles</strong> 集合中。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将工作簿 Template.xls 中的样式合并到活动工作簿中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-title class_\">Merge</span>(<span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Template.xls&quot;</span>))\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例判断工作簿 Template2.xls 中的第一个样式字体颜色为蓝色，则将 Template2.xls 的样式合并到活动工作簿中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Template2.xls&quot;</span>).<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Color</span> == <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">255</span>)) {\n        <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Styles</span>.<span class=\"hljs-title class_\">Merge</span>(<span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Template2.xls&quot;</span>))\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Workbook",
+          "type": "any",
+          "description": "<p>一个 Workbook 对象，它代表包含待合并样式的工作簿。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>Variant</p>\n"
+    }
+  ]
+}

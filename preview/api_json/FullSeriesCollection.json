@@ -1,0 +1,33 @@
+{
+  "name": "FullSeriesCollection",
+  "summary": "<p>使用 <strong>FullSeriesCollection</strong> 对象，可以获取筛选掉的 <strong>Series</strong> 对象，并将其筛选回。 它还使你能够以编程方式循环访问完整的 <strong>Series</strong> 对象集合（筛选掉或可见）。</p>\n<p>通过让现有的 <strong>SeriesCollection</strong> 对象仅包含可见系列，可以编程方式仅对可见系列执行操作。 它还可以防止 ET 使用筛选出的数据破坏图表上的现有图表解决方案。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示图表工作表 Chart1 的第二个系列名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chart = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>\n    <span class=\"hljs-title function_\">alert</span>(chart.<span class=\"hljs-title class_\">FullSeriesCollection</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例选中工作表 Sheet1 第一个内嵌图表的第三个系列。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chart = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>\n    chart.<span class=\"hljs-title class_\">FullSeriesCollection</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-title class_\">Select</span>()\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>表示图表中完整的 <strong>Series</strong>  对象集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，该值代表 <strong>FullSeriesCollection</strong> 对象中的 <strong>Series</strong> 对象数。 此为只读属性。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示图表工作表 Chart1 的系列数。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chart = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>\n    <span class=\"hljs-title function_\">alert</span>(chart.<span class=\"hljs-title class_\">FullSeriesCollection</span>().<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从 <strong>FullSeriesCollection</strong> 对象返回单个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将图表工作表 Chart1 第二个系列设置为红色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chart = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>\n    chart.<span class=\"hljs-title class_\">FullSeriesCollection</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Format</span>.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除工作表 Sheet1 第一个内嵌图表的第三个系列。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chart = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>\n    chart.<span class=\"hljs-title class_\">FullSeriesCollection</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>集合中包含的 <strong>Series</strong> 对象。</p>\n"
+    }
+  ]
+}

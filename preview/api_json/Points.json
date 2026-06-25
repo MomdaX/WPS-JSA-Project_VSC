@@ -1,0 +1,33 @@
+{
+  "name": "Points",
+  "summary": "<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Series/Series .htm#Series.Points\">Points</a></strong>(index)（其中 index 是数据点索引号）可返回一个 <strong>Point</strong> 对象。系列中的数据点从左至右编号。<code>Points(1)</code> 是最左边的数据点，而 <code>Points(Points.Count)</code> 是最右边的数据点。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例给工作表一上嵌入式图表一中系列一上的最后一个数据点添加数据标签。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> points = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">SeriesCollection</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Points</span>()\n    points.<span class=\"hljs-title class_\">Item</span>(points.<span class=\"hljs-property\">Count</span>).<span class=\"hljs-title class_\">ApplyDataLabels</span>(xlShowValue)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例为工作表一上嵌入式图表一中系列一中的第三个数据点设置标志样式。指定的系列必须是 2D 线、散点或雷达系列。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">SeriesCollection</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Points</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-property\">MarkerStyle</span> = xlDiamond\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>图表中指定的系列内所有 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Point/Point .htm#Point.Point\">Point</a></strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示第一张工作表上第一个图表的第二个数据系列中数据点的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> series = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">SeriesCollection</span>(<span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-title function_\">alert</span>(series.<span class=\"hljs-title class_\">Points</span>().<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置第一个工作表上嵌入图表第一个系列中的第三个点的标记样式。指定的系列必须是 2D 线、散点或雷达系列。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">SeriesCollection</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Points</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-property\">MarkerStyle</span> = xlDiamond\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示 Chart1 中第三个数据系列的第4个数据点的宽度。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> series = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">SeriesCollection</span>(<span class=\"hljs-number\">3</span>)\n    <span class=\"hljs-title function_\">alert</span>(series.<span class=\"hljs-title class_\">Points</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">4</span>).<span class=\"hljs-property\">Width</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "number（int4 精度）",
+          "description": "<p>对象的索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>包含在集合中的一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Point/Point .htm#Point.Point\">Point</a></strong> 对象。</p>\n"
+    }
+  ]
+}

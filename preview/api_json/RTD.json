@@ -1,0 +1,34 @@
+{
+  "name": "RTD",
+  "summary": "<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a></strong> 对象的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.RTD\">RTD</a></strong> 属性可返回一个 <strong>RTD</strong> 对象。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置实时数据更新的时间间隔。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RTD</span>.<span class=\"hljs-property\">ThrottleInterval</span> = <span class=\"hljs-number\">1500</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例重新连接实时数据服务器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RTD</span>.<span class=\"hljs-title class_\">RestartServers</span>()\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表一个实时数据对象。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "ThrottleInterval",
+      "summary": "<p>默认值为 2000 毫秒。如果更改了该值，则重新启动 ET 后将使用新值。</p>\n",
+      "description": "<p>返回或设置一个 <strong>Long</strong> 类型的数值，该数值表示更新的时间间隔。可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示实时数据更新的时间间隔。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RTD</span>.<span class=\"hljs-property\">ThrottleInterval</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置实时数据更新的时间间隔。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RTD</span>.<span class=\"hljs-property\">ThrottleInterval</span> = <span class=\"hljs-number\">3000</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": false
+    }
+  ],
+  "functions": [
+    {
+      "name": "RefreshData",
+      "summary": "<p>在用户定义的函数中，要避免使用 <strong>RefreshData</strong> 方法，因为在重新计算过程中调用此方法将失败。</p>\n",
+      "description": "<p>请求对实时数据服务器中的实时数据进行更新。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例请求对实时数据服务器中的实时数据进行更新。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RTD</span>.<span class=\"hljs-title class_\">RefreshData</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断如果实时数据更新的时间间隔大于 2000 毫秒，则请求对实时数据服务器中的实时数据进行更新。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RTD</span>.<span class=\"hljs-property\">ThrottleInterval</span> &gt; <span class=\"hljs-number\">2000</span>) {\n        <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RTD</span>.<span class=\"hljs-title class_\">RefreshData</span>()\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "void"
+    },
+    {
+      "name": "RestartServers",
+      "summary": "",
+      "description": "<p>与实时数据服务器 (RTD) 重新连接。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例重新连接实时数据服务器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RTD</span>.<span class=\"hljs-title class_\">RestartServers</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断如果实时数据更新的时间间隔大于 2000 毫秒，则重新连接实时数据服务器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RTD</span>.<span class=\"hljs-property\">ThrottleInterval</span> &gt; <span class=\"hljs-number\">2000</span>) {\n        <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RTD</span>.<span class=\"hljs-title class_\">RestartServers</span>()\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "void"
+    }
+  ]
+}

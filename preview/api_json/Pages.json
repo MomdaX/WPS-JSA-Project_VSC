@@ -1,0 +1,33 @@
+{
+  "name": "Pages",
+  "summary": "<p>使用 <strong>Pages</strong> 属性可返回 <strong>Pages</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示 Sheet1 页面数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> objPage = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">PageSetup</span>.<span class=\"hljs-property\">Pages</span>\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`Sheet1页面数量为 <span class=\"hljs-subst\">${objPage.Count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div><p>使用 <strong>Item</strong> 方法可访问代表工作表中单个页面的单个 <strong>Page</strong> 对象。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置活动工作表页面页脚左对齐的文本内容为“第1页”。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> objPage = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">PageSetup</span>.<span class=\"hljs-property\">Pages</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    objPage.<span class=\"hljs-property\">LeftFooter</span>.<span class=\"hljs-property\">Text</span> = <span class=\"hljs-string\">&quot;第1页&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>文档页面的集合。使用 <strong>Pages</strong> 集合及相关对象和属性可通过编程方式定义工作簿的页面布局。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回集合中对象的数目。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示 Sheet1 页数。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`工作表 Sheet1 页数为 <span class=\"hljs-subst\">${Application.Worksheets.Item(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).PageSetup.Pages.Count}</span> `</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表页数。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`活动工作表页数为 <span class=\"hljs-subst\">${ActiveSheet.PageSetup.Pages.Count}</span> `</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Page</strong> 对象，该对象代表工作簿中的页的集合。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表第一个页面页眉居中内容。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">PageSetup</span>.<span class=\"hljs-property\">Pages</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">CenterHeader</span>.<span class=\"hljs-property\">Text</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示 Sheet1 第一个页面左页眉内容。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">PageSetup</span>.<span class=\"hljs-property\">Pages</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">LeftHeader</span>.<span class=\"hljs-property\">Text</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>页的索引值。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Page"
+    }
+  ]
+}

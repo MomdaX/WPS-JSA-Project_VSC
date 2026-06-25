@@ -1,0 +1,99 @@
+{
+  "name": "FreeformBuilder",
+  "summary": "<p>使用 <strong>BuildFreeform</strong> 方法可返回 <strong>FreeformBuilder</strong> 对象。使用 <strong>AddNodes</strong> 方法可在任意多边形中添加节点。使用 <strong>ConvertToShape</strong> 方法可创建 <strong>FreeformBuilder</strong> 对象中定义的形状，并将它添加到 <strong>Shapes</strong> 集合中。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表中添加带有四条线段的任意多边形。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> builder = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">BuildFreeform</span>(msoEditingCorner, <span class=\"hljs-number\">360</span>, <span class=\"hljs-number\">200</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingCorner, <span class=\"hljs-number\">380</span>, <span class=\"hljs-number\">230</span>, <span class=\"hljs-number\">400</span>, <span class=\"hljs-number\">250</span>, <span class=\"hljs-number\">450</span>, <span class=\"hljs-number\">300</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingAuto, <span class=\"hljs-number\">480</span>, <span class=\"hljs-number\">200</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">480</span>, <span class=\"hljs-number\">400</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">360</span>, <span class=\"hljs-number\">200</span>)\n    <span class=\"hljs-keyword\">let</span> s = builder.<span class=\"hljs-title class_\">ConvertToShape</span>()\n    s.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表中创建一个具有三个顶点的红色任意多边形。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> builder = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">BuildFreeform</span>(msoEditingAuto, <span class=\"hljs-number\">470</span>, <span class=\"hljs-number\">330</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingSmooth, <span class=\"hljs-number\">570</span>, <span class=\"hljs-number\">360</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingSmooth, <span class=\"hljs-number\">690</span>, <span class=\"hljs-number\">430</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingSmooth, <span class=\"hljs-number\">470</span>, <span class=\"hljs-number\">330</span>)\n    <span class=\"hljs-keyword\">let</span> s = builder.<span class=\"hljs-title class_\">ConvertToShape</span>()\n    s.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表任意多边形创建时的几何属性。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong>对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n\t<span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n\t<span class=\"hljs-keyword\">if</span> (myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n\t} <span class=\"hljs-keyword\">else</span> {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n\t}\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C���<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "AddNodes",
+      "summary": "<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th><strong>MsoSegmentType</strong> 可以是下列 <strong>MsoSegmentType</strong> 常量之一。</th>\n</tr>\n</thead><tbody><tr>\n<td><strong>msoSegmentLine</strong></td>\n</tr>\n<tr>\n<td><strong>msoSegmentCurve</strong></td>\n</tr>\n</tbody></table></div><div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th><strong>MsoEditingType</strong> 可以是下列 <strong>MsoEditingType</strong> 常量之一。</th>\n</tr>\n</thead><tbody><tr>\n<td><strong>msoEditingAuto</strong></td>\n</tr>\n<tr>\n<td><strong>msoEditingCorner</strong></td>\n</tr>\n<tr>\n<td>不能是 <strong>msoEditingSmooth</strong> 或 <strong>msoEditingSymmetric</strong> 如果 <em>SegmentType</em> 为 <strong>msoSegmentLine</strong>，那么 <em>EditingType</em> 就必须是 <strong>msoEditingAuto</strong>。</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>在当前形状中添加一点，然后绘制一个从当前节点到添加的最后一个节点的线条。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表中添加带有四条线段的任意多边形。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> builder = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">BuildFreeform</span>(msoEditingCorner, <span class=\"hljs-number\">360</span>, <span class=\"hljs-number\">200</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingCorner, <span class=\"hljs-number\">380</span>, <span class=\"hljs-number\">230</span>, <span class=\"hljs-number\">400</span>, <span class=\"hljs-number\">250</span>, <span class=\"hljs-number\">450</span>, <span class=\"hljs-number\">300</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingAuto, <span class=\"hljs-number\">480</span>, <span class=\"hljs-number\">200</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">480</span>, <span class=\"hljs-number\">400</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">360</span>, <span class=\"hljs-number\">200</span>)\n    <span class=\"hljs-keyword\">let</span> s = builder.<span class=\"hljs-title class_\">ConvertToShape</span>()\n    s.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表中创建一个具有三个顶点的蓝色任意多边形。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> builder = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">BuildFreeform</span>(msoEditingSmooth, <span class=\"hljs-number\">370</span>, <span class=\"hljs-number\">230</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingAuto, <span class=\"hljs-number\">470</span>, <span class=\"hljs-number\">260</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingAuto, <span class=\"hljs-number\">490</span>, <span class=\"hljs-number\">330</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingAuto, <span class=\"hljs-number\">370</span>, <span class=\"hljs-number\">230</span>)\n    <span class=\"hljs-keyword\">let</span> s = builder.<span class=\"hljs-title class_\">ConvertToShape</span>()\n    s.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">255</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "SegmentType",
+          "type": "MsoSegmentType",
+          "description": "<p>要添加的线段的类型。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "EditingType",
+          "type": "MsoEditingType",
+          "description": "<p>顶点的编辑属性。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "X1",
+          "type": "number（float 精度）",
+          "description": "<p>如果新线段的 EditingType 为 msoEditingAuto，则此参数指定从文档左上角到新线段终点的水平距离（以磅为单位）。 如果新节点的 EditingType 为 msoEditingCorner，则此参数指定从文档左上角到新线段的第一个控制点的水平距离（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Y1",
+          "type": "number（float 精度）",
+          "description": "<p>如果新线段的 EditingType 为 msoEditingAuto，则此参数指定从文档左上角到新线段终点的水平距离（以磅为单位）。 如果新节点的 EditingType 为 msoEditingCorner，则此参数指定从文档左上角到新线段的第一个控制点的水平距离（以磅为单位）。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "X2",
+          "type": "any",
+          "description": "<p>如果新线段的 EditingType 为 msoEditingCorner，则此参数指定从文档左上角到新线段的第二个控制点的水平距离（以磅为单位）。 如果新线段的 EditingType 为 msoEditingAuto，则不为该参数指定值。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Y2",
+          "type": "any",
+          "description": "<p>如果新线段的 EditingType 为 msoEditingCorner，则此参数指定从文档左上角到新线段的第二个控制点的水平距离（以磅为单位）。 如果新线段的 EditingType 为 msoEditingAuto，则不为该参数指定值。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "X3",
+          "type": "any",
+          "description": "<p>如果新线段的 EditingType 为 msoEditingCorner，则此参数指定从文档左上角到新线段的第二个控制点的水平距离（以磅为单位）。 如果新线段的 EditingType 为 msoEditingAuto，则不为该参数指定值。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Y3",
+          "type": "any",
+          "description": "<p>如果新线段的 EditingType 为 msoEditingCorner，则此参数指定从文档左上角到新线段的第二个控制点的水平距离（以磅为单位）。 如果新线段的 EditingType 为 msoEditingAuto，则不为该参数指定值。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "ConvertToShape",
+      "summary": "<p>对于 <strong>FreeformBuilder</strong>对象，至少要应用一次 <strong>AddNodes</strong>方法，然后才能使用 <strong>ConvertToShape</strong> 方法。</p>\n",
+      "description": "<p>创建一个具有指定 <strong>FreeformBuilder</strong>对象的几何特性的形状。返回一个代表新形状的 <strong>Shape</strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将一个有五个顶点的黑色任意多边形添加到第一张工作表中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> myDocument = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-keyword\">let</span> builder = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">BuildFreeform</span>(msoEditingCorner, <span class=\"hljs-number\">360</span>, <span class=\"hljs-number\">200</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingCorner, <span class=\"hljs-number\">380</span>, <span class=\"hljs-number\">230</span>, <span class=\"hljs-number\">400</span>, <span class=\"hljs-number\">250</span>, <span class=\"hljs-number\">450</span>, <span class=\"hljs-number\">300</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentCurve, msoEditingAuto, <span class=\"hljs-number\">480</span>, <span class=\"hljs-number\">200</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">480</span>, <span class=\"hljs-number\">400</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">360</span>, <span class=\"hljs-number\">200</span>)\n    builder.<span class=\"hljs-title class_\">ConvertToShape</span>().<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表中创建一个具有四个顶点的绿色任意多边形。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> builder = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">BuildFreeform</span>(msoEditingSmooth, <span class=\"hljs-number\">375</span>, <span class=\"hljs-number\">235</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">478</span>, <span class=\"hljs-number\">265</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">496</span>, <span class=\"hljs-number\">333</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">599</span>, <span class=\"hljs-number\">373</span>)\n    builder.<span class=\"hljs-title class_\">AddNodes</span>(msoSegmentLine, msoEditingAuto, <span class=\"hljs-number\">375</span>, <span class=\"hljs-number\">235</span>)\n    <span class=\"hljs-keyword\">let</span> s = builder.<span class=\"hljs-title class_\">ConvertToShape</span>()\n    s.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">ForeColor</span>.<span class=\"hljs-property\">RGB</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "<p>Shape</p>\n"
+    }
+  ]
+}

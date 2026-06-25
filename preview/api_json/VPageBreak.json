@@ -1,0 +1,87 @@
+{
+  "name": "VPageBreak",
+  "summary": "<p><strong>VPageBreak</strong> 对象是 <a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/VPageBreaks/VPageBreaks .htm#VPageBreaks.VPageBreaks\"><strong>VPageBreaks</strong></a> 集合的成员。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/VPageBreaks/VPageBreaks .htm#VPageBreaks.VPageBreaks\">VPageBreaks</a></strong>(<em>index</em>)（其中 <em>index</em> 是该分页符的分页符索引号）可返回一个 <strong>VPageBreak</strong> 对象。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例移动第一个工作表的第一个垂直分页符至E5单元格*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Location</span> = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;E5&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断如果活动工作表的第2个垂直分页符是手动插入分页符，则删除该垂直分页符。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> vPageBreak = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-keyword\">if</span> (vPageBreak.<span class=\"hljs-property\">Type</span> == xlPageBreakManual) {\n        vPageBreak.<span class=\"hljs-title class_\">Delete</span>()\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;已删除该手动插入的垂直分页符&quot;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;不是手动插入的垂直分页符&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表一个垂直分页符。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a>**对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a>**对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/* 本示例显示一条有关创建 myObject 的应用程序的消息*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n    <span class=\"hljs-keyword\">if</span>(myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n    }\n    <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Extent",
+      "summary": "",
+      "description": "<p>返回指定分页符的类型：全屏或仅在打印区域内。可为以下任一 **<a href=\"topics/WPS 基础接口/表格 API 参考/枚举/XlPageBreakExtent 枚举.html\">XlPageBreakExtent</a><strong>常量：</strong><a href=\"topics/WPS 基础接口/表格 API 参考/枚举/XlPageBreakExtent 枚举.html\">xlPageBreakFull</a>**或 <strong><a href=\"topics/WPS 基础接口/表格 API 参考/枚举/XlPageBreakExtent 枚举.html\">xlPageBreakPartial</a></strong>。<strong>Long</strong> 类型，只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一个工作表的全屏垂直分页符和打印区垂直分页符的总数*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> cFull = <span class=\"hljs-number\">0</span>\n    <span class=\"hljs-keyword\">let</span> cPartial = <span class=\"hljs-number\">0</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Extent</span> == xlPageBreakFull) {\n            ++cFull\n        } <span class=\"hljs-keyword\">else</span> {\n            ++cPartial\n        }\n    }\n    <span class=\"hljs-title function_\">alert</span>(cFull + <span class=\"hljs-string\">&quot; full-screen page breaks, &quot;</span> + cPartial + <span class=\"hljs-string\">&quot; print-area page breaks&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表的第3个垂直分页符是否为全屏应用*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> vPageBreak = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>)\n    <span class=\"hljs-title function_\">alert</span>(vPageBreak.<span class=\"hljs-property\">Extent</span> == xlPageBreakFull)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "XlPageBreakExtent",
+      "readonly": true
+    },
+    {
+      "name": "Location",
+      "summary": "",
+      "description": "<p>返回或设置定义分页符位置的单元格（**<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Range/Range .htm#Range.Range\">Range</a><strong>对象）。水平分页符与定位单元格的上边缘对齐；垂直分页符与定位单元格的左边缘对齐。</strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Range/Range .htm#Range.Range\">Range</a>**类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例移动第一个工作表的第一个垂直分页符至E5单元格*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Location</span> = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;E5&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表的第二个垂直分页符所在单元格区域的地址*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> vPageBreak = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-title function_\">alert</span>(vPageBreak.<span class=\"hljs-property\">Location</span>.<span class=\"hljs-title class_\">Address</span>())\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Range",
+      "readonly": false
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>��回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Worksheet",
+      "readonly": true
+    },
+    {
+      "name": "Type",
+      "summary": "",
+      "description": "<p>返回或设置表示分页符类型的 <strong><a href=\"topics/WPS 基础接口/表格 API 参考/枚举/XlPageBreak 枚举.html\">XlPageBreak</a></strong> 值。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一个工作表的第一个垂直分页符是否为手动插入分页符。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> type = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Type</span>\n    <span class=\"hljs-title function_\">alert</span>(type  == xlPageBreakManual)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表中自动插入的垂直分页符的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> count = <span class=\"hljs-number\">0</span>\n    <span class=\"hljs-keyword\">let</span> vPageBreaks = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">VPageBreaks</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= vPageBreaks.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-keyword\">if</span> (vPageBreaks.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Type</span> == xlPageBreakAutomatic) {\n            count++\n        }\n    }\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`自动插入的垂直分页符的数量是 <span class=\"hljs-subst\">${count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "XlPageBreak",
+      "readonly": false
+    }
+  ],
+  "functions": [
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>删除对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除第一个工作表中第二个垂直分页符。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> vPageBreak = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>)\n    vPageBreak.<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除活动工作表的所有垂直分页符*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> vPagebreaks = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">VPageBreaks</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= vPagebreaks.<span class=\"hljs-property\">Count</span>; i++) {\n        vPagebreaks.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-title class_\">Delete</span>()\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "void"
+    },
+    {
+      "name": "DragOff",
+      "summary": "<p>该方法主要用于宏记录器。使用 <strong>Delete</strong> 方法可在 JS 中删除分页符。</p>\n",
+      "description": "<p>将一个分页符拖出打印区域。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动工作表的第一个垂直分页符拖出第一个打印区域的右边界，以删除该分页符*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">DragOff</span>(xlToRight, <span class=\"hljs-number\">1</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表Sheet1的第三个垂直分页符拖出第二个打印区域的左边界，以删除该分页符，最后显示垂直分页符总数*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sheet1 = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>)\n    sheet1.<span class=\"hljs-property\">VPageBreaks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-title class_\">DragOff</span>(xlLeft, <span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`垂直分页符的数量是 <span class=\"hljs-subst\">${sheet1.VPageBreaks.Count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Direction",
+          "type": "XlDirection",
+          "description": "<p>分页符拖动方向。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "RegionIndex",
+          "type": "number（int4 精度）",
+          "description": "<p>分页符的打印区域索引（当用户按下鼠标按钮拖动分页符时鼠标指针所在的位置）。如果打印区域是连续的，则只有一个打印区域。如果打印区域不是连续的，则有多个打印区域。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "void"
+    }
+  ]
+}

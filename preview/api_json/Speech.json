@@ -1,0 +1,59 @@
+{
+  "name": "Speech",
+  "summary": "<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a></strong> 对象的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Speech\">Speech</a></strong> 属性可返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Speech/Speech .htm#Speech.Speech\">Speech</a></strong> 对象。</p>\n<p>一旦返回了 <strong>Speech</strong> 对象，您就可以使用 <strong>Speech</strong> 对象的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Speech/Speech .htm#Speech.Speak\">Speak</a></strong> 方法来播放字符串的内容。</p>\n<p>语音功能位于从属于“口述”的安装树结构中，并且没有安装“命令与控件”。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例ET将朗读“Hello”。本示例假定主机系统上已安装了语音功能。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Speech</span>.<span class=\"hljs-title class_\">Speak</span>(<span class=\"hljs-string\">&quot;Hello&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例为A1单元格赋值，并朗读单元格A1中的值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">Value2</span> = <span class=\"hljs-string\">&quot;Hello WPS&quot;</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Speech</span>.<span class=\"hljs-title class_\">Speak</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">Value2</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>包括与语音相关的方法和属性。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Direction",
+      "summary": "<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th><strong>XlSpeakDirection</strong> 可为以下 <strong>XlSpeakDirection</strong> 常量之一。</th>\n</tr>\n</thead><tbody><tr>\n<td><strong>xlSpeakByColumns</strong></td>\n</tr>\n<tr>\n<td><strong>xlSpeakByRows</strong></td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>返回或设置朗读单元格的次序。<strong>Direction</strong> 属性的值为一个 <strong><a href=\"topics/WPS 基础接口/表格 API 参考/枚举/XlSpeakDirection 枚举.html\">XlSpeakDirection</a></strong> 常量。可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为ET确定朗读的方向，并通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-comment\">// Notify user of speech direction.</span>\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Speech</span>.<span class=\"hljs-property\">Direction</span> == xlSpeakByColumns) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;The speech direction is set to speak by columns.&quot;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;The speech direction is set to speak by rows.&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置朗读单元格的次序。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Speech</span>.<span class=\"hljs-property\">Direction</span> = xlSpeakByRows\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "XlSpeakDirection",
+      "readonly": false
+    },
+    {
+      "name": "SpeakCellOnEnter",
+      "summary": "",
+      "description": "<p>当按下 Enter 或完成了对活动单元格的编辑时，ET 支持朗读活动单元格的模式。如果 <strong>SpeakCellOnEnter</strong> 属性为 <strong>True</strong>，则打开此模式。如果为 <strong>False</strong>，则关闭此模式。<strong>Boolean</strong> 类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例确定在按下 Enter 或完成了对活动单元格的编辑时，是否朗读活动单元格，并通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-comment\">// Determine mode setting and notify user.</span>\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Speech</span>.<span class=\"hljs-property\">SpeakCellOnEnter</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;The Speak On Enter mode is turned on. The active cell will be spoken when the ENTER key is pressed or it is done being edited.&quot;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;The Speaker On Enter mode is turned off.&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将ET设置为在按下 Enter 键或编辑完活动单元格时朗读活动单元格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Speech</span>.<span class=\"hljs-property\">SpeakCellOnEnter</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "boolean",
+      "readonly": false
+    }
+  ],
+  "functions": [
+    {
+      "name": "Speak",
+      "summary": "",
+      "description": "<p>ET 回放作为参数传递的文本字符串。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例ET将朗读“Hello”。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Speech</span>.<span class=\"hljs-title class_\">Speak</span>(<span class=\"hljs-string\">&quot;Hello&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例ET将朗读单元格E1中的文本。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Speech</span>.<span class=\"hljs-title class_\">Speak</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;E1&quot;</span>).<span class=\"hljs-property\">Text</span>, <span class=\"hljs-literal\">true</span>, <span class=\"hljs-literal\">false</span>, <span class=\"hljs-literal\">true</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Text",
+          "type": "string",
+          "description": "<p>要朗读的文本。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "SpeakAsync",
+          "type": "any",
+          "description": "<p>如果为 <strong>True</strong>，则会异步朗读 <em>Text</em>（该方法不会等待要朗读的 Text）。如果为 <strong>False</strong>，则会同步朗读 <em>Text</em>（该方法在继续之前会等待要朗读的 <em>Text</em>）。默认值是 <strong>False</strong>。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "SpeakXML",
+          "type": "any",
+          "description": "<p>如果为 <strong>True</strong>，则 <em>Text</em> 会解释为 XML。如果为 <strong>False</strong>，则 <em>Text</em> 不会解释为 XML，因此，会读取所有 XML 标记但不会对其进行解释。默认值是 <strong>False</strong>。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Purge",
+          "type": "any",
+          "description": "<p>如果为 <strong>True</strong>，则当前语音会终止，任何缓冲的文本在 <em>Text</em> 朗读之前会清除。如果为 <strong>False</strong>，则当前语音不会终止，缓冲的文本在 <em>Text</em> 朗读之前也不会清除。默认值是 <strong>False</strong>。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "void"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "name": "Outline",
+  "summary": "<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例将 Sheet4 上的分级显示设置为只显示第一级。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>(<span class=\"hljs-string\">&quot;Sheet4&quot;</span>).<span class=\"hljs-property\">Outline</span>.<span class=\"hljs-title class_\">ShowLevels</span>(<span class=\"hljs-number\">1</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示活动工作表分级显示是否使用自动样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Outline</span>.<span class=\"hljs-property\">AutomaticStyles</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表工作表上的分级显示。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong>对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>){\n        <span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">ActiveWorkbook</span>\n       <span class=\"hljs-keyword\">if</span> (myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>){\n            <span class=\"hljs-title class_\">MsgBox</span> (<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n        }\n        <span class=\"hljs-keyword\">else</span>{\n            <span class=\"hljs-title class_\">MsgBox</span> (<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n        }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "AutomaticStyles",
+      "summary": "",
+      "description": "<p>如果分级显示使用自动样式，则该属性值为 <strong>True</strong>。<strong>Boolean</strong> 类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将 Sheet1 的分级显示设置为使用自动样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Outline</span>.<span class=\"hljs-property\">AutomaticStyles</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示活动工作表分级显示是否使用自动样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Outline</span>.<span class=\"hljs-property\">AutomaticStyles</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "boolean",
+      "readonly": false
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "SummaryColumn",
+      "summary": "<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>XlSummaryColumn 可为以下 常量之一。</th>\n</tr>\n</thead><tbody><tr>\n<td>xlSummaryOnRight 分级显示中的汇总列位于明细数据列的右侧。</td>\n</tr>\n<tr>\n<td>xlSummaryOnLeft 分级显示中的汇总列位于明细数据列的左侧。</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>返回或设置分级显示中的汇总列的位置。<strong>XlSummaryColumn</strong>类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例创建一个使用自动样式的分级显示，汇总行位于明细数据行的上方，汇总列位于明细数据列的右侧。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Activate</span>()\n    <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-title class_\">AutoOutline</span>()\n    <span class=\"hljs-keyword\">let</span> outline = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Outline</span>\n    outline.<span class=\"hljs-property\">SummaryRow</span> = xlSummaryAbove\n    outline.<span class=\"hljs-property\">SummaryColumn</span> = xlSummaryOnRight\n    outline.<span class=\"hljs-property\">AutomaticStyles</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表中分级显示中的汇总列的位置是否位于明细数据列的左侧。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Outline</span>.<span class=\"hljs-property\">SummaryColumn</span> == xlSummaryOnLeft)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "XlSummaryColumn",
+      "readonly": false
+    },
+    {
+      "name": "SummaryRow",
+      "summary": "<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>XlSummaryRow 可为以下常量之一。</th>\n</tr>\n</thead><tbody><tr>\n<td>xlSummaryBelow 分级显示中的汇总行位于明细数据行的下方。</td>\n</tr>\n<tr>\n<td>xlSummaryAbove 分级显示中的汇总行位于明细数据行的上方。</td>\n</tr>\n</tbody></table></div><p>若要进行 WPS 风格的分级显示，请将 <strong>XlSummaryRow</strong> 设置为 <strong>xlAbove</strong>，使分类标题位于明细信息的上方。若要进行会计风格的分级显示，请将 <strong>XlSummaryRow</strong> 设置为 <strong>xlBelow</strong>，使求和位于明细信息的下方。</p>\n",
+      "description": "<p>返回或设置分级显示中汇总行的位置。<strong>XlSummaryRow</strong> 类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例创建一个使用自动样式的分级显示，汇总行位于明细数据行的上方，汇总列位于明细数据列的右侧。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Activate</span>()\n    <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-title class_\">AutoOutline</span>()\n    <span class=\"hljs-keyword\">let</span> outline = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Outline</span>\n    outline.<span class=\"hljs-property\">SummaryRow</span> = xlSummaryAbove\n    outline.<span class=\"hljs-property\">SummaryColumn</span> = xlSummaryOnRight\n    outline.<span class=\"hljs-property\">AutomaticStyles</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表中分级显示中的汇总行的位置是否位于明细数据行的下方。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Outline</span>.<span class=\"hljs-property\">SummaryRow</span> == xlSummaryBelow)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "XlSummaryRow",
+      "readonly": false
+    }
+  ],
+  "functions": [
+    {
+      "name": "ShowLevels",
+      "summary": "<p>必须至少指定一个参数。</p>\n",
+      "description": "<p>显示指定行号和/或列号在分级显示中的层次。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例对工作表 Sheet1 的第一行到第三行的行层次和第一列的列层次进行分级显示。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Outline</span>.<span class=\"hljs-title class_\">ShowLevels</span>(<span class=\"hljs-number\">3</span>, <span class=\"hljs-number\">1</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例对活动工作表的第一行的行层次和第一列的列层次进行分级显示。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Outline</span>.<span class=\"hljs-title class_\">ShowLevels</span>(<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">1</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "RowLevels",
+          "type": "any",
+          "description": "<p>指定分级显示中的行层次。如果该分级显示包含的层次数少于指定层次，则 ET 显示所有层次。如果该参数为 0（零）或者省略该参数，则不对行采取任何操作。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ColumnLevels",
+          "type": "any",
+          "description": "<p>指定分级显示中的列层次。如果该分级显示包含的层次数少于指定层次，则 ET 显示所有层次。如果该参数为 0（零）或者省略该参数，则不对列采取任何操作。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>Variant</p>\n"
+    }
+  ]
+}

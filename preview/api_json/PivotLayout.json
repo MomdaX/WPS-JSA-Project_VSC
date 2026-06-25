@@ -1,0 +1,41 @@
+{
+  "name": "PivotLayout",
+  "summary": "<p>使用 <strong>PivotLayout</strong> 属性可返回一个 <strong>PivotLayout</strong> 对象。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例创建在图表工作表 Chart1 上数据透视图报表中所使用的数据透视表字段名称的列表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> newSheet = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Add</span>()\n    <span class=\"hljs-keyword\">let</span> intRow = <span class=\"hljs-number\">1</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= <span class=\"hljs-title class_\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-property\">PivotLayout</span>.<span class=\"hljs-title class_\">PivotFields</span>().<span class=\"hljs-property\">Count</span>; i++) {\n        newSheet.<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(intRow, <span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value2</span> = <span class=\"hljs-title class_\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-property\">PivotLayout</span>.<span class=\"hljs-title class_\">PivotFields</span>(i).<span class=\"hljs-property\">Caption</span>\n        intRow++\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示工作表 Sheet1 上第一张数据透视图对应的数据透视表的第三个字段的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtTable = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-property\">PivotLayout</span>.<span class=\"hljs-property\">PivotTable</span>\n    <span class=\"hljs-title function_\">alert</span>(pvtTable.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-number\">3</span>).<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表数据透视图报表中字段的位置。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong>对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code>*本示例显示一条有关创建 myObject 的应用程序的消息。*/\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n\t<span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n\t<span class=\"hljs-keyword\">if</span> (myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n\t} <span class=\"hljs-keyword\">else</span> {\n\t\t<span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n\t}\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "PivotTable",
+      "summary": "",
+      "description": "<p>返回一个 <strong>PivotTable</strong> 对象，它代表与数据透视图相关联的数据透视表。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将 Sheet1 上第一张图表对应的数据透视表的字段“id”的当前页设置为名为“3”的页。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtTable = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-property\">PivotLayout</span>.<span class=\"hljs-property\">PivotTable</span>\n    pvtTable.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;id&quot;</span>).<span class=\"hljs-property\">CurrentPage</span> = <span class=\"hljs-string\">&quot;3&quot;</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例确定与“Chart1”图表相关联的数据透视表，然后将字段“date”名为“2024/5/25”的页设置为数据透视表的当前页。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtTable = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-property\">PivotLayout</span>.<span class=\"hljs-property\">PivotTable</span>\n    pvtTable.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;date&quot;</span>).<span class=\"hljs-property\">CurrentPage</span> = <span class=\"hljs-string\">&quot;2024/5/25&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "PivotTable",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

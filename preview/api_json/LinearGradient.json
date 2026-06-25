@@ -1,0 +1,49 @@
+{
+  "name": "LinearGradient",
+  "summary": "<p>当使用 <strong>LinearGradient</strong>对象时，应考虑以下几点：</p>\n<ul>\n<li>试图访问不具有现有渐变填充的 <strong>Interior</strong> 对象的 Gradient 属性会引起运行时错误。访问 Gradient 属性之前请注意 <code>Interior.Pattern</code> 属性。</li>\n<li>如果将 Interior.Pattern从渐变类型更改为非渐变类型，Gradient 对象将采用默认值。</li>\n</ul>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例将活动工作表上区域 B1:B10 中线性渐变的填充角度设置为100。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> linearGradient = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1:B10&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    linearGradient.<span class=\"hljs-property\">Degree</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例显示第一张工作表上区域 B1:B10 中线性渐变的颜色停止点数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> linearGradient = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1:B10&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    <span class=\"hljs-title function_\">alert</span>(linearGradient.<span class=\"hljs-property\">ColorStops</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p><strong>LinearGradient</strong>对象沿特定角度以线性方式在一系列颜色间转换。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不与对象识别符一起使用，则此属性返回代表 ET 应用程序的 <strong>Application</strong>对象。如果与对象识别符一起使用，则此属性返回代表指定对象的创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "ColorStops",
+      "summary": "",
+      "description": "<p>返回 <strong>LinearGradient</strong> 对象的 <strong>ColorStops</strong>。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例将第一张工作表上区域 B1:B10 线性渐变的第一个颜色停止点的颜色设置为蓝色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> linearGradient = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1:B10&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    <span class=\"hljs-keyword\">let</span> colorStop1 = linearGradient.<span class=\"hljs-property\">ColorStops</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    colorStop1.<span class=\"hljs-property\">Color</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">255</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例清除活动工作表上区域 B1:B10 中线性渐变所有已经设置的颜色停止点。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> linearGradient = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1:B10&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    linearGradient.<span class=\"hljs-property\">ColorStops</span>.<span class=\"hljs-title class_\">Clear</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "ColorStops",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。Creator 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Degree",
+      "summary": "<p>使用 0 - 360 之间的值。</p>\n",
+      "description": "<p>选定区域中线性渐变填充的角度。可读/写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例将选定区域中线性渐变的填充角度设置为45。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Pattern</span> = xlPatternLinearGradient\n    <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>.<span class=\"hljs-property\">Degree</span> = <span class=\"hljs-number\">45</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*下例显示第一张工作表上区域 B1:B10 线性渐变的填充角度。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> linearGradient = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1:B10&quot;</span>).<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Gradient</span>\n    <span class=\"hljs-title function_\">alert</span>(linearGradient.<span class=\"hljs-property\">Degree</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（double 精度）",
+      "readonly": false
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

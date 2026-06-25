@@ -1,0 +1,80 @@
+{
+  "name": "RecentFiles",
+  "summary": "<p>每个文件都由一个 <strong>RecentFile</strong> 对象代表。</p>\n<p>使用 <strong>Application</strong> 对象的 <strong>RecentFiles</strong> 属性可返回 <strong>RecentFiles</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将最近使用的文件列表中的最多文件数设置为 6。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RecentFiles</span>.<span class=\"hljs-property\">Maximum</span> = <span class=\"hljs-number\">6</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将最近使用的文件列表中的最多文件数设置为 5，然后将最近使用的所有文件的名称和完整路径赋值给活动工作表的单元格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> recentFiles = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RecentFiles</span>\n    recentFiles.<span class=\"hljs-property\">Maximum</span> = <span class=\"hljs-number\">5</span>\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>).<span class=\"hljs-property\">Value2</span> = <span class=\"hljs-string\">&quot;name&quot;</span>\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1&quot;</span>).<span class=\"hljs-property\">Value2</span> = <span class=\"hljs-string\">&quot;path&quot;</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= recentFiles.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(i + <span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value2</span> = recentFiles.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Name</span>\n        <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(i + <span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Value2</span> = recentFiles.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Path</span>\n    }\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表最近使用过的文件的列表。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong>对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>){\n        <span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">ActiveWorkbook</span>\n    <span class=\"hljs-keyword\">if</span>(myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n            <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n        }\n        <span class=\"hljs-keyword\">else</span> {\n            <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n        }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示最近使用的文件数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`最近使用的文件数量：<span class=\"hljs-subst\">${Application.RecentFiles.Count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Maximum",
+      "summary": "",
+      "description": "<p>返回或设置最近使用文件清单中文件数目的上限。<strong>Long</strong> 类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将最近使用的文件列表中的最多文件数设置为 6。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RecentFiles</span>.<span class=\"hljs-property\">Maximum</span> = <span class=\"hljs-number\">6</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示最近使用的文件列表中文件数目的上限。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`最近使用的文件数量的上限：<span class=\"hljs-subst\">${Application.RecentFiles.Maximum}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": false
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>向最近使用的文件列表中添加文件。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将文件 example.xlsx 添加到最近使用的文件列表中。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RecentFiles</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;example.xlsx&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将文件 example.xlsx 添加到最近使用的文件列表中，并显示最近使用的文件数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RecentFiles</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;example.xlsx&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RecentFiles</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Name",
+          "type": "string",
+          "description": "<p>文件名。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>包含在集合中的一个 RecentFile 对象。</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例打开最近使用的文件列表中的第二个文件。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RecentFiles</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-title class_\">Open</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示最近使用的文件列表中的第一个文件的完整路径。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> recentFile = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">RecentFiles</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(recentFile.<span class=\"hljs-property\">Path</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "number（int4 精度）",
+          "description": "<p>对象的索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "RecentFile"
+    }
+  ]
+}

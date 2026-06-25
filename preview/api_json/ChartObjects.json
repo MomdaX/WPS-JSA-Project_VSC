@@ -1,0 +1,222 @@
+{
+  "name": "ChartObjects",
+  "summary": "<p>每个 <strong>ChartObject</strong> 对象都代表一个嵌入图表。<strong>ChartObject</strong> 对象充当 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Chart/Chart .htm#jsObject_Chart\">Chart</a></strong> 对象的容器。<strong>ChartObject</strong> 对象的属性和方法控制工作表上嵌入图表的外观和大小。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Worksheet/Worksheet .htm#Worksheet.ChartObjects\">ChartObjects</a></strong> 方法返回 <strong>ChartObjects</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除工作表 Sheet1 中所有图表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>().<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><p>不能使用 <strong>ChartObjects</strong> 集合来调用以下属性和方法：</p>\n<ul>\n<li><strong>Locked</strong> 属性</li>\n</ul>\n<ul>\n<li><strong>Placement</strong> 属性</li>\n</ul>\n<ul>\n<li><strong>PrintObject</strong> 属性</li>\n</ul>\n<p>与早期版本不同，<strong>ChartObjects</strong> 集合现在可以读取表示高度、宽度、左对齐和顶对齐的属性。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/ChartObjects/ChartObjects .htm#ChartObjects.Add\">Add</a></strong> 方法可创建一个新的空嵌入图表并将它添加到集合中。使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Chart/Chart .htm#Chart.ChartWizard\">ChartWizard</a></strong> 方法可添加数据并设置新图表的格式。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在工作表 Sheet1 中新建一个内嵌图表，然后以折线图形式添加单元格 A1:A20 中的数据。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>().<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">30</span>, <span class=\"hljs-number\">400</span>, <span class=\"hljs-number\">250</span>)\n    chartobject.<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">ChartWizard</span>(<span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A20&quot;</span>), xlLine, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-string\">&quot;New Chart&quot;</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">null</span>)\n}</code></pre></td></tr></tbody></table></div><p>使用 <strong>ChartObjects</strong>(<em>index</em>)（其中 <em>index</em> 是嵌入图表的索引号或名称）可以返回单个对象。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表 Sheet1 上第一张图表填充方案设置为浅色下对角线。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chart = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Chart</span>\n    chart.<span class=\"hljs-property\">ChartArea</span>.<span class=\"hljs-property\">Format</span>.<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-title class_\">Patterned</span>(msoPatternLightDownwardDiagonal)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>由指定的图表工作表、对话框工作表或工作表上的所有 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/ChartObject/ChartObject .htm#jsObject_ChartObject\">ChartObject</a></strong> 对象组成的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#jsObject_Application\">Application</a></strong> 对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示一条有关创建 myObject 的应用程序的消息。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n    <span class=\"hljs-keyword\">if</span>(myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n    }\n    <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 中图表的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`工作表 Sheet1 中有 <span class=\"hljs-subst\">${chartobjects.Count}</span> 个图表`</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表上图表的数量是否为 2 。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    <span class=\"hljs-title function_\">alert</span>(chartobjects.<span class=\"hljs-property\">Count</span> == <span class=\"hljs-number\">2</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Height",
+      "summary": "",
+      "description": "<p>返回或设置一个 <strong>Double</strong> 值，它代表对象的高度（以磅为单位）。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将工作表 Sheet1 中所有图表的高度设置为工作表 1 到 15 行的距离。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sheet = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>)\n    sheet.<span class=\"hljs-title class_\">ChartObjects</span>().<span class=\"hljs-property\">Height</span> = sheet.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;1:15&quot;</span>).<span class=\"hljs-property\">Height</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置图表工作表 Chart1 上所有图表的高度。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-property\">Height</span> = <span class=\"hljs-number\">350</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（double 精度）",
+      "readonly": false
+    },
+    {
+      "name": "Left",
+      "summary": "",
+      "description": "<p>返回或设置 <strong>Double</strong> 值，它代表从对象左边缘到工作表的 A 列左边缘或图表上的图表区左边缘的距离（以磅为单位）。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表 Sheet1 上所有图表到工作表A列的距离设置为 300 磅。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-property\">Left</span> = <span class=\"hljs-number\">300</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示图表工作表 Chart1 上图表到工作表A列的距离。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`图表工作表上图表距A列：<span class=\"hljs-subst\">${chartobjects.Left}</span> 磅。`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（double 精度）",
+      "readonly": false
+    },
+    {
+      "name": "Locked",
+      "summary": "<p>如果对象已被锁定，此属性将返回 <strong>True</strong>；如果在工作表处于受保护状态时仍能修改对象，则返回 <strong>False</strong>。</p>\n",
+      "description": "<p>返回或设置一个 <strong>Boolean</strong> 值，它指明对象是否已被锁定。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例取消对工作表 Sheet1 中所有图表的锁定，并通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-property\">Locked</span> = <span class=\"hljs-literal\">false</span>\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;已取消对工作表 Sheet1 上所有图表的锁定&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示工作表 Sheet2 中所有图表是否已被锁定。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet2&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    <span class=\"hljs-title function_\">alert</span>(chartobjects.<span class=\"hljs-property\">Locked</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "boolean",
+      "readonly": false
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Placement",
+      "summary": "",
+      "description": "<p>返回或设置一个包含 <strong><a href=\"topics/WPS 基础接口/表格 API 参考/枚举/XlPlacement 枚举.html\">XlPlacement</a></strong> 常量的 <strong>Variant</strong> 值，它代表对象附加到它所在的单元格的方式。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置工作表 Sheet1 上所有图表大小固定，位置随单元格移动而变化。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-property\">Placement</span> = xlMove\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表上所有图表是否大小和位置随单元格而变化。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    <span class=\"hljs-title function_\">alert</span>(chartobjects.<span class=\"hljs-property\">Placement</span> == xlMoveAndSize)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "any",
+      "readonly": false
+    },
+    {
+      "name": "PrintObject",
+      "summary": "",
+      "description": "<p>如果打印文档时也打印指定对象，则为 <strong>True</strong>。<strong>Boolean</strong> 类型，可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例设置当打印工作表 Sheet1 时连同所有图表一起打印。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-property\">PrintObject</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例设置当打印图表工作表 Chart1 时其中的图表不连同打印。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-property\">PrintObject</span> = <span class=\"hljs-literal\">false</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "boolean",
+      "readonly": false
+    },
+    {
+      "name": "ShapeRange",
+      "summary": "",
+      "description": "<p>返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/ShapeRange/ShapeRange .htm#jsObject_ShapeRange\">ShapeRange</a></strong> 对象，它代表指定的一个或多个对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例创建一个形状区域，该区域代表第一张工作表上的图表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sr = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">ChartObjects</span>().<span class=\"hljs-property\">ShapeRange</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例选择工作表 Sheet1 上所有图表的形状区域。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-property\">ShapeRange</span>.<span class=\"hljs-title class_\">Select</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "ShapeRange",
+      "readonly": true
+    },
+    {
+      "name": "Top",
+      "summary": "",
+      "description": "<p>返回或设置一个 <strong>Double</strong> 值，它代表从对象的上边缘到工作表第一行顶部或图表上的图表区顶部的距离（以磅为单位）。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例使工作表 Sheet1 中所有图表的上边界与工作表第五行的上边界对齐。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sheet = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>)\n    sheet.<span class=\"hljs-title class_\">ChartObjects</span>().<span class=\"hljs-property\">Top</span> = sheet.<span class=\"hljs-property\">Rows</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">5</span>).<span class=\"hljs-property\">Top</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示图表工作表 Chart1 中图表到该表顶部的距离。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`到顶部的距离为：<span class=\"hljs-subst\">${chartobjects.Top}</span> 磅`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（double 精度）",
+      "readonly": false
+    },
+    {
+      "name": "Visible",
+      "summary": "",
+      "description": "<p>返回或设置一个 <strong>Boolean</strong> 值，它确定对象是否可见。可读写。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示工作表 Sheet1 上所有图表是否可见。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    <span class=\"hljs-title function_\">alert</span>(chartobjects.<span class=\"hljs-property\">Visible</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例设置图表工作表 Chart1 上所有图表为不可见。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">false</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "boolean",
+      "readonly": false
+    },
+    {
+      "name": "Width",
+      "summary": "",
+      "description": "<p>返回或设置一个 <strong>Double</strong> 值，它代表对象的宽度（以磅为单位）。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示图表工作表 Chart1 上图表的宽度。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    <span class=\"hljs-title function_\">alert</span>(chartobjects.<span class=\"hljs-property\">Width</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例设置工作表 Sheet1 上所有图表的左边界与 B 列的左边界对齐，并将所有图表的宽度设置为 A1:F1 的距离。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sheet = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>)\n    sheet.<span class=\"hljs-title class_\">ChartObjects</span>().<span class=\"hljs-property\">Left</span> = sheet.<span class=\"hljs-property\">Columns</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;B&quot;</span>).<span class=\"hljs-property\">Left</span>\n    sheet.<span class=\"hljs-title class_\">ChartObjects</span>().<span class=\"hljs-property\">Width</span> = sheet.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:F1&quot;</span>).<span class=\"hljs-property\">Width</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（double 精度）",
+      "readonly": false
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>创建新的嵌入式图表。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在工作表 Sheet1 中创建新的嵌入式图表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>().<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-number\">50</span>, <span class=\"hljs-number\">40</span>, <span class=\"hljs-number\">200</span>, <span class=\"hljs-number\">100</span>)\n    chartobject.<span class=\"hljs-property\">Chart</span>.<span class=\"hljs-title class_\">ChartWizard</span>(<span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:B2&quot;</span>), xlColumn, <span class=\"hljs-number\">6</span>, xlColumns, <span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">1</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在第一张工作表中创建新的嵌入式图表，并使用圆角。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">ChartObjects</span>().<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">300</span>, <span class=\"hljs-number\">155.5</span>)\n    chartobject.<span class=\"hljs-property\">RoundedCorners</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Left",
+          "type": "number（double 精度）",
+          "description": "<p>以磅为单位给出新对象的初始坐标，该坐标是相对于工作表上单元格 A1 的左上角或图表的左上角的坐标。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Top",
+          "type": "number（double 精度）",
+          "description": "<p>以磅为单位给出新对象的初始坐标，该坐标是相对于工作表上单元格 A1 的左上角或图表的左上角的坐标。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Width",
+          "type": "number（double 精度）",
+          "description": "<p>以磅为单位给出新对象的初始大小。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "type": "number（double 精度）",
+          "description": "<p>以磅为单位给出新对象的初始大小。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>ChartObject</p>\n"
+    },
+    {
+      "name": "Copy",
+      "summary": "",
+      "description": "<p>将对象复制到剪贴板。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表 Sheet1 上所有图表复制到剪贴板。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-title class_\">Copy</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将图表工作表 Chart1 上所有图表复制到剪贴板。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-title class_\">Copy</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "any"
+    },
+    {
+      "name": "CopyPicture",
+      "summary": "",
+      "description": "<p>将所选对象作为图片复制到剪贴板。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表 Sheet1 上所有图表作为图片以位图 (光栅) 格式复制到剪贴板。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-title class_\">CopyPicture</span>(xlScreen, xlBitmap)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将图表工作表 Chart1 上所有图表作为图片以矢量格式复制到剪贴板。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-title class_\">CopyPicture</span>(xlPrinter, xlPicture)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Appearance",
+          "type": "XlPictureAppearance",
+          "description": "<p>指定图片的复制方式。默认值为 xlScreen。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Format",
+          "type": "XlCopyPictureFormat",
+          "description": "<p>图片的格式。默认值为 xlPicture。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "any"
+    },
+    {
+      "name": "Cut",
+      "summary": "<p>只可剪切嵌入式图表。</p>\n",
+      "description": "<p>将对象剪切到剪贴板。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表 Sheet1 上所有图表剪切到剪贴板。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-title class_\">Cut</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将图表工作表 Chart1 上所有图表剪贴到剪贴板。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-title class_\">Cut</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "any"
+    },
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>删除对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断如果工作表 Sheet1 上图表的数量大于等于 2 ，则将该工作表上所有图表删除。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    <span class=\"hljs-keyword\">if</span> (chartobjects.<span class=\"hljs-property\">Count</span> &gt;= <span class=\"hljs-number\">2</span>) {\n        chartobjects.<span class=\"hljs-title class_\">Delete</span>()\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除图表工作表 Chart1 上所有图表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Charts</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "any"
+    },
+    {
+      "name": "Item",
+      "summary": "<p>对象的文本名称就是 <strong>Name</strong> 和 <strong>Value</strong> 属性的值。</p>\n",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例激活工作表 Sheet1 上第一张图表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Activate</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例为第一张工作表上图表 Chart 2 添加圆角。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">ChartObjects</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Chart 2&quot;</span>)\n    chartobject.<span class=\"hljs-property\">RoundedCorners</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Object"
+    },
+    {
+      "name": "Select",
+      "summary": "",
+      "description": "<p>选择对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例选择工作表 Sheet1 的第一个图表，再扩展选择 Sheet1 中所有的图表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Select</span>()\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-title class_\">Select</span>(<span class=\"hljs-literal\">false</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例选择第一张工作表中所有图表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> chartobjects = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">ChartObjects</span>()\n    chartobjects.<span class=\"hljs-title class_\">Select</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Replace",
+          "type": "any",
+          "description": "<p>如果为 True，则用指定的对象替换当前所选内容。如果为 False，则扩展当前所选内容以包括以前选择的对象和指定的对象。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "any"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "name": "FormatConditions",
+  "summary": "<p><strong>FormatConditions</strong> 集合可以包含多个条件格式。每个格式由一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/FormatCondition/FormatCondition .htm#FormatCondition.FormatCondition\">FormatCondition</a></strong> 对象代表。</p>\n<p>有关条件格式的详细信息，请参阅 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/FormatCondition/FormatCondition .htm#FormatCondition.FormatCondition\">FormatCondition</a></strong> 对象。</p>\n<p>使用 <strong>FormatConditions</strong> 属性可返回 <strong>FormatConditions</strong> 对象。使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/FormatConditions/FormatConditions .htm#FormatConditions.Add\">Add</a></strong> 方法可新建条件格式，使用 <strong>Modify</strong> 方法可更改现有的条件格式。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表上单元格区域 E1:E10 中添加条件格式*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> formatCondition = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;E1:E10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Add</span>(xlCellValue, xlGreater, <span class=\"hljs-string\">&quot;=$A$1&quot;</span>)\n    <span class=\"hljs-keyword\">let</span> boders = formatCondition.<span class=\"hljs-property\">Borders</span>\n    boders.<span class=\"hljs-property\">LineStyle</span> = xlContinuous\n    boders.<span class=\"hljs-property\">Weight</span> = xlThin\n    boders.<span class=\"hljs-property\">ColorIndex</span> = <span class=\"hljs-number\">6</span>\n    <span class=\"hljs-keyword\">let</span> font = formatCondition.<span class=\"hljs-property\">Font</span>\n    font.<span class=\"hljs-property\">Bold</span> = <span class=\"hljs-literal\">true</span>\n    font.<span class=\"hljs-property\">ColorIndex</span> = <span class=\"hljs-number\">3</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 F1:F10 新增Top10条件格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> top = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;F1:F10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddTop</span>10()\n    top.<span class=\"hljs-property\">TopBottom</span> = xlTop10Top\n    top.<span class=\"hljs-property\">Rank</span> = <span class=\"hljs-number\">5</span>\n    top.<span class=\"hljs-property\">Percent</span> = <span class=\"hljs-literal\">false</span>\n    top.<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Bold</span> = <span class=\"hljs-literal\">true</span>\n    top.<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">ColorIndex</span> = <span class=\"hljs-number\">5</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表一个区域内所有条件格式的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a>**对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个表示指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/* 本示例显示一条有关创建 myObject 的应用程序的消息*/</span>\n<span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n<span class=\"hljs-keyword\">if</span>(myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;ET&quot;</span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is an ET Application object.&quot;</span>)\n}\n<span class=\"hljs-keyword\">else</span> {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not an ET Application object.&quot;</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上单元格区域 A1:A10 条件格式的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "<p>对单个区域定义的条件格式不能超过三个。使用 <strong>Modify</strong> 方法可修改现有的条件格式，使用 <strong>Delete</strong> 方法可在添加新条件格式前删除现有的格式。</p>\n",
+      "description": "<p>添加新的条件格式。返回一个 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/FormatCondition/FormatCondition .htm#FormatCondition.FormatCondition\">FormatCondition</a>**对象，它代表新的条件格式。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例向第一张工作表上单元格区域 E1:E10 中添加条件格式*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> formatCondition = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;E1:E10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Add</span>(xlCellValue, xlGreater, <span class=\"hljs-string\">&quot;=$A$1&quot;</span>)\n    <span class=\"hljs-keyword\">let</span> boders = formatCondition.<span class=\"hljs-property\">Borders</span>\n    boders.<span class=\"hljs-property\">LineStyle</span> = xlContinuous\n    boders.<span class=\"hljs-property\">Weight</span> = xlThin\n    boders.<span class=\"hljs-property\">ColorIndex</span> = <span class=\"hljs-number\">6</span>\n    <span class=\"hljs-keyword\">let</span> font = formatCondition.<span class=\"hljs-property\">Font</span>\n    font.<span class=\"hljs-property\">Bold</span> = <span class=\"hljs-literal\">true</span>\n    font.<span class=\"hljs-property\">ColorIndex</span> = <span class=\"hljs-number\">3</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 B1:B10 上新增条件格式，并设置该条件格式的内部颜色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> formatCondition = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1:B10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Add</span>(xlCellValue, xlBetween, <span class=\"hljs-string\">&quot;=3&quot;</span>, <span class=\"hljs-string\">&quot;=9&quot;</span>)\n    formatCondition.<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">ColorIndex</span> = <span class=\"hljs-number\">3</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Type",
+          "type": "XlFormatConditionType",
+          "description": "<p>指定条件格式是基于单元格值还是基于表达式。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Operator",
+          "type": "any",
+          "description": "<p>条件格式运算符。可为以下 XlFormatConditionOperator 常量之一：xlBetween、xlEqual、xlGreater、xlGreaterEqual、xlLess、xlLessEqual、xlNotBetween 或 xlNotEqual。如果 Type 为 xlExpression，则忽略 Operator 参数。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Formula1",
+          "type": "any",
+          "description": "<p>与条件格式相关联的值或表达式。可为常量值、字符串值、单元格引用或公式。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Formula2",
+          "type": "any",
+          "description": "<p>当 Operator 为 xlBetween 或 xlNotBetween 时，它是与条件格式第二部分相关联的值或表达式（否则忽略该参数）。可为常量值、字符串值、单元格引用或公式。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "Object"
+    },
+    {
+      "name": "AddAboveAverage",
+      "summary": "<p><strong>AboveAverage</strong> 对象用于查找单元格区域中高于或低于平均或标准偏差的值。例如，可在年度业绩评估中查找高于平均业绩的人员，或者在质量评估中查找低于两个标准偏差的加工原料。</p>\n",
+      "description": "<p>返回一个代表指定区域条件格式规则的新 <strong>AboveAverage</strong> 对象。返回一个<strong>AboveAverage</strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 C1:C10 上新增AboveAverage条件格式，并设置该条件格式的字体样式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> aboveAverage = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;C1:C10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddAboveAverage</span>()\n    aboveAverage.<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Bold</span> = <span class=\"hljs-literal\">true</span>\n    aboveAverage.<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Italic</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 A1:A10 上新增AboveAverage条件格式，并设置该条件格式的数字格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> aboveAverage = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddAboveAverage</span>()\n    aboveAverage.<span class=\"hljs-property\">NumberFormat</span> = <span class=\"hljs-string\">&quot;0.00%&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "Object"
+    },
+    {
+      "name": "AddColorScale",
+      "summary": "<p>色阶是直观的参照，可以帮助您了解数据的分布和变化。色阶可帮助您利用颜色的变化来标出给定区域中单元格值的相对差异。不同的颜色和颜色之间的渐变代表单元格值的差异。例如，在三色色阶中，您可以指定包含最高相对数据值的单元格为绿色，包含中间值的单元格为黄色，包含最低值的单元格为红色。</p>\n",
+      "description": "<p>返回一个代表条件格式规则的新 <strong>ColorScale</strong> 对象，该条件格式规则使用单元格颜色渐变来表示选定区域中所含单元格值的相对差异。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 C1:C10 新增色阶条件格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;C1:C10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddColorScale</span>(<span class=\"hljs-number\">3</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 A1:A10 新增色阶条件格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> colorScale = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddColorScale</span>(<span class=\"hljs-number\">2</span>)\n    colorScale.<span class=\"hljs-title class_\">ColorScaleCriteria</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">FormatColor</span>.<span class=\"hljs-property\">Color</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">0</span>)\n    colorScale.<span class=\"hljs-title class_\">ColorScaleCriteria</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">FormatColor</span>.<span class=\"hljs-property\">ColorIndex</span> = <span class=\"hljs-number\">7</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "ColorScaleType",
+          "type": "number（int4 精度）",
+          "description": "<p>色阶的类型。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Object"
+    },
+    {
+      "name": "AddDatabar",
+      "summary": "<p>数据条可帮助您查看某个单元格相对于其他单元格的值。数据条的长度代表单元格中的值。较长的数据条代表较高的值，较短的数据条代表较低的值。数据条在辨认较高和较低数值，特别是有大量数据存在的情况下很有帮助，比如，辨认假日销售报告中的最高玩具销量和最低玩具销量。</p>\n",
+      "description": "<p>返回一个代表指定区域数据条条件格式规则的 <strong>Databar</strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 A1:A10 上新增数据条条件格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddDatabar</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例选择一个单元格区域，将数据条条件格式规则添加到该区域，然后将数据条的填充色设置为纯色。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1:B10&quot;</span>).<span class=\"hljs-title class_\">Select</span>()\n    <span class=\"hljs-keyword\">let</span> databar = <span class=\"hljs-title class_\">Selection</span>.<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddDatabar</span>()\n    databar.<span class=\"hljs-property\">BarFillType</span> = xlDataBarFillSolid\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "Object"
+    },
+    {
+      "name": "AddIconSetCondition",
+      "summary": "<p>使用图标集为数据添加注释并将数据分为按阈值隔开的三到五类数据。每种图标均代表某一值范围。例如，在 3 箭头图标集中，红色向上箭头代表较高值，黄色侧箭头代表中间值，绿色向下箭头代表较低值。</p>\n",
+      "description": "<p>返回一个代表指定区域图标集条件格式规则的新 <strong>IconSetCondition</strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 A1:A10 上新增图标集条件格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddIconSetCondition</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 C1:C10 上新增图标集条件格式，并设置该条件格式使用的图标集。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> iconSetCondition = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;C1:C10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddIconSetCondition</span>()\n    iconSetCondition.<span class=\"hljs-property\">IconSet</span> = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">IconSets</span>(xl4Arrows)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "Object"
+    },
+    {
+      "name": "AddTop10",
+      "summary": "<p>使用 <strong>Top10</strong> 对象，可以基于指定的截止值查找单元格区域中的最高值和最低值。例如，可以查找区域报告中位居前五位的销售产品、客户调查中位居最后百分之十五的产品，或者部门人员分析中位居前 25 位的薪金。</p>\n",
+      "description": "<p>返回一个代表指定区域条件格式规则的 <strong>Top10</strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 F1:F10 新增Top10条件格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> top = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;F1:F10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddTop</span>10()\n    top.<span class=\"hljs-property\">TopBottom</span> = xlTop10Top\n    top.<span class=\"hljs-property\">Rank</span> = <span class=\"hljs-number\">5</span>\n    top.<span class=\"hljs-property\">Percent</span> = <span class=\"hljs-literal\">false</span>\n    top.<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Bold</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 A1:A10 新增Top10条件格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> top = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddTop</span>10()\n    top.<span class=\"hljs-property\">TopBottom</span> = xlTop10Bottom\n    top.<span class=\"hljs-property\">Rank</span> = <span class=\"hljs-number\">3</span>\n    top.<span class=\"hljs-property\">Percent</span> = <span class=\"hljs-literal\">false</span>\n    top.<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">ColorIndex</span> = <span class=\"hljs-number\">5</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "Object"
+    },
+    {
+      "name": "AddUniqueValues",
+      "summary": "<p>可以使用 <strong>UniqueValues</strong> 对象快速显现包含唯一值或重复值的单元格。</p>\n",
+      "description": "<p>返回一个代表指定区域条件格式规则的新 <strong>UniqueValues</strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 A1:A10 新增UniqueValues条件格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> uniqueValues = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddUniqueValues</span>()\n    uniqueValues.<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">Bold</span> = <span class=\"hljs-literal\">true</span>\n    uniqueValues.<span class=\"hljs-property\">Font</span>.<span class=\"hljs-property\">ColorIndex</span> = <span class=\"hljs-number\">3</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作表上单元格区域 B1:B10 上新增UniqueValues条件格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> uniqueValues = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1:B10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddUniqueValues</span>()\n    uniqueValues.<span class=\"hljs-property\">Interior</span>.<span class=\"hljs-property\">Color</span> = <span class=\"hljs-title function_\">RGB</span>(<span class=\"hljs-number\">0</span>, <span class=\"hljs-number\">255</span>, <span class=\"hljs-number\">255</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "Object"
+    },
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>删除对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除活动工作表上单元格区域 A1:A10 中所有条件格式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除活动工作表上单元格区域 A1:A10 中所有条件格式，并显示删除前后的条件格式的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> formatConditions = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`删除前条件格式的数量：<span class=\"hljs-subst\">${formatConditions.Count}</span>`</span>)\n    formatConditions.<span class=\"hljs-title class_\">Delete</span>()\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`删除后条件格式的数量：<span class=\"hljs-subst\">${formatConditions.Count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "void"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例为第一张工作表上 E1:E10 单元格区域的现有条件格式设置格式属性。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> formatCondition = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;E1:E10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-keyword\">let</span> boders = formatCondition.<span class=\"hljs-property\">Borders</span>\n    boders.<span class=\"hljs-property\">LineStyle</span> = xlContinuous\n    boders.<span class=\"hljs-property\">Weight</span> = xlThin\n    boders.<span class=\"hljs-property\">ColorIndex</span> = <span class=\"hljs-number\">6</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例选中工作表 Sheet1 上区域 B1:B10 中第二个条件格式应用到的单元格区域。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> formatCondition = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B1:B10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>)\n    formatCondition.<span class=\"hljs-property\">AppliesTo</span>.<span class=\"hljs-title class_\">Select</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "Object"
+    }
+  ]
+}

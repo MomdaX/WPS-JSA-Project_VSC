@@ -1,0 +1,41 @@
+{
+  "name": "XmlNamespaces",
+  "summary": "<p>使用 <strong>Item</strong> 方法访问特定的 <strong>XmlNamespace</strong> 对象。</p>\n<p>使用 <strong>Value</strong> 属性可返回一个 <strong>String</strong> 值，该字符串列出了已添加到工作簿的命名空间。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断如果第一张工作簿上XML命名空间的数量大于0，则显示该XML命名空间的值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> xmlNamespaces = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">XmlNamespaces</span>\n    <span class=\"hljs-keyword\">if</span> (xmlNamespaces.<span class=\"hljs-property\">Count</span> &gt; <span class=\"hljs-number\">0</span>) {\n        <span class=\"hljs-title function_\">alert</span>(xmlNamespaces.<span class=\"hljs-property\">Value</span>)\n    }\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上所有XML命名空间的前缀。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> xmlNamespaces = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">XmlNamespaces</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= xmlNamespaces.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-title function_\">alert</span>(xmlNamespaces.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Prefix</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>表示工作簿中 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/XmlNamespace/XmlNamespace .htm#XmlNamespace.XmlNamespace\">XmlNamespace</a></strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上XML命名空间的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">XmlNamespaces</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Value",
+      "summary": "<p>如果工作簿包含多个命名空间，则由 <strong>Value</strong> 属性返回的字符串中的空格分隔命名空间。</p>\n",
+      "description": "<p>返回一个 <strong>String</strong> 值，该值代表已添加到工作簿的 XML 命名空间。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作簿上XML命名空间的值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> xmlNamespaces = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">XmlNamespaces</span>\n    <span class=\"hljs-title function_\">alert</span>(xmlNamespaces.<span class=\"hljs-property\">Value</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将活动工作簿上XML命名空间的值赋值给A5单元格。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> xmlNamespaces = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">XmlNamespaces</span>\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A5&quot;</span>).<span class=\"hljs-property\">Value2</span> = xmlNamespaces.<span class=\"hljs-property\">Value</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "string",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上第一项XML命名空间的前缀。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> xmlNamespace = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">XmlNamespaces</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(xmlNamespace.<span class=\"hljs-property\">Prefix</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作簿上所有XML命名空间的统一资源标识符。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> xmlNamespaces = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">XmlNamespaces</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= xmlNamespaces.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-title function_\">alert</span>(xmlNamespaces.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Uri</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "XmlNamespace"
+    }
+  ]
+}

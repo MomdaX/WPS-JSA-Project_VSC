@@ -1,0 +1,71 @@
+{
+  "name": "ConditionValue",
+  "summary": "<p><strong>ConditionValue</strong> 对象是使用 <strong>Databar</strong> 对象的 <strong>MaxPoint</strong> 或 <strong>MinPoint</strong> 属性返回的。</p>\n<p>通过使用 <strong>Modify</strong> 方法，您可以从默认设置（最低值表示最短的数据条，最高值表示最长的数据条）中更改计算类型。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将创建一个数据范围，然后对该范围应用数据条。并使用ConditionValue对象将阈值的计算方式更改为百分点。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-comment\">//Create a range of data with a couple of extreme values</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;D1&quot;</span>).<span class=\"hljs-property\">Value2</span> = <span class=\"hljs-number\">1</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;D2&quot;</span>).<span class=\"hljs-property\">Value2</span> = <span class=\"hljs-number\">45</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;D3&quot;</span>).<span class=\"hljs-property\">Value2</span> = <span class=\"hljs-number\">50</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;D2:D3&quot;</span>).<span class=\"hljs-title class_\">AutoFill</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;D2:D8&quot;</span>))\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;D9&quot;</span>).<span class=\"hljs-property\">Value2</span> = <span class=\"hljs-number\">500</span>\n    <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;D1:D9&quot;</span>).<span class=\"hljs-title class_\">Select</span>()\n\n    <span class=\"hljs-comment\">//Create a data bar with default behavior</span>\n    <span class=\"hljs-keyword\">let</span> databar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Selection</span>.<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">AddDatabar</span>()\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;Because of the extreme values, middle data bars are very similar&quot;</span>)\n\n    <span class=\"hljs-comment\">//The MinPoint and MaxPoint properties return a ConditionValue object</span>\n    <span class=\"hljs-comment\">//which you can use to change threshold parameters</span>\n    databar.<span class=\"hljs-property\">MinPoint</span>.<span class=\"hljs-title class_\">Modify</span>(xlConditionValuePercentile, <span class=\"hljs-number\">5</span>)\n    databar.<span class=\"hljs-property\">MaxPoint</span>.<span class=\"hljs-title class_\">Modify</span>(xlConditionValuePercentile, <span class=\"hljs-number\">75</span>)\n\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断如果第一张工作表上区域 A1:A10 中第一个（数据条）条件格式的最短的数据条的类型为xlConditionValueNumber，则修改该数据条的计算方法。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> conditionValue = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">MinPoint</span>\n    <span class=\"hljs-keyword\">if</span> (conditionValue.<span class=\"hljs-property\">Type</span> == xlConditionValueNumber) {\n        conditionValue.<span class=\"hljs-title class_\">Modify</span>(xlConditionValuePercent, <span class=\"hljs-number\">30</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表数据条条件格式规则计算最短数据条和最长数据条的方法。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p>您可以将此属性与 OLE 自动化对象一起使用以返回该对象的应用程序。</p>\n",
+      "description": "<p>如果不与对象识别符一起使用，则此属性返回代表 ET 应用程序的 <strong>Application</strong>对象。如果与对象识别符一起使用，则此属性返回代表指定对象的创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Type",
+      "summary": "",
+      "description": "<p>返回 <strong>XlConditionValueTypes</strong> 枚举的常量之一，该常量指定如何确定数据栏、色标或图标集条件格式的阈值。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上区域 A1:A10 中第一个（数据条）条件格式的最短的数据条的类型是否为xlConditionValueAutomaticMin。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> conditionValue = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">MinPoint</span>\n    <span class=\"hljs-title function_\">alert</span>(conditionValue.<span class=\"hljs-property\">Type</span> == xlConditionValueAutomaticMin)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断第一张工作表上区域 A1:A10 中第二个（数据条）条件格式的最长的数据条的类型，并通知用户。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> conditionValue = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">MaxPoint</span>\n    <span class=\"hljs-keyword\">if</span> (conditionValue.<span class=\"hljs-property\">Type</span> == xlConditionValueHighestValue) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;最长数据条的类型为xlConditionValueHighestValue&quot;</span>)\n    } <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;最长数据条的类型不为xlConditionValueHighestValue&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "XlConditionValueTypes",
+      "readonly": true
+    },
+    {
+      "name": "Value",
+      "summary": "",
+      "description": "<p>针对数据条条件格式返回最短或最长的数据条的阈值。只读 <strong>Variant</strong> 类型。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一张工作表上区域 A1:A10 中第二个（数据条）条件格式的最长的数据条的阈值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> conditionValue = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">MaxPoint</span>\n    <span class=\"hljs-title function_\">alert</span>(conditionValue.<span class=\"hljs-property\">Value</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例判断如果活动工作表上区域 A1:A10 中第一个（数据条）条件格式的最短的数据条的类型为xlConditionValueNumber，则显示该数据条的阈值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> conditionValue = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">MinPoint</span>\n    <span class=\"hljs-keyword\">if</span> (conditionValue.<span class=\"hljs-property\">Type</span> == xlConditionValueNumber) {\n        <span class=\"hljs-title function_\">alert</span>(conditionValue.<span class=\"hljs-property\">Value</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "any",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Modify",
+      "summary": "<p>下表描述了每种计算类型的可接受阈值。</p>\n<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\"><table><thead><tr>\n<th>NewType 参数</th>\n<th>NewValue 参数</th>\n</tr>\n</thead><tbody><tr>\n<td>xlConditionLowestValue</td>\n<td>忽略参数</td>\n</tr>\n<tr>\n<td>xlConditionHighestValue</td>\n<td>忽略参数</td>\n</tr>\n<tr>\n<td>xlConditionValueNumber</td>\n<td>任何数字</td>\n</tr>\n<tr>\n<td>xlConditionValuePercent</td>\n<td>0 到 100 之间的任何数字</td>\n</tr>\n<tr>\n<td>xlConditionValuePercentile</td>\n<td>0 到 100 之间的任何数字</td>\n</tr>\n<tr>\n<td>xlConditionValueFormula</td>\n<td>一个返回单一数字的公式</td>\n</tr>\n</tbody></table></div>",
+      "description": "<p>修改数据条条件格式规则计算最长数据条或最短数据条的方法。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例修改活动工作表上区域 A1:A10 中第一个（数据条）条件格式的最长数据条的计算方法。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> conditionValue = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">MaxPoint</span>\n    conditionValue.<span class=\"hljs-title class_\">Modify</span>(xlConditionValuePercent, <span class=\"hljs-number\">200</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例修改第一张工作表上区域 A1:A10 中第二个（数据条）条件格式的最短的数据条的计算方法。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> conditionValue = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1:A10&quot;</span>).<span class=\"hljs-property\">FormatConditions</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">MinPoint</span>\n    conditionValue.<span class=\"hljs-title class_\">Modify</span>(xlConditionValueNumber, -<span class=\"hljs-number\">1</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "NewType",
+          "type": "XlConditionValueTypes",
+          "description": "<p>指定最短数据条或最长数据条的计算方法��最短数据条的默认值是 <strong>xlConditionLowestValue</strong>；最长数据条的默认值是 <strong>xlConditionHighestValue</strong>。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "NewValue",
+          "type": "any",
+          "description": "<p>分配给最短或最长数据条的值。取决于 NewType 参数，此值可以是数字，也可以是计算结果为数字的公式。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "void"
+    }
+  ]
+}

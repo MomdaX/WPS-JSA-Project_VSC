@@ -1,0 +1,33 @@
+{
+  "name": "OLEDBErrors",
+  "summary": "<p>每一个 <strong>OLEDBError</strong> 对象都代表最近的 OLE DB 查询返回的一个错误。如果指定的 OLE DB 查询运行时没有出现错误，则 <strong>OLEDBErrors</strong> 集合为空。集合中错误的索引次序与 OLE DB 提供程序生成它们时的次序相同。您不能给该集合添加成员。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.OLEDBErrors\">OLEDBErrors</a></strong> 属性可返回 <strong>OLEDBErrors</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示集合中每一个 OLEDB 错误的错误说明以及SqlState属性的值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> errors = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">OLEDBErrors</span>\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= errors.<span class=\"hljs-property\">Count</span>; i++) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`The following error occurred:<span class=\"hljs-subst\">${errors.Item(i).ErrorString}</span> : <span class=\"hljs-subst\">${errors.Item(i).SqlState}</span>`</span>)\n    }\n}</code></pre></td></tr></tbody></table></div><p>使用 <strong>OLEDBErrors</strong> (<em>index</em>)（其中 <em>index</em> 是 OLE DB 错误的索引号）可返回一个 <strong>OLEDBError</strong> 对象。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示最近的 OLE DB 查询返回的第一个错误的错误说明以及SqlState属性的值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> error = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">OLEDBErrors</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`The following error occurred:<span class=\"hljs-subst\">${error.ErrorString}</span> : <span class=\"hljs-subst\">${error.SqlState}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p><strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/OLEDBError/OLEDBError .htm#OLEDBError.OLEDBError\">OLEDBError</a></strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示 OLEDB 错误的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">OLEDBErrors</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示最近的 OLEDB 查询返回的第一个错误的错误说明以及SqlState属性的值。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> error = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">OLEDBErrors</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`The following error occurred:<span class=\"hljs-subst\">${error.ErrorString}</span> : <span class=\"hljs-subst\">${error.SqlState}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示第一个 OLEDB 错误的字符串。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`OLEDB 错误的字符串：<span class=\"hljs-subst\">${Application.OLEDBErrors.Item(<span class=\"hljs-number\">1</span>).ErrorString}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "number（int4 精度）",
+          "description": "<p>对象的索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>包含在集合中的一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/OLEDBError/OLEDBError .htm#OLEDBError.OLEDBError\">OLEDBError</a></strong> 对象。</p>\n"
+    }
+  ]
+}

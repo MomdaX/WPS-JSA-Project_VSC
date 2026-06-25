@@ -1,0 +1,84 @@
+{
+  "name": "CalculatedItems",
+  "summary": "<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为工作表 Sheet1 上数据透视表的第四个字段添加计算项。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtField = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-number\">4</span>)\n    pvtField.<span class=\"hljs-title class_\">CalculatedItems</span>().<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;公式1&quot;</span>, <span class=\"hljs-string\">&quot;=&#x27;21&#x27;+1&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 中第一张数据透视表的字段“name”的“公式2”计算项的位置。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtItem = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;name&quot;</span>).<span class=\"hljs-title class_\">CalculatedItems</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;公式2&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtItem.<span class=\"hljs-property\">Position</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>由 <strong>PivotItem</strong> 对象组成的集合，这些对象代表指定数据透视表中的所有计算项。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个 <strong>Application</strong> 对象，该对象表示 ET 应用程序。如果使用对象识别符，则该属性返回一个代表指定对象（可对一个 OLE 自动操作对象使用本属性来返回该对象的应用程序）创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表上第一张数据透视表的字段“name”中计算项的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtField = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;name&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtField.<span class=\"hljs-title class_\">CalculatedItems</span>().<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>新建计算项。返回 <strong>PivotItem</strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为工作表 Sheet1 上数据透视表的字段“id”添加计算项。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtField = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;id&quot;</span>)\n    pvtField.<span class=\"hljs-title class_\">CalculatedItems</span>().<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;示例数据&quot;</span>, <span class=\"hljs-string\">&quot;=&#x27;4&#x27;+10&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例为活动工作表上第一张数据透视表的字段“name”添加计算项。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtField = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;name&quot;</span>)\n    pvtField.<span class=\"hljs-title class_\">CalculatedItems</span>().<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;公式1&quot;</span>, <span class=\"hljs-string\">&quot;=&#x27;张三&#x27;*1.2&quot;</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Name",
+          "type": "string",
+          "description": "<p>项的名称。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Formula",
+          "type": "string",
+          "description": "<p>项的公式。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "UseStandardFormula",
+          "type": "any",
+          "description": "<p>为实现向上兼容，该值默认为 False。对于作为项名称的任何参数中所含的字符串来说，该值为 True，并将被解释为已按标准美国英语进行了格式设置，而非本地设置。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>一个代表新计算项的 <strong>PivotItem</strong> 对象。</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "<p>对象的文本名称就是 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotItem/PivotItem .htm#PivotItem.Name\">Name</a></strong> 和 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotItem/PivotItem .htm#PivotItem.Value\">Value</a></strong> 属性的值。</p>\n",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例隐藏第一张工作表上第一张数据透视表中字段“name”的第一个计算项。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtItem = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;name&quot;</span>).<span class=\"hljs-title class_\">CalculatedItems</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    pvtItem.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">false</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 上第一张数据透视表的字段“name”中名为“公式2”的计算项的公式。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtItem = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;name&quot;</span>).<span class=\"hljs-title class_\">CalculatedItems</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;公式2&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(pvtItem.<span class=\"hljs-property\">Formula</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>包含在集合中的一个 <strong>PivotItem</strong> 对象。</p>\n"
+    }
+  ]
+}

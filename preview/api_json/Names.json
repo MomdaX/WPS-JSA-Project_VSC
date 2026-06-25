@@ -1,0 +1,136 @@
+{
+  "name": "Names",
+  "summary": "<p>每一个 <strong>Name</strong> 对象都代表一个单元格区域的定义名称。名称可以是内置名称（如“Database”、“Print_Area”和“Auto_Open”）或自定义名称。</p>\n<p><em>RefersTo</em> 参数必须以 A1 样式表示法指定，包括必要时使用的美元符 ($)。例如，如果在 Sheet1 上选定了单元格 A10，并且通过将 <em>RefersTo</em> 参数“=Sheet1!A1:B1”而定义了一个名称，那么该新名称实际上指向单元格区域 A10:B10（因为指定的是相对引用）。若要指定绝对引用，请使用“=Sheet1!$A$1:$B$1”。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Names/Names .htm#Names.Names\">Names</a></strong> 属性可返回 <strong>Names</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例创建活动工作簿中所有名称及其引用的地址的列表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> names = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Names</span>\n    <span class=\"hljs-keyword\">let</span> sheet = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> r = <span class=\"hljs-number\">1</span>; r &lt;= names.<span class=\"hljs-property\">Count</span>; r++) {\n        sheet.<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(r, <span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Value2</span> = names.<span class=\"hljs-title class_\">Item</span>(r).<span class=\"hljs-property\">Name</span>\n        sheet.<span class=\"hljs-property\">Cells</span>.<span class=\"hljs-title class_\">Item</span>(r, <span class=\"hljs-number\">3</span>).<span class=\"hljs-property\">Value2</span> = names.<span class=\"hljs-title class_\">Item</span>(r).<span class=\"hljs-property\">RefersToRange</span>.<span class=\"hljs-title class_\">Address</span>()\n    }\n}</code></pre></td></tr></tbody></table></div><p>使用 **<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Names/Names .htm#Names.Add\">Add</a>**方法可创建一个名称并将它添加到集合。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例创建一个新名称，该名称引用名为 Sheet1 的工作表上的单元格 A1：C20。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Names</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;test3&quot;</span>, <span class=\"hljs-string\">&quot;=Sheet1!$A$1:$C$20&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><p>使用 <strong>Names</strong>(<em>index</em>)（其中 <em>index</em> 是名称索引号或定义名称）可返回一个 <strong>Name</strong> 对象。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例从活动工作簿中删除名称 mySortRange。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Names</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;mySortRange&quot;</span>).<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例使用命名区域作为公式来进行数据验证。此示例要求验证数据位于 Sheet2 上的区域 A2:A100 中。 此验证数据用于验证 D2：D10 范围内的 Sheet1 上输入的数据。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-comment\">// Initialize the Excel objects and delete any artifacts from the last time the macro was run.</span>\n    <span class=\"hljs-keyword\">let</span> sheet1 = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>)\n    <span class=\"hljs-keyword\">let</span> sheet2 = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet2&quot;</span>)\n    <span class=\"hljs-keyword\">try</span> {\n        <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Names</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Source&quot;</span>).<span class=\"hljs-title class_\">Delete</span>()\n    } <span class=\"hljs-keyword\">catch</span> (error) { }\n    <span class=\"hljs-comment\">// On the source worksheet, create a range in column A of up to 98 cells long, and name it &quot;Source&quot;.</span>\n    sheet2.<span class=\"hljs-title class_\">Range</span>(sheet2.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A2&quot;</span>), sheet2.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A100&quot;</span>).<span class=\"hljs-title class_\">End</span>(xlUp)).<span class=\"hljs-property\">Name</span> = <span class=\"hljs-string\">&quot;Source&quot;</span>\n\n    <span class=\"hljs-comment\">// On the target worksheet, create a range 8 cells long in column D.</span>\n    <span class=\"hljs-keyword\">let</span> rnTarget = sheet1.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;D2:D10&quot;</span>)\n\n    <span class=\"hljs-comment\">// Clear out any artifacts from previous macro runs, then set up the target range with the validation data.</span>\n    rnTarget.<span class=\"hljs-title class_\">ClearContents</span>()\n\n    <span class=\"hljs-keyword\">let</span> validation = rnTarget.<span class=\"hljs-property\">Validation</span>\n    validation.<span class=\"hljs-title class_\">Delete</span>()\n    validation.<span class=\"hljs-title class_\">Add</span>(xlValidateList, xlValidAlertStop, xlBetween, <span class=\"hljs-string\">&quot;=Source&quot;</span>)\n\n    <span class=\"hljs-comment\">// Set up the Error dialog with the appropriate title and message</span>\n    validation.<span class=\"hljs-property\">ErrorTitle</span> = <span class=\"hljs-string\">&quot;Value Error&quot;</span>\n    validation.<span class=\"hljs-property\">ErrorMessage</span> = <span class=\"hljs-string\">&quot;You can only choose from the list.&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>应用程序或工作簿中所有 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Name/Name .htm#Name.Name\">Name</a></strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>如果不使用对象识别符，则该属性返回一个代表 ET 应用程序的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Application/Application .htm#Application.Application\">Application</a></strong> 对象。如果使用对象识别符，则该属性返回一个代表指定对象的创建程序的 <strong>Application</strong> 对象（可对一个 OLE 自动化对象使用该属性来返回该对象的应用程序）。只读。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/* 本示例显示一条有关创建 myObject 的应用程序的消息。 */</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> myObject = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>\n    <span class=\"hljs-keyword\">if</span> (myObject.<span class=\"hljs-property\">Application</span>.<span class=\"hljs-property\">Value</span> == <span class=\"hljs-string\">&quot;Microsoft Excel&quot;</span>) {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is a Microsoft Excel Application object.&quot;</span>)\n    }\n    <span class=\"hljs-keyword\">else</span> {\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">&quot;This is not a Microsoft Excel Application object.&quot;</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Number</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿中名称的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Names</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>为单元格区域定义新名称。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例为活动工作簿中 Sheet1 上的区域 A1:D3 定义一个新名称，如果工作表 Sheet1 不存在，则返回 null。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Names</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;tempRange&quot;</span>, <span class=\"hljs-string\">&quot;=Sheet1!$A$1:$D$3&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在单元格C1中定义一个新名称并隐藏。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Names</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">&quot;test3&quot;</span>, <span class=\"hljs-string\">&quot;=Sheet1!$C$1&quot;</span>, <span class=\"hljs-literal\">false</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Name",
+          "type": "any",
+          "description": "<p>如果未指定 NameLocal 参数，则指定要用作名称的英文文本。名称不能包括空格，并且不能设置为单元格引用的格式。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "RefersTo",
+          "type": "any",
+          "description": "<p>如果未指定 RefersToLocal、RefersToR1C1 和 RefersToR1C1Local 参数，则说明名称引用的内容（使用 A1 格式表示法以英文表示）。 注释 如果引用不存在，则返回 null。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Visible",
+          "type": "any",
+          "description": "<p>True 指定将名称定义为可见。False 指定将名称定义为隐藏。已隐藏的名称不会在“定义名称”、“粘贴名称”或“转到”对话框中显示。默认值为 True。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "MacroType",
+          "type": "any",
+          "description": "<p>由以下值之一确定的宏类型： 1 - 用户定义函数（Function 过程） 2 - 宏（Sub 过程） 3 或省略 - 无（该名称不引用用户定义函数或宏）</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ShortcutKey",
+          "type": "any",
+          "description": "<p>指定宏的快捷键。必须是单个字母，例如“z”或“Z”。仅适用于命令宏。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "Category",
+          "type": "any",
+          "description": "<p>如果 MacroType 参数等于 1 或 2，则此参数为宏或函数的分类。该分类在“函数向导”中使用。可以用数字（从 1 开始）或名称（以英文指定）引用现有的分类。如果指定的分类不存在，ET 将创建新分类。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "NameLocal",
+          "type": "any",
+          "description": "<p>如果未指定 Name 参数，则指定要用作名称的本地化的文本。名称不能包括空格，并且不能设置为单元格引用的格式。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "RefersToLocal",
+          "type": "any",
+          "description": "<p>如果未指定 RefersTo、RefersToR1C1 和 RefersToR1C1Local 参数，则说明名称引用的内容（使用 A1 格式表示法以本地化的文本表示）。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "CategoryLocal",
+          "type": "any",
+          "description": "<p>如果未指定 Category 参数，则指定标识自定义函数分类的本地化的文本。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "RefersToR1C1",
+          "type": "any",
+          "description": "<p>如果未指定 RefersTo、RefersToLocal 和 RefersToR1C1Local 参数，则说明名称引用的内容（使用 R1C1 格式表示��以英文表示）。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "RefersToR1C1Local",
+          "type": "any",
+          "description": "<p>如果未指定 RefersTo、RefersToLocal 和 RefersToR1C1 参数，则说明名称引用的内容（使用 R1C1 格式表示法以本地化的文本表示）。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "Name"
+    },
+    {
+      "name": "Item",
+      "summary": "<p>必须只指定这三个参数中的一个。</p>\n",
+      "description": "<p>从 <strong>Names</strong> 集合返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Name/Name .htm#Name.Name\">Name</a></strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例将活动工作簿中的 mySortRange 名称删除。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Names</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;mySortRange&quot;</span>).<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示 Sheet1 中索引为1的名称是否可见。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-property\">Names</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Visible</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>要返回的定义名称的名称或编号。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "IndexLocal",
+          "type": "any",
+          "description": "<p>以用户语言表示的定义名称的名称。如果使用该参数，将不转换名称。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "RefersTo",
+          "type": "any",
+          "description": "<p>名称引用的内容。使用该参数以引用的内容标识名称。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "Name"
+    }
+  ]
+}

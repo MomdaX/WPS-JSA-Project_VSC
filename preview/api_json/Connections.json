@@ -1,0 +1,135 @@
+{
+  "name": "Connections",
+  "summary": "<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例从现有文件向工作簿添加连接。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Connections</span>.<span class=\"hljs-title class_\">AddFromFile</span>(<span class=\"hljs-string\">&quot;D:\\\\我的数据源\\\\示例数据 test1.odc&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示第一张工作簿上第一个 ODBC 连接的 CommandType 属性是否为 xlCmdSql。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> wbConnection = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Connections</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(wbConnection.<span class=\"hljs-property\">ODBCConnection</span>.<span class=\"hljs-property\">CommandType</span> == xlCmdSql)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>指定工作簿的 <strong>WorkbookConnection</strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p>您可以将此属性与 OLE 自动化对象一起使用以返回该对象的应用程序。</p>\n",
+      "description": "<p>如果不与对象识别符一起使用，则此属性返回代表 ET 应用程序的 <strong>Application</strong>对象。如果与对象识别符一起使用，则此属性返回代表指定对象的创建者的 <strong>Application</strong> 对象。只读。</p>\n",
+      "examples": "",
+      "type": "Application",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回集合中对象的数目。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿的连接的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`工作簿连接的数量：<span class=\"hljs-subst\">${ActiveWorkbook.Connections.Count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果该对象是在 ET 中创建的，则此属性返回字符串 XCEL，它等同于十六进制的数字 5843454C。<strong>Creator</strong> 属性是为 Macintosh 上的 ET 设计的，在 Macintosh 上，每个应用程序都具有一个四字符的创建者代码。例如，ET 的创建者代码为 XCEL。</p>\n",
+      "description": "<p>返回一个 32 位整数，该整数指示在其中创建此对象的应用程序。只读 <strong>Long</strong> 类型。</p>\n",
+      "examples": "",
+      "type": "XlCreator",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回指定对象的父对象。只读。</p>\n",
+      "examples": "",
+      "type": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add2",
+      "summary": "",
+      "description": "<p>添加到工作簿的新连接。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作簿上创建新的工作簿连接，并显示该工作簿上连接的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> connection = <span class=\"hljs-string\">&quot;ODBC;DSN=MS Access Database;DBQ=D:\\\\示例\\\\test1.accdb;DefaultDir=D:\\\\示例\\\\;DriverId=25;FIL=MS Access;MaxBufferSize=2048;PageTimeout=5;&quot;</span>\n    <span class=\"hljs-keyword\">let</span> sql = <span class=\"hljs-string\">&quot;SELECT * FROM `student`&quot;</span>\n    <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Connections</span>.<span class=\"hljs-title class_\">Add</span>2(<span class=\"hljs-string\">&quot;connection_1&quot;</span>, <span class=\"hljs-string\">&quot;example&quot;</span>, connection, sql, xlCmdSql)\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Connections</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作簿上创建新的工作簿连接，并基于该连接创建新的数据透视缓存。然后基于该数据透视缓存创建新的数据透视表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> connection = <span class=\"hljs-string\">&quot;OLEDB;Provider=Microsoft.ACE.OLEDB.12.0;User ID=Admin;Data Source=D:\\\\示例\\\\example1.xlsx;Mode=Share Deny Write;Extended Properties=&#x27;HDR=YES&#x27;;Jet OLEDB:Engine Type=37;Jet OLEDB:Database Locking Mode=0;Jet OLEDB:Global Partial Bulk Ops=2;Jet OLEDB:Global Bulk Transactions=1;Jet OLEDB:Create System Database=False;Jet OLEDB:Encrypt Database=False;Jet OLEDB:Don&#x27;t Copy Locale on Compact=False;Jet OLEDB:Compact Without Replica Repair=False;Jet OLEDB:SFP=False;Jet OLEDB:Support Complex Data=False;Jet OLEDB:Bypass UserInfo Validation=False;Jet OLEDB:Limited DB Caching=False;Jet OLEDB:Bypass ChoiceField Validation=False&quot;</span>\n    <span class=\"hljs-keyword\">let</span> workbookcn = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Connections</span>.<span class=\"hljs-title class_\">Add</span>2(<span class=\"hljs-string\">&quot;connection_2&quot;</span>, <span class=\"hljs-string\">&quot;example&quot;</span>, connection, <span class=\"hljs-string\">&quot;SELECT * FROM `Sheet1$`&quot;</span>, xlCmdSql)\n    <span class=\"hljs-keyword\">let</span> pvtCache = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">PivotCaches</span>().<span class=\"hljs-title class_\">Create</span>(xlExternal, workbookcn, xlPivotTableVersion15)\n    pvtCache.<span class=\"hljs-title class_\">CreatePivotTable</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>), <span class=\"hljs-string\">&quot;PivotTable1&quot;</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Name",
+          "type": "string",
+          "description": "<p>连接的名称。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Description",
+          "type": "string",
+          "description": "<p>连接的简要说明。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "ConnectionString",
+          "type": "any",
+          "description": "<p>连接字符串。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "CommandText",
+          "type": "any",
+          "description": "<p>用于创建连接的命令文本。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "lCmdtype",
+          "type": "any",
+          "description": "<p>命令类型。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "CreateModelConnection",
+          "type": "any",
+          "description": "<p>指定是否创建到 PowerPivot 模型的连接。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ImportRelationships",
+          "type": "any",
+          "description": "<p>指定是否导入任何现有关系。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>WorkbookConnection</p>\n"
+    },
+    {
+      "name": "AddFromFile",
+      "summary": "",
+      "description": "<p>添加从指定文件的连接。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在第一张工作簿上添加指定文件的连接，并显示连接的类型是否为 xlConnectionTypeOLEDB。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> workbookcn = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Connections</span>.<span class=\"hljs-title class_\">AddFromFile</span>(<span class=\"hljs-string\">&quot;D:\\\\示例\\\\test1.accdb&quot;</span>, <span class=\"hljs-literal\">false</span>, <span class=\"hljs-literal\">true</span>)\n    <span class=\"hljs-title function_\">alert</span>(workbookcn.<span class=\"hljs-property\">Type</span> == xlConnectionTypeOLEDB)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例在活动工作簿上添加从指定文件的连接，并基于该连接创建数据透视缓存，然后基于该数据透视缓存新建一个数据透视表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> workbookcn = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Connections</span>.<span class=\"hljs-title class_\">AddFromFile</span>(<span class=\"hljs-string\">&quot;D:\\\\示例\\\\test1.accdb&quot;</span>, <span class=\"hljs-literal\">true</span>, <span class=\"hljs-literal\">true</span>)\n    <span class=\"hljs-keyword\">let</span> pvtCache = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">PivotCaches</span>().<span class=\"hljs-title class_\">Create</span>(xlExternal, workbookcn, xlPivotTableVersion15)\n    pvtCache.<span class=\"hljs-title class_\">CreatePivotTable</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>), <span class=\"hljs-string\">&quot;PivotTable1&quot;</span>)\n    <span class=\"hljs-keyword\">let</span> pvtTable = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-string\">&quot;PivotTable1&quot;</span>)\n    pvtTable.<span class=\"hljs-property\">SmallGrid</span> = <span class=\"hljs-literal\">false</span>\n    pvtTable.<span class=\"hljs-property\">PivotCache</span>.<span class=\"hljs-property\">RefreshPeriod</span> = <span class=\"hljs-number\">0</span>\n    <span class=\"hljs-keyword\">let</span> pvtField1 = pvtTable.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;name&quot;</span>)\n    pvtField1.<span class=\"hljs-property\">Orientation</span> = xlRowField\n    pvtField1.<span class=\"hljs-property\">Position</span> = <span class=\"hljs-number\">1</span>\n    <span class=\"hljs-keyword\">let</span> pvtField2 = pvtTable.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;score&quot;</span>)\n    pvtField2.<span class=\"hljs-property\">Orientation</span> = xlDataField\n    pvtField2.<span class=\"hljs-property\">Position</span> = <span class=\"hljs-number\">1</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Filename",
+          "type": "string",
+          "description": "<p>文件的名称。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "CreateModelConnection",
+          "type": "any",
+          "description": "<p>指定是否创建与模型的连接。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ImportRelationships",
+          "type": "any",
+          "description": "<p>指定是否导入连接关系。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>WorkbookConnection</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>此方法返回一个连接项。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*此示例显示第一张工作簿上第一个连接的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> wbConnection = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Connections</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-title function_\">alert</span>(wbConnection.<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例设置活动工作簿上连接“test1”的简要说明。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> wbConnection = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">Connections</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;test1&quot;</span>)\n    wbConnection.<span class=\"hljs-property\">Description</span> = <span class=\"hljs-string\">&quot;example1&quot;</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>项的索引值。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>WorkbookConnection</p>\n"
+    }
+  ]
+}

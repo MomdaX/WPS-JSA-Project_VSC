@@ -1,0 +1,72 @@
+{
+  "name": "PivotTables",
+  "summary": "<p>因为对数据透视表进行编程可能会很复杂，所以，最方便的做法是将数据透视表操作录制到宏中，然后再修订所录制的宏代码。</p>\n<p>使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Worksheet/Worksheet .htm#Worksheet.PivotTables\">PivotTables</a></strong> 方法可返回 <strong>PivotTables</strong> 集合。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 中数据透视表的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>().<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例基于工作表 Sheet1 中第一张数据透视表的缓存在新工作表上创建新数据透视表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Add</span>().<span class=\"hljs-title class_\">Activate</span>()\n    <span class=\"hljs-keyword\">let</span> pvtCache = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotCache</span>()\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>().<span class=\"hljs-title class_\">Add</span>(pvtCache, <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A1&quot;</span>), <span class=\"hljs-string\">&quot;student&quot;</span>)\n}</code></pre></td></tr></tbody></table></div><p>使用 <strong>PivotTables</strong>(<em>index</em>)（其中 <em>index</em> 是数据透视表索引号或名称）可返回一个 <strong>PivotTable</strong> 对象。</p>\n<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表 Sheet1 中第一个数据透视表上的 score 字段设置为行字段。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;score&quot;</span>).<span class=\"hljs-property\">Orientation</span> = xlRowField\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>指定的工作表中所有 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotTable/PivotTable .htm#PivotTable.PivotTable\">PivotTable</a></strong> 对象的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回一个 <strong>Long</strong> 值，它代表集合中对象的数量。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示工作表 Sheet1 中数据透视表的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>().<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>添加新的数据透视表。返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotTable/PivotTable .htm#PivotTable.PivotTable\">PivotTable</a></strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作簿创建一个基于 OLAP 提供程序的新数据透视表缓存，然后基于该缓存在 I1 单元格创建一个新的数据透视表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-comment\">// Create the PivotTable cache.</span>\n    <span class=\"hljs-keyword\">let</span> pvtCache = <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-title class_\">PivotCaches</span>().<span class=\"hljs-title class_\">Create</span>(xlExternal, <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Connections</span>.<span class=\"hljs-title class_\">AddFromFile</span>(<span class=\"hljs-string\">&quot;D:\\\\test1.accdb&quot;</span>, <span class=\"hljs-literal\">true</span>, <span class=\"hljs-literal\">true</span>), xlPivotTableVersion15)\n    <span class=\"hljs-keyword\">let</span> pvtTable = <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>().<span class=\"hljs-title class_\">Add</span>(pvtCache, <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>), <span class=\"hljs-string\">&quot;Performance&quot;</span>)\n    pvtTable.<span class=\"hljs-property\">SmallGrid</span> = <span class=\"hljs-literal\">false</span>\n    <span class=\"hljs-keyword\">let</span> pvtField1 = pvtTable.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;age&quot;</span>)\n    pvtField1.<span class=\"hljs-property\">Orientation</span> = xlRowField\n    pvtField1.<span class=\"hljs-property\">Position</span> = <span class=\"hljs-number\">1</span>\n    <span class=\"hljs-keyword\">let</span> pvtField2 = pvtTable.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;date&quot;</span>)\n    pvtField2.<span class=\"hljs-property\">Orientation</span> = xlColumnField\n    pvtField2.<span class=\"hljs-property\">Position</span> = <span class=\"hljs-number\">1</span>\n    <span class=\"hljs-keyword\">let</span> pvtField3 = pvtTable.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;name&quot;</span>)\n    pvtField3.<span class=\"hljs-property\">Orientation</span> = xlDataField\n    pvtField3.<span class=\"hljs-property\">Position</span> = <span class=\"hljs-number\">1</span>\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例基于工作表 Sheet1 中第一张数据透视表的缓存在新工作表上创建新数据透视表。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Add</span>().<span class=\"hljs-title class_\">Activate</span>()\n    <span class=\"hljs-keyword\">let</span> pvtCache = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotCache</span>()\n    <span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>().<span class=\"hljs-title class_\">Add</span>(pvtCache, <span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;A10&quot;</span>), <span class=\"hljs-string\">&quot;pivot1&quot;</span>, <span class=\"hljs-literal\">false</span>, xlPivotTableVersion15)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "PivotCache",
+          "type": "PivotCache",
+          "description": "<p>表示一个数据透视表缓存，而新的数据透视表将基于此缓存。缓存用于为报表提供数据。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "TableDestination",
+          "type": "any",
+          "description": "<p>数据透视表目标区域（工作表中用于放置所生成的报表的区域）左上角的单元格。必须在工作表中（此工作表包含由 <em>expression</em> 指定的 <strong>PivotTables</strong> 对象）指定一个目标区域。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "TableName",
+          "type": "any",
+          "description": "<p>新的数据透视表的名称。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "ReadData",
+          "type": "any",
+          "description": "<p>如果为 <strong>True</strong>，则创建数据透视表缓存以包含外部数据库中的所有记录；此时缓存可能会很大。如果为 <strong>False</strong>，则允许在实际读取数据之前将某些字段设置为基于服务器的页字段。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "DefaultVersion",
+          "type": "any",
+          "description": "<p>以前创建数据透视表所使用的 ET 版本。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>一个代表新数据透视表的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotTable/PivotTable .htm#PivotTable.PivotTable\">PivotTable</a></strong> 对象。</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "<p>对象的文本名称就是 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotTable/PivotTable .htm#PivotTable.Name\">Name</a></strong> 和 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotTable/PivotTable .htm#PivotTable.Value\">Value</a></strong> 属性的值。</p>\n",
+      "description": "<p>从集合中返回一个对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例将工作表 Sheet1 中第一个数据透视表上的 age 字段设置为行字段。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;sheet1&quot;</span>).<span class=\"hljs-title class_\">PivotTables</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;age&quot;</span>).<span class=\"hljs-property\">Orientation</span> = xlRowField\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作表中第一张数据透视表值字段的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">PivotTables</span>().<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-title class_\">DataFields</span>().<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>包含在集合中的一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotTable/PivotTable .htm#PivotTable.PivotTable\">PivotTable</a></strong> 对象。</p>\n"
+    }
+  ]
+}

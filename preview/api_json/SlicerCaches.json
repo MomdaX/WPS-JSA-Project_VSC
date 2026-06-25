@@ -1,0 +1,66 @@
+{
+  "name": "SlicerCaches",
+  "summary": "<p>使用 <strong>SlicerCaches</strong> 集合的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCaches/SlicerCaches .htm#SlicerCaches.Item\">Item</a></strong> 属性可返回与指定的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/Workbook/Workbook .htm#Workbook.Workbook\">Workbook</a></strong> 对象关联的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCache/SlicerCache .htm#SlicerCache.SlicerCache\">SlicerCache</a></strong> 对象。可以使用 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCache/SlicerCache .htm#SlicerCache.Index\">Index</a></strong> 属性的值，或者指定对象的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCache/SlicerCache .htm#SlicerCache.Name\">Name</a></strong> 属性来检索 <strong>SlicerCache</strong> 对象。</p>\n<p><b class=\"mainheaders\">示例</b></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上名为“切片器_id”的切片器缓存所连接到的数据源的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">SlicerCaches</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;切片器_id&quot;</span>).<span class=\"hljs-property\">SourceName</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作簿上添加新的切片器缓存，并显示该切片器缓存的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> sliCache =  <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">SlicerCaches</span>.<span class=\"hljs-title class_\">Add</span>2(<span class=\"hljs-title class_\">ActiveSheet</span>.<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>, <span class=\"hljs-string\">&quot;date&quot;</span>, <span class=\"hljs-string\">&quot;Slicer_date&quot;</span>, xlSlicer)\n    <span class=\"hljs-title function_\">alert</span>(sliCache.<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>表示与指定工作簿关联的切片器缓存的集合。</p>\n",
+  "category": "et",
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>返回集合中对象的数目。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例显示活动工作簿上切片器缓存的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-string\">`切片器缓存的数量：<span class=\"hljs-subst\">${ActiveWorkbook.SlicerCaches.Count}</span>`</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "type": "number（int4 精度）",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add2",
+      "summary": "",
+      "description": "<p>将新的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCache/SlicerCache .htm#SlicerCache.SlicerCache\">SlicerCache</a></strong> 对象添加到集合。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例基于工作表 Sheet1 上数据透视表在第一张工作簿上添加新的切片器缓存，并显示该切片器缓存的名称。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtTable = <span class=\"hljs-title class_\">Worksheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;Sheet1&quot;</span>).<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;I1&quot;</span>).<span class=\"hljs-property\">PivotTable</span>\n    <span class=\"hljs-keyword\">let</span> sliCache = <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">SlicerCaches</span>.<span class=\"hljs-title class_\">Add</span>2(pvtTable, <span class=\"hljs-string\">&quot;name&quot;</span>, <span class=\"hljs-string\">&quot;name1&quot;</span>)\n    <span class=\"hljs-title function_\">alert</span>(sliCache.<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例在活动工作簿上添加新的切片器缓存，并显示该工作簿上切片器缓存的数量。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-keyword\">let</span> pvtTable = <span class=\"hljs-title class_\">ActiveCell</span>.<span class=\"hljs-property\">PivotCell</span>.<span class=\"hljs-property\">PivotTable</span>\n    <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">SlicerCaches</span>.<span class=\"hljs-title class_\">Add</span>2(pvtTable, pvtTable.<span class=\"hljs-title class_\">PivotFields</span>(<span class=\"hljs-string\">&quot;id&quot;</span>), <span class=\"hljs-string\">&quot;Slicer_id&quot;</span>, xlSlicer)\n    <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">SlicerCaches</span>.<span class=\"hljs-property\">Count</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Source",
+          "type": "any",
+          "description": "<p>新 <strong>SlicerCache</strong> 对象将基于的数据源。 传给 <em>Source</em> 参数的自变量可以是 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/WorkbookConnection/WorkbookConnection .htm#WorkbookConnection.WorkbookConnection\">WorkbookConnection</a></strong> 对象、<strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotTable/PivotTable .htm#PivotTable.PivotTable\">PivotTable</a></strong> 对象或字符串。如果传递 <strong>数据透视表</strong> 对象，则关联的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotCache/PivotCache .htm#PivotCache.PivotCache\">PivotCache</a></strong> 对象将用作数据源。 如果传递了字符串，则会将其解释为 <strong>WorkbookConnection</strong> 对象的名称，如果不存在此类 <strong>WorkbookConnection</strong> 对象，则会生成运行时错误。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "SourceField",
+          "type": "any",
+          "description": "<p>数据源中要作为筛选依据的字段的名称。 对于非 OLAP 数据源，请使用切片器所基于的 <strong>PivotCache</strong> 对象的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotField/PivotField .htm#PivotField.PivotField\">PivotField</a></strong> 对象，或使用该对象的唯一名称 (<strong>PivotField</strong> 的值。**<a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotField/PivotField .htm#PivotField.Name\">Name</a>**属性) 。对于 OLAP 数据源，应使用 <strong>SlicerCache</strong> 所基于的层次结构的 MDX 唯一名称。 还可以指定 OLAP 层次结构的一个级别，ET 将使用对应的层次结构。</p>\n",
+          "optional": false
+        },
+        {
+          "name": "Name",
+          "type": "any",
+          "description": "<p>ET 用于引用切片器缓存的名称 (<strong>SlicerCache</strong> 的值。<strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCache/SlicerCache .htm#SlicerCache.Name\">Name</a></strong> 属性) 。 如果省略此参数，ET 将生成一个名称。默认情况下，ET 将“Slicer_”与 <strong>PivotField</strong> 的值连接在一起。具有非 OLAP 数据源或 <strong>CubeField</strong> 值的切片器的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/CubeField/CubeField .htm#CubeField.Caption\">Caption</a></strong> 属性。具有 OLAP 数据源的切片器的 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/PivotField/PivotField .htm#PivotField.Caption\">Caption</a></strong> 属性 (将任何空格替换为“_”) 。）如果需要使该名称在工作簿命名空间中唯一，ET 会将一个整数添加到生成的名称的末尾。 如果指定工作簿命名空间中已经存在的名称，<strong>Add2</strong> 方法将失败。</p>\n",
+          "optional": true
+        },
+        {
+          "name": "SlicerCacheType",
+          "type": "any",
+          "description": "<p>指定切片器或切片器缓存的类型。</p>\n",
+          "optional": true
+        }
+      ],
+      "returns": "<p>SlicerCache</p>\n"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>从集合中返回一个 <strong><a href=\"./apiObjectTemplate.htm?page=topics/WPS 基础接口/表格 API 参考/SlicerCache/SlicerCache .htm#SlicerCache.SlicerCache\">SlicerCache</a></strong> 对象。</p>\n",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例清除第一张工作簿中名为“切片器_id”切片器缓存的筛选器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">Workbooks</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">SlicerCaches</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;切片器_id&quot;</span>).<span class=\"hljs-title class_\">ClearManualFilter</span>()\n}</code></pre></td></tr></tbody></table></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*本示例删除活动工作簿上名为“切片器_name”的切片器缓存，以及与该切片器缓存关联的“name”切片器。*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-title class_\">ActiveWorkbook</span>.<span class=\"hljs-property\">SlicerCaches</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">&quot;切片器_name&quot;</span>).<span class=\"hljs-title class_\">Delete</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "any",
+          "description": "<p>对象的名称或索引号。</p>\n",
+          "optional": false
+        }
+      ],
+      "returns": "<p>SlicerCache</p>\n"
+    }
+  ]
+}
