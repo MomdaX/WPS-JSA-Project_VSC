@@ -10,19 +10,19 @@
         <p><b>一、 JSAPI接口的差异</b></p>
         <p><b>1. 方法的差异</b></p>
         <p>(1) vb的方法可以不加括号，但jsapi中所有的方法都需要加括号，如果方法不加括号会被js语法判定为属性。</p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">Application.Workbooks(1).Close</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">Application.Workbooks(1).Close</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">Application.Workbooks.Item(1).Close()</code></pre></td></tr></tbody></table></div>
 
         <p>(2) vb的方法支持给部分参数赋值。但js对缺省的参数需要用undefined占位补齐，如下面例子中为Find方法的第一和第三个参数赋值，在js中Find方法第二个参数需要用undefined占位补齐</p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">Range("A1:N29").Find("香港特别", LookIn:=xlValues).Select</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">Range("A1:N29").Find("香港特别", LookIn:=xlValues).Select</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">Application.ActiveSheet.Range("A1:N29").Find("我", undefined, xlValues).Select();</code></pre></td></tr></tbody></table></div>
 
         <p>(3) vb可通过数组方式取集合中的对象，jsapi必须通过Item方法获取集合中的对象，其中要注意二维数组取值时需要将value要改成Value2</p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">Application.Workbooks(1).Close</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">Application.Workbooks(1).Close</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">Application.Workbooks.Item(1).Close()</code></pre></td></tr></tbody></table></div>
 
         <p>//以下是二维数组的取值方法</p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">cells(2,3).value</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">cells(2,3).value</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">Application.Cells.Item(2,3).Value2</code></pre></td></tr></tbody></table></div>
 
         <p><b>2. 属性的差异</b></p>
@@ -30,12 +30,12 @@
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">Application.ActiveDocument.Name111  // 不报错</code></pre></td></tr></tbody></table></div>
 
         <p>(2) vb支持thisdocument对象，jsapi暂时不支持该对象，如果遇到thisdocument对象，可以用ActiveDocument代替</p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">MsgBox (Application.ThisDocument.Name)</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">MsgBox (Application.ThisDocument.Name)</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">MsgBox (Application.ActiveDocument.Name)</code></pre></td></tr></tbody></table></div>
 
         <p><b>3. 事件的差异</b></p>
         <p>jside的导航栏展示和自动补全的事件比较少，但js支持的事件基本和vb一致，下面给出一个vb事件转换为jside中事件的例子</p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">Private Sub Workbook_SheetSelectionChange(ByVal Target As Range)
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">Private Sub Workbook_SheetSelectionChange(ByVal Target As Range)
 Dim i As Integer
 IF Target.Column > 6 And Target.Column > 37 And Target.Row > 6 And Target.Row Mod 2 = 1 And Cells(Target.Row - 1, 5).Value <> "" Then
     With Target.Validation
@@ -56,7 +56,7 @@ End Sub</code></pre></td></tr></tbody></table></div>
 
         <p><b>二、函数定义</b></p>
         <p><b>1. vb用sub ... end sub关键字定义函数，js用function{}关键字定义函数</b></p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">Public(Private) Sub AddTemplate()
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">Public(Private) Sub AddTemplate()
     MsgBox "d"
 End Sub</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">function AddTemplate() {
@@ -65,16 +65,16 @@ End Sub</code></pre></td></tr></tbody></table></div>
 
         <p><b>三、数据类型</b></p>
         <p><b>1. vb在数据定义时需要指明类型，但是js是动态类型，赋值后才有类型,js包括的基本类型：字符串（String）、数字(Number)、布尔(Boolean)、对空（Null）、未定义（Undefined）、Symbol，声明这些类型都用关键字var</b></p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">Dim i As Integer</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">Dim i As Integer</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">var i</code></pre></td></tr></tbody></table></div>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">Dim j As String</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">Dim j As String</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">var j</code></pre></td></tr></tbody></table></div>
 
         <p><b>2. 基本类型对比</b></p>
         <div><table border="0" width="60%" cellpadding="0" cellspacing="0"><tbody><tr><th>js类型</th><th>vb类型</th></tr><tr><td>boolean</td><td>Boolean</td></tr><tr><td>number</td><td>Integer, Long, LongLong, Single, Double</td></tr><tr><td>string</td><td>String</td></tr></tbody></table></div>
 
         <p><b>3. vb的bool类型首字母大写，js中都是小写</b></p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">True, False</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">True, False</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">true, false</code></pre></td></tr></tbody></table></div>
 
         <p><b>4. 字符串</b></p>
@@ -87,28 +87,28 @@ End Sub</code></pre></td></tr></tbody></table></div>
 
         <p><b>四、运算符</b></p>
         <p><b>1. 算术运算符的差异，如vb中的mod关键字应改为%</b></p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">Target.Row Mod 2 = 1</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">Target.Row Mod 2 = 1</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">(Target.Row) % 2 === 1</code></pre></td></tr></tbody></table></div>
 
         <p><b>2. "+"可以用来拼接字符串</b></p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">AddIns.Add FileName:="C:\Program Files\Microsoft Office" & _
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">AddIns.Add FileName:="C:\Program Files\Microsoft Office" & _
     "\Templates\Letters Faxes\MyFax.dot", Install:=True</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">AddIns.Add("C:/Program Files/Microsoft Office" +
     "/Templates/Letters Faxes/MyFax.dot", true)</code></pre></td></tr></tbody></table></div>
 
         <p><b>3. 逻辑运算符</b></p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">1. 逻辑与（AND） 2. 逻辑或（OR） 3. 逻辑非（&lt;&gt;）</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">1. 逻辑与（AND） 2. 逻辑或（OR） 3. 逻辑非（&lt;&gt;）</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">1. 逻辑与（&&） 2. 逻辑或（||） 3. 逻辑非（!）</code></pre></td></tr></tbody></table></div>
 
         <p>注意js和vb判断空的逻辑不一样，vb内部会智能一点，遇到判断空的语句，尽量用"!"</p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">if Cells(1,2).value == ""  '空</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">if Cells(1,2).value == ""  '空</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">if (!Cells.Item(1,2).Value2)  // 空</code></pre></td></tr></tbody></table></div>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">if Cells(1,2).value <> ""  '非空</code></pre></td></tr></tbody></table></div>
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">if Cells(1,2).value <> ""  '非空</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">if (Cells.Item(1,2).Value2)  // 非空</code></pre></td></tr></tbody></table></div>
 
         <p><b>五、枚举</b></p>
         <p>vb和js枚举的使用上存在的差异如下，在vb中wdAlignParagraphLeft和WdParagraphAlignment.wdAlignParagraphLeft语法都正确，但在js中只有wdAlignParagraphLeft是正确用法</p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">' vb用以上两种方式的枚举都可以正常使用
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">' vb用以上两种方式的枚举都可以正常使用
 Application.Selection.ParagraphFormat.Alignment = wdAlignParagraphLeft
 Application.Selection.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft</code></pre></td></tr></tbody></table></div>
         <div id="vstable"><table><tbody><tr><th>js<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-js">// js只支持这一种
@@ -116,7 +116,7 @@ Application.Selection.ParagraphFormat.Alignment = wdAlignParagraphLeft</code></p
 
         <p><b>六、With关键字</b></p>
         <p>vb有with关键字，js没有该关键字，转换时可以将with后面的对象赋值给一个变量，例子如下</p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">With Selection.Range.PageSetup.TextColumns
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">With Selection.Range.PageSetup.TextColumns
     .SetCount NumColumns:=2
     .EvenlySpaced = 0
 End With</code></pre></td></tr></tbody></table></div>
@@ -127,7 +127,7 @@ columns.EvenlySpaced = 0
 
         <p><b>七、条件语句</b></p>
         <p>VB中的常用条件语句{IF 条件 Then 表达式 Endif}，在JS中应该转换为 if(条件) {表达式}</p>
-        <div id="vstable"><table><tbody><tr><th>vb<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-vb">IF Target.Column > 6 And Target.Column > 37 And Target.Row > 6 And Target.Row Mod 2 = 1 And Cells(Target.Row - 1, 5).Value <> "" Then
+        <div id="vstable"><table><tbody><tr><th>vba<span class="copy" onclick="copyCode(this)">复制</span></th></tr><tr><td><pre><code class="language-visual-basic">IF Target.Column > 6 And Target.Column > 37 And Target.Row > 6 And Target.Row Mod 2 = 1 And Cells(Target.Row - 1, 5).Value <> "" Then
     With Target.Validation
         .Delete
         .Add

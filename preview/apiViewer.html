@@ -7,12 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WPS API 文档查看器</title>
   <link rel="stylesheet" href="prism/prism.css">
+  <link rel="stylesheet" href="lib/clock/flipclock.css">
+  <link rel="stylesheet" href="lib/styles/sidebar.css">
+  <link rel="stylesheet" href="lib/styles/article.css">
+  <link rel="stylesheet" href="lib/styles/detail.css">
+  <link rel="stylesheet" href="lib/styles/components.css">
   <script src="lib/clock/jquery.min.js"></script>
   <script src="lib/clock/flipclock.min.js"></script>
   <script src="prism/prism.js"></script>
   <script src="lib/lodash.min.js"></script>
   <script src="lib/filldata.js"></script>
   <script src="lib/theme.js"></script>
+  <script src="lib/codeblock-manager.js"></script>
+  <script src="lib/clock/flipclock.js"></script>
+  <script src="lib/modules/wallpaper.js"></script>
+  <script src="lib/modules/navigation.js"></script>
+  <script src="lib/modules/search.js"></script>
+  <script src="lib/modules/detail.js"></script>
+  <script src="lib/fireworks/sidebar-fireworks.js"></script>
   <style>
     /* ===== CSS 变量：科技蓝主题（默认） ===== */
     :root {
@@ -62,31 +74,6 @@
       --text-pre: #c9d1d9;
     }
 
-    /* ===== 代码块深色主题（hljs 原生类名） ===== */
-    pre {
-      background: var(--bg-pre) !important;
-      color: var(--text-pre);
-      border-radius: 6px;
-      padding: 16px;
-      overflow-x: auto;
-      font-size: 13px;
-      line-height: 1.6;
-      margin: 12px 0;
-    }
-    pre code {
-      font-family: "Consolas", "Courier New", monospace;
-      color: var(--text-pre);
-    }
-    code { font-family: "Consolas", "Courier New", monospace; font-size: 13px; }
-    .hljs-comment { color: #6a9955 !important; font-style: italic; }
-    .hljs-keyword, .hljs-literal, .hljs-meta { color: #569cd6 !important; }
-    .hljs-string { color: #ce9178 !important; }
-    .hljs-number { color: #b5cea8 !important; }
-    .hljs-built_in, .hljs-title.class_, .hljs-type { color: #4ec9b0 !important; }
-    .hljs-title.function_, .hljs-selector-class { color: #dcdcaa !important; }
-    .hljs-params, .hljs-property, .hljs-attr, .hljs-variable { color: #9cdcfe !important; }
-    .hljs-operator { color: #d4d4d4 !important; }
-
     /* ===== 全局样式重置 ===== */
     * { box-sizing: border-box; margin: 0;}
     html, body { height: 100%; overflow: hidden; }
@@ -131,189 +118,24 @@
       z-index: 0;
     }
 
-    /* ===== 左侧边栏导航 ===== */
-    #sidebar {
-      width: 300px;
-      background: rgba(8, 16, 40, 0.75);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-right: 1px solid rgba(0, 180, 255, 0.12);
-      height: 100vh;
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--shadow-sidebar);
-      transition: background .3s, border-color .3s;
-    }
-    .sidebar-header {
-      padding: 20px 16px;
-      border-bottom: 1px solid var(--border-color);
-      background: linear-gradient(135deg, #0a4da4 0%, #023e8a 50%, #03045e 100%);
-      color: #fff;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-    }
-    .sidebar-header h1 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .sidebar-header p {
-      font-size: 12px;
-      opacity: 0.8;
-    }
-    .home-btn,
-    .theme-toggle {
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .2s;
-      flex-shrink: 0;
-    }
-    .home-btn:hover,
-    .theme-toggle:hover {
-      background: rgba(255,255,255,0.35);
-    }
-    .header-buttons {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    /* 搜索框 */
-    .search-box {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border-light);
-      background: transparent;
-      transition: background .3s, border-color .3s;
-    }
-    .search-box input {
-      width: 100%;
-      padding: 8px 12px;
-      border: 1px solid rgba(0, 180, 255, 0.2);
-      border-radius: 6px;
-      font-size: 13px;
-      outline: none;
-      transition: border-color .2s, background .3s, color .3s;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-body);
-    }
-    .search-box input:focus {
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px var(--color-primary-light);
-      background: rgba(255, 255, 255, 0.08);
-    }
-    .search-box input::placeholder { color: var(--text-placeholder); }
-
-    /* 对象列表 */
-    .nav-container {
-      flex: 1;
-      overflow-y: auto;
-      padding: 8px 0;
-    }
-    /* 导航滚动条 */
-    .nav-container::-webkit-scrollbar { width: 4px; }
-    .nav-container::-webkit-scrollbar-thumb {
-      background: rgba(0, 180, 255, 0.15);
-      border-radius: 2px;
-    }
-    .nav-group {
-      margin-bottom: 8px;
-    }
-    .nav-group-title {
-      padding: 6px 16px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      background: var(--bg-group-title);
-      letter-spacing: 1px;
-      transition: background .3s, color .3s;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      user-select: none;
-    }
-    .nav-group-toggle {
-      border: none;
-      background: none;
-      color: var(--text-secondary);
-      cursor: pointer;
-      font-size: 16px;
-      padding: 0;
-      transition: color .2s, transform .2s;
-    }
-    .nav-group-toggle:hover {
-      color: var(--color-primary);
-    }
-    .nav-group.collapsed .nav-item { display: none; }
-    .nav-group.collapsed .nav-group-toggle { transform: rotate(-90deg); }
-    .nav-item {
-      display: block;
-      padding: 6px 20px 6px 28px;
-      color: var(--text-nav);
-      text-decoration: none;
-      font-size: 13px;
-      transition: all .2s;
-      cursor: pointer;
-      border-left: 3px solid transparent;
-    }
-    .nav-item:hover {
-      background: var(--bg-sidebar-hover);
-      color: var(--color-primary);
-      border-left-color: var(--color-primary);
-    }
-    .nav-item.active {
-      background: var(--bg-sidebar-active);
-      color: var(--color-primary);
-      border-left-color: var(--color-primary);
-      font-weight: 600;
-    }
-    .nav-item.hidden { display: none; }
-
-    /* 统计信息 */
-    .sidebar-footer {
-      padding: 12px 16px;
-      border-top: 1px solid var(--border-color);
-      font-size: 12px;
-      color: var(--text-secondary);
-      background: var(--bg-footer);
-      transition: background .3s, border-color .3s, color .3s;
-    }
-    .stat-item { display: flex; justify-content: space-between; margin: 2px 0; }
-
     /* ===== 主内容区 ===== */
     #mainContent {
       flex: 1;
       margin-left: 300px;
       height: 100vh;
       overflow-y: auto;
-      background: rgba(6, 12, 30, 0.6);/* 半透明深色背景 */
-      backdrop-filter: blur(8px);/* 毛玻璃模糊（标准） */
-      -webkit-backdrop-filter: blur(8px);/* 毛玻璃模糊（webkit） */
-      transition: background .3s;/* 背景颜色过渡 */
-      position: relative;/* 相对定位 */
+      background: rgba(6, 12, 30, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: background .3s;
+      position: relative;
       z-index: 1;
     }
-    /* 主内容区滚动条 */
     #mainContent::-webkit-scrollbar { width: 6px; }
     #mainContent::-webkit-scrollbar-thumb {
       background: rgba(0, 180, 255, 0.12);
       border-radius: 3px;
     }
-    /* 滚动条通用：轨道透明 + hover 加深 */
     .nav-container::-webkit-scrollbar-track,
     #mainContent::-webkit-scrollbar-track { background: transparent; }
     .nav-container::-webkit-scrollbar-thumb:hover,
@@ -324,574 +146,6 @@
       max-width: 960px;
       margin: 0 auto;
       padding: 24px 32px;
-    }
-
-    /* 页面头部 */
-    #header { margin-bottom: 26px; }
-    #template_header { font-size: 26px; }
-    #topTable { width: 100%; }
-    #headerTableRow2 {
-      background: linear-gradient(135deg, rgba(0, 180, 216, 0.36) 0%, rgba(185, 75, 28, 0.36) 100%);
-      border-left: 6px solid var(--color-primary);
-      border-radius: 8px;
-    }
-
-    /* 导航屑 */
-    .cdclvBreadcrumbs {
-      padding: 8px 0;
-      margin-bottom: 16px;
-      border-bottom: 1px solid var(--border-divider);
-      font-size: 13px;
-      color: var(--text-secondary);
-    }
-
-    /* 说明区 */
-    #template_description { margin-bottom: 12px; }
-    #template_summary { margin-bottom: 20px; }
-    #template_summary > p:first-child { margin-bottom: 8px; }
-
-    h4 { font-size: 16px; margin: 0; }
-    b { font-weight: 600; }
-    a { color: var(--color-primary); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 10px 0 16px;
-      font-size: 13px;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: var(--shadow-table);
-    }
-    th, td {
-      border: 1px solid var(--border-color);
-      padding: 6px 10px;
-      text-align: left;
-      vertical-align: middle;
-      transition: border-color .3s;
-    }
-    th {
-      background: var(--bg-th);
-      font-weight: 600;
-      color: var(--text-th);
-      transition: background .3s, color .3s;
-    }
-    tr:hover { background: var(--bg-tr-hover); }
-
-    /* 成员列表表格 */
-    .icon-cell { width: 48px; text-align: center; font-size: 12px; color: var(--text-secondary); }
-    .icon-cell img { width: 32px; height: 32px; vertical-align: middle; }
-    .name-cell { width: 140px; }
-    .desc-cell { word-break: break-all; }
-
-    /* 成员列表容器毛玻璃效果 */
-    #vstable {
-      background: rgba(66, 66, 88, 0.66);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid #ccc2c2;
-      border-radius: 12px;
-      box-shadow: 0 1px 12px rgba(0,0.3,0.01);
-      margin-bottom: 12px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    #vstable table {
-      width: 100%;
-      table-layout: fixed;
-    }
-    #vstable td {
-      padding: 0;
-      padding: 0px 12px;
-      overflow: hidden;
-    }
-    #vstable pre {
-      margin: 0;
-      overflow-x: auto;
-      max-width: 100%;
-    }
-
-    /* 详情区 */
-    #template_details { margin-top: 30px; }
-    .detail-item {
-      margin-bottom: 8px;
-      background: var(--bg-detail-item);
-      border-radius: 6px;
-      border: 1px solid var(--border-light);
-      overflow: hidden;
-      transition: border-color .2s, background .3s;
-    }
-    .detail-item.expanded {
-      border-color: var(--color-primary);
-      box-shadow: var(--shadow-expanded);
-    }
-    .detail-title {
-      padding: 12px 16px;
-      margin: 0;
-      font-size: 15px;
-      color: var(--text-detail-title);
-      cursor: pointer;
-      user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background .2s, color .2s;
-    }
-    .detail-title:hover {
-      background: var(--bg-detail-hover);
-      color: var(--color-primary);
-    }
-    .detail-title .toggle-icon {
-      font-size: 12px;
-      color: var(--text-muted);
-      transition: transform .2s;
-    }
-    .detail-item.expanded .detail-title .toggle-icon {
-      transform: rotate(90deg);
-      color: var(--color-primary);
-    }
-    .detail-body {
-      display: none;
-      padding: 0 16px 16px;
-    }
-    .detail-item.expanded .detail-body {
-      display: block;
-    }
-    .detail-body p { margin-bottom: 8px; }
-    .signature {
-      background: var(--bg-signature);
-      padding: 10px 14px;
-      border-left: 4px solid var(--color-primary);
-      margin: 12px 0;
-      font-family: "Consolas", "Courier New", monospace;
-      border-radius: 0 4px 4px 0;
-      transition: background .3s;
-    }
-    .mainheaders { font-size: 15px; color: var(--text-heading); transition: color .3s; }
-
-    /* 浮动按钮 */
-    #floatCommit {
-      position: fixed;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-left: 300px;
-    }
-    .floatButton {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 1px solid var(--border-color);
-      background: var(--bg-float-btn);
-      color: var(--text-body);
-      cursor: pointer;
-      font-size: 14px;
-      box-shadow: var(--shadow-float);
-      transition: all .2s;
-    }
-    .floatButton:hover {
-      background: var(--color-primary);
-      color: #fff;
-      transform: scale(1.05);
-    }
-
-    /* 时钟区域微光 */
-    .clock-box {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      padding: 8px 0;
-    }
-    .clock-box::after {
-      content: '';
-      position: absolute;
-      inset: -8px -4px;
-      border-radius: 10px;
-      background: radial-gradient(ellipse at center, rgba(0, 180, 255, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: -1;
-    }
-    /* ===== FlipClock 核心样式 ===== */
-    .flip-clock-wrapper * {
-      box-sizing: border-box;
-      backface-visibility: hidden;
-    }
-    .flip-clock-wrapper a {
-      cursor: pointer;
-      text-decoration: none !important;
-      border-bottom: none !important;
-      color: #ccc;
-    }
-    .flip-clock-wrapper ul {
-      list-style: none;
-      position: relative;
-      float: left;
-      margin: 5px;
-      width: 60px;
-      height: 90px;
-      font-size: 80px;
-      font-weight: bold;
-      line-height: 87px;
-      border-radius: 6px;
-      background: #000;
-    }
-    .flip-clock-wrapper ul li {
-      z-index: 1;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      text-decoration: none !important;
-      margin-left: 0;
-    }
-    .flip-clock-wrapper ul li:first-child {
-      z-index: 2;
-    }
-    .flip-clock-wrapper ul li a {
-      display: block;
-      height: 100%;
-      perspective: 200px;
-      margin: 0 !important;
-      overflow: visible !important;
-      cursor: default !important;
-    }
-    .flip-clock-wrapper ul li a div {
-      z-index: 1;
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 50%;
-      font-size: 80px;
-      overflow: hidden;
-    }
-    .flip-clock-wrapper ul li a div .shadow {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-    }
-    .flip-clock-wrapper ul li a div.up {
-      transform-origin: 50% 100%;
-      top: 0;
-    }
-    .flip-clock-wrapper ul li a div.up:after {
-      content: "";
-      position: absolute;
-      top: 44px;
-      left: 0;
-      z-index: 5;
-      width: 100%;
-      height: 3px;
-      background-color: rgba(0,0,0,0.4);
-    }
-    .flip-clock-wrapper ul li a div.down {
-      transform-origin: 50% 0;
-      bottom: 0;
-    }
-    .flip-clock-wrapper ul li a div div.inn {
-      position: absolute;
-      left: 0;
-      z-index: 1;
-      width: 100%;
-      height: 200%;
-      color: #ccc;
-      text-shadow: 0 1px 2px #000;
-      text-align: center;
-      background-color: #333;
-      border-radius: 6px;
-      font-size: 70px;
-    }
-    .flip-clock-wrapper ul li a div.up div.inn {
-      top: 0;
-    }
-    .flip-clock-wrapper ul li a div.down div.inn {
-      bottom: 0;
-    }
-    .flip-clock-wrapper ul.play li.flip-clock-before {
-      z-index: 3;
-    }
-    .flip-clock-wrapper .flip {
-      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
-    }
-    .flip-clock-wrapper ul.play li.flip-clock-active {
-      animation: asd 0.5s 0.5s linear both;
-      z-index: 5;
-    }
-    .flip-clock-divider {
-      float: left;
-      display: inline-block;
-      position: relative;
-      width: 20px;
-      height: 100px;
-    }
-    .flip-clock-divider:first-child {
-      width: 0;
-    }
-    .flip-clock-dot {
-      display: block;
-      background: #323434;
-      width: 10px;
-      height: 10px;
-      position: absolute;
-      border-radius: 50%;
-      box-shadow: 0 0 5px rgba(0,0,0,0.5);
-      left: 5px;
-    }
-    .flip-clock-dot.top {
-      top: 30px;
-    }
-    .flip-clock-dot.bottom {
-      bottom: 30px;
-    }
-    @keyframes asd {
-      0% { z-index: 2; }
-      20% { z-index: 4; }
-      100% { z-index: 4; }
-    }
-    .flip-clock-wrapper ul.play li.flip-clock-active .down {
-      z-index: 2;
-      animation: turn 0.5s 0.5s linear both;
-    }
-    @keyframes turn {
-      0% { transform: rotateX(90deg); }
-      100% { transform: rotateX(0deg); }
-    }
-    .flip-clock-wrapper ul.play li.flip-clock-before .up {
-      z-index: 2;
-      animation: turn2 0.5s linear both;
-    }
-    @keyframes turn2 {
-      0% { transform: rotateX(0deg); }
-      100% { transform: rotateX(-90deg); }
-    }
-    .flip-clock-wrapper ul li.flip-clock-active {
-      z-index: 3;
-    }
-    .flip-clock-wrapper ul.play li.flip-clock-before .up .shadow {
-      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, black 100%);
-      animation: show 0.5s linear both;
-    }
-    .flip-clock-wrapper ul.play li.flip-clock-active .up .shadow {
-      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, black 100%);
-      animation: hide 0.5s 0.3s linear both;
-    }
-    .flip-clock-wrapper ul.play li.flip-clock-before .down .shadow {
-      background: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.1) 100%);
-      animation: show 0.5s linear both;
-    }
-    .flip-clock-wrapper ul.play li.flip-clock-active .down .shadow {
-      background: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.1) 100%);
-      animation: hide 0.5s 0.2s linear both;
-    }
-    @keyframes show {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    @keyframes hide {
-      0% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-
-    /* ===== 自定义样式 ===== */
-    .clock-builder-output {
-      --fc-clock-bg: #1f2937;
-      --fc-numbers: #ffffff;
-      --fc-dots: #575757;
-      --fc-meridium: #474747;
-    }
-    .flip-clock-wrapper ul li a div.up .shadow {
-      border-radius: 6px 6px 0 0;
-    }
-    .flip-clock-wrapper ul li a div.down .shadow {
-      border-radius: 0 0 6px 6px;
-    }
-    .fc-clock-root ul li a div div.inn {
-      background-color: var(--fc-clock-bg) !important;
-      color: var(--fc-numbers) !important;
-    }
-    .fc-clock-root .flip-clock-dot {
-      background: var(--fc-dots) !important;
-    }
-    .fc-clock-root .flip-clock-meridium a {
-      color: var(--fc-meridium) !important;
-    }
-    .flip-clock-wrapper {
-      display: flex;
-      align-items: center;
-      margin: 0;
-    }
-    .flip-clock-wrapper ul.flip {
-      width: 38px;
-      height: 56px;
-      margin: 0 1px;
-    }
-    .flip-clock-wrapper ul.flip li a {
-      font-size: 42px;
-      line-height: 56px;
-    }
-    .flip-clock-wrapper ul.flip li a div {
-      font-size: 42px;
-    }
-    .flip-clock-wrapper ul.flip li a div.up,
-    .flip-clock-wrapper ul.flip li a div.down {
-      height: 28px;
-    }
-    .flip-clock-wrapper ul.flip li a div.up:after {
-      top: 25px;
-    }
-    .flip-clock-wrapper ul.flip li a div div.inn {
-      font-size: 36px;
-      line-height: 56px;
-    }
-    .flip-clock-wrapper ul.flip li a div.down div.inn {
-      line-height: 56px;
-    }
-    .flip-clock-divider {
-      width: 12px;
-      height: 56px;
-      margin: 0 2px;
-    }
-    .flip-clock-divider .flip-clock-dot {
-      width: 6px;
-      height: 6px;
-      left: 3px;
-    }
-    .flip-clock-divider .flip-clock-dot.top {
-      top: 18px;
-    }
-    .flip-clock-divider .flip-clock-dot.bottom {
-      bottom: 18px;
-    }
-
-    /* 复制按钮 */
-    .copy {
-      float: right;
-      cursor: pointer;
-      color: var(--color-primary);
-      font-size: 12px;
-      user-select: none;
-      background: var(--bg-copy);
-      padding: 2px 8px;
-      border-radius: 4px;
-      transition: all .2s;
-    }
-    .copy:hover {
-      background: var(--color-primary);
-      color: #fff;
-      text-decoration: none;
-    }
-
-    /* 加载/错误提示 */
-    #loading { text-align: center; padding: 60px; color: var(--text-muted); font-size: 16px; }
-    #error { color: var(--color-error); text-align: center; padding: 40px; display: none; }
-    #error a { color: var(--color-error); text-decoration: underline; }
-
-    /* 平台信息 */
-    .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border-divider); color: var(--text-muted); font-size: 12px; transition: border-color .3s, color .3s; }
-
-    /* 响应式 */
-    @media (max-width: 1200px) {
-      #sidebar { width: 260px; }
-      #mainContent { margin-left: 260px; }
-      #floatCommit { margin-left: 260px; }
-    }
-
-    /* 高亮搜索结果 */
-    .search-highlight {
-      background: var(--bg-highlight);
-      padding: 1px 2px;
-      border-radius: 2px;
-    }
-
-    /* 文章内容页 */
-    #articleContent {
-      display: none;
-    }
-    #articleContent h1 {
-      font-size: 28px;
-      margin-bottom: 16px;
-      color: var(--text-heading);
-      text-align: center;
-    }
-    .article-wrap hr {
-      border: none;
-      border-top: 1px solid var(--border-divider);
-      margin: 16px 0 24px;
-    }
-    .article-wrap h2 {
-      font-size: 20px;
-      margin: 28px 0 12px;
-      color: var(--text-heading);
-    }
-    .article-wrap p {
-      margin-bottom: 12px;
-      line-height: 1.8;
-    }
-    .article-wrap b {
-      color: var(--text-heading);
-    }
-    .article-wrap table {
-      margin: 12px 0 16px;
-    }
-    .article-wrap table th {
-      background: var(--bg-th);
-      text-align: left;
-    }
-    .article-wrap #vstable {
-      background: rgba(66, 66, 88, 0.66) !important;
-      backdrop-filter: blur(6px) !important;
-      -webkit-backdrop-filter: blur(6px) !important;
-      border: 1px solid #ccc2c2 !important;
-      border-radius: 12px !important;
-      box-shadow: 0 1px 12px rgba(0,0.3,0.01) !important;
-      margin-bottom: 12px !important;
-    }
-    .article-wrap pre {
-      margin: 8px 0;
-      background: var(--bg-pre) !important;
-      color: var(--text-pre) !important;
-      font-size: 14px !important;
-      line-height: 1.6 !important;
-      padding: 14px 16px !important;
-      border-radius: 6px !important;
-      overflow-x: auto !important;
-      text-shadow: none !important;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
-    }
-    .article-wrap pre::-webkit-scrollbar {
-      height: 8px;
-    }
-    .article-wrap pre::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-    }
-    .article-wrap pre::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 4px;
-    }
-    .article-wrap pre::-webkit-scrollbar-thumb:hover {
-      background: rgba(255, 255, 255, 0.5);
-    }
-    .article-wrap pre code {
-      font-size: 14px !important;
-      line-height: 1.6 !important;
-      color: var(--text-pre) !important;
-      font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
-      text-shadow: none !important;
-    }
-    .article-wrap code[class*="language-"],
-    .article-wrap pre[class*="language-"] {
-      color: var(--text-pre) !important;
-      text-shadow: none !important;
-    }
-    .article-wrap .token {
-      text-shadow: none !important;
     }
   </style>
 </head>
@@ -913,7 +167,7 @@
       <div class="clock-builder-output fc-clock-root"></div>
     </div>
     <div class="search-box">
-      <input type="text" id="navSearch" placeholder="🔍 搜索对象名称..." oninput="filterNav()">
+      <input type="text" id="navSearch" placeholder="🔍 搜索（支持中英文）..." oninput="filterNav()">
     </div>
     <div class="nav-container" id="navContainer">
       <div class="nav-group collapsed" id="navGroupA"></div>
@@ -949,14 +203,9 @@
   <!-- ===== 主内容区 ===== -->
   <div id="mainContent">
     <div class="content-inner">
-      <!-- 加载中 -->
       <div id="loading">⏳ 正在加载 API 文档...</div>
       <div id="error"></div>
-
-      <!-- 文章内容页 -->
       <div id="articleContent" class="article-wrap"></div>
-
-      <!-- 页面内容（初始隐藏） -->
       <div id="pageContent" style="display:none;">
         <div class="cdclvBreadcrumbs cdbread">
           <span id="template_bread"></span>
@@ -1032,229 +281,12 @@
     </div>
   </div>
 
-  <!-- 浮动按钮 -->
   <div id="floatCommit" style="display:none;">
     <button class="floatButton" onclick="backToTop()" title="回到顶部">▲</button>
     <button class="floatButton" onclick="backToMember()" title="返回列表">▼</button>
   </div>
 
   <script>
-    // ========== 动态对象列表：从 manifest.json 加载，支持随时增删 JSON 文件 ==========
-    var ALL_OBJECTS = [];
-    var GROUP_LETTERS = [];
-    var currentObjName = '';
-    var previousObjName = '';
-
-    // 从 manifest.json 加载对象列表，不存在则回退到内嵌列表
-    function loadObjectList(callback) {
-      fetch('api_json/manifest.json')
-        .then(function(res) {
-          if (!res.ok) throw new Error('manifest not found');
-          return res.json();
-        })
-        .then(function(manifest) {
-          ALL_OBJECTS = manifest.all || [];
-          GROUP_LETTERS = manifest.letters || [];
-          callback();
-        })
-        .catch(function() {
-          // 回退到内嵌硬编码列表（确保 objDetail、WebShape 等新文件也被包含）
-          ALL_OBJECTS = [
-            'AboveAverage', 'AddIn', 'AddIns', 'AddIns2', 'Adjustments', 'AllowEditRange', 'AllowEditRanges', 'Application', 'Areas', 'AutoFilter', 'AutoRecover', 'Axes', 'Axis', 'AxisTitle',
-            'Border', 'Borders',
-            'CalculatedFields', 'CalculatedItems', 'CategoryCollection', 'CellFormat', 'Characters', 'Chart', 'ChartArea', 'ChartCategory', 'ChartFormat', 'ChartGroup', 'ChartGroups', 'ChartObject', 'ChartObjects', 'ChartTitle', 'Charts', 'ColorFormat', 'ColorScale', 'ColorScaleCriteria', 'ColorScaleCriterion', 'ColorStop', 'ColorStops', 'Comment', 'Comments', 'ConditionValue', 'Connections', 'ConnectorFormat', 'ControlFormat', 'CustomProperties', 'CustomProperty', 'CustomView', 'CustomViews',
-            'DataBarBorder', 'DataLabel', 'DataLabels', 'DataTable', 'Databar', 'DefaultWebOptions', 'Dialog', 'Dialogs', 'DisplayFormat', 'DisplayUnitLabel', 'DownBars', 'DropLines',
-            'Error', 'ErrorBars', 'ErrorCheckingOptions', 'Errors',
-            'FillFormat', 'Filter', 'Filters', 'Font', 'FormatColor', 'FormatCondition', 'FormatConditions', 'FreeformBuilder', 'FullSeriesCollection',
-            'Graphic', 'Gridlines', 'GroupShapes',
-            'HPageBreak', 'HPageBreaks', 'HeaderFooter', 'HiLoLines', 'Hyperlink', 'Hyperlinks',
-            'Icon', 'IconCriteria', 'IconCriterion', 'IconSet', 'IconSetCondition', 'IconSets', 'Interior',
-            'LeaderLines', 'Legend', 'LegendEntries', 'LegendEntry', 'LegendKey', 'LineFormat', 'LinearGradient', 'ListColumn', 'ListColumns', 'ListObject', 'ListObjects', 'ListRow', 'ListRows',
-            'MultiThreadedCalculation',
-            'Name', 'Names', 'NegativeBarFormat',
-            'ODBCConnection', 'ODBCErrors', 'objDetail', 'OLEDBConnection', 'OLEDBError', 'OLEDBErrors', 'OLEFormat', 'OLEObject', 'OLEObjects', 'Outline',
-            'Page', 'PageSetup', 'Pages', 'Pane', 'Panes', 'PictureFormat', 'PivotAxis', 'PivotCache', 'PivotCaches', 'PivotCell', 'PivotField', 'PivotFields', 'PivotFilter', 'PivotFilters', 'PivotFormula', 'PivotFormulas', 'PivotItem', 'PivotItemList', 'PivotItems', 'PivotLayout', 'PivotLine', 'PivotLineCells', 'PivotLines', 'PivotTable', 'PivotTables', 'PlotArea', 'Point', 'Points', 'Protection', 'PublishObject', 'PublishObjects',
-            'QueryTable', 'QueryTables',
-            'RTD', 'Range', 'Ranges', 'RecentFile', 'RecentFiles', 'RectangularGradient',
-            'Series', 'SeriesCollection', 'SeriesLines', 'ShadowFormat', 'Shape', 'ShapeNodes', 'ShapeRange', 'Shapes', 'SheetViews', 'Sheets', 'Slicer', 'SlicerCache', 'SlicerCaches', 'SlicerItem', 'SlicerItems', 'SlicerPivotTables', 'Slicers', 'Sort', 'SortField', 'SortFields', 'SparkAxes', 'SparkColor', 'SparkHorizontalAxis', 'SparkPoints', 'Sparkline', 'SparklineGroup', 'SparklineGroups', 'Speech', 'SpellingOptions', 'Style', 'Styles',
-            'Tab', 'TableStyle', 'TableStyleElement', 'TableStyleElements', 'TableStyles', 'TextConnection', 'TextEffectFormat', 'TextFrame', 'TextFrame2', 'ThreeDFormat', 'TickLabels', 'Top10', 'Trendline', 'Trendlines',
-            'UniqueValues', 'UpBars',
-            'VPageBreak', 'VPageBreaks', 'Validation',
-            'Watch', 'Watches', 'WebOptions', 'WebShape', 'Window', 'Windows', 'Workbook', 'WorkbookConnection', 'Workbooks', 'Worksheet', 'WorksheetFunction', 'WorksheetView', 'Worksheets',
-            'XPath', 'XmlDataBinding', 'XmlMap', 'XmlMaps', 'XmlNamespace', 'XmlNamespaces', 'XmlSchema', 'XmlSchemas'
-          ];
-          GROUP_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X'];
-          callback();
-        });
-    }
-
-    // ========== 构建左侧导航栏 ==========
-    function buildNav() {
-      var grouped = _.groupBy(ALL_OBJECTS, function(name) {
-        return name.charAt(0).toUpperCase();
-      });
-
-      _.forEach(GROUP_LETTERS, function(letter) {
-        var groupEl = document.getElementById('navGroup' + letter);
-        if (!groupEl) return;
-
-        var items = grouped[letter] || [];
-        if (_.isEmpty(items)) {
-          groupEl.style.display = 'none';
-          return;
-        }
-
-        groupEl.innerHTML = '<div class="nav-group-title" onclick="toggleNavGroup(this)">' + letter +
-          '<button class="nav-group-toggle" onclick="event.stopPropagation();toggleNavGroup(this.parentElement);">▼</button></div>';
-
-        _.forEach(items, function(objName) {
-          var a = document.createElement('a');
-          a.className = 'nav-item';
-          a.textContent = objName;
-          a.href = '?obj=' + objName;
-          a.setAttribute('data-obj', objName);
-          a.onclick = function(e) {
-            e.preventDefault();
-            navigateToObject(this.getAttribute('data-obj'));
-          };
-          groupEl.appendChild(a);
-        });
-      });
-    }
-
-    // ========== 导航到指定对象 ==========
-    function navigateToObject(objName) {
-      if (objName === currentObjName) return;
-
-      history.pushState(null, '', '?obj=' + objName);
-
-      _.forEach(document.querySelectorAll('.nav-item'), function(item) {
-        item.classList.remove('active');
-      });
-
-      var activeItem = document.querySelector('[data-obj="' + objName + '"]');
-      if (activeItem) {
-        activeItem.classList.add('active');
-        activeItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-      }
-
-      currentObjName = objName;
-      loadAndRender(objName);
-    }
-
-    // ========== 折叠/展开导航分组 ==========
-    function toggleNavGroup(titleEl) {
-      var group = titleEl.parentElement;
-      var isOpen = !group.classList.contains('collapsed');
-      _.forEach(document.querySelectorAll('.nav-group'), function(g) { g.classList.add('collapsed'); });
-      if (!isOpen) group.classList.remove('collapsed');
-    }
-
-    // ========== 搜索过滤 ==========
-    function filterNav() {
-      var keyword = _.trim(_.toLower(document.getElementById('navSearch').value));
-
-      _.forEach(document.querySelectorAll('.nav-item'), function(item) {
-        var name = _.toLower(item.getAttribute('data-obj'));
-        item.classList.toggle('hidden', keyword !== '' && !_.includes(name, keyword));
-      });
-
-      _.forEach(document.querySelectorAll('.nav-group'), function(group) {
-        var visibleItems = group.querySelectorAll('.nav-item:not(.hidden)');
-        group.style.display = visibleItems.length === 0 ? 'none' : '';
-      });
-    }
-
-    // ========== 更新统计信息 ==========
-    function updateStats(jsData) {
-      document.getElementById('totalCount').textContent = ALL_OBJECTS.length;
-      document.getElementById('funcCount').textContent = _.get(jsData, 'functions.length', 0);
-      document.getElementById('propCount').textContent = _.get(jsData, 'properties.length', 0);
-    }
-
-    // ========== 工具函数 ==========
-
-    // 返回顶部
-    function backToTop() {
-      document.getElementById('mainContent').scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // 返回成员列表
-    function backToMember() {
-      var member = document.querySelector('[data-id="jsMember_' + currentObjName + '"]');
-      if (member) { member.scrollIntoView({ behavior: 'smooth' }); }
-    }
-
-    // 复制文本到剪贴板
-    function copyCode(ele) {
-      var content = ele.parentNode.parentNode.parentNode.getElementsByTagName('code')[0].innerText;
-      var isCopyOk = copyText(content);
-      if (isCopyOk) {
-        console.log('复制成功');
-      } else {
-        console.error('复制失败');
-      }
-    }
-
-    function copyText(content) {
-      var input = document.createElement('textarea');
-      input.setAttribute('readonly', 'readonly');
-      input.value = content;
-      document.body.appendChild(input);
-      input.select();
-      var isCopyOk = document.execCommand('copy');
-      document.body.removeChild(input);
-      return isCopyOk;
-    }
-
-    // ========== 渲染包装器（调用 filldata.js 中的 FillObject） ==========
-    function FillObjectWrapper(jsData) {
-      previousObjName = currentObjName;
-      currentObjName = jsData.name;
-      FillObject(jsData);
-      updateStats(jsData);
-    }
-
-    // ========== 折叠/展开控制 ==========
-
-    // 切换单个详情条目
-    function toggleDetailItem(elem) {
-      if (elem.classList.contains('expanded')) {
-        elem.classList.remove('expanded');
-      } else {
-        elem.classList.add('expanded');
-        elem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    }
-
-    // 只展开指定条目，折叠其余所有
-    function expandOnly(itemId) {
-      _.forEach(document.querySelectorAll('.detail-item'), function(item) {
-        item.classList.remove('expanded');
-      });
-      var target = document.getElementById(itemId);
-      if (target) {
-        target.classList.add('expanded');
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    // 切换全部展开/折叠
-    function toggleAll() {
-      var btn = document.getElementById('toggleAllBtn');
-      var items = document.querySelectorAll('.detail-item');
-      var allExpanded = _.every(items, function(item) {
-        return item.classList.contains('expanded');
-      });
-      if (allExpanded) {
-        _.forEach(items, function(item) { item.classList.remove('expanded'); });
-        if (btn) btn.textContent = '展开全部';
-      } else {
-        _.forEach(items, function(item) { item.classList.add('expanded'); });
-        if (btn) btn.textContent = '折叠全部';
-      }
-    }
-
     // ========== JSON 加载逻辑 ==========
 
     function getObjName() {
@@ -1319,7 +351,7 @@
 
       var articleEl = document.getElementById('articleContent');
       if (articleEl.innerHTML === '') {
-        fetch('src/%E4%BB%8EVisual%20Basic%E8%BD%AC%E5%88%B0%20JavaScript.html')
+        fetch('src/%E4%B8%BB%E9%A1%B5.html')
           .then(function(res) { return res.text(); })
           .then(function(html) {
             var bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
@@ -1327,14 +359,19 @@
 
             var vstableEls = articleEl.querySelectorAll('#vstable');
             vstableEls.forEach(function(vstable) {
-              var th = vstable.querySelector('th');
-              if (th) {
-                var titleText = th.textContent.trim().toLowerCase();
-                var codeEl = vstable.querySelector('code');
-                if (codeEl) {
-                  codeEl.classList.remove('language-vb', 'language-js', 'language-vba', 'language-visual-basic', 'language-javascript');
+              var codeEl = vstable.querySelector('code');
+              if (!codeEl) return;
+              var hasLang = false;
+              var langClasses = ['language-vb', 'language-js', 'language-vba', 'language-visual-basic', 'language-javascript'];
+              langClasses.forEach(function(cls) {
+                if (codeEl.classList.contains(cls)) hasLang = true;
+              });
+              if (!hasLang) {
+                var th = vstable.querySelector('th');
+                if (th) {
+                  var titleText = th.textContent.trim().toLowerCase();
                   if (titleText.includes('vb')) {
-                    codeEl.classList.add('language-vba');
+                    codeEl.classList.add('language-visual-basic');
                   } else if (titleText.includes('js')) {
                     codeEl.classList.add('language-js');
                   }
@@ -1351,7 +388,7 @@
           });
       }
       articleEl.style.display = 'block';
-      document.title = '从Visual Basic转到 JavaScript';
+      document.title = '主页';
       document.getElementById('mainContent').scrollTo({ top: 0 });
     }
 
@@ -1365,8 +402,22 @@
       loadObjectList(function() {
         buildNav();
 
+        if (typeof SidebarFireworks !== 'undefined') {
+          SidebarFireworks.init();
+        }
+
         if (isHomePage()) {
           showHome();
+
+          setTimeout(function() {
+            if (typeof CodeBlockManager !== 'undefined') {
+              try {
+                CodeBlockManager.init();
+              } catch (e) {
+                console.warn('⚠️ CodeBlockManager 初始化失败:', e);
+              }
+            }
+          }, 200);
         } else {
           var objName = getObjName();
           currentObjName = objName;
@@ -1378,20 +429,26 @@
               activeItem.classList.add('active');
               activeItem.scrollIntoView({ block: 'nearest' });
             }
-          }, 100);
+
+            if (typeof CodeBlockManager !== 'undefined') {
+              try {
+                CodeBlockManager.init();
+              } catch (e) {
+                console.warn('⚠️ CodeBlockManager 初始化失败:', e);
+              }
+            }
+          }, 200);
         }
       });
 
-      // 初始化 FlipClock
-      if (window.jQuery) {
-        window.fcClockOpts = {
-          clockFace: 'TwentyFourHourClock',
-          showSeconds: true
-        };
-        window.fcClock = jQuery('.clock-builder-output').FlipClock(window.fcClockOpts);
-      }
+      window.flipClock = new FlipClockManager({
+        container: '.clock-builder-output',
+        clockFace: 'TwentyFourHourClock',
+        showSeconds: true,
+        size: 'normal',
+        theme: 'dark'
+      });
 
-      // 监听浏览器前进/后退
       window.addEventListener('popstate', function() {
         if (isHomePage()) {
           showHome();
@@ -1402,28 +459,33 @@
           }
         }
       });
+
+      document.addEventListener('click', function(e) {
+        var target = e.target.closest('a');
+        if (target && target.href) {
+          var url = new URL(target.href);
+          if (url.pathname.endsWith('apiObjectTemplate.htm')) {
+            e.preventDefault();
+            var pageParam = url.searchParams.get('page');
+            if (pageParam) {
+              var match = pageParam.match(/\/([^\/]+?)\s*\.htm/i);
+              if (match) {
+                var objName = match[1].trim();
+                var itemId = url.hash.substring(1);
+                navigateToObject(objName);
+                if (itemId) {
+                  setTimeout(function() {
+                    expandOnly(itemId);
+                  }, 300);
+                }
+              }
+            }
+          }
+        }
+      });
     }
 
-    // 页面加载完成后执行
     window.onload = init;
-  </script>
-
-  <!-- 壁纸自适应切换 -->
-  <script>
-    (function() {
-      var LANDSCAPE = 'img/横屏壁纸.png';
-      var PORTRAIT = 'img/竖屏壁纸.jpg';
-      var root = document.documentElement;
-
-      function setWallpaper() {
-        var isLandscape = window.innerWidth > window.innerHeight;
-        var url = isLandscape ? LANDSCAPE : PORTRAIT;
-        root.style.setProperty('--bg-wallpaper', 'url(' + url + ')');
-      }
-
-      setWallpaper();
-      window.addEventListener('resize', setWallpaper);
-    })();
   </script>
 </body>
 

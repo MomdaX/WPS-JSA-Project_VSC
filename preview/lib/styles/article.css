@@ -1,0 +1,85 @@
+/* 文章内容页 */
+#articleContent {
+  display: none;
+}
+#articleContent h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: var(--text-heading);
+  text-align: center;
+}
+.article-wrap hr {
+  border: none;
+  border-top: 1px solid var(--border-divider);
+  margin: 16px 0 24px;
+}
+.article-wrap h2 {
+  font-size: 20px;
+  margin: 28px 0 12px;
+  color: var(--text-heading);
+}
+.article-wrap p {
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+.article-wrap b {
+  color: var(--text-heading);
+}
+.article-wrap table {
+  margin: 12px 0 16px;
+}
+.article-wrap table th {
+  background: var(--bg-th);
+  text-align: left;
+}
+.article-wrap #vstable {
+  background: rgba(66, 66, 88, 0.66) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  border: 1px solid #ccc2c2 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 12px rgba(0,0.3,0.01) !important;
+  margin-bottom: 12px !important;
+}
+.article-wrap pre {
+  margin: 8px 0;
+  background: var(--bg-pre) !important;
+  color: var(--text-pre) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  padding: 14px 16px !important;
+  border-radius: 6px !important;
+  overflow-x: auto !important;
+  text-shadow: none !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+.article-wrap pre::-webkit-scrollbar {
+  height: 8px;
+}
+.article-wrap pre::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.article-wrap pre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+.article-wrap pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.article-wrap pre code {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: var(--text-pre) !important;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+  text-shadow: none !important;
+}
+.article-wrap code[class*="language-"],
+.article-wrap pre[class*="language-"] {
+  color: var(--text-pre) !important;
+  text-shadow: none !important;
+}
+.article-wrap .token {
+  text-shadow: none !important;
+}

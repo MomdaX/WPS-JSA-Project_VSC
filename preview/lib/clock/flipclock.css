@@ -1,0 +1,275 @@
+/* ===== FlipClock 翻页时钟样式 ===== */
+/* 从 apiViewer.html 抽离，独立维护 */
+
+/* ===== FlipClock 核心样式 ===== */
+.flip-clock-wrapper * {
+  box-sizing: border-box;
+  backface-visibility: hidden;
+}
+.flip-clock-wrapper a {
+  cursor: pointer;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  color: #ccc;
+}
+.flip-clock-wrapper ul {
+  list-style: none;
+  position: relative;
+  float: left;
+  margin: 5px;
+  width: 60px;
+  height: 90px;
+  font-size: 80px;
+  font-weight: bold;
+  line-height: 87px;
+  border-radius: 6px;
+  background: #000;
+}
+.flip-clock-wrapper ul li {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-decoration: none !important;
+  margin-left: 0;
+}
+.flip-clock-wrapper ul li:first-child {
+  z-index: 2;
+}
+.flip-clock-wrapper ul li a {
+  display: block;
+  height: 100%;
+  perspective: 200px;
+  margin: 0 !important;
+  overflow: visible !important;
+  cursor: default !important;
+}
+.flip-clock-wrapper ul li a div {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  font-size: 80px;
+  overflow: hidden;
+}
+.flip-clock-wrapper ul li a div .shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.flip-clock-wrapper ul li a div.up {
+  transform-origin: 50% 100%;
+  top: 0;
+}
+.flip-clock-wrapper ul li a div.up:after {
+  content: "";
+  position: absolute;
+  top: 44px;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(0,0,0,0.4);
+}
+.flip-clock-wrapper ul li a div.down {
+  transform-origin: 50% 0;
+  bottom: 0;
+}
+.flip-clock-wrapper ul li a div div.inn {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 200%;
+  color: #ccc;
+  text-shadow: 0 1px 2px #000;
+  text-align: center;
+  background-color: #333;
+  border-radius: 6px;
+  font-size: 70px;
+}
+.flip-clock-wrapper ul li a div.up div.inn {
+  top: 0;
+}
+.flip-clock-wrapper ul li a div.down div.inn {
+  bottom: 0;
+}
+.flip-clock-wrapper ul.play li.flip-clock-before {
+  z-index: 3;
+}
+.flip-clock-wrapper .flip {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+}
+.flip-clock-wrapper ul.play li.flip-clock-active {
+  animation: asd 0.5s 0.5s linear both;
+  z-index: 5;
+}
+.flip-clock-divider {
+  float: left;
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 100px;
+}
+.flip-clock-divider:first-child {
+  width: 0;
+}
+.flip-clock-dot {
+  display: block;
+  background: #323434;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  left: 5px;
+}
+.flip-clock-dot.top {
+  top: 30px;
+}
+.flip-clock-dot.bottom {
+  bottom: 30px;
+}
+@keyframes asd {
+  0% { z-index: 2; }
+  20% { z-index: 4; }
+  100% { z-index: 4; }
+}
+.flip-clock-wrapper ul.play li.flip-clock-active .down {
+  z-index: 2;
+  animation: turn 0.5s 0.5s linear both;
+}
+@keyframes turn {
+  0% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0deg); }
+}
+.flip-clock-wrapper ul.play li.flip-clock-before .up {
+  z-index: 2;
+  animation: turn2 0.5s linear both;
+}
+@keyframes turn2 {
+  0% { transform: rotateX(0deg); }
+  100% { transform: rotateX(-90deg); }
+}
+.flip-clock-wrapper ul li.flip-clock-active {
+  z-index: 3;
+}
+.flip-clock-wrapper ul.play li.flip-clock-before .up .shadow {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, black 100%);
+  animation: show 0.5s linear both;
+}
+.flip-clock-wrapper ul.play li.flip-clock-active .up .shadow {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, black 100%);
+  animation: hide 0.5s 0.3s linear both;
+}
+.flip-clock-wrapper ul.play li.flip-clock-before .down .shadow {
+  background: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.1) 100%);
+  animation: show 0.5s linear both;
+}
+.flip-clock-wrapper ul.play li.flip-clock-active .down .shadow {
+  background: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.1) 100%);
+  animation: hide 0.5s 0.2s linear both;
+}
+@keyframes show {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes hide {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ===== 自定义样式 ===== */
+.clock-builder-output {
+  --fc-clock-bg: #1f2937;
+  --fc-numbers: #ffffff;
+  --fc-dots: #575757;
+  --fc-meridium: #474747;
+}
+.flip-clock-wrapper ul li a div.up .shadow {
+  border-radius: 6px 6px 0 0;
+}
+.flip-clock-wrapper ul li a div.down .shadow {
+  border-radius: 0 0 6px 6px;
+}
+.fc-clock-root ul li a div div.inn {
+  background-color: var(--fc-clock-bg) !important;
+  color: var(--fc-numbers) !important;
+}
+.fc-clock-root .flip-clock-dot {
+  background: var(--fc-dots) !important;
+}
+.fc-clock-root .flip-clock-meridium a {
+  color: var(--fc-meridium) !important;
+}
+.flip-clock-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+.flip-clock-wrapper ul.flip {
+  width: 38px;
+  height: 56px;
+  margin: 0 1px;
+}
+.flip-clock-wrapper ul.flip li a {
+  font-size: 42px;
+  line-height: 56px;
+}
+.flip-clock-wrapper ul.flip li a div {
+  font-size: 42px;
+}
+.flip-clock-wrapper ul.flip li a div.up,
+.flip-clock-wrapper ul.flip li a div.down {
+  height: 28px;
+}
+.flip-clock-wrapper ul.flip li a div.up:after {
+  top: 25px;
+}
+.flip-clock-wrapper ul.flip li a div div.inn {
+  font-size: 36px;
+  line-height: 56px;
+}
+.flip-clock-wrapper ul.flip li a div.down div.inn {
+  line-height: 56px;
+}
+.flip-clock-divider {
+  width: 12px;
+  height: 56px;
+  margin: 0 2px;
+}
+.flip-clock-divider .flip-clock-dot {
+  width: 6px;
+  height: 6px;
+  left: 3px;
+}
+.flip-clock-divider .flip-clock-dot.top {
+  top: 18px;
+}
+.flip-clock-divider .flip-clock-dot.bottom {
+  bottom: 18px;
+}
+
+/* 响应式：时钟自适应 */
+@media (max-width: 360px), (orientation: portrait) {
+  .clock-box {
+    padding: 6px 4px;
+  }
+  .flip-clock-wrapper {
+    transform: scale(0.75);
+    transform-origin: center center;
+  }
+}
+@media (max-width: 300px) {
+  .clock-box {
+    padding: 4px 2px;
+  }
+  .flip-clock-wrapper {
+    transform: scale(0.6);
+    transform-origin: center center;
+  }
+}
