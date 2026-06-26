@@ -1,0 +1,57 @@
+{
+  "name": "PickerFields",
+  "summary": "",
+  "description": "<p><b>PickerField</b> 对象的集合。每个 <b>PickerField</b> 对象都代表选取器对话框的一个列定义。<br/></p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>PickerFields</b> 对象的容器应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>检索包含在 <b>PickerFields</b> 集合中的 <b>PickerField</b> 对象数的计数。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>PickerFields</b> 对象的应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>检索位于指定索引处的 <b>PickerField</b> 对象。只读<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Integer",
+          "description": "指定一个代表 PickerField 的索引的整数。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

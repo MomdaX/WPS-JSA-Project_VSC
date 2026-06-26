@@ -1,0 +1,200 @@
+{
+  "name": "SmartArtNode",
+  "summary": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码返回 Smart Art 图表中的节点数目。*/</span>\nApplication.ActivePresentation.Slides.Item(1).Shapes.Item(1).SmartArt.AllNodes.Count<br/></code></pre></td></tr></tbody></table></div>",
+  "description": "<p>Smart Art 图形的数据模型内部的单个语义节点。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>SmartArtNode</b> 对象的容器应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>SmartArtNode</b> 对象的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Hidden",
+      "summary": "",
+      "description": "<p>如果此节点在数据模型中是一个隐藏节点，则返回 <b>true</b>。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Boolean",
+      "readonly": true
+    },
+    {
+      "name": "Level",
+      "summary": "<p>起始级别为 1 级并且向上递增。如果某个节点没有级别，则返回 0。例如，在下面的数据模型中，A 和 F 为 1 级，B 和 D 为 2 级，C 和 E 为 3 级。<br/></p><ul><li>A</li><ul><li>B</li><ul><li>C</li></ul><li>D</li></ul><ul><li>E</li></ul><li>F</li></ul><p></p><p><br/></p>",
+      "description": "<p>检索节点在层次结构中的级别。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Nodes",
+      "summary": "",
+      "description": "<p>检索与此 Smart Art 节点关联的子节点。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码返回 Smart Art 图表中的节点数目。*/</span>\nApplication.ActivePresentation.Slides.Item(1).Shapes.Item(1).SmartArt.Nodes.Item(1).Nodes.Count<br/></code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "OrgChartLayout",
+      "summary": "<p>以下是可能的成员：</p><ul><li>msoOrgChartLayoutBothHanging</li><li>msoOrgChartLayoutDefault</li><li>msoOrgChartLayoutLeftHanging</li><li>msoOrgChartLayoutMixed</li><li>msoOrgChartLayoutRightHanging</li><li>msoOrgChartLayoutStandard</li></ul>",
+      "description": "<p>如果有一个节点，则检索或设置与此节点关联的 <b>MsoOrgChartLayoutType</b>。可读/写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码将 OrgChartLayout 属性设置为默认布局。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> saNode =  Application.ActiveWorkbook.ActiveChart.Shapes.Item(<span class=\"hljs-number\">1</span>);\n\tsaNode.OrgChartLayout = Application.Enum.msoOrgChartLayoutDefault;\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回调用对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "ParentNode",
+      "summary": "<p>如果此节点是根节点，则返回一个错误。<br/></p>",
+      "description": "<p>检索此 SmartArtNode 的父 SmartArtNode。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "SmartArtNode",
+      "readonly": true
+    },
+    {
+      "name": "Shapes",
+      "summary": "<p>若要查找该范围，请使用 Count 属性。</p>",
+      "description": "<p>返回与此 <b>SmartArtNode</b> 对象关联的形状范围。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码返回形状范围。*/</span>\nApplication.ActivePresentation.Slides.Item(1).Shapes.Item(1).SmartArt.Nodes.Item(1).Shapes.Count<br/></code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "TextFrame2",
+      "summary": "",
+      "description": "<p></p><p>返回与该 <b>SmartArtNode</b> 对象关联的文本。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例设置第一个节点内部的文本。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> smartart = Application.ActivePresentation.Slides.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).SmartArt\n\tsmartart.AllNodes.Item(<span class=\"hljs-number\">1</span>).TextFrame2.TextRange.Text=<span class=\"hljs-string\">\"Node 1\"</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "Type",
+      "summary": "<p>可能值为 msoSmartArtNodeTypeAssistant 或 msoSmartArtNodeTypeDefault。</p>",
+      "description": "<p>检索 SmartArt 节点的类型。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "msoSmartArtNodeType",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "AddNode",
+      "summary": "",
+      "description": "<p>通过SmartArtNodeType类型的SmartArtNodePosition值指定的方式，将新的SmartArtNode添加到数据模型。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码将默认的 SmartArtNode 添加到当前节点下。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> saNode = Application.ActiveWorkbook.ActiveChart.Shapes.Item(<span class=\"hljs-number\">1</span>).SmartArt.AllNodes.Item(<span class=\"hljs-number\">1</span>);\n\tsaNode = saNode.AddNode(Application.Enum.msoSmartArtNodeBelow, Application.Enum.msoSmartArtNodeTypeDefault);\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Position",
+          "type": "MsoSmartArtNodePosition",
+          "description": "指定 SmartArtNode 在数据模型中的位置。例如，msoSmartArtNodeAbove 或 msoSmartArtNodeAfter。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Type",
+          "type": "MsoSmartArtNodeType",
+          "description": "指定添加的 SmartArtNode 的类型。例如，msoSmartArtNodeTypeAssistant 或 msoSmartArtNodeTypeDefault。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": "SmartArtNode"
+    },
+    {
+      "name": "Delete",
+      "summary": "<p>删除节点时，第一个子级得到提升。在下面的数据模型中：<br/></p><ul><li>A</li><ul><li>B</li><ul><li>C</li></ul></ul><li>D</li></ul><p>如果删除了 B，则该数据模型的外观如下所示：</p><ul><li>A</li><ul><li>C</li></ul><li>D</li></ul>",
+      "description": "<p>删除当前的 SmartArt 节点。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Demote",
+      "summary": "<p>在内容窗格中工作时，此功能模拟 WPS Office Fluent 功能区用户界面中的“降级”按钮。例如，以下面的数据模型为例：<br/></p><ul><li>A</li><li>B</li><ul><li>C</li></ul><li>D</li></ul><p>如果使 B 降级，产生的数据模型的外观如下所示：</p><ul><li>A</li><ul><li>B</li><li>C</li></ul><li>D</li></ul>",
+      "description": "<p>将当前节点在数据模型中降低一级。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Larger",
+      "summary": "<p>实际的增加量取决于节点的布局。<br/></p>",
+      "description": "<p>增加 SmartArt 节点的大小。模拟 SmartArt 的 WPS Office Fluent 功能区“格式”选项卡上的“增大”按钮的行为。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Promote",
+      "summary": "<p>在内容窗格中工作时，此功能模拟 WPS Office Fluent 功能区用户界面中的“提升”按钮。例如，以下面的数据模型为例：<br/></p><ul><li>A</li><ul><li>B</li><ul><li>C</li></ul></ul><li>D</li></ul><p>如果使 B 提升，产生的数据模型的外观如下所示：</p><ul><li>A</li><li>B</li><ul><li>C</li></ul><li>D</li></ul>",
+      "description": "<p>将当前节点（以及它的所有子级）在数据模型中提升一级。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "ReorderDown",
+      "summary": "<p></p><p>此方法模拟单击 WPS Office Fluent\t\t\t\t 功能区用户界面上的“向下重新排序”按钮，该按钮位于“向下重新排序”的“设计”组的“SmartArt 工具”选项卡上。</p>",
+      "description": "<p></p><p>与项目符号列表中的下一个节点交换节点。此方法会对整个节点系列进行重新排序。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码将第一个节点与下一个节点交换，并对其所有后代进行重新排序。*/</span>\nApplication<span class=\"hljs-selector-class\">.ActivePresentation</span><span class=\"hljs-selector-class\">.Slides</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.SmartArt</span><span class=\"hljs-selector-class\">.Nodes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.ReorderDown</span>()</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "ReorderUp",
+      "summary": "<p>此方法模拟单击 WPS Office Fluent\t\t\t\t 功能区用户界面上的“向上重新排序”按钮，该按钮位于“向上重新排序”的“设计”组的“SmartArt 工具”选项卡上。</p>",
+      "description": "<p>与项目符号列表中的上一个节点交换节点。此方法会对整个节点系列进行重新排序。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码将第一个节点与下一个节点交换，并对父节点进行重新排序。*/</span>\nApplication<span class=\"hljs-selector-class\">.ActivePresentation</span><span class=\"hljs-selector-class\">.Slides</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.SmartArt</span><span class=\"hljs-selector-class\">.Nodes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.ReorderUp</span>()</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Smaller",
+      "summary": "<p>减小量取决于节点的布局大小。<br/></p>",
+      "description": "<p>减小 SmartArt 的大小。模拟 SmartArt 的 WPS Office Fluent 功能区用户界面的“格式”选项卡上的“减小”按钮的行为。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

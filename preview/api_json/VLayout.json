@@ -1,0 +1,146 @@
+{
+  "name": "VLayout",
+  "summary": "<p>将内部的控件按照垂直方向排布，一行一个。</p>",
+  "description": "<p>将内部的控件按照垂直方向排布，一行一个。</p>",
+  "properties": [
+    {
+      "name": "Enabled",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t<span style=\"white-space:normal;\">您可以通过该属性设置或返回是否启用该控件</span>\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性设置或返回是否启用该控件\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*启用该控件*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-property\">Enabled</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Height",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的高度\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的高度\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VLayout1控件的高度设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-property\">Height</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "LayoutBottomMargin",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置容器内部的控件与容器底部的距离\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置容器内部的控件与容器底部的距离\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VLayout1中控件到容器底部的距离设为10*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-property\">LayoutBottomMargin</span> = <span class=\"hljs-number\">10</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "LayoutLeftMargin",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置容器内部的控件与容器左边缘的距离\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置容器内部的控件与容器左边缘的距离\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VLayout1中控件到容器左边缘的距离设为10*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-property\">LayoutLeftMargin</span> = <span class=\"hljs-number\">10</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "LayoutRightMargin",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置容器内部的控件与容器右边缘的距离\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置容器内部的控件与容器右边缘的距离\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VLayout1中控件到容器右边缘的距离设为10*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-property\">LayoutRightMargin</span> = <span class=\"hljs-number\">10</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "LayoutSpacing",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置容器内部多个控件之间的水平间距\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置容器内部多个控件之间的水平间距\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VLayout1中多个控件之间的距离设为10*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-property\">LayoutSpacing</span> = <span class=\"hljs-number\">10</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "LayoutTopMargin",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置容器内部的控件与容器顶部的距离\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置容器内部的控件与容器顶部的距离\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VLayout1中控件到容器顶部的距离设为10*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-property\">LayoutTopMargin</span> = <span class=\"hljs-number\">10</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Left",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VLayout1的位置设置到距离窗体左边缘100像素*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-property\">Left</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Name",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定或确定表示对象名称的字符串，只读\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定或确定表示对象名称的字符串，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "Top",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VLayout1的位置设置到距离窗体上边缘100像素*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-property\">Top</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Visible",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t返回或设置该对象是否可见\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t返回或设置该对象是否可见\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VLayout1设置为可见*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Width",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VLayout1的宽度设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-property\">Width</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Move",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t将对象移动到参数指定的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t将对象移动到参数指定的位置\n\t</div>",
+      "parameters": [
+        {
+          "name": "Left",
+          "type": "Number",
+          "description": "对象移动后相对于窗口的左边缘的距离",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Top",
+          "type": "Number",
+          "description": "对象移动后相对于窗口的上边缘的距离",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Width",
+          "type": "Number",
+          "description": "对象移动后的预期宽度",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Height",
+          "type": "Number",
+          "description": "对象移动后的预期长度",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VLayout1移动到窗体左上角，并将移动后的Label长宽设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VLayout1</span>.<span class=\"hljs-title class_\">Move</span>(<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>)\n}</code></pre></td></tr></table></div>",
+      "returns": ""
+    }
+  ]
+}

@@ -1,0 +1,428 @@
+.flip-clock-wrapper ul li a div.up .shadow {
+  border-radius: 6px 6px 0 0;
+}
+.flip-clock-wrapper ul li a div.down .shadow {
+  border-radius: 0 0 6px 6px;
+}
+:root {
+  --fc-clock-bg: #333333;
+  --fc-numbers: #cccccc;
+  --fc-dots: #323434;
+  --fc-meridium: #313333;
+}
+.fc-clock-root ul li a div div.inn {
+  background-color: var(--fc-clock-bg) !important;
+  color: var(--fc-numbers) !important;
+}
+.fc-clock-root .flip-clock-dot {
+  background: var(--fc-dots) !important;
+}
+.fc-clock-root .flip-clock-meridium a {
+  color: var(--fc-meridium) !important;
+}
+.fc-style-flat .flip,
+.fc-style-flat-translucent .flip {
+  box-shadow: none !important;
+}
+.fc-style-flat ul li a div div.inn,
+.fc-style-flat-translucent ul li a div div.inn {
+  text-shadow: none !important;
+}
+.fc-style-flat ul li a div.up:after,
+.fc-style-flat-translucent ul li a div.up:after {
+  background-color: rgba(0, 0, 0, 0.15) !important;
+}
+.fc-style-flat .flip-clock-dot,
+.fc-style-flat-translucent .flip-clock-dot {
+  box-shadow: none !important;
+}
+.fc-style-translucent,
+.fc-style-flat-translucent {
+  opacity: 0.75;
+}
+.fc-style-no-clock.flip-clock-wrapper,
+.fc-style-no-clock.flip-clock-small-wrapper {
+  display: none !important;
+}
+.fc-seconds-off > span:nth-child(6),
+.fc-seconds-off > span:nth-child(6) + ul,
+.fc-seconds-off > span:nth-child(6) + ul + ul {
+  display: none !important;
+}
+.fc-font-default.flip-clock-wrapper {
+}
+.fc-font-sans-serif.flip-clock-wrapper {
+  font-family: sans-serif !important;
+}
+.fc-font-serif.flip-clock-wrapper {
+  font-family: serif !important;
+}
+.fc-font-monospace.flip-clock-wrapper {
+  font-family: monospace !important;
+}
+.fc-font-cursive.flip-clock-wrapper {
+  font-family: cursive !important;
+}
+.fc_clock_settings {
+  background: #fff;
+  min-height: 100px;
+  border: 1px solid #eee;
+  margin: 0 0 15px;
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+.color-controls {
+  padding: 15px 15px 0;
+}
+.fc_clock_settings_btns {
+  padding: 0 15px 15px;
+  display: flex;
+  gap: 10px;
+}
+.fc_clock_settings_title {
+  font-size: 18px;
+  font-weight: bold;
+}
+#fc_clock_settings_show {
+  display: none;
+  cursor: pointer;
+  padding: 15px 30px;
+}
+#fc_clock_settings_hide {
+  display: block;
+  color: #888;
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+html[dir="rtl"] #fc_clock_settings_hide {
+  right: auto;
+  left: 15px;
+}
+#fc_clock_settings_hide:hover {
+  color: #555;
+}
+.fc_clock_settings.hide {
+  display: inline-block;
+  min-height: auto;
+  background: var(--card-color, #fff);
+  margin: 0 0 2px;
+}
+.fc_clock_settings.hide .color-controls,
+.fc_clock_settings.hide .fc_clock_settings_btns,
+.fc_clock_settings.hide #fc_clock_settings_hide {
+  display: none;
+}
+.fc_clock_settings.hide #fc_clock_settings_show {
+  display: block;
+}
+@media screen and (max-width: 640px) {
+  .fc_clock_settings {
+    margin: 0 5px 15px;
+  }
+  .fc_clock_settings.hide {
+    margin: 0 5px 5px;
+  }
+}
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  font-size: 16px;
+  cursor: pointer;
+}
+:root {
+  --fc-color-000: #000;
+  --fc-color-fff: #fff;
+  --fc-color-222: #222;
+  --fc-color-333: #333;
+  --fc-color-444: #444;
+  --fc-color-afafaf: #afafaf;
+}
+.btn-save {
+  color: var(--fc-color-222);
+  background: var(--fc-color-fff);
+  border: 1px solid var(--fc-color-afafaf);
+  border-radius: 20px;
+  transition: none !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  padding: 7px 12px;
+  min-width: 80px;
+}
+.btn-save:hover,
+.btn-save:not(:active):hover {
+  color: var(--fc-color-222);
+  background: var(--fc-color-fff);
+  border: 1px solid var(--fc-color-333) !important;
+}
+.btn-save:active,
+.btn-save:focus {
+  color: var(--fc-color-222);
+  background: var(--fc-color-fff);
+  border: 1px solid var(--fc-color-444) !important;
+}
+.btn-save:not(:hover) {
+  border: 1px solid var(--fc-color-afafaf);
+}
+.btn-default {
+  color: var(--fc-color-222);
+  background: var(--fc-color-fff);
+  border: 1px solid var(--fc-color-afafaf);
+  border-radius: 20px;
+  transition: none !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  padding: 7px 12px;
+  min-width: 80px;
+}
+.btn-default:hover,
+.btn-default:not(:active):hover {
+  color: var(--fc-color-222);
+  background: var(--fc-color-fff);
+  border: 1px solid var(--fc-color-333) !important;
+}
+.btn-default:active,
+.btn-default:focus {
+  color: var(--fc-color-222);
+  background: var(--fc-color-fff);
+  border: 1px solid var(--fc-color-444) !important;
+}
+.btn-default:not(:hover) {
+  border: 1px solid var(--fc-color-afafaf);
+}
+.color-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.color-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.color-input-group label {
+  font-weight: 600;
+  color: #222;
+}
+.color-input-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.color-input-wrapper input[type="color"] {
+  transition: all 0.3s ease;
+}
+.color-input-wrapper input[type="color"] {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: 0;
+}
+.color-input-wrapper input[type="text"] {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: monospace;
+  font-size: 18px;
+  max-width: 150px;
+  outline: 0;
+}
+.language-dropdown_ {
+  position: relative;
+}
+.language-dropdown_ select {
+  width: 150px;
+  height: 40px;
+  font-size: 18px;
+  border-radius: 10px;
+  position: relative;
+  padding: 8px 28px 8px 10px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  color: #010101;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: monospace;
+}
+.language-dropdown_:after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 11px;
+  height: 6px;
+  background-image: url("/img/arrow-icon.svg");
+  background-repeat: no-repeat;
+  background-size: 11px;
+  pointer-events: none;
+}
+html[dir="rtl"] .language-dropdown_ select {
+  padding: 8px 10px 8px 28px;
+}
+html[dir="rtl"] .language-dropdown_:after {
+  left: 12px;
+  right: auto;
+}
+:root {
+  --success: #222;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.sound__switch,
+.message__switch {
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background: #ddd;
+  border-radius: 10px;
+  position: relative;
+  transition: var(--transition);
+  cursor: pointer;
+  margin-top: 10px;
+}
+.sound__switch.on,
+.message__switch.on {
+  background: var(--success);
+}
+.sound__switch:after,
+.message__switch:after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: var(--transition);
+}
+.sound__switch.on:after,
+.message__switch.on:after {
+  left: 22px;
+}
+.sound__hidden {
+  margin-top: -5px;
+  display: none;
+}
+.sound__hidden.on {
+  display: block;
+}
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 20px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1000;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+}
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+}
+.toast.success {
+  background-color: rgba(50, 50, 50, 0.8);
+}
+.toast.error {
+  background-color: #f44336;
+}
+.toast.warning {
+  background-color: #ff9800;
+}
+[data-theme="dark"] .fc_clock_settings {
+  background: var(--card-color, #1e1e1e);
+  color: var(--text-color, #e0e0e0);
+  border-color: var(--border-color, #333333);
+}
+[data-theme="dark"] .fc_clock_settings.hide {
+  background: var(--card-color, #1e1e1e);
+  border-color: var(--border-color, #333333);
+}
+[data-theme="dark"] .fc_clock_settings_title,
+[data-theme="dark"] .color-input-group label {
+  color: var(--text-color, #e0e0e0);
+}
+[data-theme="dark"] #fc_clock_settings_show {
+  color: var(--text-color, #e0e0e0);
+}
+[data-theme="dark"] #fc_clock_settings_hide {
+  color: var(--secondary-text, #aaaaaa);
+}
+[data-theme="dark"] #fc_clock_settings_hide:hover {
+  color: var(--text-color, #e0e0e0);
+}
+[data-theme="dark"] .color-input-wrapper input[type="text"],
+[data-theme="dark"] .language-dropdown_ select {
+  background: #151515;
+  color: var(--text-color, #e0e0e0);
+  border-color: var(--border-color, #333333);
+}
+[data-theme="dark"] .color-input-wrapper input[type="text"]:focus,
+[data-theme="dark"] .language-dropdown_ select:focus {
+  border-color: var(--accent-color, #7e57c2);
+}
+[data-theme="dark"] .language-dropdown_:after {
+  background-image: url("/img/arrow-icon_white.svg");
+  opacity: 0.9;
+}
+[data-theme="dark"] .fc_clock_settings .btn,
+[data-theme="dark"] .fc_clock_settings .btn-save,
+[data-theme="dark"] .fc_clock_settings .btn-default {
+  color: var(--text-color, #e0e0e0);
+}
+[data-theme="dark"] .fc_clock_settings .btn-save,
+[data-theme="dark"] .fc_clock_settings .btn-default {
+  background: #151515;
+  border-color: var(--border-color, #333333);
+}
+[data-theme="dark"] .fc_clock_settings .btn-save:hover,
+[data-theme="dark"] .fc_clock_settings .btn-default:hover {
+  background: #202020;
+  border-color: var(--secondary-text, #aaaaaa) !important;
+}
+[data-theme="dark"] .fc_clock_settings .btn-save:active,
+[data-theme="dark"] .fc_clock_settings .btn-save:focus,
+[data-theme="dark"] .fc_clock_settings .btn-default:active,
+[data-theme="dark"] .fc_clock_settings .btn-default:focus {
+  background: #242424;
+  border-color: var(--accent-color, #7e57c2) !important;
+}
+[data-theme="dark"] .sound__switch,
+[data-theme="dark"] .message__switch {
+  background: #444;
+}
+[data-theme="dark"] .sound__switch.on,
+[data-theme="dark"] .message__switch.on {
+  background: var(--accent-color, #7e57c2);
+}
+[data-theme="dark"] .sound__switch:after,
+[data-theme="dark"] .message__switch:after {
+  background: #f5f5f5;
+}

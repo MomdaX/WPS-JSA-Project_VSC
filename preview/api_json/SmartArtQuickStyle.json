@@ -1,0 +1,87 @@
+{
+  "name": "SmartArtQuickStyle",
+  "summary": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码更改 WPP 中的 Smart Art 图表的快速样式。*/</span>\nApplication.ActivePresentation.Slides.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).SmartArt.QuickStyle = Application.SmartArtQuickStyles.Item(<span class=\"hljs-number\">1</span>)</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表 Smart Art 快速样式</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>SmartArtQuickStyle</b> 对象的容器应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Category",
+      "summary": "",
+      "description": "<p>检索与 SmartArt 快速样式关联的主类别名称。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>SmartArtQuickStyle</b> 对象的应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Description",
+      "summary": "",
+      "description": "<p>检索 SmartArt 快速样式的说明。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "Id",
+      "summary": "<p>与此属性关联的 ID 区分大小写。<br/></p>",
+      "description": "<p>检索关联的 SmartArt 快速样式的唯一 Id。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "Name",
+      "summary": "",
+      "description": "<p>检索 SmartArt 快速样式的字符串名称。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回调用对象。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Reserve",
+      "summary": "",
+      "description": "",
+      "parameters": [],
+      "examples": "",
+      "returns": ""
+    }
+  ]
+}

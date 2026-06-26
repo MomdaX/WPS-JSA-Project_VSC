@@ -1,0 +1,107 @@
+{
+  "name": "SmartArt",
+  "summary": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码将顶级节点添加到带有项目符号的文本窗格中。*/</span>\nApplication<span class=\"hljs-selector-class\">.ActivePresentation</span><span class=\"hljs-selector-class\">.Slides</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.SmartArt</span><span class=\"hljs-selector-class\">.Nodes</span><span class=\"hljs-selector-class\">.Add</span>()</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>用于与 SmartArt 图形交互的顶级类。</p>",
+  "properties": [
+    {
+      "name": "AllNodes",
+      "summary": "<p>节点是按照顺序检索的，与数据模型无关。例如，下面的数据模型将按照 A、B、C、D、E、F 的顺序检索节点。</p><ul><li>A</li><ul><li>B</li><ul><li>C</li></ul><li>D</li></ul><ul><ul><li>E</li></ul></ul><li>F</li></ul>",
+      "description": "<p>检索包含 SmartArt 图表内部所有节点的 <b>SmartArtNodes</b> 对象。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\">/*下面的示例设置第一个节点内部的文本。*/</code><code class=\"JavaScript\">Application.ActiveWorkbook.ActiveChart.Shapes.Item(<span class=\"hljs-number\">1</span>).SmartArt.AllNodes.Item(<span class=\"hljs-number\">1</span>).TextFrame2.TextRange.<span class=\"hljs-keyword\">Text</span>=<span class=\"hljs-string\">\"Node 1\"</span></code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "SmartArtNodes",
+      "readonly": true
+    },
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>SmartArt</b> 对象的容器应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Color",
+      "summary": "",
+      "description": "<p></p><p>检索或设置应用到 Smart Art 图形的 Smart Art 颜色样式。可读/写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码设置 Smart Art 图表的配色方案。*/</span>\nApplication.ActivePresentation.Slides.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).SmartArt.Color = Application.SmartArtColors.Item(<span class=\"hljs-number\">1</span>)</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "SmartArtColor",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>SmartArt</b> 对象的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Layout",
+      "summary": "",
+      "description": "<p></p><p>检索或设置与 Smart Art 图形关联的 Smart Art 布局。可读/写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码设置 Smart Art 布局。*/</span>\nApplication.ActivePresentation.Slides.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).SmartArt.Layout = Application.SmartArtLayouts.Item(<span class=\"hljs-number\">1</span>)</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Nodes",
+      "summary": "<p>根节点没有父节点并且仅包含子级（如果 SmartArt 图形的数据模型内有子级存在）。在下面的示例中，将返回节点 A 和 F。</p><p></p><ul><li>A</li><ul><li>B</li><ul><li>C</li></ul><li>D</li></ul><ul><ul><li>E</li></ul></ul><li>F</li></ul>",
+      "description": "<p></p><p>检索 SmartArt 图表中根节点的子级。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码在 WPP 中添加一个顶级节点。*/</span>\nApplication<span class=\"hljs-selector-class\">.ActivePresentation</span><span class=\"hljs-selector-class\">.Slides</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.SmartArt</span><span class=\"hljs-selector-class\">.Nodes</span><span class=\"hljs-selector-class\">.Add</span>()</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "SmartArtNode",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回调用对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "QuickStyle",
+      "summary": "",
+      "description": "<p>检索或设置应用到 SmartArt 图形的 SmartArt 快速样式。可读/写。</p>",
+      "examples": "<hr/><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码更改 WPP 中 Smart Art 的快速样式。*/</span>\nApplication.ActivePresentation.Slides.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).SmartArt.QuickStyle = Application.SmartArtQuickStyles.Item(1)</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "SmartArtQuickStyle",
+      "readonly": true
+    },
+    {
+      "name": "Reverse",
+      "summary": "",
+      "description": "<p>获取或设置 SmartArt 图表与（从左到右）LTR 或（从右到左）RTL（如果该图表支持反向）有关的状态。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Reset",
+      "summary": "<p>此操作对应于 SmartArt 的“设计”选项卡下的“重设图形”按钮提供的功能。<br/></p>",
+      "description": "<p>将 SmartArt 图形重置为其原始状态。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "DataRange",
+  "summary": "<p></p>DataRange为类似表格Range概念，对应于表格中的一个区域，用于存储缓存数据，如果注册进DataSource，表格中的对应区域数据修改，将会触发事件。<br/>",
+  "description": "<p>代表容器应用程序的一个数据区域对象。<br/></p>",
+  "properties": [
+    {
+      "name": "Address",
+      "summary": "",
+      "description": "<p>代表DataRange对象的地址。形如“sheet1!$a$1”表示sheet1中A1单元格。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "String",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "TextInJSON",
+      "summary": "",
+      "description": "<p></p>json格式表示区域的格式化后的值。只读。<br/>",
+      "examples": "",
+      "parameters": [],
+      "type": "String",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "ValueInJSON",
+      "summary": "",
+      "description": "<p>json格式表示区域的值。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

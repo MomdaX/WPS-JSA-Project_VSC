@@ -1,0 +1,100 @@
+{
+  "name": "PictureEffects",
+  "summary": "<p>\n</p><p>\n</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的代码将设置 Wpp 幻灯片中某个形状的几个图片效果填充属性。</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)\n</span>{\n    <span class=\"hljs-comment\">// Setup a slide with one picture shape.</span>\n    let pes = Application.ActivePresentation.Slides.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).Fill.PictureEffects\n    <span class=\"hljs-comment\">// Insert a 150% Saturation effect.</span>\n    pes.Insert(Application.<span class=\"hljs-keyword\">Enum</span>.msoEffectSaturation).EffectParameters.Item(<span class=\"hljs-number\">1</span>).Value = <span class=\"hljs-number\">1.5</span>\n    <span class=\"hljs-comment\">// Insert Brightness/Contrast effect and set values to -50% Brightness and +25% Contrast.</span>\n    let brightnessContrast = pes.Insert(Application.<span class=\"hljs-keyword\">Enum</span>.msoEffectBrightnessContrast)\n    brightnessContrast.EffectParameters.Item(<span class=\"hljs-number\">1</span>).Value = -<span class=\"hljs-number\">0.5</span>\n    brightnessContrast.EffectParameters.Item(<span class=\"hljs-number\">2</span>).Value = <span class=\"hljs-number\">0.25</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>\n</p><p>\n</p><p>代表 <b>PictureEffects</b> 对象的集合。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>PictureEffects</b> 对象的容器应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>检索包含在 <b>PictureEffects</b> 集合中的 <b>PictureEffect</b> 对象数的计数。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>PictureEffects</b> 对象的应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>检索位于指定索引处的 <b>PictureEffect</b> 对象。只读<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Integer",
+          "description": "指定一个代表 PictureEffect 对象的索引位置的整数。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>从集合中删除 <b>PictureEffect</b> 对象。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Integer",
+          "description": "要删除的 PictureEffect 对象的索引号。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Insert",
+      "summary": "<p>\n</p><p>\n</p><p>图片效果被处理为由各个项构成的链，以便创建一个最终复合图像，链中的项是按照顺序应用的。效果链将允许向链中添加效果、对效果重新排序或从链中删除效果。 </p>",
+      "description": "<p>\n</p><p>将图片效果插入到复合效果链中。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的代码将设置 Wpp 幻灯片中某个形状的几个图片效果填充属性。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-comment\">// Setup a slide with one picture shape.</span>\n    <span class=\"hljs-keyword\">let</span> pes = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActivePresentation</span>.<span class=\"hljs-property\">Slides</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">PictureEffects</span>\n    <span class=\"hljs-comment\">// Insert a 150% Saturation effect.</span>\n    pes.<span class=\"hljs-title class_\">Insert</span>(Application.Enum.msoEffectSaturation).<span class=\"hljs-property\">EffectParameters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value</span> = <span class=\"hljs-number\">1.5</span>\n    <span class=\"hljs-comment\">// Insert Brightness/Contrast effect and set values to -50% Brightness and +25% Contrast.</span>\n    <span class=\"hljs-keyword\">let</span> brightnessContrast = pes.<span class=\"hljs-title class_\">Insert</span>(Application.Enum.msoEffectBrightnessContrast)\n    brightnessContrast.<span class=\"hljs-property\">EffectParameters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value</span> = -<span class=\"hljs-number\">0.5</span>\n    brightnessContrast.<span class=\"hljs-property\">EffectParameters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Value</span> = <span class=\"hljs-number\">0.25</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "EffectType",
+          "type": "MsoPictureEffectType",
+          "description": "一个指定图片效果类型的枚举。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Position",
+          "type": "Integer",
+          "description": "效果在图片效果的复合链中的位置。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    }
+  ]
+}

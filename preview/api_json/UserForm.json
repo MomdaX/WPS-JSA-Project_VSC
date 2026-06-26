@@ -1,0 +1,170 @@
+{
+  "name": "UserForm",
+  "summary": "<div finger=\"kso-wps-otl\">\n\t\t用户窗体对象，是一个容器。代表用户创建的窗体，用户可以向其中添加控件，通过该可以调用添加的控件对象，修改对象的属性，调用对象的方法。\n\t</div>",
+  "description": "<p>UserForm 对象是构成应用程序用户界面的一部分的窗口或对话框。</p>",
+  "properties": [
+    {
+      "name": "BackColor",
+      "summary": "<p><span style=\"white-space:normal;\">返回或</span>指定当前对象的背景颜色</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t返回或指定当前对象的背景颜色\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*设置UserForm的背景颜色为十六进制下550000表示的颜色（红棕色）*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">BackColor</span> = <span class=\"hljs-number\">0x550000</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "BorderColor",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t<span style=\"white-space:normal;\">返回或</span>当前对象的边框颜色，只读\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t<span style=\"white-space:normal;\">返回或</span>当前对象的边框颜色，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "Caption",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t返回或指定用来识别或描述对象的显示在对象上的描述性文字，只读\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t返回或指定用来识别或描述对象的显示在对象上的描述性文字，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "Enabled",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t指定该控件是否能接收焦点或者对用户生成的事件进行响应，只读\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定该控件是否能接收焦点或者对用户生成的事件进行响应，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "Font",
+      "summary": "<p><span style=\"white-space:normal;\">返回或</span>指定对象的字体<span style=\"white-space:normal;\">，只读</span> </p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t<span style=\"white-space:normal;\">返回或</span>指定对象的字体，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "ForeColor",
+      "summary": "<p><span style=\"white-space:normal;\">返回或</span>指定对象的前景颜色</p>",
+      "description": "<p><span style=\"white-space:normal;\">返回或</span>指定对象的前景颜色</p>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*设置UserForm窗体的前景颜色为十六进程550000表示的颜色*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ForeColor</span> = <span class=\"hljs-number\">0x550000</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Height",
+      "summary": "<p><span style=\"white-space:normal;\">返回或</span>指定以像素点表示的对象的高</p>",
+      "description": "<p><span style=\"white-space:normal;\">返回或</span>指定以像素点表示的对象的高</p>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*设置UserForm窗体的高为1000*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Height</span> = <span class=\"hljs-number\">1000</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Left",
+      "summary": "<p><span style=\"white-space:normal;\">返回或</span>指定控件到包含它的窗体的左边缘的距离</p>",
+      "description": "<p><span style=\"white-space:normal;\">返回或</span>指定控件到包含它的窗体的左边缘的距离</p>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*设置UserForm窗体到窗口左侧边缘的距离为1000*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Left</span> = <span class=\"hljs-number\">1000</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Name",
+      "summary": "<p><span style=\"white-space:normal;\">返回或</span>指定控件或对象的名称，或与Font对象关联的字体对象的名称，只读</p>",
+      "description": "<p><span style=\"white-space:normal;\">返回或</span>指定控件或对象的名称，或与Font对象关联的字体对象的名称，只读</p>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "StartUpPostion",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t返回或者指定UserForm第一次出现的位置\n\t</div>\n\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<th>\n\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t设置\n\t\t\t\t\t</div>\n\t\t\t\t</th>\n\t\t\t\t<th>\n\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t值\n\t\t\t\t\t</div>\n\t\t\t\t</th>\n\t\t\t\t<th>\n\t\t\t\t\t描述\n\t\t\t\t</th>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>\n\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t<strong>Manual</strong> \n\t\t\t\t\t</div>\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t0\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t不指定初始化设置\n\t\t\t\t\t</div>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>\n\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t<strong>CenterOwner</strong> \n\t\t\t\t\t</div>\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t1\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t出现在包含用户窗体的所在窗体的中间\n\t\t\t\t\t</div>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>\n\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t<strong>CenterScreen</strong> \n\t\t\t\t\t</div>\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t2\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t出现在整个屏幕的中间\n\t\t\t\t\t</div>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>\n\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t<strong>WindowsDefault</strong> \n\t\t\t\t\t</div>\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t3\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t出现在屏幕的左上角\n\t\t\t\t\t</div>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table></div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t返回或者指定UserForm第一次出现的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*设置UserForm窗体第一次出现时在整个屏幕的中间*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">StartUpPostion</span> = <span class=\"hljs-number\">2</span>\n}\n</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Top",
+      "summary": "<p><span style=\"white-space:normal;\">返回或</span>指定控件到包含它的窗体的上边缘的距离</p>",
+      "description": "<p><span style=\"white-space:normal;\">返回或</span>指定控件到包含它的窗体的上边缘的距离</p>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*设置UserForm窗体到窗口上边缘的距离为1000*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Top</span> = <span class=\"hljs-number\">1000</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Width",
+      "summary": "<p><span style=\"white-space:normal;\">返回或</span>指定以像素点表示的对象的宽</p>",
+      "description": "<p><span style=\"white-space:normal;\">返回或</span>指定以像素点表示的对象的宽</p>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*设置UserForm窗体的宽为1000*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Width</span> = <span class=\"hljs-number\">1000</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Controls",
+      "summary": "<p><span style=\"white-space:normal;\">返回控件的窗体、子窗体、报告或者区块的控件合集</span> </p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t返回控件的窗体、子窗体、报告或者区块的控件合集\n\t</div>",
+      "parameters": [],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*通过button名获取button对象，并打印button名*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-keyword\">var</span> buttonName = <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">CommandButton1</span>.<span class=\"hljs-property\">Name</span>\n\t<span class=\"hljs-title class_\">Console</span>.<span class=\"hljs-title function_\">log</span>(buttonName)\n\t<span class=\"hljs-keyword\">var</span> controlSet = <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-title class_\">Controls</span>(buttonName)\n\t<span class=\"hljs-title class_\">Console</span>.<span class=\"hljs-title function_\">log</span>(controlSet.<span class=\"hljs-property\">Name</span>)\n}</code></pre></td></tr></table></div>",
+      "returns": ""
+    },
+    {
+      "name": "Hide",
+      "summary": "<p><span style=\"white-space:normal;\">隐藏UserForm对象但不卸载该对象</span> </p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t隐藏UserForm对象但不卸载该对象\n\t</div>",
+      "parameters": [],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*隐藏该UserForm*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-title class_\">Hide</span>()\n}\n </code></pre></td></tr></table></div>",
+      "returns": ""
+    },
+    {
+      "name": "Move",
+      "summary": "<p><span style=\"white-space:normal;\">将对象移动到参数指定的位置</span> </p>",
+      "description": "<p>将对象移动到参数指定的位置</p>",
+      "parameters": [
+        {
+          "name": "Left",
+          "type": "Number",
+          "description": "对象移动后相对于窗口的左边缘的距离",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Top",
+          "type": "Number",
+          "description": "对象移动后相对于窗口的上边缘的距离",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Width",
+          "type": "Number",
+          "description": "对象移动后的预期宽度",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Height",
+          "type": "Number",
+          "description": "对象移动后的预期长度",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将窗体移动到窗口的左上角，并将移动后窗体的长宽设置为500*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-title class_\">Move</span>(<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">500</span>,<span class=\"hljs-number\">500</span>)\n}</code></pre></td></tr></table></div>",
+      "returns": ""
+    },
+    {
+      "name": "Show",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t显示一个用户窗体对象\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t显示一个用户窗体对象\n\t</div>",
+      "parameters": [],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*显示用户窗体*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-title class_\">Show</span>()\n}</code></pre></td></tr></table></div>",
+      "returns": ""
+    }
+  ]
+}

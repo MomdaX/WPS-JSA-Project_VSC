@@ -1,0 +1,144 @@
+{
+  "name": "DocumentProperties",
+  "summary": "<p>使用<b> Add</b> 方法可创建一个新的自定义属性，并将其添加到 \n<b>DocumentProperties</b> 集合中。不能使用 <b>Add</b> 方法创建内置文档属性。<br/></p><p>\n</p><p>使用 <b>BuiltinDocumentProperties(index)</b> 可返回一个代表特定内置文档属性的 <b>DocumentProperty</b> 对象；其中 <i>index</i> 是该内置文档属性的索引号。使用 <b>CustomDocumentProperties(index)</b> 可返回一个代表特定自定义文档属性的 <b>DocumentProperty</b> 对象；其中 <i>index</i> 是该自定义文档属性的编号。</p>",
+  "description": "<p><b>DocumentProperty</b> 对象的集合。每个 <b>DocumentProperty</b> 对象均代表容器文档的一个内置属性或自定义属性。<br/></p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>DocumentProperties</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "ppidisp",
+          "type": "Object",
+          "description": "表示文档属性的标识符。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>\n</p><p>获取一个 <b>Long</b> 类型的值，指示 <b>DocumentProperties</b> 集合中的项数。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例显示活动文档中自定义文档属性的数量。</span>\nalert(<span class=\"hljs-string\">\"There are \"</span> + Application.ActiveDocument.CustomDocumentProperties.Count +\n    <span class=\"hljs-string\">\" custom document properties in the active document.\"</span>)</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "pc",
+          "type": "Long",
+          "description": "代表文档属性的索引。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>DocumentProperties</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "plCreator",
+          "type": "Long",
+          "description": "内置文档属性的名称或索引号。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>获取 <b>DocumentProperties</b> 集合中的一个 <b>DocumentProperty</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Variant",
+          "description": "要返回的文档属性的名称或索引号。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>\n</p><p>获取 <b>DocumentProperties</b> 对象的 <b>Parent</b> 对象。只读。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "<p>\n</p><p>\n</p><p>如果在 <b>DocumentProperties</b> 集合中添加了自定义文档属性，该属性链接到 WPS \nOffice文档中指定的值，则必须保存文档以查看 <b>DocumentProperty</b> 对象的更改。</p>",
+      "description": "<p>\n</p><p>新建一个自定义的文档属性。只能在自定义 <b>DocumentProperties</b> 集合中新添文档属性。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例设计为在 WPS 中运行，它将向 DocumentProperties 集合中添加三个自定义文档属性。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">ValidateSchemas</span>(<span class=\"hljs-params\">objSourceCustomXMLSchemaCollection</span>) {\n    <span class=\"hljs-keyword\">let</span> customProps = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveDocument</span>.<span class=\"hljs-property\">CustomDocumentProperties</span>\n    customProps.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"CustomNumber\"</span>, <span class=\"hljs-literal\">false</span>, Application.Enum.msoPropertyTypeNumber, <span class=\"hljs-number\">1000</span>)\n    customProps.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"CustomString\"</span>, <span class=\"hljs-literal\">false</span>, Application.Enum.msoPropertyTypeString, <span class=\"hljs-string\">\"This is a custom property.\"</span>)\n    customProps.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"CustomDate\"</span>, <span class=\"hljs-literal\">false</span>, Application.Enum.msoPropertyTypeDate, <span class=\"hljs-keyword\">new</span> <span class=\"hljs-title class_\">Date</span>())\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Name",
+          "type": "String",
+          "description": "属性的名称。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "LinkToContent",
+          "type": "Boolean",
+          "description": "指定属性是否链接到容器文档中的内容。如果参数为 True，则必需设置 LinkSource 参数，如果为 False，则需要数值参数。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Type",
+          "type": "Variant",
+          "description": "该属性的数据类型。可以是以下 MsoDocProperties 常量之一：msoPropertyBoolean、msoPropertyDate、msoPropertyFloat、msoPropertyNumber 或 msoPropertyString。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Value",
+          "type": "Variant",
+          "description": "如果未链接到容器文档中的内容，则为属性的值。该数值将进行转换以匹配类型参数指定的数据类型，如果不能转换，则将发生错误。如果 LinkToContent 为 True，将忽略该参数，新文档属性将被赋予默认值，直到容器应用程序更新链接的属性值（通常在保存文档时进行）。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "LinkSource",
+          "type": "Variant",
+          "description": "如果 LinkToContent 为 False，则忽略此参数。链接属性的来源。可使用的源链接的类型由容器应用程序决定。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    }
+  ]
+}

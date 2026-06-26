@@ -1,0 +1,257 @@
+{
+  "name": "EncryptionProvider",
+  "summary": "<p>加密提供程序通过自定义的 COM 加载项实现。Office \n文档内提供了存储区来存储加载项特定的信息，可以在其中存储加密、解密、应用权限和显示权限设置或验证用户界面所需的任何信息。<br/></p>",
+  "description": "<p>提供用于设置权限、应用基础加密和解密的加密技术以及进行用户身份验证的方法。<br/></p>",
+  "properties": [],
+  "functions": [
+    {
+      "name": "Authenticate",
+      "summary": "<p>它是 COM 加载项加密提供程序的显示位置，与适于应用加密的用户界面无关。例如，密码加密提供程序将提示用户输入密码。<br/></p>",
+      "description": "<p>用于确定用户是否具有打开加密文档的适当权限。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "ParentWindow",
+          "type": "IUnknown",
+          "description": "指定为了显示加密设置而调用的窗口。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "EncryptionData",
+          "type": "IUnknown",
+          "description": "包含当前文档的加密数据。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "PermissionsMask",
+          "type": "无符号整数",
+          "description": "加密提供程序加载项显示的用户界面。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "Long"
+    },
+    {
+      "name": "CloneSession",
+      "summary": "<p>此方法的输出是另一个具有相同加密设置的会话句柄。当执行自动保存操作时，将向您提供此会话句柄。<br/></p>",
+      "description": "<p>为即将保存的文件创建 <b>EncryptionProvider</b> 对象加密会话的另一个工作副本。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "SessionHandle",
+          "type": "Long",
+          "description": "克隆的会话的 ID。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "DecryptStream",
+      "summary": "<p>此方法由 COM 加载项调用，调用时间为文档��打开并且在加载项已验证打开文档的用户已经过身份验证后。此方法是 EncryptStream \n方法的逆向操作，它将加密数据转换回纯（未加密）数据。<br/></p>",
+      "description": "<p>对文档的加密数据流进行解密并将其返回。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "SessionHandle",
+          "type": "Long",
+          "description": "当前会话的 ID。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "StreamName",
+          "type": "String",
+          "description": "数据流的 ID。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "EncryptedStream",
+          "type": "IUnknown",
+          "description": "已加密数据流。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "UnencryptedStream",
+          "type": "IUnknown",
+          "description": "解密之前的数据流。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "EncryptStream",
+      "summary": "<p>此方法通常是在执行保存操作的过程中由 COM 加载项调用。<br/></p>",
+      "description": "<p>加密并返回文档的数据流。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "SessionHandle",
+          "type": "Long",
+          "description": "当前会话的 ID。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "StreamName",
+          "type": "String",
+          "description": "加密的文档数据流的名称。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "UnencryptedStream",
+          "type": "IUnknown",
+          "description": "加密之前的数据流。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "EncryptedStream",
+          "type": "IUnknown",
+          "description": "加密后的数据流信息。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "EndSession",
+      "summary": "<p>在执行保存操作期间，COM 加载项将调用 <b>CloneSession</b> 方法，以便为即将保存的文件创建 <b>EncryptionProvider</b> 对象加密会话的另一个工作副本。接下来调用 <b>Save</b> 方法，以获取要保留的有关加密设置的所有自定义信息。在以后再次打开此文档时，便可以使用此信息。然后调用 \n<b>EncryptStream</b> 方法，向提供程序提供文档的全部内容。最后，为克隆的会话句柄调用 <b>EndSession</b> 方法来完成该过程。<br/></p>",
+      "description": "<p>结束当前加密会话。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "SessionHandle",
+          "type": "Long",
+          "description": "当前会话的 ID。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "GetProviderDetail",
+      "summary": "<p>通过此方法，可以查询 <b>EncryptionProvider</b> \n对象以获取类似下面的信息：未安装您的自定义 COM 加载项的用户的下载 URL、实现的算法以及使用的加密模式。<br/></p>",
+      "description": "<p>显示有关当前文档的加密的信息。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "encprovdet",
+          "type": "EncryptionProviderDetail",
+          "description": "指定所需的加密信息。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "Variant"
+    },
+    {
+      "name": "NewSession",
+      "summary": "<p>此方法由 COM 加载项调用。<br/></p>",
+      "description": "<p>由 <b>EncryptionProvider</b> \n对象在创建新的加密会话时使用。当文档被调入内存中后，提供程序将使用此会话缓存与加密、用户和权限相关的文档特定的信息。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "ParentWindow",
+          "type": "IUnknown",
+          "description": "指定为了显示加密设置而调用的窗口。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "Long"
+    },
+    {
+      "name": "Save",
+      "summary": "<p>将文件保存为 Office Open XML 文件格式（它是支持自定义文件加密的唯一格式）时，COM \n加载项将调用提供程序来加密文档。如果您尝试保存的目标文件格式不支持自定义文件加密，而您具有执行此操作的相应权限，则 WPS \nOffice将在不加密的情况下保存该文档。这样便可以将文档导出为不支持加密或权限管理的格式。<br/></p>",
+      "description": "<p>保存加密的文档。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "SessionHandle",
+          "type": "Long",
+          "description": "当前会话的 ID。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "EncryptionData",
+          "type": "IUnknown",
+          "description": "包含加密信息。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "Long"
+    },
+    {
+      "name": "ShowSettings",
+      "summary": "<p>只能对已加密的文档调用此方法。您可以在 COM \n加载项中使用此方法，以基于用户的任务显示您所希望的用户体验。例如，在纯加密情况中，可以显示一个对话框来更改文档的密码。在权限管理情况中，可以决定是显示用于更改权限的对话框，还是显示用户的权限。<br/></p>",
+      "description": "<p>用于显示当前文档的加密设置的对话框。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "SessionHandle",
+          "type": "Long",
+          "description": "当前会话的 ID。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "ParentWindow",
+          "type": "IUnknown",
+          "description": "指定为了显示加密设置而调用的窗口。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "ReadOnly",
+          "type": "Boolean",
+          "description": "指定是否希望用户能更改加密设置。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Remove",
+          "type": "Boolean",
+          "description": "如果为 True，则在执行下一个保存操作的过程中将删除文档的加密。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    }
+  ]
+}

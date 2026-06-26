@@ -1,0 +1,66 @@
+{
+  "name": "SmartArtLayouts",
+  "summary": "<p></p><div id=\"vstable\">选项包括基本列表、图片题注列表、垂直项目符号列表等。<br/><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码更改 WPP 中的 Smart Art 图表的图表样式。*/</span>\nApplication.ActivePresentation.Slides.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).SmartArt.Layout = Application.SmartArtLayouts.Item(<span class=\"hljs-number\">1</span>)</code></pre></td></tr></tbody></table></div><p><br/></p>",
+  "description": "<p></p><p>代表 Smart Art 布局图表的集合。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>SmartArtLayouts</b> 对象的容器应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>检索包含在 <b>SmartArtLayouts</b> 集合中的 <b>SmartArtLayout</b> 对象数的计数。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>SmartArtLayouts</b> 对象的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回调用对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>检索位于指定索引处或具有指定的唯一 Id 的 <b>SmartArtLayout</b> 对象。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Variant",
+          "description": "指定一个代表索引的整数或一个代表 SmartArtLayout 对象的位置的字符串。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "SmartArtLayout"
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "name": "ScrollBar",
+  "summary": "<p>提供在长列表工程或大量信息中快速浏览的图形工具，以比例方式指示出当前位置，或是做为一个输入设备，或速度及数量的指示器。</p>",
+  "description": "<p>提供在长列表工程或大量信息中快速浏览的图形工具，以比例方式指示出当前位置，或是做为一个输入设备，或速度及数量的指示器。</p>",
+  "properties": [
+    {
+      "name": "AutoSize",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t定该对象是否根据内容自动设置它的大小\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t定该对象是否根据内容自动设置它的大小\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*设置ScrollBar1控件为根据内容自动设置大小*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">AutoSize</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "BackColor",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的内部颜色\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的内部颜色\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1设置为十六进制下665898表示的颜色（紫色）*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">BackColor</span> = <span class=\"hljs-number\">0x665898</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "ControlSource",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用该属性指定控件中显示的数据。您可以显示和编辑绑定到表的数据、查询的数据或SQL语句中的字段的数据。您还可以显示表达式的结果\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用该属性指定控件中显示的数据\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "Enabled",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t<div finger=\"kso-wps-otl\">\n\t\t\t您可以通过该属性设置或返回是否启用该控件\n\t\t</div>\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t<div finger=\"kso-wps-otl\">\n\t\t\t您可以通过该属性设置或返回是否启用该控件\n\t\t</div>\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*启用该控件*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">Enabled</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Font",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t指定对象的字体，只读\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定对象的字体，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "ForeColor",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件中文本的颜色\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件中文本的颜色\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1中的文本颜色设置为十六进制658978所表示的颜色*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">ForeColor</span> = <span class=\"hljs-number\">0x658978</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Height",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的高度\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的高度\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1控件的高度设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">Height</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "HeightPolicy",
+      "summary": "<p>\n\t\t获取或设置指定对像的高度策略，可设置为以下值：\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tExpanding\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t可变高度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tFixed\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t2\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t固定高度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对像的高度策略\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1的高度设置为固定*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">HeightPolicy</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "LargeChange",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t指定当用户在滚动框和滚动箭头之间单击时发生的移动量。\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定当用户在滚动框和滚动箭头之间单击时发生的移动量。\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1在用户点击滚动框和滚动箭头时发生的移动量设为200*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">LargeChange</span> = <span class=\"hljs-number\">200</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Left",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1的位置设置到距离窗体左边缘100像素*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">Left</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Max",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t为该控件的Value属性指定最大可接受值。\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t为该控件的Value属性指定最大可接受值。\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1的Value属性的最大可接受值设为2000*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">Max</span> = <span class=\"hljs-number\">2000</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Min",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t为该控件的Value属性指定最小可接受值。\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t为该控件的Value属性指定最小可接受值。\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1的Value属性的最小可接受值设为0*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">Mix</span> = <span class=\"hljs-number\">0</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Name",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定或确定表示对象名称的字符串，只读\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定或确定表示对象名称的字符串，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "Orientation",
+      "summary": "<p>\n\t\t指定该控件是垂直定向还是水平定向，可以设置为以下值：\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tAuto\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t-1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t\t根据控件的尺寸自动确定方向（默认）。\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tVertical\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t0\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t\t控件垂直呈现。\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tHorizontal\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t\t控件水平呈现。\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定该控件是垂直定向还是水平定向\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1垂直呈现*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">Orientation</span> = <span class=\"hljs-number\">0</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "SmallChange",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t指定当用户单击滚动箭头时发生的移动量。\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定当用户单击滚动箭头时发生的移动量。\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1在用户点击滚动箭头时发生的移动量设为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">LargeChange</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "TabIndex",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在窗体或报表上的Tab键顺序中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在窗体或报表上的Tab键顺序中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1设置为Tab键顺序为的第2个位置*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">TabIndex</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "TabStop",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定是否可以通过Tab键将焦点移到控件上\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定是否可以通过Tab键将焦点移到控件上\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1设置为可以通过Tab键将焦点移到该控件上*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">TabStop</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Top",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1的位置设置到距离窗体上边缘100像素*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">Top</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Value",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定一个在Max和Min之间的值\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定一个在Max和Min之间的值\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1的Valued的值为500*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">Value</span> = <span class=\"hljs-number\">500</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Visible",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t返回或设置该对象是否可见\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t返回或设置该对象是否可见\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1设置为可见*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Width",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1的宽度设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">Width</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "WidthPolicy",
+      "summary": "<p>\n\t\t获取或设置指定对象的宽度策略，可以设置为以下值：\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tExpanding\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t可变宽度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tFixed\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t2\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t固定宽度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度策略\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1的宽度设置为固定*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-property\">WidthPolicy</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Move",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t将对象移动到参数指定的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t将对象移动到参数指定的位置\n\t</div>",
+      "parameters": [
+        {
+          "name": "Left",
+          "type": "Number",
+          "description": "对象移动后相对于窗口的左边缘的距离",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Top",
+          "type": "Number",
+          "description": "对象移动后相对于窗口的上边缘的距离",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Width",
+          "type": "Number",
+          "description": "对象移动后的预期宽度",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Height",
+          "type": "Number",
+          "description": "对象移动后的预期长度",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ScrollBar1移动到窗体左上角，并将移动后的Label长宽设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ScrollBar1</span>.<span class=\"hljs-title class_\">Move</span>(<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>)\n}</code></pre></td></tr></table></div>",
+      "returns": ""
+    }
+  ]
+}

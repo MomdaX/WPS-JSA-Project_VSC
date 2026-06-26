@@ -1,0 +1,115 @@
+{
+  "name": "FileDialogFilters",
+  "summary": "<p>\n</p><p>使用 <b>FileDialog</b> 对象的 <b>Filters</b> 属性可返回一个 <b>FileDialogFilters</b> 集合。</p><p>使用 Add 方法可向 FileDialogFilters 集合中添加 FileDialogFilter 对象。下面的示例使用 Clear 方法清除集合，然后向集合中添加筛选器。Clear 方法将集合完全清空；但是，如果在清除后没有向集合中添加任何筛选器，将自动添加“所有文件(*.*)”筛选器。</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">Main</span>(<span class=\"hljs-params\"></span>) </span>{\n\n    <span class=\"hljs-comment\">//Declare a variable as a FileDialog object.</span>\n\n    <span class=\"hljs-comment\">//Create a FileDialog object as a File Picker dialog box.</span>\n    let fd = Application.FileDialog(Application.Enum.msoFileDialogFilePicker)\n\n    <span class=\"hljs-comment\">//Declare a variable to contain the path</span>\n    <span class=\"hljs-comment\">//of each selected item. Even though the path is aString,</span>\n    <span class=\"hljs-comment\">//the variable must be a Variant because For Each...Next</span>\n    <span class=\"hljs-comment\">//routines only work with Variants and Objects.</span>\n\n    <span class=\"hljs-comment\">//Use a With...End With block to reference the FileDialog object.</span>\n\n        <span class=\"hljs-comment\">//Change the contents of the Files of Type list.</span>\n        <span class=\"hljs-comment\">//Empty the list by clearing the FileDialogFilters collection.</span>\n        fd.Filters.Clear()\n\n        <span class=\"hljs-comment\">//Add a filter that includes all files.</span>\n        fd.Filters.Add(<span class=\"hljs-string\">\"All files\"</span>, <span class=\"hljs-string\">\"*.*\"</span>)\n\n        <span class=\"hljs-comment\">//Add a filter that includes GIF and JPEG images and make it the first item in the list.</span>\n        fd.Filters.Add(<span class=\"hljs-string\">\"Images\"</span>, <span class=\"hljs-string\">\"*.gif; *.jpg; *.jpeg\"</span>, <span class=\"hljs-number\">1</span>)\n\n        <span class=\"hljs-comment\">//Use the Show method to display the File Picker dialog box and return the user's action.</span>\n        <span class=\"hljs-comment\">//The user pressed the button.</span>\n        <span class=\"hljs-keyword\">if</span>(fd.Show() == -<span class=\"hljs-number\">1</span>) {\n\n            <span class=\"hljs-comment\">//Step through eachString in the FileDialogSelectedItems collection.</span>\n            <span class=\"hljs-keyword\">for</span>(let i = <span class=\"hljs-number\">1</span>;i &lt;= fd.SelectedItems.Count;i++){\n                let vrtSelectedItem = fd.SelectedItems.Item(i)\n                <span class=\"hljs-comment\">//vrtSelectedItem is aString that contains the path of each selected item.</span>\n                <span class=\"hljs-comment\">//You can use any file I/O functions that you want to work with this path.</span>\n                <span class=\"hljs-comment\">//This example displays the path in a message box.</span>\n                MsgBox(<span class=\"hljs-string\">\"Path name: \"</span> + vrtSelectedItem)\n\n            }\n        }\n        <span class=\"hljs-comment\">//The user pressed Cancel.</span>\n        <span class=\"hljs-keyword\">else</span> { }\n\n    <span class=\"hljs-comment\">//Set the object variable to Nothing.</span>\n    fd = <span class=\"hljs-literal\">null</span>\n\n}</code></pre></td></tr></tbody></table><p>\n</p><p>\n</p><p>在更改 <b>FileDialogFilters</b> 集合时，请记住每个应用程序只能创建单个 <b>FileDialog</b> 对象的实例。这意味着在调用一个新对话框类型的 <b>FileDialog</b> 方法时，<b>FileDialogFilters</b> 集合将重置为其默认筛选器。</p><p>下面的示例循环访问<b>“SaveAs”</b>对话框的默认筛选器，并显示每个包括 ET 文件的筛选器的说明。</p></div><p> </p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n\n    <span class=\"hljs-comment\">//Declare a variable as a FileDialogFilters collection.</span>\n\n    <span class=\"hljs-comment\">//Declare a variable as a FileDialogFilter object.</span>\n\n    <span class=\"hljs-comment\">//Set the FileDialogFilters collection variable to</span>\n    <span class=\"hljs-comment\">//the FileDialogFilters collection of the SaveAs dialog box.</span>\n    <span class=\"hljs-keyword\">let</span> fdfs = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-title class_\">FileDialog</span>(Application.Enum.msoFileDialogSaveAs).<span class=\"hljs-property\">Filters</span>\n\n    <span class=\"hljs-comment\">//Iterate through the description and extensions of each</span>\n    <span class=\"hljs-comment\">//default filter in the SaveAs dialog box.</span>\n    <span class=\"hljs-keyword\">for</span>(<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>;i &lt;= fdfs.<span class=\"hljs-property\">Count</span>;i++) {\n        <span class=\"hljs-keyword\">let</span> fdf = fdfs.<span class=\"hljs-title class_\">Item</span>(i)\n        <span class=\"hljs-comment\">//Display the description of filters that include</span>\n        <span class=\"hljs-comment\">//ET files</span>\n        <span class=\"hljs-keyword\">if</span>(fdf.<span class=\"hljs-property\">Extensions</span>.<span class=\"hljs-title function_\">indexOf</span>(<span class=\"hljs-string\">\"xls\"</span>) &gt; -<span class=\"hljs-number\">1</span>) {\n            <font color=\"#55d4ff\" data-darkreader-inline-color=\"\" style=\"--darkreader-inline-color:#55d4ff;\">alert</font>(<span class=\"hljs-string\">\"Description of filter: \"</span> + fdf.<span class=\"hljs-property\">Description</span>)\n        }\n    }\n\n}</code></pre></td></tr></tbody></table><p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>当应用于“另存为”<b>FileDiaog</b> 对象时，如果 \n<b>Filters</b> 属性与 <b>Clear</b>、<b>Add</b> 或 <b>Delete</b> \n方法结合使用，则会发生运行时错误。例如，\n<p>\n</p><table>\n<tbody>\n<tr>\n<td><pre><code>Application.FileDialog(Application.Enum.msoFileDialogSaveAs).Filters.Clear()</code></pre></td></tr></tbody></table>会引起运行时错误。</td></tr></tbody></table></div>",
+  "description": "<p>\n</p><p>\n</p><p>表示文件对话框中可选文件类型的 <b>FileDialogFilter</b> 对象的集合，该对话框由 <b>FileDialog</b> 对象显示。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>FileDialogFilters</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>获取一个 <b>Long</b> 类型的值，指示 <b>FileDialogFilters</b> 集合中的项数。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>FileDialogFilters</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>FileDialogFilters</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "<p>列表中的每个筛选器由两部分组成：文件扩展名（例如 .txt）和文件扩展名的文本说明（例如“文本文件”）。二者相结合，文件筛选器将在<b>“文件类型”</b>下拉列表框中显示为：文本文件(*.txt)。请注意，向列表中添加筛选器时，不会删除默认的筛选器。仅当选中<b>“窗口”</b>选项时才显示筛选器。如果 <i>Position</i> \n无效，将显示超出范围运行时错误。如果 <i>Description</i> 和 <i>Extensions</i> \n值无效，将显示运行时错误（分析）。<br/></p>",
+      "description": "<p>在<b>“文件”</b>对话框的<b>“文件类型”</b>下拉列表框的筛选器列表中添加一个新的文件筛选器。返回一个代表新添的文件筛选器的 <b>FileDialogFilter</b> 对象。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Description",
+          "type": "String",
+          "description": "该文本表示要添加到筛选器列表中的文件扩展名的说明。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Extensions",
+          "type": "String",
+          "description": "该文本代表要添加到筛选器列表中的文件扩展名。可以指定多个扩展名，每个扩展名必须以分号分隔。例如，可以向以下字符串分配参数：“*.txt; *.htm”。\n注释 :\n不需要在扩展名两侧添加括号。在说明和扩展名字符串连接成一个文件筛选器项时，WPS Office将自动在扩展名字符串两侧添加括号。 \n",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Position",
+          "type": "Variant",
+          "description": "表示新控件在筛选列表中位置的数字。新筛选将插入到该位置的筛选之前。如果忽略该参数，筛选将添加到指定列表的末端。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Clear",
+      "summary": "",
+      "description": "<p>\n</p><p>删除当前在文件对话框中应用的所有筛选器。</p>",
+      "examples": "<p>\n</p><p>下面的示例循环访问<b>“SaveAs”</b>对话框的默认筛选器，并显示每个包括 ET 文件的筛选器的说明。</p><p>\n</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n\n    <span class=\"hljs-comment\">//Declare a variable as a FileDialogFilters collection.</span>\n\n    <span class=\"hljs-comment\">//Declare a variable as a FileDialogFilter object.</span>\n\n    <span class=\"hljs-comment\">//Set the FileDialogFilters collection variable to</span>\n    <span class=\"hljs-comment\">//the FileDialogFilters collection of the SaveAs dialog box.</span>\n    <span class=\"hljs-keyword\">let</span> fdfs = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-title class_\">FileDialog</span>(Application.Enum.msoFileDialogSaveAs).<span class=\"hljs-property\">Filters</span>\n\n    <span class=\"hljs-comment\">//Iterate through the description and extensions of each</span>\n    <span class=\"hljs-comment\">//default filter in the SaveAs dialog box.</span>\n    <span class=\"hljs-keyword\">for</span>(<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>;i &lt;= fdfs.<span class=\"hljs-property\">Count</span>;i++) {\n        <span class=\"hljs-keyword\">let</span> fdf = fdfs.<span class=\"hljs-title class_\">Item</span>(i)\n        <span class=\"hljs-comment\">//Display the description of filters that include</span>\n        <span class=\"hljs-comment\">//ET files</span>\n        <span class=\"hljs-keyword\">if</span>(fdf.<span class=\"hljs-property\">Extensions</span>.<span class=\"hljs-title function_\">indexOf</span>(<span class=\"hljs-string\">\"xls\"</span>) &gt; -<span class=\"hljs-number\">1</span>) {\n            <span class=\"hljs-title class_\">MsgBox</span>(<span class=\"hljs-string\">\"Description of filter: \"</span> + fdf.<span class=\"hljs-property\">Description</span>)\n        }\n    }\n\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>删除文件对话框筛选。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "filter",
+          "type": "Variant",
+          "description": "要删除的筛选器。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>获取属于指定的 <b>FileDialogFilters</b> 集合的成员的 <b>FileDialogFilter</b> 对象。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

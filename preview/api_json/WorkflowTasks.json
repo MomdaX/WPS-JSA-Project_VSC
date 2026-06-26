@@ -1,0 +1,56 @@
+{
+  "name": "WorkflowTasks",
+  "summary": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*以下示例显示当前文档中每个工作流任务的名称，然后显示特定任务的工作流任务编辑用户界面。应该注意到，调用 GetWorkflowTasks 方法涉及到服务器的往返行程。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">const</span> objWorkflowTasks = Application.ActiveWorkbook.GetWorkflowTasks();\n\t<span class=\"hljs-keyword\">for</span>(let i = <span class=\"hljs-number\">1</span>; i &lt;= objWorkflowTasks.Count; i++)\n\t\tDebug.<span class=\"hljs-keyword\">Print</span>(objWorkflowTasks.Item(i).Name);\n\t\t\n\t<span class=\"hljs-keyword\">var</span> objWorkflowTask = objWorkflowTasks.Item(<span class=\"hljs-number\">1</span>);\n\tobjWorkflowTask.Show();\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p></p><p>代表 <b>WorkflowTask</b> 对象的集合。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个代表 <b>WorkflowTasks</b> 对象的容器应用程序的 <b>Application</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>table\n      {\n          word-break:break-all;\n      }\n    \n     <noscript>\t    &lt;STYLE TYPE=\"text/CSS\"&gt;\t\t    .ACICollapsed\t\t    {\t\t\t    display: inline;\t\t    }\t\t    .ACECollapsed\t\t    {\t\t\t    display: block;\t\t    }\t    &lt;/STYLE&gt;     </noscript>\t     \n\n    \n      </p><p></p><p>获取一个 <b>Long</b> 类型的值，指示 <b>WorkflowTasks</b> 集合中的项数。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>WorkflowTasks</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>获取 <b>WorkflowTasks</b> 集合中的一个 <b>WorkflowTask</b> 对象。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Long",
+          "description": "要返回的 WorkflowTask 对象的索引号。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "WorkflowTask"
+    }
+  ]
+}

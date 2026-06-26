@@ -1,0 +1,356 @@
+{
+  "name": "ComboBox",
+  "summary": "<p>复合框由一个文本输入控件和一个下拉菜单组成，用户可以从预先定义的列表中的选择一个选项，同时也可以直接通过文本框输入</p>",
+  "description": "<p>复合框由一个文本输入控件和一个下拉菜单组成，用户可以从预先定义的列表中的选择一个选项，同时也可以直接通过文本框输入</p>",
+  "properties": [
+    {
+      "name": "AutoSize",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t指定该对象是否根据内容自动设置它的大小\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定该对象是否根据内容自动设置它的大小\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*设置ComboBox1控件为根据内容自动设置大小*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">AutoSize</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "BackColor",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的内部颜色\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的内部颜色\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1设置为十六进制下665898表示的颜色（紫色）*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">BackColor</span> = <span class=\"hljs-number\">0x665898</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "BackStyle",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用该属性指定控件是否透明\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用该属性指定控件是否透明\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1设置为透明*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">BackStyle</span> = <span class=\"hljs-number\">0</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "BorderColor",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件边框的颜色\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件边框的颜色\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1的边框设置为十六进制下665898表示的颜色（紫色）*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">BorderColor</span> = <span class=\"hljs-number\">0x665898</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "BorderStyle",
+      "summary": "<p>\n\t\t指定控件边框的显示方式，可以设置为以下值：\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tNone\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t0\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t无边框\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tSingle\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t实线边框\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定控件边框的显示方式\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1的边框显示方式设置为实线*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">BorderStyle</span> = <span class=\"hljs-number\">1</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "BoundColumn",
+      "summary": "<p>\n\t\t您可以使用该属性指定是否将列表框里第一个选项的文本显示出来，可以设置为以下值：\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t显示\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t0\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t显示第一个选项的文本\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t不显示\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t不显示第一个选项的文本\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用该属性指定是否将列表框里第一个选项的文本显示出来\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*显示ComboBox1列表框里第一个选项的值*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">BoundColumn</span> = <span class=\"hljs-number\">0</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "ColumnCount",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 ColumnCount 属性来指定在列表框或组合框的列表框部分中显示的列数\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 ColumnCount 属性来指定在列表框或组合框的列表框部分中显示的列数\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1的列表框的列数设置为3*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">ColumnCount</span> = <span class=\"hljs-number\">3</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "ColumnHeads",
+      "summary": "<p>\n\t\t您可以使用 ColumnHeads 属性指定列表框是否显示单行列标题。可以设置为以下值：\n\t</p>\n\t<p>\n\t\t<span style=\"white-space:normal;\"> \n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tYes\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\ttrue\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t显示列标题\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tNo\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tfalse\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t不显示列标题\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n</span> \n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 ColumnHeads 属性指定列表框是否显示单行列标题。\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*不显示ComboBox1列表框的列标题*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">ColumnHeads</span> = <span class=\"hljs-literal\">false</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "ColumnWidths",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 ColumnWidths 属性来指定多列组合框中每列的宽度。\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 ColumnWidths 属性来指定多列组合框中每列的宽度。\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*设置ComboBox1列表框中每列的宽度为5*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">ColumnWidths</span> = <span class=\"hljs-number\">5</span>\n}\n</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "ControlSource",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用该属性指定控件中显示的数据。您可以显示和编辑绑定到表的数据、查询的数据或SQL语句中的字段的数据。您还可以显示表达式的结果\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用该属性指定控件中显示的数据。\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "Enabled",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性设置或返回是否启用该控件\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性设置或返回是否启用该控件\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*启用该控件*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">Enabled</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Font",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t指定对象的字体，只读\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定对象的字体，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "ForeColor",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件中文本的颜色\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件中文本的颜色\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1中的文本颜色设置为十六进制658978所表示的颜色*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">ForeColor</span> = <span class=\"hljs-number\">0x658978</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Height",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的高度\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的高度\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1控件的高度设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">Height</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "HeightPolicy",
+      "summary": "<p>\n\t\t获取或设置指定对像的高度策略，可以设置为以下值：\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tExpanding\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t可变高度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tFixed\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t2\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t固定高度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对像的高度策略\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1的高度设置为固定*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">HeightPolicy</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Left",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1的位置设置到距离窗体左边缘100像素*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">Left</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "ListRows",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 ListRows 属性设置在组合框的列表框部分中显示的最大行数。\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 ListRows 属性设置在组合框的列表框部分中显示的最大行数。\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1中的列表框的显示的最大行数设为8*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">ListRows</span> = <span class=\"hljs-number\">8</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "ListWidth",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 ListWidth 属性设置组合框的列表框部分的宽度。\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 ListWidth 属性设置组合框的列表框部分的宽度。\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1的列表框部分的宽度设为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">ListWidth</span> = <span class=\"hljs-number\">100</span>\n}\n</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "MaxLength",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t指定用户可以在文本框或组合框中输入的最大字符数\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定用户可以在文本框或组合框中输入的最大字符数\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1控件中允许输入的最大字符数设置为32767*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">MaxLength</span> = <span class=\"hljs-number\">32767</span>\n}\n</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Name",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定或确定表示对象名称的字符串，只读\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定或确定表示对象名称的字符串，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "RowSource",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 RowSource 属性指定如何向指定的对象提供数据。\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 RowSource 属性指定如何向指定的对象提供数据。\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "TabIndex",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在窗体或报表上的Tab键顺序中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在窗体或报表上的Tab键顺序中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1设置为Tab键顺序为的第2个位置*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">TabIndex</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "TabStop",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定是否可以通过Tab键将焦点移到控件上\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定是否可以通过Tab键将焦点移到控件上\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1设置为可以通过Tab键将焦点移到该控件上*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">TabStop</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Text",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性设置或返回文本框中包含的文本值\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性设置或返回文本框中包含的文本值\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1控件中的文本设置为test test*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">Text</span> = <span class=\"hljs-string\">&quot;test test&quot;</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "TextAlign",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t该属性用于指定对象中文本的对齐方式，可设置为以下值：\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t该属性用于指定对象中文本的对齐方式\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1中的文本设置为居中对齐*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">TextAlign</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Top",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1的位置设置到距离窗体上边缘100像素*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">Top</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "TopIndex",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t设置并返回出现在列表最顶部位置的项目。\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t设置并返回出现在列表最顶部位置的项目。\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1的下标为3的选项设置到列表框的顶部*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">TopIndex</span> = <span class=\"hljs-number\">3</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Value",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t确定或指定文本框中的文本\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t确定或指定文本框中的文本\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1控件中的文本指定为test test*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">Value</span> = <span class=\"hljs-string\">&quot;test test&quot;</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Visible",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t返回或设置该对象是否可见\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t返回或设置该对象是否可见\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1设置为可见*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Width",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1的宽度设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">Width</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "WidthPolicy",
+      "summary": "<p>\n\t\t获取或设置指定对象的宽度策略，可以设置为以下值：\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tExpanding\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t可变宽度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tFixed\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t2\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t固定宽度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度策略\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1的宽度设置为固定*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-property\">WidthPolicy</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "AddItem",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t将新项目添加到指定组合框控件显示的值列表中。\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t将新项目添加到指定组合框控件显示的值列表中。\n\t</div>",
+      "parameters": [
+        {
+          "name": "Content",
+          "type": "String",
+          "description": "列表框里显示的文本内容",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Index",
+          "type": "Number",
+          "description": "该选项在列表框里的位置",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将test0设置为ComboBox1控件列表框中的第一个选项*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">&quot;test0&quot;</span>,<span class=\"hljs-number\">0</span>);\n}</code></pre></td></tr></table></div>",
+      "returns": ""
+    },
+    {
+      "name": "Clear",
+      "summary": "<p><span style=\"white-space:normal;\">清除列表框中的所有选项</span></p>",
+      "description": "<p>清除列表框中的所有选项</p>",
+      "parameters": [],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*清除ComboBox1中列表框中的所有选项*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-title class_\">Clear</span>()\n}</code></pre></td></tr></table></div>",
+      "returns": ""
+    },
+    {
+      "name": "DropDown",
+      "summary": "<p><span style=\"white-space:normal;\">您可以使用 Dropdown 方法强制指定组合框中的列表下拉。</span> </p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用 Dropdown 方法强制指定组合框中的列表下拉。\n\t</div>",
+      "parameters": [],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*强制指定ComboBox1中的列表下拉*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-title class_\">DropDown</span>()\n}</code></pre></td></tr></table></div>",
+      "returns": ""
+    },
+    {
+      "name": "Move",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t将对象移动到参数指定的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t将对象移动到参数指定的位置\n\t</div>",
+      "parameters": [
+        {
+          "name": "Left",
+          "type": "Number",
+          "description": "对象移动后相对于窗口的左边缘的距离",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Top",
+          "type": "Number",
+          "description": "对象移动后相对于窗口的上边缘的距离",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Width",
+          "type": "Number",
+          "description": "对象移动后的预期宽度",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Height",
+          "type": "Number",
+          "description": "对象移动后的预期长度",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将ComboBox1移动到窗体左上角，并将移动后的Label长宽设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-title class_\">Move</span>(<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>)\n}</code></pre></td></tr></table></div>",
+      "returns": ""
+    },
+    {
+      "name": "RemoveItem",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t从指定组合框控件显示的值列表中删除项目。\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t从指定组合框控件显示的值列表中删除项目。\n\t</div>",
+      "parameters": [
+        {
+          "name": "index",
+          "type": "Number",
+          "description": "删除列表框中index指定的下标的值",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*删除ComboBox1中下标为3的值*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">ComboBox1</span>.<span class=\"hljs-title class_\">RemoveItem</span>(<span class=\"hljs-number\">3</span>)\n}</code></pre></td></tr></table></div>",
+      "returns": ""
+    }
+  ]
+}

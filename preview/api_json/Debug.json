@@ -1,0 +1,33 @@
+{
+  "name": "Debug",
+  "summary": "<p><span style=\"font-family:&quot;white-space:normal;background-color:#FFFFFF;\">宏编辑器的调试对象，提供调试辅助接口。</span></p>",
+  "description": "<p>宏编辑器的调试对象，提供调试辅助接口。</p>",
+  "properties": [],
+  "functions": [
+    {
+      "name": "GC",
+      "summary": "<p><span style=\"white-space:normal;\">触发JavaScript引擎进行垃圾回收。</span> </p>",
+      "description": "<p>触发JavaScript引擎进行垃圾回收。</p>",
+      "parameters": [],
+      "examples": "",
+      "returns": ""
+    },
+    {
+      "name": "Print",
+      "summary": "<p><span style=\"white-space:normal;\">在立即窗口中输出文本。</span> </p>",
+      "description": "<p>在立即窗口中输出文本。</p>",
+      "parameters": [
+        {
+          "name": "outputlist",
+          "type": "Variant",
+          "description": "要打印的表达式或表达式列表。 如果省略，将打印空行。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*打印当前表格中B10单元格的值到立即窗口*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">abcd</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">Debug</span>.<span class=\"hljs-title class_\">Print</span>(<span class=\"hljs-title class_\">Range</span>(<span class=\"hljs-string\">&quot;B10&quot;</span>).<span class=\"hljs-property\">Value2</span>)\n}</code></pre></td></tr></table></div>",
+      "returns": ""
+    }
+  ]
+}

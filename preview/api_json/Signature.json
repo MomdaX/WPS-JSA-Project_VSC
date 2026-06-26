@@ -1,0 +1,166 @@
+{
+  "name": "Signature",
+  "summary": "<p>可以使用 <b>Add</b> 方法向 <b>SignatureSet</b> 集合中添加一个 <b>Signature</b> 对象，并使用 <b>Item</b> 方法返回现有的成员。要从           <b>SignatureSet</b> 集合中删除一个 <b>Signature</b> 对象，请使用 <b>Signature</b> 对象的 <b>Delete</b> 方法。</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例提示用户选择要用于签署 WPS 中活动文档的数字签名。要使用此示例，请在 WPS 中打开一个文档，并向此函数传递与“数字证书”对话框中数字证书的“颁发者”和“颁发给”字段相匹配的证书颁发者名称和证书签署者名称。此示例将进行测试，以确保在将新签名提交到磁盘之前用户选择的数字签名满足特定条件，例如没有过期。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\">strIssuer, strSigner</span>) </span>{\n\t<span class=\"hljs-keyword\">var</span> AddSignature;\n    <span class=\"hljs-keyword\">try</span> {\n        <span class=\"hljs-comment\">//Display the dialog box that lets the</span>\n        <span class=\"hljs-comment\">//user select a digital signature.</span>\n        <span class=\"hljs-comment\">//If the user selects a signature, then</span>\n        <span class=\"hljs-comment\">//it is added to the Signatures</span>\n        <span class=\"hljs-comment\">//collection. If the user does not, then</span>\n        <span class=\"hljs-comment\">//an error is returned.</span>\n        <span class=\"hljs-keyword\">var</span> sig = Application.ActiveWorkbook.Signatures.Add();\n\n        <span class=\"hljs-comment\">//Test several properties before commiting the Signature object to disk.</span>\n        <span class=\"hljs-keyword\">if</span>(sig.Issuer == strIssuer &amp;&amp; sig.Signer == strSigner &amp;&amp; sig.IsCertificateExpired == <span class=\"hljs-literal\">false</span> &amp;&amp; sig.IsCertificateRevoked == <span class=\"hljs-literal\">false</span> &amp;&amp; sig.IsValid == <span class=\"hljs-literal\">true</span>) {\n            alert(<span class=\"hljs-string\">\"Signed\"</span>);\n            AddSignature = <span class=\"hljs-literal\">true</span>;\n        }\n        <span class=\"hljs-comment\">//Otherwise, remove the Signature object from the SignatureSet collection.</span>\n        <span class=\"hljs-keyword\">else</span> {\n            sig.Delete();\n            alert(<span class=\"hljs-string\">\"Not signed\"</span>);\n            AddSignature = <span class=\"hljs-literal\">false</span> ;\n        }\n\n        <span class=\"hljs-comment\">//Commit all signatures in the SignatureSet collection to the disk.</span>\n        Application.ActiveWorkbook.Signatures.Commit();\n    }\n    <span class=\"hljs-keyword\">catch</span>(<span class=\"hljs-built_in\">exception</span>) {\n        AddSignature = <span class=\"hljs-literal\">false</span> ;\n        alert(<span class=\"hljs-string\">\"Action canceled.\"</span>);\n    }\n}\n</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表附加到文档的数字签名。<b>Signature</b> 对象包含在 <b>Document</b> 对象的 <b>SignatureSet</b> 集合中。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>Signature</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "CanSetup",
+      "summary": "",
+      "description": "<p>获取一个 <b>Boolean</b> 类型的值，指示用户是否能设置 <b>Signature</b> 对象的属性。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Boolean",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>Signature</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Details",
+      "summary": "<p>可读取的信息包括：与签名关联的证书是否已到期、签名是否有效以及签名是否为只读。<br/></p>",
+      "description": "<p>获取有关签名的信息。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "SignatureInfo",
+      "readonly": true
+    },
+    {
+      "name": "IsSignatureLine",
+      "summary": "",
+      "description": "<p>获取一个指示此行是否为签名行的值。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Boolean",
+      "readonly": true
+    },
+    {
+      "name": "IsSigned",
+      "summary": "",
+      "description": "<p>获取一个 <b>Boolean</b> 类型的值，指示是否已成功签署文档。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Boolean",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 Signature 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Setup",
+      "summary": "",
+      "description": "<p>获取 <b>SignatureSetup</b> 对象，该对象提供对签名数据包的各种属性的访问。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "SignatureSetup",
+      "readonly": true
+    },
+    {
+      "name": "SignatureSetup",
+      "summary": "",
+      "description": "<p>获取与作为签名行的 <b>Signature</b> 对象相关联的 <b>Shape</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "SortHint",
+      "summary": "",
+      "description": "<p>获取一个代表数据包（包含多个签名）中的签名排序顺序的值。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Delete",
+      "summary": "<p>对于 <b>Scripts</b> 集合，使用 <b>Delete</b> 方法将删除指定的 WPS 文档、ET 工作表或 WPP 幻灯片中的所有脚本。在宿主应用程序中，脚本定位标记以形状表示。因此，与每个 <b>msoScriptAnchor</b> 类型的脚本定位标记相关联的 <b>Shape</b> 对象将从 ET 和 WPP 的 <b>Shapes</b> 集合以及  WPS 的 <b>InlineShapes</b> 和 <b>Shapes</b> 集合中删除。<br/></p>",
+      "description": "<p>从集合中删除 <b>Signature</b> 对象。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "ShowDetails",
+      "summary": "",
+      "description": "<p>显示与签名数据包相关的详细信息。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span style=\"word-spacing: normal; text-indent: initial;\"><font color=\"#b66ada\" data-darkreader-inline-color=\"\" style=\"--darkreader-inline-color:#b86edb;\">/*</font></span><span style=\"white-space: normal; word-spacing: normal; text-indent: initial; font-family: &quot;Microsoft YaHei&quot;, Arial, Tahoma, Helvetica, sans-serif;\">以下示例将调用 </span><b style=\"white-space: normal; word-spacing: normal; text-indent: initial; font-family: &quot;Microsoft YaHei&quot;, Arial, Tahoma, Helvetica, sans-serif;\">ShowDetails</b><span style=\"white-space: normal; word-spacing: normal; text-indent: initial; font-family: &quot;Microsoft YaHei&quot;, Arial, Tahoma, Helvetica, sans-serif;\"> 方法来显示 </span><b style=\"white-space: normal; word-spacing: normal; text-indent: initial; font-family: &quot;Microsoft YaHei&quot;, Arial, Tahoma, Helvetica, sans-serif;\">Signature</b><span style=\"white-space: normal; word-spacing: normal; text-indent: initial; font-family: &quot;Microsoft YaHei&quot;, Arial, Tahoma, Helvetica, sans-serif;\"> 对象的详细信息。</span><span style=\"color: var(--darkreader-inline-color) ; word-spacing: normal; text-indent: initial; --darkreader-inline-color:var(--darkreader-text--darkreader-inline-color);\" data-darkreader-inline-color=\"\">*/</span></code><code class=\"JavaScript\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-built_in\">test</span>(objSignature) {\n    <span class=\"hljs-keyword\">if</span>(objSignature.IsSigned) {\n        alert(<span class=\"hljs-string\">\"The document has been signed with the following details:\"</span> + objSignature.ShowDetails());\n    }<span class=\"hljs-keyword\">else</span> {\n\talert(<span class=\"hljs-string\">\"The document has not been signed.\"</span>);\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Sign",
+      "summary": "<p>调用 <b>Sign</b> 方法时，WPS Office将创建一个清单，并调用签名提供程序为文档中的每个流创建一个哈希。Office 随后会将结果捆绑到一个未签名的 XMLDSIG 模板中，并调用提供程序修改 XMLDSIG（如有必要），然后对其进行签署。生成的已签署签名之后将被退还给 Office 以便存储。<br/></p>",
+      "description": "<p>创建一个签名数据包。<br/></p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\">/*在下面的示例中，将设置代表签名图像、签署人、签署人职务以及签署人电子邮件的变量，然后将调用 Sign 方法来创建并签署签名数据包。*/\nfunction test(sig, img){\n\tvar varSuggestedSigner = \"Nancy Davolio\";\n\tvar varSignatureTitle = \"Sales Represenative\";\n\tvar varSignerEmail = \"ndavolio@northwindtraders.com\";\n\tsig.Sign(img, varSuggestedSigner, varSignatureTitle, varSignerEmail);\n}<br/></code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "varSigImg",
+          "type": "Variant",
+          "description": "签名行的图形图像。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "varDelSuggSigner",
+          "type": "Variant",
+          "description": "建议签署人。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "varDelSuggSignerLine2",
+          "type": "Variant",
+          "description": "附加签名行。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "varDelSuggSignerEmail",
+          "type": "Variant",
+          "description": "建议签署人的电子邮件地址。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "name": "PickerField",
+  "summary": "",
+  "description": "<p>代表 <b>PickerResult</b> 对象中的子项的字段定义。每个 <b>PickerField</b> 对象都代表选取器对话框的一个列定义。<br/></p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>PickerField</b> 对象的容器应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>PickerField</b> 对象的应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "IsHidden",
+      "summary": "",
+      "description": "<p>指定选取器字段是否为隐藏。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Name",
+      "summary": "",
+      "description": "<p>检索选取器字段的名称。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Type",
+      "summary": "",
+      "description": "<p>选取器字段的类型。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

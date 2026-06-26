@@ -1,0 +1,117 @@
+{
+  "name": "PickerDialog",
+  "summary": "<p>\n</p><p>\n</p><p>通过 <b>Application</b> 对象的 <b>PickerDialog</b> 属性获取 <b>PickerDialog</b> 对象。</p><p>\n</p><p>\n</p><p>下面的代码设置选取器对话框的属性，然后显示选取器对话框。\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th>示例代码</th></tr>\n<tr>\n<td><pre><code>// Configure the Picker Dialog properties.\nfunction test()\n{\n   \tlet objPickerDialog = Application.PickerDialog\n\tobjPickerDialog.DataHandlerId = \"{000CDF0A-0000-0000-C000-000000000046}\"\n\tobjPickerDialog.Title = \"Sample Picker Dialog\"\n\tlet objPickerProperties = objPickerDialog.Properties\n\tlet objPickerProperty = objPickerProperties.Add(\"SiteUrl\", \"http://my\", Application.Enum.msoPickerFieldText)\n\tlet objPickerExistingResults = objPickerDialog.CreatePickerResults()\n\tlet objPickerExistingResult = objPickerExistingResults.Add(\"johndoe@contoso.com\", \"John Doe\", \"User\")\n \n\t// Show the Picker Dialog and get the results.\n\tlet objPickerResults = objPickerDialog.Show(true, objPickerExistingResult)\n}<br/></code></pre></td></tr></tbody></table>",
+  "description": "<p>\n</p><p>\n</p><p>提供用于选择人员或选择数据的对话框用户界面功能。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>PickerDialog</b> 对象的容器应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>PickerDialog</b> 对象的应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "DataHandlerId",
+      "summary": "<p>\n</p><p>\n</p><p>必须先指定 <b>DataHandlerID</b>，之后才能调用选取器对话框。</p>",
+      "description": "<p>\n</p><p>设置或获取选取器对话框数据处理程序组件的 GUID。可读/写</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的代码设置选取器对话框的属性，然后显示选取器对话框。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n   <span class=\"hljs-comment\">// Configure the Picker Dialog properties.</span>\n   <span class=\"hljs-keyword\">let</span> objPickerDialog = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">PickerDialog</span>\n   objPickerDialog.<span class=\"hljs-property\">DataHandlerId</span> = <span class=\"hljs-string\">\"{000CDF0A-0000-0000-C000-000000000046}\"</span>\n   objPickerDialog.<span class=\"hljs-property\">Title</span> = <span class=\"hljs-string\">\"Sample Picker Dialog\"</span>\n   <span class=\"hljs-keyword\">let</span> objPickerProperties = objPickerDialog.<span class=\"hljs-property\">Properties</span>\n   <span class=\"hljs-keyword\">let</span> objPickerProperty = objPickerProperties.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"SiteUrl\"</span>, <span class=\"hljs-string\">\"http://my\"</span>, Application.Enum.msoPickerFieldText)\n   <span class=\"hljs-keyword\">let</span> objPickerExistingResults = objPickerDialog.<span class=\"hljs-title class_\">CreatePickerResults</span>()\n   <span class=\"hljs-keyword\">let</span> objPickerExistingResult = objPickerExistingResults.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"johndoe@contoso.com\"</span>, <span class=\"hljs-string\">\"John Doe\"</span>, <span class=\"hljs-string\">\"User\"</span>)\n \n   <span class=\"hljs-comment\">// Show the Picker Dialog and get the results.</span>\n   <span class=\"hljs-keyword\">let</span> objPickerResults = objPickerDialog.<span class=\"hljs-title class_\">Show</span>(<span class=\"hljs-literal\">true</span>, objPickerExistingResult)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Properties",
+      "summary": "<p>\n</p><p><b>PickerProperties</b> 对象的属性将传递给数据处理程序。</p>",
+      "description": "<p>\n</p><p>返回 <b>PickerProperties</b> 对象，以指定数据处理程序组件的自定义属性。只读</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的代码设置选取器对话框的各种属性并检索结果。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n   <span class=\"hljs-keyword\">let</span> objPickerDialog = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">PickerDialog</span>\n   objPickerDialog.<span class=\"hljs-property\">DataHandlerId</span> = <span class=\"hljs-string\">\"{000CDF0A-0000-0000-C000-000000000046}\"</span>\n   objPickerDialog.<span class=\"hljs-property\">Title</span> = <span class=\"hljs-string\">\"Sample Picker Dialog\"</span>\n   <span class=\"hljs-keyword\">let</span> objPickerProperties = objPickerDialog.<span class=\"hljs-property\">Properties</span>\n   <span class=\"hljs-keyword\">let</span> objPickerProperty = objPickerProperties.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"SiteUrl\"</span>, <span class=\"hljs-string\">\"http://my\"</span>, Application.Enum.msoPickerFieldText)\n   \n   <span class=\"hljs-comment\">// Show the Picker Dialog with no existing result.</span>\n   <span class=\"hljs-keyword\">let</span> objPickerResults = objPickerDialog.<span class=\"hljs-title class_\">Show</span>(<span class=\"hljs-literal\">true</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Title",
+      "summary": "",
+      "description": "<p>\n</p><p>设置或返回在选取器对话框中显示的选取器对话框的标题。可读/写</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的代码设置选取器对话框的属性，然后显示选取器对话框。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n   <span class=\"hljs-comment\">// Configure the Picker Dialog properties.</span>\n   <span class=\"hljs-keyword\">let</span> objPickerDialog = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">PickerDialog</span>\n   objPickerDialog.<span class=\"hljs-property\">DataHandlerId</span> = <span class=\"hljs-string\">\"{000CDF0A-0000-0000-C000-000000000046}\"</span>\n   objPickerDialog.<span class=\"hljs-property\">Title</span> = <span class=\"hljs-string\">\"Sample Picker Dialog\"</span>\n   <span class=\"hljs-keyword\">let</span> objPickerProperties = objPickerDialog.<span class=\"hljs-property\">Properties</span>\n   <span class=\"hljs-keyword\">let</span> objPickerProperty = objPickerProperties.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"SiteUrl\"</span>, <span class=\"hljs-string\">\"http://my\"</span>, Application.Enum.msoPickerFieldText)\n   <span class=\"hljs-keyword\">let</span> objPickerExistingResults = objPickerDialog.<span class=\"hljs-title class_\">CreatePickerResults</span>()\n   <span class=\"hljs-keyword\">let</span> objPickerExistingResult = objPickerExistingResults.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"johndoe@contoso.com\"</span>, <span class=\"hljs-string\">\"John Doe\"</span>, <span class=\"hljs-string\">\"User\"</span>)\n \n   <span class=\"hljs-comment\">// Show the Picker Dialog and get the results.</span>\n   <span class=\"hljs-keyword\">let</span> objPickerResults = objPickerDialog.<span class=\"hljs-title class_\">Show</span>(<span class=\"hljs-literal\">true</span>, objPickerExistingResult)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "CreatePickerResults",
+      "summary": "<p>\n</p><p>\n</p><p>可以将 PickerResult 添加到返回的对象中，并如同 <b>PickerDialog</b> \n对象已存在的结果一样，将其指定为 <b>Show</b> 方法的第二个参数。</p>",
+      "description": "<p>\n</p><p>创建一个空的 <b>PickerResults</b> 对象。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的代码设置选取器对话框的各种属性，并将已存在的 PickerResults 添加到结果中。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n   <span class=\"hljs-keyword\">let</span> objPickerDialog = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">PickerDialog</span>\n   objPickerDialog.<span class=\"hljs-property\">DataHandlerId</span> = <span class=\"hljs-string\">\"{000CDF0A-0000-0000-C000-000000000046}\"</span>\n   objPickerDialog.<span class=\"hljs-property\">Title</span> = <span class=\"hljs-string\">\"Sample Picker Dialog\"</span>\n   <span class=\"hljs-keyword\">let</span> objPickerExistingResults = objPickerDialog.<span class=\"hljs-title class_\">CreatePickerResults</span>()\n   <span class=\"hljs-keyword\">let</span> objPickerExistingResult = objPickerExistingResults.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"johndoe@contoso.com\"</span>, <span class=\"hljs-string\">\"John Doe\"</span>, <span class=\"hljs-string\">\"User\"</span>)\n   <span class=\"hljs-keyword\">let</span> objPickerResults = objPickerDialog.<span class=\"hljs-title class_\">Show</span>(<span class=\"hljs-literal\">true</span>, objPickerExistingResult)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Resolve",
+      "summary": "",
+      "description": "<p>\n</p><p>使用选取器对话框解析标记，并检索结果。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//使用选取器对话框对象解析实体。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n   <span class=\"hljs-comment\">// Configure the Picker Dialog properties.</span>\n   <span class=\"hljs-keyword\">let</span> objPickerDialog = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">PickerDialog</span>\n   objPickerDialog.<span class=\"hljs-property\">DataHandlerId</span> = <span class=\"hljs-string\">\"{000CDF0A-0000-0000-C000-000000000046}\"</span>\n   objPickerDialog.<span class=\"hljs-property\">Title</span> = <span class=\"hljs-string\">\"Sample Picker Dialog\"</span>\n   <span class=\"hljs-keyword\">let</span> objPickerProperties = objPickerDialog.<span class=\"hljs-property\">Properties</span>\n   <span class=\"hljs-keyword\">let</span> objPickerProperty = objPickerProperties.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"SiteUrl\"</span>, <span class=\"hljs-string\">\"http://my\"</span>, Application.Enum.msoPickerFieldText)\n   <span class=\"hljs-comment\">// Resolve the token by using Picker Dialog and get the results.</span>\n   <span class=\"hljs-keyword\">let</span> objPickerResults = objPickerDialog.<span class=\"hljs-title class_\">Resolve</span>(<span class=\"hljs-string\">\"johndoe\"</span>, <span class=\"hljs-literal\">false</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "TokenText",
+          "type": "String",
+          "description": "要解析的文本字符串。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "duplicateDlgMode",
+          "type": "Integer",
+          "description": "",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "PickerResults"
+    },
+    {
+      "name": "Show",
+      "summary": "",
+      "description": "<p>\n</p><p>使用已指定的数据处理程序和给定的选项显示选取器对话框。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的代码设置选取器对话框的属性，然后显示选取器对话框。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n   <span class=\"hljs-comment\">// Configure the Picker Dialog properties.</span>\n   <span class=\"hljs-keyword\">let</span> objPickerDialog = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">PickerDialog</span>\n   objPickerDialog.<span class=\"hljs-property\">DataHandlerId</span> = <span class=\"hljs-string\">\"{000CDF0A-0000-0000-C000-000000000046}\"</span>\n   objPickerDialog.<span class=\"hljs-property\">Title</span> = <span class=\"hljs-string\">\"Sample Picker Dialog\"</span>\n   <span class=\"hljs-keyword\">let</span> objPickerProperties = objPickerDialog.<span class=\"hljs-property\">Properties</span>\n   <span class=\"hljs-keyword\">let</span> objPickerProperty = objPickerProperties.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"SiteUrl\"</span>, <span class=\"hljs-string\">\"http://my\"</span>, Application.Enum.msoPickerFieldText)\n   <span class=\"hljs-keyword\">let</span> objPickerExistingResults = objPickerDialog.<span class=\"hljs-title class_\">CreatePickerResults</span>()\n   <span class=\"hljs-keyword\">let</span> objPickerExistingResult = objPickerExistingResults.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"johndoe@contoso.com\"</span>, <span class=\"hljs-string\">\"John Doe\"</span>, <span class=\"hljs-string\">\"User\"</span>)\n \n   <span class=\"hljs-comment\">// Show the Picker Dialog and get the results.</span>\n   <span class=\"hljs-keyword\">let</span> objPickerResults = objPickerDialog.<span class=\"hljs-title class_\">Show</span>(<span class=\"hljs-literal\">true</span>, objPickerExistingResult)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "sMultiSelect",
+          "type": "Boolean",
+          "description": "指定选取器对话框用户界面是否提供多项选择功能。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "ExistingResults",
+          "type": "PickerResults",
+          "description": "包含选取器对话框用户界面内的现有 PickerResults。这些结果在选定的项控件中显示。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "PickerResults"
+    }
+  ]
+}

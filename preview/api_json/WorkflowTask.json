@@ -1,0 +1,127 @@
+{
+  "name": "WorkflowTask",
+  "summary": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*以下示例显示当前文档中每个工作流任务的名称，然后显示特定任务的工作流任务编辑用户界面。应该注意到，调用 GetWorkflowTasks 方法涉及到服务器的往返行程。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">const</span> objWorkflowTasks = Application.ActiveWorkbook.GetWorkflowTasks();\n\t<span class=\"hljs-keyword\">for</span>(let i = <span class=\"hljs-number\">1</span>; i &lt;= objWorkflowTasks.Count; i++)\n\t\tDebug.<span class=\"hljs-keyword\">Print</span>(objWorkflowTasks.Item(i).Name);\n\t\t\n\t<span class=\"hljs-keyword\">var</span> objWorkflowTask = objWorkflowTasks.Item(<span class=\"hljs-number\">1</span>);\n\tobjWorkflowTask.Show();\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表 <b>WorkflowTasks</b> 集合中的单个工作流任务。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p><br/></p>",
+      "description": "<p>获取一个代表&nbsp;<b>WorkflowTemplate</b>&nbsp;对象的容器应用程序的&nbsp;<b>Application</b>&nbsp;对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "AssignedTo",
+      "summary": "",
+      "description": "<p>获取向其分配了工作流任务的人员的姓名。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "CreatedBy",
+      "summary": "",
+      "description": "<p>获取创建工作流任务的人员的姓名。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "CreatedDate",
+      "summary": "",
+      "description": "<p>获取工作流任务的创建日期。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Date",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>WorkflowTemplate</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Description",
+      "summary": "",
+      "description": "<p>获取工作流模板的说明。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "DueDate",
+      "summary": "",
+      "description": "<p>获取工作流任务的截止日期。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Date",
+      "readonly": true
+    },
+    {
+      "name": "Id",
+      "summary": "",
+      "description": "<p>获取用于创建工作流实例的模板的 ID。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "ListID",
+      "summary": "",
+      "description": "<p>获取包含工作流任务的列表的 ID。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "Name",
+      "summary": "",
+      "description": "<p>获取 <b>WorkflowTemplate</b> 对象的名称。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "WorkflowID",
+      "summary": "",
+      "description": "<p>获取与工作流任务关联的工作流的 ID。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Show",
+      "summary": "",
+      "description": "<p>显示指定 <b>WorkflowTask </b>对象的工作流任务编辑用户界面。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*以下示例显示当前文档中每个工作流任务的名称，然后显示特定任务的工作流任务编辑用户界面。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n    <span class=\"hljs-keyword\">const</span> objWorkflowTasks = Application.ActiveWorkbook.GetWorkflowTasks();\n    <span class=\"hljs-keyword\">for</span>(let i = <span class=\"hljs-number\">1</span>; i &lt;= objWorkflowTasks.Count; i++)\n        Debug.<span class=\"hljs-keyword\">Print</span>(objWorkflowTasks.Item(i).Name);\n\n    <span class=\"hljs-keyword\">var</span> objWorkflowTask = objWorkflowTasks.Item(<span class=\"hljs-number\">1</span>);\n    objWorkflowTask.Show();\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "Integer"
+    }
+  ]
+}

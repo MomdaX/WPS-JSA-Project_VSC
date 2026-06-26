@@ -1,0 +1,129 @@
+{
+  "name": "Sync",
+  "summary": "<p>使用 <b>Sync</b> 对象可管理存储在 SharePoint网站中的共享文档的本地副本和服务器副本之间的同步。<b>Status</b> 属性返回有关同步当前状态的重要信息。使用                     <b>GetUpdate</b> 方法可刷新同步状态。使用 <b>LastSyncTime</b>、<b>ErrorType</b> 和 <b>WorkspaceLastChangedBy</b>                     属性可返回其他信息。</p><p>请参阅 <b>Status</b> 属性以获取有关共享文档的本地副本和服务器副本之间的差异和冲突的其他信息。</p><p>使用 <b>PutUpdate</b> 方法可将本地更改保存到服务器中。在没有进行本地更改时，关闭并重新打开文档可检索来自服务器的最新版本。使用 <b>ResolveConflict</b>                     方法可解决本地副本和服务器副本之间的差异，或者使用 <b>OpenVersion</b> 方法可在当前打开的文档的本地版本旁打开另一版本。</p><p>由于 <b>Sync</b> 对象的 <b>GetUpdate</b>、<b>PutUpdate</b> 和 <b>ResolveConflict</b>                     方法以异步方式完成任务，因此它们不返回状态代码。<b>Sync</b> 对象通过单个事件提供重要的状态信息，开发人员可以通过以下应用程序特定事件来访问这些信息：</p><ul><li>在 WPS 中，通过 <b>Document</b> 对象的 <b>Sync</b> 事件或 <b>Application</b> 对象的 <b>DocumentSync</b>                             事件；</li><li>在 ET 中，通过 <b>Workbook</b> 对象的 <b>Sync</b> 事件或 <b>Application</b> 对象的 <b>WorkbookSync</b> 事件；                         </li><li>在 WPP 中，通过 <b>Application</b> 对象的 <b>PresentationSync</b> 事件。</li></ul><p>上述 <b>Sync</b> 事件返回一个 <b>msoSyncEventType</b> 值。</p><p>无论活动文档是启用还是禁用了共享和同步，<b>Sync</b> 对象模型都可用。当活动文档未共享或没有启用同步时，<b>Document</b>、<b>Workbook</b> 和                     <b>Presentation</b> 对象的 <b>Sync</b> 属性不返回 <b>Nothing</b>。使用 <b>Status</b> 属性可确定文档是否共享以及是否启用了同步。</p><p>并不是所有文档同步问题都会引发可捕获的运行时错误。在使用了 <b>Sync</b> 对象的方法后，最好对 <b>Status</b> 属性进行检查。如果 <b>Status</b> 属性是                     <b>msoSyncStatusError</b>，则应检查 <b>ErrorType</b> 属性，以获取有关已发生的错误类型的其他信息。</p><p>在许多情况下，解决错误条件的最好方法是调用 <b>GetUpdate</b> 方法。例如，如果对 <b>PutUpdate</b> 的调用导致错误条件的产生，则对 <b>GetUpdate</b>                     的调用会将状态重置为 <b>msoSyncStatusLocalChanges</b>。</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例将基于活动文档的状态说明 Sync 对象的多种方法。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> objSync = Application.ActiveWorkbook.Sync;\n\t<span class=\"hljs-keyword\">if</span>(objSync.Status &gt; msoSyncEventDownloadFailed)\n\t{\n\t\t<span class=\"hljs-keyword\">switch</span> (objSync.Status)\n\t\t{\n\t\t\t<span class=\"hljs-keyword\">case</span> msoSyncStatusConflict:\n\t\t\t\tobjSync.ResolveConflict(msoSyncConflictMerge);\n            \tActiveDocument.Save();\n            \tobjSync.ResolveConflict(msoSyncConflictClientWins);\n            \tstrStatus = <span class=\"hljs-string\">\"Conflict resolved by merging changes.\"</span>;\n            \t<span class=\"hljs-keyword\">break</span>;\n\t\t\t<span class=\"hljs-keyword\">case</span> msoSyncStatusError:\n\t\t\t\tstrStatus = <span class=\"hljs-string\">\"Last error type: \"</span> + objSync.ErrorType;\n\t            <span class=\"hljs-keyword\">break</span>;\n\t\t\t<span class=\"hljs-keyword\">case</span> msoSyncStatusLatest:\n\t\t\t\tstrStatus = <span class=\"hljs-string\">\"Document copies already in sync.\"</span>;\n            \t<span class=\"hljs-keyword\">break</span>;\n\t\t\t<span class=\"hljs-keyword\">case</span> msoSyncStatusLocalChanges:\n\t\t\t\tobjSync.PutUpdate();\n            \tstrStatus = <span class=\"hljs-string\">\"Local changes saved to server.\"</span>;\n            \t<span class=\"hljs-keyword\">break</span>;\n\t\t\t<span class=\"hljs-keyword\">case</span> msoSyncStatusNewerAvailable:\n\t\t\t\tobjSync.GetUpdate();\n            \tstrStatus = <span class=\"hljs-string\">\"Local copy updated from server.\"</span>;\n            \t<span class=\"hljs-keyword\">break</span>;\n\t\t\t<span class=\"hljs-keyword\">case</span> msoSyncStatusSuspended:\n\t\t\t\tobjSync.Unsuspend();\n            \tstrStatus = <span class=\"hljs-string\">\"Synchronization resumed.\"</span>;\n            \t<span class=\"hljs-keyword\">break</span>;\n\t\t}\n\t}\n\t<span class=\"hljs-keyword\">else</span>\n\t\tstrStatus = <span class=\"hljs-string\">\"Not a shared workspace document.\"</span>;\n\talert(strStatus + <span class=\"hljs-string\">\" -- Sync Information\"</span>);\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>WPS 中的 <b>Document</b> 对象、ET 中的 <b>Workbook</b> 对象以及 WPP 中的 <b>Presentation</b> 对象的 <b>Sync</b> 属性均可返回一个                 <b>Sync</b> 对象。</p><table><tbody><tr><th><img/>注释</th></tr><tr><td>自 WPS Office 2015 开始，此对象或成员已弃用，不应再行使用。</td></tr></tbody></table>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>Sync</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>Sync</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "ErrorType",
+      "summary": "<p>使用 <b>ErrorType</b> 属性确定最新文档同步错误的类型。并不是所有文档同步问题都会引发可捕获的运行时错误。在使用 <b>Sync</b> 对象执行完一项操作后，最好对 <b>Status</b> 属性进行检查；如果 <b>Status</b> 属性是 <b>msoSyncStatusError</b>，则应检查 <b>ErrorType</b> 属性，以获取所发生错误类型的其他信息。<br/></p>",
+      "description": "<p>获取指示最新文档同步错误类型的 <b>MsoSyncErrorType</b> 常量。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "MsoSyncErrorType",
+      "readonly": true
+    },
+    {
+      "name": "LastSyncTime",
+      "summary": "<p>使用 <b>LastSyncTime</b> 属性可确定距活动文档的本地副本上一次与服务器副本同步已有多长时间。检查 <b><a>Status</a></b> 属性可确定本地副本与服务器副本是否同步。</p><p>如果未将活动文档配置为在本地副本与服务器副本之间进行同步，<b>LastSyncTime</b> 属性就会产生运行时错误。</p>",
+      "description": "<p>获取上一次将活动文档的本地副本与服务器副本同步的日期和时间。只读。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>Sync</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": " Object",
+      "readonly": true
+    },
+    {
+      "name": "Status",
+      "summary": "<p>使用 <b>Status</b> 属性可确定活动文档的本地副本是否与共享服务器副本同步。使用 <b>GetUpdate</b> 方法可刷新状态。对于不同的状态条件，请分别使用下列方法和属性：</p><ul><li><b>msoSyncStatusConflict</b> - 当本地副本和服务器副本都发生更改时为 <b>True</b>。使用 <b>ResolveConflict</b>                             方法可解决这些差异。</li><li><b>msoSyncStatusError</b> - 检查 <b>ErrorType</b> 属性。</li><li><b>msoSyncStatusLocalChanges</b> - 当只有本地副本发生更改时为 <b>True</b>。使用 <b>PutUpdate</b>                             方法可将本地更改保存到服务器副本中。</li><li><b>msoSyncStatusNewerAvailable</b> - 当只有服务器副本发生更改时为 <b>True</b>。关闭并重新打开文档可使用来自服务器中的最新副本。                         </li><li><b>msoSyncStatusSuspended</b> - 使用 <b>Unsuspend</b> 方法可恢复同步。</li></ul><p><br/></p><p><b>Status</b> 属性按照下面的优先级顺序从列表中返回单个常量： </p><ol><li><b>msoSyncStatusNoSharedWorkspace</b></li><li><b>msoSyncStatusError</b></li><li><b>msoSyncStatusSuspended</b></li><li><b>msoSyncStatusConflict</b></li><li><b>msoSyncStatusNewerAvailable</b></li><li><b>msoSyncStatusLocalChanges</b></li><li><b>msoSyncStatusLatest</b></li></ol>",
+      "description": "<p>获取活动文档的本地副本与服务器副本的同步状态。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例将检查 Status 属性，并在必要时进行适当的操作以使文档的本地副本与服务器副本同步。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> objSync = Application.ActiveWorkbook.Sync;\n\t<span class=\"hljs-keyword\">if</span>(objSync.Status &gt; Application.Enum.msoSyncEventDownloadFailed)\n\t{\n\t\t<span class=\"hljs-keyword\">switch</span> (objSync.Status)\n\t\t{\n\t\t\t<span class=\"hljs-keyword\">case</span> Application.Enum.msoSyncStatusConflict:\n\t\t\t\tobjSync.ResolveConflict(Application.Enum.msoSyncConflictMerge);\n            \t　　　　　　　　 Application.ActiveDocument.Save();\n            \t　　　　　　　　 objSync.ResolveConflict(Application.Enum.msoSyncConflictClientWins);\n            \t　　　　　　　　 strStatus = <span class=\"hljs-string\">\"Conflict resolved by merging changes.\"</span>;\n            \t<span class=\"hljs-keyword\">break</span>;\n\t\t\t<span class=\"hljs-keyword\">case</span> Application.Enum.msoSyncStatusError:\n\t\t\t\tstrStatus = <span class=\"hljs-string\">\"Last error type: \"</span> + objSync.ErrorType;\n\t           　　　　　　  <span class=\"hljs-keyword\">break</span>;\n\t\t\t<span class=\"hljs-keyword\">case</span> Application.Enum.msoSyncStatusLatest:\n\t\t\t\tstrStatus = <span class=\"hljs-string\">\"Document copies already in sync.\"</span>;\n            \t　　　　　　　　 <span class=\"hljs-keyword\">break</span>;\n\t\t\t<span class=\"hljs-keyword\">case</span> Application.Enum.msoSyncStatusLocalChanges:\n\t\t\t\tobjSync.PutUpdate();\n            \t　　　　　　　　 strStatus = <span class=\"hljs-string\">\"Local changes saved to server.\"</span>;\n            \t　　　　　　　　 <span class=\"hljs-keyword\">break</span>;\n\t\t\t<span class=\"hljs-keyword\">case</span> Application.Enum.msoSyncStatusNewerAvailable:\n\t\t\t\tobjSync.GetUpdate();\n            \t　　　　　　　　 strStatus = <span class=\"hljs-string\">\"Local copy updated from server.\"</span>;\n            \t　　　　　　　　 <span class=\"hljs-keyword\">break</span>;\n\t\t\t<span class=\"hljs-keyword\">case</span> Application.Enum.msoSyncStatusSuspended:\n\t\t\t\tobjSync.Unsuspend();\n            \t　　　　　　　　 strStatus = <span class=\"hljs-string\">\"Synchronization resumed.\"</span>;\n            \t　　　　　　　　 <span class=\"hljs-keyword\">break</span>;\n\t\t}\n\t}\n\t<span class=\"hljs-keyword\">else</span>\n\t　　　　strStatus = <span class=\"hljs-string\">\"Not a shared workspace document.\"</span>;\n\t　　　　alert(strStatus + <span class=\"hljs-string\">\"Sync Information\"</span>);\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "WorkspaceLastChangedBy",
+      "summary": "<p>如果未将活动文档配置为在本地副本和服务器副本之间进行同步，<b>WorkspaceLastChangedBy</b> 属性就会产生运行时错误。<br/></p>",
+      "description": "<p>显示最后一个在共享文档服务器副本中保存更改的用户的显示名称。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例将检查共享文档的本地副本和服务器副本之间的冲突，并报告最后一个在服务器副本中保存更改的用户的名称。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> objSync = Application.ActiveWorkbook.Sync;\n\t<span class=\"hljs-keyword\">if</span>(objSync.Status == Application.Enum.msoSyncStatusConflict) {\n    \tstrStatus = <span class=\"hljs-string\">\"The server copy has been changed by\"</span> + objSync.WorkspaceLastChangedBy;\n    \talert(strStatus + <span class=\"hljs-string\">\"Server Copy Changed\"</span>);\n\t}\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "OpenVersion",
+      "summary": "<p>使用 <b>OpenVersion</b> 方法可在当前打开的本地版本旁打开上次查看的共享文档版本 (<b>msoSyncVersionLastViewed</b>) 或其服务器副本\t\t\t\t\t (<b>msoSyncVersionServer</b>)。</p><p><b>The msoSyncVersionLastViewed</b> 选项显示用户用服务器副本覆盖本地副本时创建的文档副本。例如，如果使用\t\t\t\t\t <b>msoSyncConflictServerWins</b> 选项调用 <b>ResolveConflict</b> 方法，则将保存您的本地更改，并可以通过调用<b>\t\t\t\t\t\t OpenVersion(msoSyncVersionLastViewed)</b> 进行查看。</p><p>并非所有文档同步问题都会引发可捕获的运行时错误。在使用 <b>Sync</b> 对象执行完一个操作后，最好对 <b>Status</b> 属性进行检查；如果 <b>Status</b> 属性是\t\t\t\t\t <b>msoSyncStatusError</b>，则应检查 <b>ErrorType</b> 属性，以获取有关已发生的错误类型的其他信息。</p>",
+      "description": "<p>在当前打开的本地版本旁打开共享文档的另一个版本。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例将在当前打开的共享文档本地版本旁打开该文档的服务器副本。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> objSync = Application.ActiveWorkbook.Sync; \n\tobjSync.OpenVersion(Application.Enum.msoSyncVersionServer);\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "SyncVersionType",
+          "type": "MsoSyncVersionType",
+          "description": "代表版本的类型。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "PutUpdate",
+      "summary": "<p>如果客户端未识别出最近对共享文档服务器副本所做的更改，<b>PutUpdate</b> 方法可能会遇到冲突。在调用 <b>PutUpdate</b> 之前先调用 <b>GetUpdate</b>\t\t\t\t\t 方法可刷新服务器副本的状态并检测可能的冲突。</p><p>如果本地文档有未保存的更改，<b>PutUpdate</b> 方法将发生运行时错误。</p><p>并非所有文档同步问题都会引发可捕获的运行时错误。在使用 <b>Sync</b> 对象执行完一个操作后，最好对 <b>Status</b> 属性进行检查；如果 <b>Status</b> 属性是\t\t\t\t\t <b>msoSyncStatusError</b>，则应检查 <b>ErrorType</b> 属性，以获取有关已发生的错误类型的其他信息。</p><p>在许多情况下，解决错误条件的最好方法是调用 <b>GetUpdate</b> 方法。例如，如果对 <b>PutUpdate</b> 的调用导致错误条件的产生，则对 <b>GetUpdate</b>\t\t\t\t\t 的调用会将状态重置为 <b>msoSyncStatusLocalChanges</b>。</p>",
+      "description": "<p>用共享文档的本地副本更新其服务器副本。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*如果文档的本地副本已被编辑，则下面的示例会使用 PutUpdate 方法根据本地副本更新服务器副本。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> objSync = Application.ActiveWorkbook.Sync;\n\t<span class=\"hljs-keyword\">if</span>(objSync.Status == Application.Enum.msoSyncStatusLocalChanges) {\n    \tobjSync.PutUpdate();\n    \tstrStatus = <span class=\"hljs-string\">\"Local changes saved to server.\"</span>;\n    \talert(strStatus + <span class=\"hljs-string\">\"Sync Information\"</span>);\n\t}\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "ResolveConflict",
+      "summary": "<p>使用 <b>ResolveConflict</b> 方法可解决活动文档的本地副本和服务器副本之间的差异。使用 <b>msoSyncConflictMerge</b> 选项（不适用于 ET\t\t\t\t\t 工作簿）可以合并各个文档的更改。通过 <b>msoSyncConflictClientWins</b> 选项使用本地更改替换服务器副本，或者通过\t\t\t\t\t <b>msoSyncConflictServerWins</b> 选项使用更改的服务器副本替换本地副本。</p><p><b>msoSyncConflictMerge</b> 选项将对服务器副本所做的更改合并到本地副本中，但实际上并没有解决冲突。要解决冲突并成功地合并更改，必须在合并更改后保存活动文档，然后再次使用\t\t\t\t\t <b>msoSyncConflictClientWins</b> 选项调用 <b>ResolveConflict</b> 方法。</p><p>如果客户端未检测出对共享文档服务器副本的最新更改，<b>ResolveConflict</b> 方法可能会遇到冲突条件。在调用 <b>ResolveConflict</b> 之前先调用\t\t\t\t\t <b>GetUpdate</b> 方法可刷新服务器副本的状态并检测可能的冲突。</p><p>如果本地文档有未保存的更改或者在文档的两个副本之间不存在冲突，<b>ResolveConflict</b> 方法就会发生运行时错误。</p><p>并不是所有文档同步问题都会引发可捕获的运行时错误。在使用 <b>Sync</b> 对象执行完一个操作后，最好对 <b>ErrorType</b> 属性进行检查。如果 <b>Status</b> 属性是\t\t\t\t\t <b>msoSyncStatusError</b>，则应检查 <b>Status</b> 属性，以进一步获取有关所发生错误类型的信息。</p>",
+      "description": "<p>解决共享文档的本地副本和服务器副本之间的冲突。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例试图通过合并更改来解决活动文档的本地副本和服务器副本之间的冲突。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> objSync = Application.ActiveWorkbook.Sync;\n\t<span class=\"hljs-keyword\">if</span>(objSync.Status == Application.Enum.msoSyncStatusConflict) {\n    \tobjSync.ResolveConflict(Application.Enum.msoSyncConflictMerge);\n    \tApplication.ActiveWorkbook.Save();\n    \tobjSync.ResolveConflict(Application.Enum.msoSyncConflictClientWins);\n    \tstrStatus = <span class=\"hljs-string\">\"Conflict resolved by merging changes.\"</span>;\n    \talert(strStatus + <span class=\"hljs-string\">\"Sync Information\"</span>);\n\t}\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "SyncConflictResolution",
+          "type": "MsoSyncConflictResolutionType",
+          "description": "指定解决冲突的方式。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Unsuspend",
+      "summary": "<p>使用 <b>Unsuspend</b> 方法可在 <b>Status</b> 属性返回 <b>msoSyncStatusSuspended</b> 时继续执行文档同步。<br/></p><p>并非所有文档同步问题都会引发可捕获的运行时错误。在使用 <b>Sync</b> 对象执行完一个操作后，最好对 <b>Status</b> 属性进行检查；如果 <b>Status</b> 属性是\t\t\t\t\t <b>msoSyncStatusError</b>，则应检查 <b>ErrorType</b> 属性，以获取有关已发生的错误类型的其他信息。</p>",
+      "description": "<p>继续执行共享文档的本地副本和服务器副本之间的同步。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例将在文档同步暂停后继续执行文档同步。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> objSync = Application.ActiveWorkbook.Sync;\n\t<span class=\"hljs-keyword\">if</span>(objSync.Status == Application.Enum.msoSyncStatusSuspended) {\n    \tobjSync.Unsuspend();\n    \talert(strStatus + <span class=\"hljs-string\">\"Sync Information\"</span>);\n\t}\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

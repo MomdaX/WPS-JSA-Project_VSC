@@ -1,0 +1,77 @@
+{
+  "name": "PictureEffect",
+  "summary": "<p>\n</p><p>\n</p><p>图片效果被处理为由各个项构成的链，以便创下面的代码将设置 Wpp 幻灯片中某个形状的几个图片效果填充属性。</p><p>\n</p>\n<p>\n</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>) </span>{\n    <span class=\"hljs-comment\">// Setup a slide with one picture shape.</span>\n    let pes = Application.ActivePresentation.Slides.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).Fill.PictureEffects\n    <span class=\"hljs-comment\">// Insert a 150% Saturation effect.</span>\n    pes.Insert(Application.<span class=\"hljs-keyword\">Enum</span>.msoEffectSaturation).EffectParameters.Item(<span class=\"hljs-number\">1</span>).Value = <span class=\"hljs-number\">1.5</span>\n    <span class=\"hljs-comment\">// Insert Brightness/Contrast effect and set values to -50% Brightness and +25% Contrast.</span>\n    let brightnessContrast = pes.Insert(Application.<span class=\"hljs-keyword\">Enum</span>.msoEffectBrightnessContrast)\n    brightnessContrast.EffectParameters.Item(<span class=\"hljs-number\">1</span>).Value = -<span class=\"hljs-number\">0.5</span>\n    brightnessContrast.EffectParameters.Item(<span class=\"hljs-number\">2</span>).Value = <span class=\"hljs-number\">0.25</span>\n}</code></pre></td></tr></tbody></table></div><p>建一个最终复合图像，链中的项是按照顺序应用的。效果链将允许向链中添加效果、对效果重新排序或从链中删除效果。 </p>",
+  "description": "<p>\n</p><p>\n</p><p>代表图片效果。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p><br/></p>",
+      "description": "<p>获取一个&nbsp;<b>Application</b>&nbsp;对象，该对象代表&nbsp;<b>PictureEffect</b>&nbsp;对象的容器应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>PictureEffect</b> 对象的应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "EffectParameters",
+      "summary": "<p>\n</p><p>\n</p><p>图片效果被处理为由各个项构成的链，以便创建一个最终复合图像，链中的项是按照顺序应用的。效果链将允许向链中添加效果、对效果重新排序或从链中删除效果。效果参数指定这些效果的属性。 \n</p>",
+      "description": "<p>\n</p><p>返回一个 <b>EffectParameter</b> 对象。只读</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的代码将设置 Microsoft PowerPoint 幻灯片中某个形状的几个图片效果填充属性。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-comment\">// Setup a slide with one picture shape.</span>\n    <span class=\"hljs-keyword\">let</span> pes = Application.<span class=\"hljs-title class_\">ActivePresentation</span>.<span class=\"hljs-property\">Slides</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">PictureEffects</span>\n    <span class=\"hljs-comment\">// Insert a 150% Saturation effect.</span>\n    pes.<span class=\"hljs-title class_\">Insert</span>(Application.Enum.msoEffectSaturation).<span class=\"hljs-property\">EffectParameters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value</span> = <span class=\"hljs-number\">1.5</span>\n    <span class=\"hljs-comment\">// Insert Brightness/Contrast effect and set values to -50% Brightness and +25% Contrast.</span>\n    <span class=\"hljs-keyword\">let</span> brightnessContrast = pes.<span class=\"hljs-title class_\">Insert</span>(Application.Enum.msoEffectBrightnessContrast)\n    brightnessContrast.<span class=\"hljs-property\">EffectParameters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value</span> = -<span class=\"hljs-number\">0.5</span>\n    brightnessContrast.<span class=\"hljs-property\">EffectParameters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Value</span> = <span class=\"hljs-number\">0.25</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Position",
+      "summary": "<p>\n</p><p>\n</p><p>图片效果被处理为由各个项构成的链，以便创建一个最终复合图像，链中的项是按照顺序应用的。效果链将允许向链中添加效果、对效果重新排序或从链中删除效果。 </p>",
+      "description": "<p>\n</p><p>指定图片效果在复合效果链中的位置。可读/写</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的代码将设置 Microsoft PowerPoint 幻灯片中某个形状的几个图片效果填充属性。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n    <span class=\"hljs-comment\">// Setup a slide with one picture shape.</span>\n    <span class=\"hljs-keyword\">let</span> pes = Application.<span class=\"hljs-title class_\">ActivePresentation</span>.<span class=\"hljs-property\">Slides</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Fill</span>.<span class=\"hljs-property\">PictureEffects</span>\n    <span class=\"hljs-comment\">// Insert a 150% Saturation effect.</span>\n    pes.<span class=\"hljs-title class_\">Insert</span>(Application.Enum.msoEffectSaturation).<span class=\"hljs-property\">EffectParameters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value</span> = <span class=\"hljs-number\">1.5</span>\n    <span class=\"hljs-comment\">// Insert Brightness/Contrast effect and set values to -50% Brightness and +25% Contrast.</span>\n    <span class=\"hljs-keyword\">let</span> brightnessContrast = pes.<span class=\"hljs-title class_\">Insert</span>(Application.Enum.msoEffectBrightnessContrast)\n    brightnessContrast.<span class=\"hljs-property\">EffectParameters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Value</span> = -<span class=\"hljs-number\">0.5</span></code><code class=\"JavaScript\">    brightnessContrast.<span class=\"hljs-property\">EffectParameters</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>).<span class=\"hljs-property\">Value</span> = <span class=\"hljs-number\">0.25</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Type",
+      "summary": "<p>此属性使用 <b>MsoPictureEffectType</b> \n枚举。<br/></p>",
+      "description": "<p>指定图片效果的类型。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Visible",
+      "summary": "",
+      "description": "<p>获取或设置一个代表图片效果的可视状态的 Boolean 值。可读/写<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>删除图片效果。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

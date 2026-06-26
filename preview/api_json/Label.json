@@ -1,0 +1,218 @@
+{
+  "name": "Label",
+  "summary": "<p><span style=\"font-family:&quot;white-space:normal;background-color:#FFFFFF;\">用于显示用户不能编辑的文本或图像，例如图形下的标题文本。</span> </p>",
+  "description": "<p>用于显示用户不能编辑的文本或图像，例如图形下的标题文本。</p>",
+  "properties": [
+    {
+      "name": "AutoSize",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t指定该对象是否根据内容自动设置它的大小\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定该对象是否根据内容自动设置它的大小\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*设置Label控件为根据内容自动设置大小*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">AutoSize</span> = <span class=\"hljs-literal\">true</span>\n}\n</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "BackColor",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的内部颜色\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的内部颜色\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1设置为十六进制下665898表示的颜色（紫色）*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">BackColor</span> = <span class=\"hljs-number\">0x665898</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "BackStyle",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用该属性指定控件是否透明\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以使用该属性指定控件是否透明\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1设置为透明*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">BackStyle</span> = <span class=\"hljs-number\">0</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "BorderColor",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件边框的颜色\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件边框的颜色\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1的边框设置为十六进制下665898表示的颜色（紫色）*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">BorderColor</span> = <span class=\"hljs-number\">0x665898</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "BorderStyle",
+      "summary": "<p>\n\t\t指定控件边框的显示方式，可设置为以下值\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tNone\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t0\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t无边框\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tSingle\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t边框为实线\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定控件边框的显示方式\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1的边框显示方式设置为实线*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">BorderStyle</span> = <span class=\"hljs-number\">1</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Caption",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置出现在控件中的文本\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置出现在控件中的文本\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1中的文本设置为&quot;Label 1&quot;*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">Caption</span> = <span class=\"hljs-string\">&quot;Label 1&quot;</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Enabled",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t<div finger=\"kso-wps-otl\">\n\t\t\t您可以通过该属性设置或返回是否启用该控件\n\t\t</div>\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t<div finger=\"kso-wps-otl\">\n\t\t\t您可以通过该属性设置或返回是否启用该控件\n\t\t</div>\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*启用该控件*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">Enabled</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Font",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t指定对象的字体，只读\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定对象的字体，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "ForeColor",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件中文本的颜色\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件中文本的颜色\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1中的文本颜色设置为十六进制658978所表示的颜色*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">ForeColor</span> = <span class=\"hljs-number\">0x658978</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Height",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的高度\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的高度\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1控件的高度设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">Height</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "HeightPolicy",
+      "summary": "<p>\n\t\t获取或设置指定对像的高度策略，可以设置为以下值：\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tExpanding\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t可变高度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tFixed\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t2\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t固定高度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对像的高度策略\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1的高度设置为固定*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">HeightPolicy</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Left",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1的位置设置到距离窗体左边缘100像素*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">Left</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Name",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定或确定表示对象名称的字符串，只读\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定或确定表示对象名称的字符串，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "TabIndex",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在窗体或报表上的Tab键顺序中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在窗体或报表上的Tab键顺序中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1设置为Tab键顺序为的第2个位置*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">TabIndex</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "TabStop",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定是否可以通过Tab键将焦点移到控件上\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定是否可以通过Tab键将焦点移到控件上\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1设置为可以通过Tab键将焦点移到该控件上*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">TabStop</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "TextAlign",
+      "summary": "<p>\n\t\t该属性用于指定对象中文本的对齐方式，包含以下值\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t\tLeft\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t\t文本数字和日期都左对齐\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t\tCenter\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t2\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t\t文本数字和日期都居中对齐\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t\tRight\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t3\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t<div finger=\"kso-wps-otl\">\n\t\t\t\t\t\t\t文本数字和日期都右对齐\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t该属性用于指定对象中文本的对齐方式\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1中的文本设置为居中对齐*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">TextAlign</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Top",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1的位置设置到距离窗体上边缘100像素*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">Top</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Visible",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t返回或设置该对象是否可见\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t返回或设置该对象是否可见\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1设置为可见*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Width",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1的宽度设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">Width</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "WidthPolicy",
+      "summary": "<p>\n\t\t获取或设置指定对象的宽度策略，可以设置为以下值：\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tExpanding\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t可变宽度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tFixed\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t2\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t固定宽度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度策略\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1的宽度设置为固定*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">WidthPolicy</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "WordWrap",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t指定控件的内容是否在行尾自动换行\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t指定控件的内容是否在行尾自动换行\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label1设置为控件的内容在行尾自动换行*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-property\">WordWrap</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Move",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t将对象移动到参数指定的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t将对象移动到参数指定的位置\n\t</div>",
+      "parameters": [
+        {
+          "name": "Left",
+          "type": "Number",
+          "description": "对象移动后相对于窗口的左边缘的距离",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Top",
+          "type": "Number",
+          "description": "对象移动后相对于窗口的上边缘的距离",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Width",
+          "type": "Number",
+          "description": "对象移动后的预期宽度",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Height",
+          "type": "Number",
+          "description": "对象移动后的预期长度",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将Label移动到窗体左上角，并将移动后的Label长宽设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">Label1</span>.<span class=\"hljs-title class_\">Move</span>(<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>,<span class=\"hljs-number\">100</span>)\n}\n</code></pre></td></tr></table></div>",
+      "returns": ""
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "name": "COMAddIns",
+  "summary": "<p>\n</p><p>使用 <b>Application</b> 对象的 <b>COMAddIns</b> 属性可返回 WPS Office宿主应用程序的 <b>COMAddIns</b> 集合。如下面的示例所示，此集合包含了某个给定的 Office 宿主应用程序中所有可用的 \nCOM 加载项，而 <b>COMAddins</b> 集合的 <b>Count</b> 属性可返回可用的 COM 加载项的数目。</p><p>\n</p><table>\n<tbody>\n<tr>\n<th>示例代码</th></tr>\n<tr>\n<td><pre><code>alert(Application.COMAddIns.Count)</code></pre></td></tr></tbody></table><p>如下面的示例所示，使用 <b>COMAddins</b> 集合的 <b>Update</b> 方法可刷新 Windows 注册表中 COM 加载项的列表。</p><p>\n</p><table>\n<tbody>\n<tr>\n<th>示例代码</th></tr>\n<tr>\n<td><pre><code>Application.COMAddIns.Update()</code></pre></td></tr></tbody></table><p>可以使用 <b>COMAddIns.Item(index)</b>，其中 \n<i>index</i> \n既可以是一个能够返回 <b>COMAddIns</b> 集合中相应位置的加载项的序数值，也可以是代表指定 COM \n加载项的 ProgID 的 <b>String</b> 值。下面的示例在消息框中显示一个 COM 加载项的说明文本和 \nProgID (\"<b>msodraa9.ShapeSelect</b>\")。</p><p>\n</p><p>\n\n\n\n\n</p><table>\n<tbody>\n<tr>\n<th>示例代码</th></tr>\n<tr>\n<td><pre><code>alert(Application.COMAddIns.Item(\"msodraa9.ShapeSelect\").Description)</code></pre></td></tr></tbody></table>",
+  "description": "<p>\n</p><p></p><p><b>COMAddIn</b> 对象的集合，这些对象提供有关在 Windows 注册表中注册的 COM 加载项的信息。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>COMAddIns</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>获取宿主应用程序中 COM 加载项的数量。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>COMAddIns</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>COMAddIns</b> 对象的 <b>Parent</b> \n对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>获取指定的 <b>COMAddIns</b> 集合的成员。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Long",
+          "description": "代表集合中成员的位置。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Update",
+      "summary": "<p>\n</p><p></p><p>在 WPS Office应用程序中使用特定 COM 加载项之前，必须先用相应的组件类别 ID 在 Windows \n注册表中将该加载项注册为 COM 组件。通常，COM 加载项的安装程序会向注册表中添加必要的项。</p>",
+      "description": "<p>\n</p><p></p><p>根据保存在 Windows 注册表中的加载项列表更新 COMAddIns 集合的内容。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的示例将根据保存在 Windows 注册表中的加载项列表更新 COMAddIns 集合的内容。</span>\nApplication<span class=\"hljs-selector-class\">.COMAddIns</span><span class=\"hljs-selector-class\">.Update</span>()</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

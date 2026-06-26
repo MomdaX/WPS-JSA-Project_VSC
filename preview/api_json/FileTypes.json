@@ -1,0 +1,82 @@
+{
+  "name": "FileTypes",
+  "summary": "<p>所有搜索都只有一个 <b>FileTypes</b> 集合，因此在执行搜索之前清除 <b>FileTypes</b> 集合很重要，除非希望搜索以前搜索的文件类型。清除该集合的最简便方法是将 <b>FileType</b> 属性设置为要搜索的第一个文件类型。还可以使用 <b>Remove</b> 方法删除单个类型。要确定集合中每一项的文件类型，请使用 <b>Item</b> 方法返回 <b>msoFileType</b> 值。<br/></p>",
+  "description": "<p><b>msoFileType</b> 类型的值的集合，这些值决定在搜索期间返回的文件类型。<br/></p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>FileTypes</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>FileTypes</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "Long",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>获取一个指示要搜索的文件类型的值。只读。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Long",
+          "description": "Long 要返回的对象的索引号。 ",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>向文件搜索中新添一个文件类型。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "FileType",
+          "type": "MsoFileType",
+          "description": "指定要搜索的文件类型。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Remove",
+      "summary": "",
+      "description": "<p>从集合中删除一个 <b>FileType</b> 对象。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Long",
+          "description": "要删除的文件类型的索引号。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    }
+  ]
+}

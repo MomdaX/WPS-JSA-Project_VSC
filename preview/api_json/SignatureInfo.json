@@ -1,0 +1,224 @@
+{
+  "name": "SignatureInfo",
+  "summary": "",
+  "description": "<p>代表用于创建数字签名或文档内签名的信息。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个代表 <b>SignatureInfo</b> 对象的容器应用程序的 <b>Application</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "CertificateVerificationResults",
+      "summary": "",
+      "description": "<p>获取验证数字证书的结果。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "ContentVerificationResults",
+      "summary": "",
+      "description": "<p>获取一个代表已签名文档的散列内容的验证结果的值。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>SignatureInfo</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "IsCertificateExpired",
+      "summary": "",
+      "description": "<p>获取一个 <b>Boolean</b> 类型的值，指示数字证书是否已到期。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "IsCertificateRevoked",
+      "summary": "",
+      "description": "<p>获取一个 <b>Boolean</b> 类型的值，指示数字证书是否已吊销。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "IsCertificateUntrusted",
+      "summary": "",
+      "description": "<p>获取一个 <b>Boolean</b> 类型的值，指示用于以数字方式签署文档的数字证书是否来自受信任的来源。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "IsValid",
+      "summary": "",
+      "description": "<p>获取一个 <b>Boolean</b> 类型的值，指示在执行了签名验证过程后签名是否已成功获得验证。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "ReadOnly",
+      "summary": "",
+      "description": "<p>获取一个 <b>Boolean</b> 类型的值，指示 <b>SignatureInfo</b> 对象是否为只读。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "SignatureComment",
+      "summary": "",
+      "description": "<p>获取或设置包含纳入签名数据包中的注释的值。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "SignatureImage",
+      "summary": "",
+      "description": "<p>获取或设置用于签署文档的图像的值。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "SignatureProvider",
+      "summary": "",
+      "description": "<p>获取一个标识所安装的签名提供程序加载项的值。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "SignatureText",
+      "summary": "",
+      "description": "<p>获取或设置用于签署此文档的签名文字的值。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "GetCertificateDetail",
+      "summary": "",
+      "description": "<p>\n</p><p>显示与数字证书相关的指定详细信息。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [
+        {
+          "name": "certdet",
+          "type": "CertificateDetail",
+          "description": "一个指定要显示的证书详细信息的枚举值。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "Variant"
+    },
+    {
+      "name": "GetSignatureDetail",
+      "summary": "",
+      "description": "<p>\n</p><p>显示与签名相关的指定详细信息。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [
+        {
+          "name": "sigdet",
+          "type": "SignatureDetail",
+          "description": "一个指定要显示的签名详细信息的枚举值。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "Variant"
+    },
+    {
+      "name": "SelectCertificateDetailByThumbprint",
+      "summary": "",
+      "description": "<p>\n</p><p>在通过个性特征对用户进行验证后，显示一个包含有关数字证书的信息的对话框。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [
+        {
+          "name": "bstrThumbprint",
+          "type": "String",
+          "description": "包含有关由个性特征标识的签署人的信息。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "SelectSignatureCertificate",
+      "summary": "",
+      "description": "<p>\n</p><p>显示一个对话框，允许用户选择要用于签署文档的签名证书。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [
+        {
+          "name": "ParentWindow",
+          "type": "IOleWindow",
+          "description": "包含证书选择对话框所在窗口的句柄。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "ShowSignatureCertificate",
+      "summary": "",
+      "description": "",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [
+        {
+          "name": "ParentWindow",
+          "type": "IOleWindow",
+          "description": "包含“证书”对话框所在窗口的句柄。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "name": "SmartArtQuickStyles",
+  "summary": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码更改 WPP 中的 Smart Art 图表的快速样式。*/</span>\nApplication.ActivePresentation.Slides.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).SmartArt.QuickStyle = Application.SmartArtQuickStyles.Item(<span class=\"hljs-number\">1</span>)</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表 Smart Art 快速样式的集合。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>SmartArtQuickStyles</b> 对象的容器应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>检索包含在 SmartArtQuickStyles 集合中的 SmartArtQuickStyle 对象数的计数。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>SmartArtQuickStyles</b> 对象的应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回调用对象。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>在指定的索引处或通过指定的唯一 ID 来检索 <b>SmartArtQuickStyle</b> 对象。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Variant",
+          "description": "指定一个代表索引的整数或一个代表 SmartArtQuickStyle 对象位置的字符串。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "SmartArtQuickStyle"
+    }
+  ]
+}

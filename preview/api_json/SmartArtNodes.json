@@ -1,0 +1,74 @@
+{
+  "name": "SmartArtNodes",
+  "summary": "<div id=\"vstable\">这些节点直接对应于包含在图形的数据模型内部的语义元素。<br/></div><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码返回 Smart Art 图表中的节点数目。*/</span>\nApplication.ActivePresentation.Slides.Item(1).Shapes.Item(1).SmartArt.AllNodes.Count<br/></code></pre></td></tr></tbody></table></div>",
+  "description": "<p>代表 Smart Art 图表内部的节点的集合。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>SmartArtNodes</b> 对象的容器应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>检索包含在 <b>SmartArtNodes</b> 集合中的 <b>SmartArtNode</b> 对象数。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>SmartArtNodes</b> 对象的应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回调用对象。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "<p>这个新节点将添加到位于此节点集合最顶层的数据模型的底部。如果最高级别是 2，则这个新节点的级别也将是 2。</p>",
+      "description": "<p>将新的 <b>SmartArtNode</b> 对象添加到具有指定文本的图表中。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的代码将一个 SmartArtNode 添加到 SmartArtNodes 集合中。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> saNodes = Application.ActiveWorkbook.ActiveChart.Shapes.Item(<span class=\"hljs-number\">1</span>).SmartArt.AllNodes.Item(<span class=\"hljs-number\">1</span>);\n\tsaNodes.AddNode();\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "SmartArtNode"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>在指定的索引处或通过指定的唯一 ID 来检索 <b>SmartArtNode</b> 对象。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Variant",
+          "description": "指定一个代表索引的整数或一个代表 SmartArtNode 对象位置的字符串。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "SmartArtNode"
+    }
+  ]
+}

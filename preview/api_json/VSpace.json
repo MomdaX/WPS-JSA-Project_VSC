@@ -1,0 +1,64 @@
+{
+  "name": "VSpace",
+  "summary": "<p>填充垂直方向上无用的空隙。</p>",
+  "description": "<p>填充垂直方向上无用的空隙。</p>",
+  "properties": [
+    {
+      "name": "Height",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的高度\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的高度\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VSpacer1控件的高度设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VSpacer1</span>.<span class=\"hljs-property\">Height</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "HeightPolicy",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对像的高度策略，可设置为以下值：\n\t</div>\n\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<th>\n\t\t\t\t\t设置\n\t\t\t\t</th>\n\t\t\t\t<th>\n\t\t\t\t\t值\n\t\t\t\t</th>\n\t\t\t\t<th>\n\t\t\t\t\t描述\n\t\t\t\t</th>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>\n\t\t\t\t\tExpanding\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t1\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t可变高度\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>\n\t\t\t\t\tFixed\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t2\n\t\t\t\t</td>\n\t\t\t\t<td>\n\t\t\t\t\t可变宽度\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table></div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对像的高度策略\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VSpacer1的高度设置为固定*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VSpacer1</span>.<span class=\"hljs-property\">HeightPolicy</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Left",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VSpacer1的位置设置到距离窗体左边缘100像素*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VSpacer1</span>.<span class=\"hljs-property\">Left</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Name",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定或确定表示对象名称的字符串，只读\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定或确定表示对象名称的字符串，只读\n\t</div>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    },
+    {
+      "name": "Top",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t您可以通过该属性指定控件在对象或报表中的位置\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VSpacer1的位置设置到距离窗体上边缘100像素*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VSpacer1</span>.<span class=\"hljs-property\">Top</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "Width",
+      "summary": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度\n\t</div>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VSpacer1的宽度设置为100*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VSpacer1</span>.<span class=\"hljs-property\">Width</span> = <span class=\"hljs-number\">100</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    },
+    {
+      "name": "WidthPolicy",
+      "summary": "<p>\n\t\t获取或设置指定对象的宽度策略，可设置为以下值：\n\t</p>\n\t<p>\n\t\t<div id=\"vstable\"><table style=\"width: 100%;\" cellpadding=\"2\" cellspacing=\"0\" border=\"0\" class=\"ke-zeroborder\" bordercolor=\"#000000\">\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t设置\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t值\n\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t描述\n\t\t\t\t\t</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tExpanding\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t1\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t可变宽度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>\n\t\t\t\t\t\tFixed\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t2\n\t\t\t\t\t</td>\n\t\t\t\t\t<td>\n\t\t\t\t\t\t固定宽度\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table></div>\n\t</p>",
+      "description": "<div finger=\"kso-wps-otl\">\n\t\t获取或设置指定对象的宽度策略\n\t</div>",
+      "type": "",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">/*将VSpacer1的宽度设置为固定*/</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">func1</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-title class_\">UserForm</span>1.<span class=\"hljs-property\">VSpacer1</span>.<span class=\"hljs-property\">WidthPolicy</span> = <span class=\"hljs-number\">2</span>\n}</code></pre></td></tr></table></div>",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

@@ -1,0 +1,127 @@
+{
+  "name": "CustomXMLParts",
+  "summary": "<p>\n</p><p>\n</p><p>存在三个始终与文档一起创建的默认部件。它们是“封面”、“文档属性”和“应用程序属性”。最后两个部件在 WPS Office 的以前版本中，但现在是在 <b>CustomXMLParts</b> 对象集合中以 XML 形式提供</p><p>\n</p><p>\n</p><p>\n</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例将一个节点添加到 CustomXMLPart 对象（它是 CustomXMLParts 对象集合的一部分）。</span>\n<span class=\"hljs-keyword\">let</span> myPart = Application.ActiveDocument.CustomXMLParts.Add(<span class=\"hljs-string\">\"&lt;author&gt;Mark Twain&lt;/author&gt;\"</span>)\n</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>\n</p><p>\n</p><p>代表 <b>CustomXMLPart</b> 对象的集合。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取一个代表 <b>CustomXMLParts</b> 对象的容器应用程序的 <b>Application</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取一个 <b>Long</b> 类型的值，指示 <b>CustomXMLParts</b> 集合中的项数。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>CustomXMLParts</b> 对象时所使用应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Item",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CustomXMLParts</b> 集合中的一个 <b>CustomXMLPart</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Variant",
+          "description": "要返回的 CustomXMLPart 对象的名称或索引号。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CustomXMLParts</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "<p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>允许您向文件添加新的 <b>CustomXMLPart</b>。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例将添加新的 CustomXMLPart，使用搜索标准选择 CustomXMLPart，然后从该部件中选择单一节点。需要有对应命名空间的custom XML part</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">try</span> {\n    <span class=\"hljs-keyword\">let</span> cxp1\n    <span class=\"hljs-keyword\">let</span> cxn\n\n    <span class=\"hljs-comment\">// Example written for Word.</span>\n\n    <span class=\"hljs-comment\">// Add a custom XML part.</span>\n    <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveDocument</span>.<span class=\"hljs-property\">CustomXMLParts</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"&lt;custXMLPart /&gt;\"</span>)\n\n    <span class=\"hljs-comment\">// Returns the first custom XML part with the given root namespace.</span>\n    cxp1 = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveDocument</span>.<span class=\"hljs-title class_\">Custom</span>XMLParts.Item(<span class=\"hljs-string\">\"urn:invoice:namespace\"</span>)        \n\n    <span class=\"hljs-comment\">// Get a node using XPath.                             </span>\n    cxn = cxp1.<span class=\"hljs-title class_\">SelectSingleNode</span>(<span class=\"hljs-string\">\"//*[@quantity &lt; 4]\"</span>)\n    }\n    \n    <span class=\"hljs-comment\">// Exception handling. Show the message and resume.</span>\n    <span class=\"hljs-keyword\">catch</span>(<span class=\"hljs-title class_\">Err</span>) \n\t{\n        <span class=\"hljs-title function_\">alert</span>(<span class=\"hljs-title class_\">Err</span>.<span class=\"hljs-property\">Description</span>)\n    }\n\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "XML",
+          "type": "String",
+          "description": "包含要添加到新创建的 CustomXMLPart 中的 XML。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "SchemaCollection",
+          "type": "CustomXMLSchemaCollection",
+          "description": "代表要用于验证此流的架构集。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": "CustomXMLPart"
+    },
+    {
+      "name": "SelectByID",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>如果具有此 ID 的自定义 XML 部件不存在，则该方法返回 <b>Nothing</b>。</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>选择与 GUID 匹配的自定义 XML 部件。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例说明了检索与 GUID 匹配的自定义 XML 部件，然后在该部件中搜索与 XPath 表达式匹配的节点。</span>\nfunction test()\n{\n    // Returns a custom xml part by its ID.Get the node matching the XPath expression.\n    let cxp1 = Application.ActivePresentation.CustomXMLParts.SelectByID(\"{6C3C8BC8-F283-45AE-878A-BAB7291924A1}\")\n    \n    // Get the node matching the XPath expression.                             \n    let cxn = cxp1.SelectSingleNode(\"//*[@supplierID = 1]\")\n}<br/></code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Id",
+          "type": "String",
+          "description": "包含自定义 XML 部件的 GUID。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "SelectByNamespace",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>如果具有此命名空间的自定义 XML 部件不存在，则该方法将返回空的 <b>CustomXMLParts</b> \n集合对象。</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>选择其命名空间与搜索条件匹配的自定义 XML 部件的集合。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例说明了检索与 GUID 匹配的自定义 XML 部件，然后在该部件中搜索与 XPath 表达式匹配的节点。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-comment\">// Returns all of the custom xml parts with the given namespace.</span>\n    <span class=\"hljs-keyword\">let</span> cxp1 = Application.<span class=\"hljs-title class_\">ActiveDocument</span>.<span class=\"hljs-property\">CustomXMLParts</span>.<span class=\"hljs-title class_\">SelectByNamespace</span>(<span class=\"hljs-string\">\"urn:invoice:namespace\"</span>)          \n    \n    <span class=\"hljs-comment\">// Get the node matching the XPath expression.                             </span>\n    <span class=\"hljs-keyword\">let</span> cxn = cxp1.<span class=\"hljs-title class_\">SelectSingleNode</span>(<span class=\"hljs-string\">\"//*[@supplierID = 1]\"</span>)\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "NamespaceURI",
+          "type": "String",
+          "description": "包含命名空间 URI。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    }
+  ]
+}

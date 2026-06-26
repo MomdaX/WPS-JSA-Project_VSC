@@ -1,0 +1,74 @@
+{
+  "name": "SmartDocument",
+  "summary": "<p>使用 <b>SmartDocument</b> 对象可管理附加到活动文档上的 XML 扩展包。<br/></p><p>使用 <b>SmartDocument</b> 对象的 <b>SolutionID</b> 和 <b>SolutionURI</b> 属性可检索有关附加到活动文档或工作簿上的 XML 扩展包的信息。使用 <b>PickSolution</b> 方法可允许用户从列表中选择可用的 XML 扩展包以便附加到活动文档或工作簿中。使用 <b>RefreshPane</b> 方法可刷新智能文档的<b>“文档操作”</b>任务窗格。</p><p>无论文档是否附加了 XML 扩展包，<b>SmartDocument</b> 对象模型均可用。当活动文档没有附加 XML 扩展包时，<b>Document</b> 或 <b>Workbook</b> 对象的 <b>SmartDocument</b> 属性不返回 <b>Nothing</b>。检查 <b>SolutionID</b> 属性可确定活动文档是否附加了 XML 扩展包。</p>",
+  "description": "<p>WPS 中的 <b>Document</b> 对象和 ET 中的 <b>Workbook</b> 对象的 <b>SmartDocument</b> 属性返回一个 <b>SmartDocument</b> 对象。<br/></p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>SmartDocument</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>SmartDocument</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "SolutionID",
+      "summary": "<p>当活动文档没有附加 XML 扩展包时，<b>SolutionID</b> 属性返回空字符串或“None”。</p><p></p><p>通过为 <b>SolutionID</b> 和 <b>SolutionURL</b> 属性提供适当的值以将可用的 XML 扩展包附加到活动文档上，可以在不使用 <b>PickSolution</b>\t\t\t\t\t 方法的情况下将该文档转换为智能文档。通过将 <b>SolutionID</b> 和 <b>SolutionUrl</b> 属性设置为空字符串，可以删除附加的 XML 扩展包。</p>",
+      "description": "<p></p><p>获取或设置 ID，通常为全局唯一标识符 (GUID)，它标识附加在活动的 WPS 文档或者 ET 工作簿上的 XML 扩展包。可读写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例将通过检查 SolutionID 属性来确定是否在活动 ET 工作簿上附加了 XML 扩展包。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> objSmartDoc = Application.ActiveWorkbook.SmartDocument;\n\t<span class=\"hljs-keyword\">if</span>(objSmartDoc.SolutionID == <span class=\"hljs-string\">\"None\"</span> || objSmartDoc.SolutionID == <span class=\"hljs-string\">\"\"</span>)\n    \talert(<span class=\"hljs-string\">\"No XML expansion pack attached.\"</span>);\n\t<span class=\"hljs-keyword\">else</span> \n    \talert(<span class=\"hljs-string\">\"Smart document Solution ID: \"</span> + objSmartDoc.SolutionID);\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "SolutionURL",
+      "summary": "<p>当没有在活动文档上附加 XML 扩展包时，<b>SolutionUrl</b> 属性返回一个空字符串。</p><p>通过为 <b>SolutionID</b> 和 <b>SolutionUrl</b> 属性提供适当的值以将可用的 XML 扩展包附加到活动文档上，可以在不使用 <b>PickSolution</b>\t\t\t\t\t 方法的情况下将该文档转换为智能文档。通过将 <b>SolutionID</b> 和 <b>SolutionUrl</b> 属性设置为空字符串，可以删除附加的 XML 扩展包。</p>",
+      "description": "<p>获取或设置一个绝对 URL，该 URL 提供指向附加到活动的 WPS 文档或者 ET 工作簿上的 XML 扩展包文件的完整路径。可读写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例先确定是否在活动 WPS 文档上附加了 XML 扩展包，然后显示智能文档的解析 URL。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> objSmartDoc = Application.ActiveWorkbook.SmartDocument;\n\t<span class=\"hljs-keyword\">if</span>(objSmartDoc.SolutionID == <span class=\"hljs-string\">\"None\"</span> || objSmartDoc.SolutionID == <span class=\"hljs-string\">\"\"</span>)\n    \talert(<span class=\"hljs-string\">\"No XML expansion pack attached.\"</span>);\n\t<span class=\"hljs-keyword\">else</span> \n    \talert(<span class=\"hljs-string\">\"Smart document Solution URL: \"</span> + objSmartDoc.SolutionURL);\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "PickSolution",
+      "summary": "<p>使用 <b>PickSolution</b> 方法可允许用户从列表中选择 XML 扩展包。附加在活动文档或工作簿上的架构将确定可用的 XML 扩展包。</p><p><b>PickSolution</b> 方法不会返回一个值以表明用户是选择了 XML 扩展包还是单击了对话框中的 <b>Cancel</b>。在调用 <b>SolutionID</b> 后，检查           <b>PickSolution</b> 属性可确定是否已附加了 XML 扩展包。</p><p>如果智能文档的开发人员未能在 XML 扩展包清单文件中指定“targetApplication”，则 <b>PickSolution</b> 所显示的列表中可能会包含未面向活动应用程序的 XML 扩展包。例如，ET           用户可能会看到专门面向 WPS 的 XML 扩展包。在这些情况下，用户可能会选择不适合活动应用程序的 XML 扩展包。</p><p>关于智能文档或智能文档 XML 扩展包的详细信息，请参阅WPS开发网站上的 Smart Document Software Development Kit          (SDK)。 </p>",
+      "description": "<p>显示一个对话框，允许用户选择可用的 XML 扩展包，以便将其附加到 WPS 活动文档或 ET 工作簿中。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例将检查 SolutionID 属性以确定活动 WPS 文档是否已有附加的 XML 扩展包。如果没有，它会显示一个对话框，允许用户选择可用的 XML 扩展包，然后显示智能文档的属性。*/</span>\nfunction test(){\n\t<span class=\"hljs-keyword\">var</span> objSmartDoc <span class=\"hljs-operator\">=</span> <span class=\"hljs-type\">Application</span>.<span class=\"hljs-type\">ActiveWorkbook</span>.<span class=\"hljs-type\">SmartDocument</span>;\n\t<span class=\"hljs-keyword\">if</span>(objSmartDoc.<span class=\"hljs-type\">SolutionID</span> <span class=\"hljs-operator\">==</span> <span class=\"hljs-string\">\"None\"</span> <span class=\"hljs-operator\">||</span> objSmartDoc.<span class=\"hljs-type\">SolutionID</span> <span class=\"hljs-operator\">==</span> <span class=\"hljs-string\">\"\"</span>)\n    \tobjSmartDoc.<span class=\"hljs-type\">PickSolution</span>(<span class=\"hljs-literal\">true</span>);\n\t<span class=\"hljs-keyword\">if</span>(objSmartDoc.<span class=\"hljs-type\">SolutionID</span> <span class=\"hljs-operator\">&gt;</span> <span class=\"hljs-string\">\"None\"</span> <span class=\"hljs-operator\">&amp;&amp;</span> objSmartDoc.<span class=\"hljs-type\">SolutionID</span> <span class=\"hljs-operator\">&gt;</span> <span class=\"hljs-string\">\"\"</span>) \n\t{\n    \t　　　　<span class=\"hljs-keyword\">let</span> strSmartDocInfo <span class=\"hljs-operator\">=</span> <span class=\"hljs-string\">\"SolutionID: \"</span> <span class=\"hljs-operator\">+</span> objSmartDoc.<span class=\"hljs-type\">SolutionID</span> <span class=\"hljs-operator\">+</span> <span class=\"hljs-string\">\"<span class=\"hljs-subst\">\\r</span><span class=\"hljs-subst\">\\n</span>\"</span> <span class=\"hljs-operator\">+</span> <span class=\"hljs-string\">\"SolutionURL: \"</span> <span class=\"hljs-operator\">+</span> objSmartDoc.<span class=\"hljs-type\">SolutionURL</span>;\n    \t　　　　alert(strSmartDocInfo <span class=\"hljs-operator\">+</span> <span class=\"hljs-string\">\"Smart Doc Properties\"</span>);\n\t}\n\t<span class=\"hljs-keyword\">else</span> \n    \t　　　　alert(<span class=\"hljs-string\">\"The user clicked Cancel.\"</span>);\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "ConsiderAllSchemas  ",
+          "type": " Boolean ",
+          "description": "如果为 True，则会显示用户计算机上安装的所有可用 XML 扩展包。如果为 False，则会仅显示可用于活动文档的 XML 扩展包。默认值为 False。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "RefreshPane",
+      "summary": "<p></p><p>如果活动文档没有附加 XML 扩展包，<b>RefreshPane</b> 方法就会产生错误。</p>",
+      "description": "<p></p><p>为 WPS 中的活动文档或 ET 中的工作簿刷新<b>“文档操作”</b>任务窗格。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例确定活动的 ET 工作簿是否附加了 XML 扩展包。如果是，它将刷新智能文档的“文档操作”任务窗格。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\t<span class=\"hljs-keyword\">var</span> objSmartDoc = Application.ActiveWorkbook.SmartDocument;\n\t<span class=\"hljs-keyword\">if</span>(objSmartDoc.SolutionID &gt; <span class=\"hljs-string\">\"None\"</span>) \n    \tobjSmartDoc.RefreshPane;\n\t<span class=\"hljs-keyword\">else</span>\n\t\talert(<span class=\"hljs-string\">\"No XML expansion pack attached.\"</span>);\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

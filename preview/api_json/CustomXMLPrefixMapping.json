@@ -1,0 +1,58 @@
+{
+  "name": "CustomXMLPrefixMapping",
+  "summary": "<p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table><p>\n</p><p>以下示例通过向 <b>CustomXMLPrefixMapping</b> 集合添加命名空间和前缀，创建一个 <b>CustomXMLPrefixMapping</b> 对象。</p><p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th>示例代码</th></tr>\n<tr>\n<td><pre><code>let objNamespace = Application.ActivePresentation.CustomXMLParts.Item(1).NamespaceManager.AddNamespace(\"xs\", \"urn:invoice:namespace\")</code></pre></td></tr></tbody></table>",
+  "description": "<p>\n</p><p>\n</p><p>代表一个命名空间前缀。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取一个代表 <b>CustomXMLPrefixMapping</b> 对象的容器应用程序的 <b>Application</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>CustomXMLPrefixMapping</b> \n对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "NamespaceURI",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CustomXMLPrefixMapping</b> 对象的命名空间的唯一地址标识符。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CustomXMLPrefixMapping</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Prefix",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CustomXMLPrefixMapping</b> 对象的前缀。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

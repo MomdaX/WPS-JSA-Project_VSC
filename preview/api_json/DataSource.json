@@ -1,0 +1,177 @@
+{
+  "name": "DataSource",
+  "summary": "",
+  "description": "<p>代表容器应用程序的一个数据源对象。</p>",
+  "properties": [
+    {
+      "name": "Type",
+      "summary": "",
+      "description": "<p>返回DataSource的类型。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "Number",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Activate",
+      "summary": "",
+      "description": "<p></p><span style=\"background-color: rgb(29, 31, 32); --darkreader-inline-bgcolor:#17191a;\" data-darkreader-inline-bgcolor=\"\">激活数据源，跨进程表现为激活ET文档。</span>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例为WPP激活数据源对象，调起ET文档</span>\nApplication<span class=\"hljs-selector-class\">.ActivePresentation</span><span class=\"hljs-selector-class\">.Slides</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">3</span>)<span class=\"hljs-selector-class\">.WebShape</span><span class=\"hljs-selector-class\">.DataSource</span><span class=\"hljs-selector-class\">.Activate</span>()</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "Boolean"
+    },
+    {
+      "name": "ApplyDemoRange",
+      "summary": "",
+      "description": "<p>往活动单元格填充示例数据。返回DataRange。</p><p></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": "Object"
+    },
+    {
+      "name": "CreateDataRange",
+      "summary": "<p>参数Range可以为代表单元格的字符串或者Range对象，当为空或字符串时，会弹出对话框输入单元格地址。形如“sheet1!$a$1”的字符串表示sheet1中A1单元格。返回值为DataRange。</p>",
+      "description": "<p>为选定的单元格创建DataRange对象。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下列示例为Sheet1中的A1单元格创建DataRange对象</span>\nApplication.ActiveWorkbook.Sheets.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).WebShape.DataSource.CreateDataRange(<span class=\"hljs-string\">\"sheet1!<span class=\"hljs-subst\">$a</span><span class=\"hljs-subst\">$1</span>\"</span>)</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Range",
+          "type": "Variant",
+          "description": "代表单元格的字符串或者Range对象。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": "Object"
+    },
+    {
+      "name": "GetAllRangeInfo",
+      "summary": "<p>返回的字符串以JSON模式记录所有DataRange的Key。</p>",
+      "description": "<p></p><p>获取所有已注册的DataRange。</p>",
+      "examples": "",
+      "parameters": [],
+      "returns": "String"
+    },
+    {
+      "name": "GetDataRange",
+      "summary": "<p>目前Index仅支持字符串，代表DataRange对象的键。当输入的Index为数字时，不会有类型检查报错，但是也不会有对象返回。</p>",
+      "description": "<p>返回已注册的对应DataRange。</p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Variant",
+          "description": "对象的索引",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "Object"
+    },
+    {
+      "name": "InitDemoRange",
+      "summary": "",
+      "description": "<p>初始化示例数据的行列数</p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "rows",
+          "type": "Number",
+          "description": "行数",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "cols",
+          "type": "Number",
+          "description": "列数",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "RegisterDataRange",
+      "summary": "",
+      "description": "<p>向当前DataSource对象注册DataRange对象。</p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Key",
+          "type": "String",
+          "description": "DataRange对象的键",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Value",
+          "type": "Object",
+          "description": "DataRange对象",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "Boolean"
+    },
+    {
+      "name": "SetDemoRangeItem",
+      "summary": "",
+      "description": "<p>填充示例数据。</p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "rowsIdx",
+          "type": "Number",
+          "description": "行数索引",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "colsIdx",
+          "type": "Number",
+          "description": "列数索引",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "value",
+          "type": "Variant",
+          "description": "要填充的值",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "UnRegisterDataRange",
+      "summary": "",
+      "description": "<p>反注册DataRange。</p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Key",
+          "type": "String",
+          "description": "DataRange的Key",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "Boolean"
+    }
+  ]
+}

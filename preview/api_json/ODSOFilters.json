@@ -1,0 +1,138 @@
+{
+  "name": "ODSOFilters",
+  "summary": "<p>\n</p><p>\n</p><p><br/></p>",
+  "description": "<p>\n</p><p>\n</p><p>代表应用于附加到邮件合并发布内容的数据源的所有筛选器。<b>ODSOFilters</b> 对象由 <b>ODSOFilter</b> 对象组成。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>ODSOFilters</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>获取一个 <b>Long</b> 类型的值，指示 <b>ODSOFilters</b> 集合中的项数。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>ODSOFilters</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>在 <b>ODSOFilters</b> 集合中新添一个筛选。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Column",
+          "type": "String",
+          "description": "数据源中的表名称。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Comparison",
+          "type": "MsoFilterComparison",
+          "description": "筛选表中数据的方式。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Conjunction",
+          "type": "MsoFilterConjunction",
+          "description": "确定此筛选与 ODSOFilters 对象中其他筛选的关联方式。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "bstrCompareTo",
+          "type": "String",
+          "description": "如果 Comparison 参数不是 msoFilterComparisonIsBlank 或 msoFilterComparisonIsNotBlank，则表中的数据与该字符串进行比较。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "DeferUpdate",
+          "type": "Boolean",
+          "description": "指定是否延迟对筛选器的更新。默认值为 False。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>从 <b>ODSOFilters</b> 集合中删除筛选对象。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Long",
+          "description": "要删除的筛选的编号。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "DeferUpdate",
+          "type": "Boolean",
+          "description": "指定是否延迟对筛选器的更新。默认值为 False。 ",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>\n</p><p>代表 <b>ODSOFilters</b> 集合中的一个 <b>ODSOFilter</b> 对象。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Long",
+          "description": "项目的编号。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>ODSOFilters</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

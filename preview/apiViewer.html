@@ -7,12 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WPS API 文档查看器</title>
   <link rel="stylesheet" href="prism/prism.css">
-  <link rel="stylesheet" href="lib/flipclock.css">
+  <script src="lib/clock/jquery.min.js"></script>
+  <script src="lib/clock/flipclock.min.js"></script>
   <script src="prism/prism.js"></script>
   <script src="lib/lodash.min.js"></script>
   <script src="lib/filldata.js"></script>
   <script src="lib/theme.js"></script>
-  <script src="lib/flipclock.js"></script>
   <style>
     /* ===== CSS 变量：科技蓝主题（默认） ===== */
     :root {
@@ -166,7 +166,7 @@
       font-size: 12px;
       opacity: 0.8;
     }
-    /* 主题切换按钮 */
+    .home-btn,
     .theme-toggle {
       background: rgba(255,255,255,0.2);
       border: 1px solid rgba(255,255,255,0.3);
@@ -182,8 +182,14 @@
       transition: background .2s;
       flex-shrink: 0;
     }
+    .home-btn:hover,
     .theme-toggle:hover {
       background: rgba(255,255,255,0.35);
+    }
+    .header-buttons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
     }
 
     /* 搜索框 */
@@ -387,6 +393,22 @@
       border-radius: 12px;
       box-shadow: 0 1px 12px rgba(0,0.3,0.01);
       margin-bottom: 12px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    #vstable table {
+      width: 100%;
+      table-layout: fixed;
+    }
+    #vstable td {
+      padding: 0;
+      padding: 0px 12px;
+      overflow: hidden;
+    }
+    #vstable pre {
+      margin: 0;
+      overflow-x: auto;
+      max-width: 100%;
     }
 
     /* 详情区 */
@@ -480,6 +502,9 @@
     /* 时钟区域微光 */
     .clock-box {
       position: relative;
+      display: flex;
+      justify-content: center;
+      padding: 8px 0;
     }
     .clock-box::after {
       content: '';
@@ -489,6 +514,258 @@
       background: radial-gradient(ellipse at center, rgba(0, 180, 255, 0.08) 0%, transparent 70%);
       pointer-events: none;
       z-index: -1;
+    }
+    /* ===== FlipClock 核心样式 ===== */
+    .flip-clock-wrapper * {
+      box-sizing: border-box;
+      backface-visibility: hidden;
+    }
+    .flip-clock-wrapper a {
+      cursor: pointer;
+      text-decoration: none !important;
+      border-bottom: none !important;
+      color: #ccc;
+    }
+    .flip-clock-wrapper ul {
+      list-style: none;
+      position: relative;
+      float: left;
+      margin: 5px;
+      width: 60px;
+      height: 90px;
+      font-size: 80px;
+      font-weight: bold;
+      line-height: 87px;
+      border-radius: 6px;
+      background: #000;
+    }
+    .flip-clock-wrapper ul li {
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      text-decoration: none !important;
+      margin-left: 0;
+    }
+    .flip-clock-wrapper ul li:first-child {
+      z-index: 2;
+    }
+    .flip-clock-wrapper ul li a {
+      display: block;
+      height: 100%;
+      perspective: 200px;
+      margin: 0 !important;
+      overflow: visible !important;
+      cursor: default !important;
+    }
+    .flip-clock-wrapper ul li a div {
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      font-size: 80px;
+      overflow: hidden;
+    }
+    .flip-clock-wrapper ul li a div .shadow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+    .flip-clock-wrapper ul li a div.up {
+      transform-origin: 50% 100%;
+      top: 0;
+    }
+    .flip-clock-wrapper ul li a div.up:after {
+      content: "";
+      position: absolute;
+      top: 44px;
+      left: 0;
+      z-index: 5;
+      width: 100%;
+      height: 3px;
+      background-color: rgba(0,0,0,0.4);
+    }
+    .flip-clock-wrapper ul li a div.down {
+      transform-origin: 50% 0;
+      bottom: 0;
+    }
+    .flip-clock-wrapper ul li a div div.inn {
+      position: absolute;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 200%;
+      color: #ccc;
+      text-shadow: 0 1px 2px #000;
+      text-align: center;
+      background-color: #333;
+      border-radius: 6px;
+      font-size: 70px;
+    }
+    .flip-clock-wrapper ul li a div.up div.inn {
+      top: 0;
+    }
+    .flip-clock-wrapper ul li a div.down div.inn {
+      bottom: 0;
+    }
+    .flip-clock-wrapper ul.play li.flip-clock-before {
+      z-index: 3;
+    }
+    .flip-clock-wrapper .flip {
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+    }
+    .flip-clock-wrapper ul.play li.flip-clock-active {
+      animation: asd 0.5s 0.5s linear both;
+      z-index: 5;
+    }
+    .flip-clock-divider {
+      float: left;
+      display: inline-block;
+      position: relative;
+      width: 20px;
+      height: 100px;
+    }
+    .flip-clock-divider:first-child {
+      width: 0;
+    }
+    .flip-clock-dot {
+      display: block;
+      background: #323434;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(0,0,0,0.5);
+      left: 5px;
+    }
+    .flip-clock-dot.top {
+      top: 30px;
+    }
+    .flip-clock-dot.bottom {
+      bottom: 30px;
+    }
+    @keyframes asd {
+      0% { z-index: 2; }
+      20% { z-index: 4; }
+      100% { z-index: 4; }
+    }
+    .flip-clock-wrapper ul.play li.flip-clock-active .down {
+      z-index: 2;
+      animation: turn 0.5s 0.5s linear both;
+    }
+    @keyframes turn {
+      0% { transform: rotateX(90deg); }
+      100% { transform: rotateX(0deg); }
+    }
+    .flip-clock-wrapper ul.play li.flip-clock-before .up {
+      z-index: 2;
+      animation: turn2 0.5s linear both;
+    }
+    @keyframes turn2 {
+      0% { transform: rotateX(0deg); }
+      100% { transform: rotateX(-90deg); }
+    }
+    .flip-clock-wrapper ul li.flip-clock-active {
+      z-index: 3;
+    }
+    .flip-clock-wrapper ul.play li.flip-clock-before .up .shadow {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, black 100%);
+      animation: show 0.5s linear both;
+    }
+    .flip-clock-wrapper ul.play li.flip-clock-active .up .shadow {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, black 100%);
+      animation: hide 0.5s 0.3s linear both;
+    }
+    .flip-clock-wrapper ul.play li.flip-clock-before .down .shadow {
+      background: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.1) 100%);
+      animation: show 0.5s linear both;
+    }
+    .flip-clock-wrapper ul.play li.flip-clock-active .down .shadow {
+      background: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.1) 100%);
+      animation: hide 0.5s 0.2s linear both;
+    }
+    @keyframes show {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes hide {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    /* ===== 自定义样式 ===== */
+    .clock-builder-output {
+      --fc-clock-bg: #1f2937;
+      --fc-numbers: #ffffff;
+      --fc-dots: #575757;
+      --fc-meridium: #474747;
+    }
+    .flip-clock-wrapper ul li a div.up .shadow {
+      border-radius: 6px 6px 0 0;
+    }
+    .flip-clock-wrapper ul li a div.down .shadow {
+      border-radius: 0 0 6px 6px;
+    }
+    .fc-clock-root ul li a div div.inn {
+      background-color: var(--fc-clock-bg) !important;
+      color: var(--fc-numbers) !important;
+    }
+    .fc-clock-root .flip-clock-dot {
+      background: var(--fc-dots) !important;
+    }
+    .fc-clock-root .flip-clock-meridium a {
+      color: var(--fc-meridium) !important;
+    }
+    .flip-clock-wrapper {
+      display: flex;
+      align-items: center;
+      margin: 0;
+    }
+    .flip-clock-wrapper ul.flip {
+      width: 38px;
+      height: 56px;
+      margin: 0 1px;
+    }
+    .flip-clock-wrapper ul.flip li a {
+      font-size: 42px;
+      line-height: 56px;
+    }
+    .flip-clock-wrapper ul.flip li a div {
+      font-size: 42px;
+    }
+    .flip-clock-wrapper ul.flip li a div.up,
+    .flip-clock-wrapper ul.flip li a div.down {
+      height: 28px;
+    }
+    .flip-clock-wrapper ul.flip li a div.up:after {
+      top: 25px;
+    }
+    .flip-clock-wrapper ul.flip li a div div.inn {
+      font-size: 36px;
+      line-height: 56px;
+    }
+    .flip-clock-wrapper ul.flip li a div.down div.inn {
+      line-height: 56px;
+    }
+    .flip-clock-divider {
+      width: 12px;
+      height: 56px;
+      margin: 0 2px;
+    }
+    .flip-clock-divider .flip-clock-dot {
+      width: 6px;
+      height: 6px;
+      left: 3px;
+    }
+    .flip-clock-divider .flip-clock-dot.top {
+      top: 18px;
+    }
+    .flip-clock-divider .flip-clock-dot.bottom {
+      bottom: 18px;
     }
 
     /* 复制按钮 */
@@ -530,6 +807,92 @@
       padding: 1px 2px;
       border-radius: 2px;
     }
+
+    /* 文章内容页 */
+    #articleContent {
+      display: none;
+    }
+    #articleContent h1 {
+      font-size: 28px;
+      margin-bottom: 16px;
+      color: var(--text-heading);
+      text-align: center;
+    }
+    .article-wrap hr {
+      border: none;
+      border-top: 1px solid var(--border-divider);
+      margin: 16px 0 24px;
+    }
+    .article-wrap h2 {
+      font-size: 20px;
+      margin: 28px 0 12px;
+      color: var(--text-heading);
+    }
+    .article-wrap p {
+      margin-bottom: 12px;
+      line-height: 1.8;
+    }
+    .article-wrap b {
+      color: var(--text-heading);
+    }
+    .article-wrap table {
+      margin: 12px 0 16px;
+    }
+    .article-wrap table th {
+      background: var(--bg-th);
+      text-align: left;
+    }
+    .article-wrap #vstable {
+      background: rgba(66, 66, 88, 0.66) !important;
+      backdrop-filter: blur(6px) !important;
+      -webkit-backdrop-filter: blur(6px) !important;
+      border: 1px solid #ccc2c2 !important;
+      border-radius: 12px !important;
+      box-shadow: 0 1px 12px rgba(0,0.3,0.01) !important;
+      margin-bottom: 12px !important;
+    }
+    .article-wrap pre {
+      margin: 8px 0;
+      background: var(--bg-pre) !important;
+      color: var(--text-pre) !important;
+      font-size: 14px !important;
+      line-height: 1.6 !important;
+      padding: 14px 16px !important;
+      border-radius: 6px !important;
+      overflow-x: auto !important;
+      text-shadow: none !important;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+    }
+    .article-wrap pre::-webkit-scrollbar {
+      height: 8px;
+    }
+    .article-wrap pre::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+    .article-wrap pre::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+    }
+    .article-wrap pre::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+    .article-wrap pre code {
+      font-size: 14px !important;
+      line-height: 1.6 !important;
+      color: var(--text-pre) !important;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+      text-shadow: none !important;
+    }
+    .article-wrap code[class*="language-"],
+    .article-wrap pre[class*="language-"] {
+      color: var(--text-pre) !important;
+      text-shadow: none !important;
+    }
+    .article-wrap .token {
+      text-shadow: none !important;
+    }
   </style>
 </head>
 
@@ -541,10 +904,13 @@
         <h1>📘 WPS API 文档</h1>
         <p>223 个表格对象参考</p>
       </div>
-      <button class="theme-toggle" onclick="toggleTheme()" title="切换主题" id="themeBtn">🌙</button>
+      <div class="header-buttons">
+        <button class="home-btn" onclick="showHome()" title="首页指南">🏠</button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="切换主题" id="themeBtn">🌙</button>
+      </div>
     </div>
     <div class="clock-box">
-      <div class="FlipClock" id="flipClock"></div>
+      <div class="clock-builder-output fc-clock-root"></div>
     </div>
     <div class="search-box">
       <input type="text" id="navSearch" placeholder="🔍 搜索对象名称..." oninput="filterNav()">
@@ -586,6 +952,9 @@
       <!-- 加载中 -->
       <div id="loading">⏳ 正在加载 API 文档...</div>
       <div id="error"></div>
+
+      <!-- 文章内容页 -->
+      <div id="articleContent" class="article-wrap"></div>
 
       <!-- 页面内容（初始隐藏） -->
       <div id="pageContent" style="display:none;">
@@ -670,37 +1039,54 @@
   </div>
 
   <script>
-    // ========== 所有 WPS 表格 API 对象列表（按字母分组） ==========
-    var ALL_OBJECTS = [
-      'AboveAverage', 'AddIn', 'AddIns', 'AddIns2', 'Adjustments', 'AllowEditRange', 'AllowEditRanges', 'Application', 'Areas', 'AutoFilter', 'AutoRecover', 'Axes', 'Axis', 'AxisTitle',
-      'Border', 'Borders',
-      'CalculatedFields', 'CalculatedItems', 'CategoryCollection', 'CellFormat', 'Characters', 'Chart', 'ChartArea', 'ChartCategory', 'ChartFormat', 'ChartGroup', 'ChartGroups', 'ChartObject', 'ChartObjects', 'ChartTitle', 'Charts', 'ColorFormat', 'ColorScale', 'ColorScaleCriteria', 'ColorScaleCriterion', 'ColorStop', 'ColorStops', 'Comment', 'Comments', 'ConditionValue', 'Connections', 'ConnectorFormat', 'ControlFormat', 'CustomProperties', 'CustomProperty', 'CustomView', 'CustomViews',
-      'DataBarBorder', 'DataLabel', 'DataLabels', 'DataTable', 'Databar', 'DefaultWebOptions', 'Dialog', 'Dialogs', 'DisplayFormat', 'DisplayUnitLabel', 'DownBars', 'DropLines',
-      'Error', 'ErrorBars', 'ErrorCheckingOptions', 'Errors',
-      'FillFormat', 'Filter', 'Filters', 'Font', 'FormatColor', 'FormatCondition', 'FormatConditions', 'FreeformBuilder', 'FullSeriesCollection',
-      'Graphic', 'Gridlines', 'GroupShapes',
-      'HPageBreak', 'HPageBreaks', 'HeaderFooter', 'HiLoLines', 'Hyperlink', 'Hyperlinks',
-      'Icon', 'IconCriteria', 'IconCriterion', 'IconSet', 'IconSetCondition', 'IconSets', 'Interior',
-      'LeaderLines', 'Legend', 'LegendEntries', 'LegendEntry', 'LegendKey', 'LineFormat', 'LinearGradient', 'ListColumn', 'ListColumns', 'ListObject', 'ListObjects', 'ListRow', 'ListRows',
-      'MultiThreadedCalculation',
-      'Name', 'Names', 'NegativeBarFormat',
-      'ODBCConnection', 'ODBCErrors', 'OLEDBConnection', 'OLEDBError', 'OLEDBErrors', 'OLEFormat', 'OLEObject', 'OLEObjects', 'Outline',
-      'Page', 'PageSetup', 'Pages', 'Pane', 'Panes', 'PictureFormat', 'PivotAxis', 'PivotCache', 'PivotCaches', 'PivotCell', 'PivotField', 'PivotFields', 'PivotFilter', 'PivotFilters', 'PivotFormula', 'PivotFormulas', 'PivotItem', 'PivotItemList', 'PivotItems', 'PivotLayout', 'PivotLine', 'PivotLineCells', 'PivotLines', 'PivotTable', 'PivotTables', 'PlotArea', 'Point', 'Points', 'Protection', 'PublishObject', 'PublishObjects',
-      'QueryTable', 'QueryTables',
-      'RTD', 'Range', 'Ranges', 'RecentFile', 'RecentFiles', 'RectangularGradient',
-      'Series', 'SeriesCollection', 'SeriesLines', 'ShadowFormat', 'Shape', 'ShapeNodes', 'ShapeRange', 'Shapes', 'SheetViews', 'Sheets', 'Slicer', 'SlicerCache', 'SlicerCaches', 'SlicerItem', 'SlicerItems', 'SlicerPivotTables', 'Slicers', 'Sort', 'SortField', 'SortFields', 'SparkAxes', 'SparkColor', 'SparkHorizontalAxis', 'SparkPoints', 'Sparkline', 'SparklineGroup', 'SparklineGroups', 'Speech', 'SpellingOptions', 'Style', 'Styles',
-      'Tab', 'TableStyle', 'TableStyleElement', 'TableStyleElements', 'TableStyles', 'TextConnection', 'TextEffectFormat', 'TextFrame', 'TextFrame2', 'ThreeDFormat', 'TickLabels', 'Top10', 'Trendline', 'Trendlines',
-      'UniqueValues', 'UpBars',
-      'VPageBreak', 'VPageBreaks', 'Validation',
-      'Watch', 'Watches', 'WebOptions', 'Window', 'Windows', 'Workbook', 'WorkbookConnection', 'Workbooks', 'Worksheet', 'WorksheetFunction', 'WorksheetView', 'Worksheets',
-      'XPath', 'XmlDataBinding', 'XmlMap', 'XmlMaps', 'XmlNamespace', 'XmlNamespaces', 'XmlSchema', 'XmlSchemas'
-    ];
-
-    // 需要分组的字母
-    var GROUP_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X'];
-
+    // ========== 动态对象列表：从 manifest.json 加载，支持随时增删 JSON 文件 ==========
+    var ALL_OBJECTS = [];
+    var GROUP_LETTERS = [];
     var currentObjName = '';
     var previousObjName = '';
+
+    // 从 manifest.json 加载对象列表，不存在则回退到内嵌列表
+    function loadObjectList(callback) {
+      fetch('api_json/manifest.json')
+        .then(function(res) {
+          if (!res.ok) throw new Error('manifest not found');
+          return res.json();
+        })
+        .then(function(manifest) {
+          ALL_OBJECTS = manifest.all || [];
+          GROUP_LETTERS = manifest.letters || [];
+          callback();
+        })
+        .catch(function() {
+          // 回退到内嵌硬编码列表（确保 objDetail、WebShape 等新文件也被包含）
+          ALL_OBJECTS = [
+            'AboveAverage', 'AddIn', 'AddIns', 'AddIns2', 'Adjustments', 'AllowEditRange', 'AllowEditRanges', 'Application', 'Areas', 'AutoFilter', 'AutoRecover', 'Axes', 'Axis', 'AxisTitle',
+            'Border', 'Borders',
+            'CalculatedFields', 'CalculatedItems', 'CategoryCollection', 'CellFormat', 'Characters', 'Chart', 'ChartArea', 'ChartCategory', 'ChartFormat', 'ChartGroup', 'ChartGroups', 'ChartObject', 'ChartObjects', 'ChartTitle', 'Charts', 'ColorFormat', 'ColorScale', 'ColorScaleCriteria', 'ColorScaleCriterion', 'ColorStop', 'ColorStops', 'Comment', 'Comments', 'ConditionValue', 'Connections', 'ConnectorFormat', 'ControlFormat', 'CustomProperties', 'CustomProperty', 'CustomView', 'CustomViews',
+            'DataBarBorder', 'DataLabel', 'DataLabels', 'DataTable', 'Databar', 'DefaultWebOptions', 'Dialog', 'Dialogs', 'DisplayFormat', 'DisplayUnitLabel', 'DownBars', 'DropLines',
+            'Error', 'ErrorBars', 'ErrorCheckingOptions', 'Errors',
+            'FillFormat', 'Filter', 'Filters', 'Font', 'FormatColor', 'FormatCondition', 'FormatConditions', 'FreeformBuilder', 'FullSeriesCollection',
+            'Graphic', 'Gridlines', 'GroupShapes',
+            'HPageBreak', 'HPageBreaks', 'HeaderFooter', 'HiLoLines', 'Hyperlink', 'Hyperlinks',
+            'Icon', 'IconCriteria', 'IconCriterion', 'IconSet', 'IconSetCondition', 'IconSets', 'Interior',
+            'LeaderLines', 'Legend', 'LegendEntries', 'LegendEntry', 'LegendKey', 'LineFormat', 'LinearGradient', 'ListColumn', 'ListColumns', 'ListObject', 'ListObjects', 'ListRow', 'ListRows',
+            'MultiThreadedCalculation',
+            'Name', 'Names', 'NegativeBarFormat',
+            'ODBCConnection', 'ODBCErrors', 'objDetail', 'OLEDBConnection', 'OLEDBError', 'OLEDBErrors', 'OLEFormat', 'OLEObject', 'OLEObjects', 'Outline',
+            'Page', 'PageSetup', 'Pages', 'Pane', 'Panes', 'PictureFormat', 'PivotAxis', 'PivotCache', 'PivotCaches', 'PivotCell', 'PivotField', 'PivotFields', 'PivotFilter', 'PivotFilters', 'PivotFormula', 'PivotFormulas', 'PivotItem', 'PivotItemList', 'PivotItems', 'PivotLayout', 'PivotLine', 'PivotLineCells', 'PivotLines', 'PivotTable', 'PivotTables', 'PlotArea', 'Point', 'Points', 'Protection', 'PublishObject', 'PublishObjects',
+            'QueryTable', 'QueryTables',
+            'RTD', 'Range', 'Ranges', 'RecentFile', 'RecentFiles', 'RectangularGradient',
+            'Series', 'SeriesCollection', 'SeriesLines', 'ShadowFormat', 'Shape', 'ShapeNodes', 'ShapeRange', 'Shapes', 'SheetViews', 'Sheets', 'Slicer', 'SlicerCache', 'SlicerCaches', 'SlicerItem', 'SlicerItems', 'SlicerPivotTables', 'Slicers', 'Sort', 'SortField', 'SortFields', 'SparkAxes', 'SparkColor', 'SparkHorizontalAxis', 'SparkPoints', 'Sparkline', 'SparklineGroup', 'SparklineGroups', 'Speech', 'SpellingOptions', 'Style', 'Styles',
+            'Tab', 'TableStyle', 'TableStyleElement', 'TableStyleElements', 'TableStyles', 'TextConnection', 'TextEffectFormat', 'TextFrame', 'TextFrame2', 'ThreeDFormat', 'TickLabels', 'Top10', 'Trendline', 'Trendlines',
+            'UniqueValues', 'UpBars',
+            'VPageBreak', 'VPageBreaks', 'Validation',
+            'Watch', 'Watches', 'WebOptions', 'WebShape', 'Window', 'Windows', 'Workbook', 'WorkbookConnection', 'Workbooks', 'Worksheet', 'WorksheetFunction', 'WorksheetView', 'Worksheets',
+            'XPath', 'XmlDataBinding', 'XmlMap', 'XmlMaps', 'XmlNamespace', 'XmlNamespaces', 'XmlSchema', 'XmlSchemas'
+          ];
+          GROUP_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X'];
+          callback();
+        });
+    }
 
     // ========== 构建左侧导航栏 ==========
     function buildNav() {
@@ -781,7 +1167,7 @@
 
     // ========== 更新统计信息 ==========
     function updateStats(jsData) {
-      document.getElementById('totalCount').textContent = '223';
+      document.getElementById('totalCount').textContent = ALL_OBJECTS.length;
       document.getElementById('funcCount').textContent = _.get(jsData, 'functions.length', 0);
       document.getElementById('propCount').textContent = _.get(jsData, 'properties.length', 0);
     }
@@ -888,10 +1274,12 @@
     function loadAndRender(objName) {
       if (!objName) objName = getObjName();
       document.title = objName + ' 对象';
+      isHomeView = false;
 
       document.getElementById('loading').style.display = 'block';
       document.getElementById('pageContent').style.display = 'none';
       document.getElementById('error').style.display = 'none';
+      document.getElementById('articleContent').style.display = 'none';
 
       var jsonPath = 'api_json/' + objName + '.json';
 
@@ -912,27 +1300,106 @@
         });
     }
 
+    // ========== 首页文章 ==========
+    var isHomeView = false;
+
+    function showHome() {
+      isHomeView = true;
+      currentObjName = '';
+      history.pushState(null, '', '?home=1');
+
+      _.forEach(document.querySelectorAll('.nav-item'), function(item) {
+        item.classList.remove('active');
+      });
+
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('pageContent').style.display = 'none';
+      document.getElementById('error').style.display = 'none';
+      document.getElementById('floatCommit').style.display = 'none';
+
+      var articleEl = document.getElementById('articleContent');
+      if (articleEl.innerHTML === '') {
+        fetch('src/%E4%BB%8EVisual%20Basic%E8%BD%AC%E5%88%B0%20JavaScript.html')
+          .then(function(res) { return res.text(); })
+          .then(function(html) {
+            var bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+            articleEl.innerHTML = bodyMatch ? bodyMatch[1] : html;
+
+            var vstableEls = articleEl.querySelectorAll('#vstable');
+            vstableEls.forEach(function(vstable) {
+              var th = vstable.querySelector('th');
+              if (th) {
+                var titleText = th.textContent.trim().toLowerCase();
+                var codeEl = vstable.querySelector('code');
+                if (codeEl) {
+                  codeEl.classList.remove('language-vb', 'language-js', 'language-vba', 'language-visual-basic', 'language-javascript');
+                  if (titleText.includes('vb')) {
+                    codeEl.classList.add('language-vba');
+                  } else if (titleText.includes('js')) {
+                    codeEl.classList.add('language-js');
+                  }
+                }
+              }
+            });
+
+            if (typeof Prism !== 'undefined') {
+              Prism.highlightAllUnder(articleEl);
+            }
+          })
+          .catch(function(err) {
+            articleEl.innerHTML = '<p style="color:var(--color-error);">加载失败：' + err.message + '</p>';
+          });
+      }
+      articleEl.style.display = 'block';
+      document.title = '从Visual Basic转到 JavaScript';
+      document.getElementById('mainContent').scrollTo({ top: 0 });
+    }
+
+    function isHomePage() {
+      var params = new URLSearchParams(location.search);
+      return params.get('home') === '1';
+    }
+
     // ========== 初始化 ==========
     function init() {
-      buildNav();
-      var objName = getObjName();
-      currentObjName = objName;
-      loadAndRender(objName);
+      loadObjectList(function() {
+        buildNav();
 
-      // 设置初始活动状态
-      setTimeout(function() {
-        var activeItem = document.querySelector('[data-obj="' + objName + '"]');
-        if (activeItem) {
-          activeItem.classList.add('active');
-          activeItem.scrollIntoView({ block: 'nearest' });
+        if (isHomePage()) {
+          showHome();
+        } else {
+          var objName = getObjName();
+          currentObjName = objName;
+          loadAndRender(objName);
+
+          setTimeout(function() {
+            var activeItem = document.querySelector('[data-obj="' + objName + '"]');
+            if (activeItem) {
+              activeItem.classList.add('active');
+              activeItem.scrollIntoView({ block: 'nearest' });
+            }
+          }, 100);
         }
-      }, 100);
+      });
+
+      // 初始化 FlipClock
+      if (window.jQuery) {
+        window.fcClockOpts = {
+          clockFace: 'TwentyFourHourClock',
+          showSeconds: true
+        };
+        window.fcClock = jQuery('.clock-builder-output').FlipClock(window.fcClockOpts);
+      }
 
       // 监听浏览器前进/后退
       window.addEventListener('popstate', function() {
-        var name = getObjName();
-        if (name !== currentObjName) {
-          navigateToObject(name);
+        if (isHomePage()) {
+          showHome();
+        } else {
+          var name = getObjName();
+          if (name !== currentObjName) {
+            navigateToObject(name);
+          }
         }
       });
     }

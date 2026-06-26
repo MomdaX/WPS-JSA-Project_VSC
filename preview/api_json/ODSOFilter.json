@@ -1,0 +1,88 @@
+{
+  "name": "ODSOFilter",
+  "summary": "<p>\n</p><p>\n</p><p>每个筛选器均为查询字符串中的一行。使用 <b>Column</b>、<b>Comparison</b>、<b>CompareTo</b> 和 <b>Conjunction</b> 属性可返回或设置数据源查询条件。</p>",
+  "description": "<p>\n</p><p>\n</p><p>表示应用于附加的邮件合并数据源的筛选。<b>ODSOFilter</b> 对象为 <b>ODSOFilters</b> 对象的成员。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>ODSOFilter</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Column",
+      "summary": "",
+      "description": "<p>\n</p><p>获取或设置一个 <b>String</b> 类型的值，该值代表邮件合并数据源中要用于筛选的字段名。可读/写。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "CompareTo",
+      "summary": "",
+      "description": "<p>\n</p><p>获取或设置一个 <b>String</b> 类型的值，该值代表查询筛选条件中要比较的文本。可读/写。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Comparison",
+      "summary": "",
+      "description": "<p>\n</p><p>获取或设置一个代表 <b>Column</b> 和 <b>CompareTo</b> 的比较方式的 <b>MsoFilterComparison</b> 常量。可读/写。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Conjunction",
+      "summary": "",
+      "description": "<p>\n</p><p>获取或设置一个 <b>MsoFilterConjunction</b> 常量，该常量代表 <b>ODSOFilters</b> 对象中的某个筛选条件与其中的其他筛选条件的关系。可读/写。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>ODSOFilter</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Index",
+      "summary": "",
+      "description": "<p>获取一个 <b>Long</b> 类型的值，代表集合中 <b>ODSOFilter</b> 对象的索引号。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>ODSOFilter</b> 对象的 <b>Parent</b> \n对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

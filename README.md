@@ -59,6 +59,53 @@ WPS-JSA-Project/
 └── .trae/                    # IDE 规则与技能配置
 ```
 
+## AI 智能体规则架构
+
+本项目专为 AI 辅助编写 WPS JSA 宏而设计，采用三层规则体系确保代码质量：
+
+```
+用户规则 (全局, alwaysApply: true)
+  │ 基线：15条JSA规范（语法、命名、HTTP、文件操作、自查流程）
+  │
+  ├─→ 项目规则 (.trae/rules/jsa.md, alwaysApply: true)
+  │     │ 引用用户规则："叠加用户规则执行"
+  │     │ 补充：批量优化、缓存Range、console.log、自查清单
+  │     │
+  │     ├─→ SKILL.md (.trae/skills/wps-jsa-api/SKILL.md, 按需调用)
+  │     │     │ 初始化：先读 README.md 获取对象索引
+  │     │     │ 快速模式：8类高频场景白名单 → 不查JSON，直接生成
+  │     │     │ 完整查询：5种触发条件 → 读取 {对象名}.json
+  │     │     │ 示例适配：4条官方示例 → 项目规范转换规则
+  │     │     │
+  │     │     └─→ README.md (preview/api_json/README.md)
+  │     │           223对象索引、JSON结构、示例解析、HTML实体解码
+  │     │           查询示例 → 全部用低频场景，不含白名单API
+  │     │           注意事项 → 回链 SKILL.md + jsa.md
+  │     │
+  │     └─→ README.md (api_json/)
+  │          快速查询流程 → 先判断快速模式，再走完整查询
+  │
+  └───────────→ 所有文件最终回链到用户规则（兜底）
+```
+
+### 规则文件说明
+
+| 文件 | 路径 | 职责 | 生效方式 |
+|------|------|------|----------|
+| 用户规则 | 全局配置 | 15条JSA基线规范（语法、命名、HTTP、文件操作） | 始终生效 |
+| 项目规则 | `.trae/rules/jsa.md` | 项目专项补充（批量优化、缓存Range、自查清单） | 始终生效 |
+| 技能规则 | `.trae/skills/wps-jsa-api/SKILL.md` | API查询策略（快速模式/完整查询/示例适配） | 按需调用 |
+| API索引 | `preview/api_json/README.md` | 223对象索引、JSON结构详解、查询示例 | 查询时读取 |
+
+### 设计原则
+
+- **零冲突**：四文件职责分离，互不重复
+- **单向引用**：上层引用下层，下层回链上层，无循环依赖
+- **快速优先**：高频场景（Value2、Font、Interior、Borders）走快速模式，不查JSON
+- **按需深入**：低频API（PivotTable、Chart、Slicer）触发完整查询，读取官方JSON文档
+
+---
+
 ## JSA 开发规范
 
 本项目遵循以下 WPS JSA 开发规范：

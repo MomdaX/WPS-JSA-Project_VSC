@@ -1,0 +1,130 @@
+{
+  "name": "SignatureSet",
+  "summary": "<p>使用 <b>Document</b> 对象的 <b>Signatures</b> 属性可返回 <b>SignatureSet</b> 集合，例如：</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>JavaScript for Application<br/><span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-keyword\">let</span> sigs = Application.ActiveDocument.Signatures</code></pre></td></tr></tbody></table></div><p>可以使用 <b>Add</b> 方法向 <b>SignatureSet</b> 集合中添加一个 <b>Signature</b> 对象，并使用 <b>Item</b>           方法返回现有的成员。<b>AddSignatureLine</b> 方法也可向该集合中添加一个 <b>Signature</b> 对象。另请参见 <b>Subset</b>           属性，它可充当一个筛选器，用于决定该集合中是否出现某些 <b>Signature</b> 对象。要从 <b>SignatureSet</b> 集合中删除一个 <b>Signature</b> 对象，请使用           <b>Signature</b> 对象的 <b>Delete</b> 方法。</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*下面的示例提示用户选择要用于签署 WPS 中活动文档的数字签名。要使用此示例，请在 WPS 中打开一个文档，并向此函数传递与“数字证书”对话框中数字证书的“颁发者”和“颁发给”字段相匹配的证书颁发者名称和证书签署者名称。此示例将进行测试，以确保在将新签名提交到磁盘之前用户选择的数字签名满足特定条件，例如没有过期。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\">strIssuer, strSigner</span>) </span>{\n    <span class=\"hljs-comment\">//Display the dialog box that lets the</span>\n    <span class=\"hljs-comment\">//user select a digital signature.</span>\n    <span class=\"hljs-comment\">//If the user selects a signature, then</span>\n    <span class=\"hljs-comment\">//it is added to the Signatures</span>\n    <span class=\"hljs-comment\">//collection. If the user doesn't, then</span>\n    <span class=\"hljs-comment\">//an error is returned.</span>\n    <span class=\"hljs-keyword\">var</span> sig = Application.ActiveWorkbook.Signatures.Add();\n\n    <span class=\"hljs-comment\">//Test several properties before committing the Signature object to disk.</span>\n    <span class=\"hljs-keyword\">if</span>(sig.Issuer == strIssuer &amp;&amp; sig.IsCertificateExpired == <span class=\"hljs-literal\">false</span> &amp;&amp; sig.IsCertificateRevoked == <span class=\"hljs-literal\">false</span> &amp;&amp; sig.IsValid == <span class=\"hljs-literal\">true</span>) {\n      alert(<span class=\"hljs-string\">\"Signed\"</span>);\n      AddSignature = <span class=\"hljs-literal\">true</span>;\n    }\n    <span class=\"hljs-comment\">//Otherwise, remove the Signature object from the SignatureSet collection.</span>\n    <span class=\"hljs-keyword\">else</span> {\n        sig.Delete();\n        alert(<span class=\"hljs-string\">\"Not signed\"</span>);\n        AddSignature = <span class=\"hljs-literal\">false</span> ;\n    }\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>对应于附加到文档的数字签名的 <b>Signature</b> 对象的集合。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>SignatureSet</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "CanAddSignatureLine",
+      "summary": "",
+      "description": "<p>获取一个 <b>Boolean</b> 类型的值，指示是否可向文档中添加签名行。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Boolean",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>获取一个 <b>Long</b> 类型的值，指示 <b>SignatureSet</b> 对象中的项数。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>SignatureSet</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>SignatureSet</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "ShowSignaturesPane",
+      "summary": "",
+      "description": "<p>获取或设置一个 <b>Boolean</b> 类型的值，指示是否应显示<b>“签名”</b>任务窗格。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Boolean",
+      "readonly": true
+    },
+    {
+      "name": "Subset",
+      "summary": "",
+      "description": "<p>获取或设置一个可充当文档可用 <b>Signature</b> 对象上的筛选器的值。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "MsoSignatureSubset",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "AddNonVisibleSignature",
+      "summary": "<p></p><p>要提供用于触发此方法的入口点，您需要创建包含签名提供程序加载项的用户界面。此入口点通常以菜单项的形式提供给用户。</p>",
+      "description": "<p></p><p>在以数字方式签署文档时创建一个签名数据包。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*在以数字方式签署文档时，以下函数使用签名提供程序 ID 参数来创建签名数据包。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\">varSigProviderID</span>) </span>{\n    <span class=\"hljs-keyword\">var</span> objSignatureSet = Application.ActiveWorkbook.Signatures;\n    <span class=\"hljs-keyword\">var</span> objSignature = Application.ActiveWorkbook.Signatures.Item(<span class=\"hljs-number\">1</span>);\n        objSignature = objSignatureSet.AddNonVisibleSignature(varSigProviderID);\n    <span class=\"hljs-keyword\">return</span> objSignature;\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "varSigProv",
+          "type": " Variant ",
+          "description": " 代表签名提供程序的 ID。 ",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": "Signature"
+    },
+    {
+      "name": "AddSignatureLine",
+      "summary": "<p>添加了行后，文档的作者可以添加必要的信息，以使每个签名行都显示应签名人员的姓名和（可选）职称。当用户打开文档时，WPS\t\t\t\tOffice可识别出存在一个或多个签名行，但签名行为空白。随后，Office 将向用户发出警告，告知他们需要签署此文档，并帮助用户找到所请求的签名在文档中的位置。</p>",
+      "description": "<p>向在其中收集签名的文档中添加行。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*以下示例中的过程将接收签名提供程序的 ID，并添加签名行（只要文档不为只读）。*/</span>\nfunction test(SignProviderID) {\n    if(Application.ActiveWorkbook.Signatures.CanAddSignatureLine) {\n\tvar objSignature = Application.ActiveWorkbook.Signatures.AddSignatureLine(SignProviderID); \n    }\n    return objSignature;\n}<br/></code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "varSigProv",
+          "type": " Variant ",
+          "description": "代表签名提供程序的 ID。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": "Signature"
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>获取一个与文档当前所签署的数字签名之一相对应的 <b>Signature</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "iSig",
+          "type": "Long",
+          "description": "确定要返回的 Signature 对象。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    }
+  ]
+}

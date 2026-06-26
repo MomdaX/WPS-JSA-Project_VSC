@@ -1,0 +1,155 @@
+{
+  "name": "FileDialog",
+  "summary": "<p>\n</p><p>使用 <b>FileDialog</b> 属性返回一个 <b>FileDialog</b> 对象。<b>FileDialog</b> \n属性位于每个单独 Office 应用程序的 <b>Application</b> 对象中。该属性使用一个参数 <i>DialogType</i> 确定该属性返回的 <b>FileDialog</b> 对象类型。<b>FileDialog</b> \n对象有四种类型：</p><ul>\n<li><b>“打开”</b>对话框 - \n允许用户选择一个或多个可以在宿主应用程序中使用 <b>Execute</b> 方法打开的文件。 \n</li><li><b>“另存为”</b>对话框 - \n允许用户选择一个文件，然后可以使用 <b>Execute</b> 方法将当前文件另存为该文件。 \n</li><li><b>“文件选取器”</b>对话框 - \n允许用户选择一个或多个文件。用户选择的文件路径将捕获到 <b>FileDialogSelectedItems</b> \n集合中。 \n</li><li><b>“文件夹选取器”</b>对话框 - \n允许用户选择一个路径。用户选择的路径将捕获到 <b>FileDialogSelectedItems</b> 集合中。 \n</li></ul><p>每个宿主应用程序只能创建一个 <b>FileDialog</b> \n对象实例。因此，即使创建多个 <b>FileDialog</b> 对象，<b>FileDialog</b> \n对象的很多属性也会保持不变。所以，在显示对话框之前请确保已经针对用途适当地设置了所有属性。</p>",
+  "description": "<p>\n</p><p>\n</p><p>提供文件对话框，其功能与 WPS Office应用程序中标准的<b>“打开”</b>和<b>“保存”</b>对话框类似。</p>",
+  "properties": [
+    {
+      "name": "AllowMultiSelect",
+      "summary": "<p>此属性对<b>“文件夹选取器”</b>对话框或<b>“另存为”</b>对话框无效，因为用户永远无法从这些类型的文件对话框中选择多个文件。<br/></p>",
+      "description": "<p>如果允许用户从文件对话框中选择多个文件，则为 <b>True</b>。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>FileDialog</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "ButtonName",
+      "summary": "<p>默认情况下，此属性设置为该文件对话框类型的标准文本。例如，在<b>“打开”</b>对话框中，该属性默认设置为“打开”。此字符串所允许的最大长度为 51 个字符。<br/></p>",
+      "description": "<p>设置或获取代表文件对话框中动作按钮上所显示文本的 <b>String</b> 类型的值。可读/写。</p><p>\n</p><p>\n</p><p></p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>WPS Office Assistant 在 WPS Office 2015 \n版中已被淘汰。</td></tr></tbody></table>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>FileDialog</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "DialogType",
+      "summary": "",
+      "description": "<p>\n</p><p>返回一个 <b>MsoFileDialogType</b> 常量，代表 <b>FileDialog</b> 对象被设置为要显示的文件对话框的类型。只读。</p>",
+      "examples": "<p>\n</p><p>下面的示例将 <b>FileDialog</b> \n对象视为未知类型，并且如果是<b>“另存为”</b>对话框或<b>“打开”</b>对话框，则运行 <b>Execute</b> 方法。</p><p>\n</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\">fd</span>)</span>{\n    <span class=\"hljs-comment\">// If the user presses the action button...</span>\n    <span class=\"hljs-keyword\">if</span>(fd.Show == -<span class=\"hljs-number\">1</span>){\n        <span class=\"hljs-comment\">// Use the DialogType property to determine whether to</span>\n        <span class=\"hljs-comment\">// use the Execute method.</span>\n        <span class=\"hljs-keyword\">switch</span>(fd.DialogType){\n            <span class=\"hljs-keyword\">case</span> Application.<span class=\"hljs-keyword\">Enum</span>.msoFileDialogOpen:\n            <span class=\"hljs-keyword\">case</span> Application.<span class=\"hljs-keyword\">Enum</span>.msoFileDialogSaveAs:\n                fd.Execute()\n                <span class=\"hljs-keyword\">break</span>\n        }\n\n        <span class=\"hljs-comment\">// If the user presses Cancel...</span>\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "FilterIndex",
+      "summary": "<p>如果试图将该属性设置为大于筛选数量的数字，将选定最后一个可用筛选。<br/></p>",
+      "description": "<p>获取或设置一个 <b>Long</b> \n类型的值，指示文件对话框的默认文件筛选器。默认筛选器决定首次打开文件对话框时显示的文件类型。可读/写。</p>",
+      "examples": "<p>下面的示例使用 <b>FileDialog</b> 对象显示一个<b>“File \nPicker”</b>对话框，并在消息框中显示每个选定的文件。此示例还演示如何添加新文件筛选器并使其成为默认筛选器。<br/></p><p>\n</p><p>\n</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n\n    <span class=\"hljs-comment\">//Declare a variable as a FileDialogFilters collection.</span>\n\n    <span class=\"hljs-comment\">//Declare a variable as a FileDialogFilter object.</span>\n\n    <span class=\"hljs-comment\">//Set the FileDialogFilters collection variable to</span>\n    <span class=\"hljs-comment\">//the FileDialogFilters collection of the SaveAs dialog box.</span>\n    <span class=\"hljs-keyword\">let</span> fdfs = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-title class_\">FileDialog</span>(Application.Enum.msoFileDialogFilePicker).<span class=\"hljs-property\">Filters</span>\n\n    <span class=\"hljs-comment\">//Iterate through the description and extensions of each</span>\n    <span class=\"hljs-comment\">//default filter in the SaveAs dialog box.</span>\n    <span class=\"hljs-keyword\">for</span>(<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>;i &lt;= fdfs.<span class=\"hljs-property\">Count</span>;i++) {\n        <span class=\"hljs-keyword\">let</span> fdf = fdfs.<span class=\"hljs-title class_\">Item</span>(i)\n        <span class=\"hljs-comment\">//Display the description of filters that include</span>\n        <span class=\"hljs-comment\">//ET files</span>\n        <span class=\"hljs-keyword\">if</span>(fdf.<span class=\"hljs-property\">Extensions</span>.<span class=\"hljs-title function_\">indexOf</span>(<span class=\"hljs-string\">\"xls\"</span>) &gt; -<span class=\"hljs-number\">1</span>) {\n            <span class=\"hljs-title class_\">alert</span>(<span class=\"hljs-string\">\"Description of filter: \"</span> + fdf.<span class=\"hljs-property\">Description</span>)\n        }\n    }\n\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Filters",
+      "summary": "",
+      "description": "<p>\n</p><p></p><p>获取一个 <b>FileDialogFilters</b> 集合。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "FileDialogFilters",
+      "readonly": true
+    },
+    {
+      "name": "InitialFileName",
+      "summary": "<p>\n</p><p>\n</p><p>在指定文件名时可以使用 <b>'*'</b> 和 <b>'?'</b> 通配符，但是指定路径时不能使用这些通配符。<b>'*'</b> \n符号代表任意数量的连续字符，而 <b>'?'</b> 代表单个字符。例如，<b>.InitialFileName = \"c:\\c*s.txt\"</b> \n将返回“charts.txt”和“checkregister.txt”。<br/></p><p>如果指定了路径而没有指定文件名，则对话框中将显示文件筛选器所允许的所有文件。</p><p>如果指定了位于初始文件夹中的某个文件，则对话框中只显示该文件。</p><p>如果指定了初始文件夹中不存在的某个文件名，则对话框中将不包含文件。在 <b>InitialFileName</b> 属性中指定的文件类型将覆盖文件筛选器的设置。</p><p>如果指定了无效路径，则使用上次使用的路径。如果使用无效路径，则会向用户显示警告消息。</p><p>\n\n\n\n\n</p><p>将此属性设置为长度大于 256 个字符的字符串将导致运行时错误。</p>",
+      "description": "<p>\n</p><p></p><p>设置或返回一个 <b>String</b> 类型的值，代表文件对话框中初始显示的路径或文件名。可读/写。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "InitialView",
+      "summary": "",
+      "description": "<p>\n</p><p></p><p>获取或设置一个 <b>MsoFileDialogView</b> \n常量，代表文件对话框中文件和文件夹的初始表示形式。可读/写。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>获取与对象关联的文本。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "<p><br/></p>",
+      "description": "<p>获取&nbsp;<b>FileDialog</b>&nbsp;对象的&nbsp;<b>Parent</b>&nbsp;对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "SelectedItems",
+      "summary": "",
+      "description": "<p>\n</p><p></p><p>获取一个 <b>FileDialogSelectedItems</b> 集合。此集合包含用户在使用 <b>FileDialog</b> 对象的 <b>Show</b> \n方法显示的文件对话框中所选的文件的路径列表。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Title",
+      "summary": "",
+      "description": "<p>设置或获取使用 <b>FileDialog</b> 对象显示的文件对话框的标题。可读/写。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Execute",
+      "summary": "",
+      "description": "<p>在调用 <b>Show</b> 方法后立即执行用户的操作。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Show",
+      "summary": "",
+      "description": "<p>\n</p><p></p><p>显示文件对话框并返回一个 <b>Long</b> 类型的值，指示用户按下的是<b>“操作”</b>按钮 (-1) 还是<b>“取消”</b>按钮 \n(0)。在调用 <b>Show</b> 方法时，在用户关闭文件对话框之前不会执行其他代码。在<b>“打开”</b>和<b>“另存为”</b>对话框中，在使用了 \n<b>Show</b> 方法后会立即使用 <b>Execute</b> \n方法执行用户操作。</p>",
+      "examples": "<p>\n</p><p>\n</p><p></p><p><br/></p>",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

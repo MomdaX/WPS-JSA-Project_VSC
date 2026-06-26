@@ -1,0 +1,87 @@
+{
+  "_id": {
+    "$oid": "6030c30f27e62d56b849b97b"
+  },
+  "name": "CommandBarControls",
+  "summary": "<p>\n\t\t<span style=\"font-family:&quot;white-space:normal;\">使用&nbsp;</span><b style=\"font-family:&quot;white-space:normal;\">Controls</b><span style=\"font-family:&quot;white-space:normal;\">&nbsp;属性可返回&nbsp;</span><b style=\"font-family:&quot;white-space:normal;\">CommandBarControls</b><span style=\"font-family:&quot;white-space:normal;\">&nbsp;集合。下面的示例将名为“Standard”的工具栏上每个控件的标题更改为该控件当前的&nbsp;</span><b style=\"font-family:&quot;white-space:normal;\">Id</b><span style=\"font-family:&quot;white-space:normal;\">&nbsp;属性值。</span>\n\t</p>\n\t<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\">\n\t</div>\n\t<p style=\"font-family:&quot;white-space:normal;\">\n\t\t</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-keyword\">let</span> cmdBars = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveDocument</span>.<span class=\"hljs-property\">CommandBars</span>\n\t<span class=\"hljs-keyword\">for</span>(<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= cmdBars.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Standard\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-property\">Count</span>; i++){\n   \t cmdBars.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Standard\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Caption</span> = <span class=\"hljs-title class_\">String</span>(cmdBars.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Standard\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Id</span>)\n\t}\n}</code></pre></td></tr></tbody></table></div>\n\t\n\t<p style=\"font-family:&quot;white-space:normal;\">\n\t\t使用&nbsp;<b>Add</b>&nbsp;方法可在&nbsp;<b>CommandBarControls</b>&nbsp;集合中添加一个新的命令栏控件。本示例将在名为“Custom”的命令栏中添加一个新的空白按钮。\n\t</p>\n\t<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-keyword\">let</span> myBlankBtn = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveDocument</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>()</code></pre></td></tr></tbody></table></div>\n\t<p style=\"font-family:&quot;white-space:normal;\">\n\t\t使用 Controls(index) 可返回一个&nbsp;<b>CommandBarControl</b>、<b>CommandBarButton</b>、<b>CommandBarComboBox</b>&nbsp;或&nbsp;<b>CommandBarPopup</b>&nbsp;对象，其中&nbsp;<i>index</i>&nbsp;是该控件的标题或索引号。下面的示例将名为“Standard”的命令栏中的第一个控件复制到名为“Custom”的命令栏中。\n\t</p>\n\t<div id=\"vstable\" style=\"font-family:&quot;white-space:normal;\">\n\t</div>\n\t<p>\n\t\t</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-keyword\">let</span> myCustomBar = <span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>)\n\t<span class=\"hljs-keyword\">let</span> myControl = <span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Standard\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    &nbsp;&nbsp;&nbsp;&nbsp;myControl.<span class=\"hljs-title class_\">Copy</span>(myCustomBar, <span class=\"hljs-number\">1</span>)\n}</code></pre></td></tr></tbody></table></div>\n\t",
+  "description": "<p><b style=\"font-family:&quot;white-space:normal;background-color:#FFFFFF;\">CommandBarControl</b><span style=\"font-family:&quot;white-space:normal;background-color:#FFFFFF;\">&nbsp;对象的集合，这些对象代表某个命令栏上的命令栏控件。</span></p>",
+  "category": "KSO",
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p><span style=\"font-family:&quot;white-space:normal;background-color:#FFFFFF;\">新建一个&nbsp;</span><b style=\"font-family:&quot;white-space:normal;\">CommandBarControl</b><span style=\"font-family:&quot;white-space:normal;background-color:#FFFFFF;\">&nbsp;对象并将其添加到指定命令栏上的控件集合中。</span> </p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code><span class=\"hljs-comment\">//本示例创建包含剪切、复制和粘贴按钮（控件）的自定义编辑工具栏。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n\t<span class=\"hljs-keyword\">let</span> customBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveDocument</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"Custom\"</span>)\n\t<span class=\"hljs-keyword\">let</span> newButton = customBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlButton, <span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Edit\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Cut\"</span>).<span class=\"hljs-property\">Id</span>)\n\t<span class=\"hljs-keyword\">let</span> newButton1 = customBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlButton, <span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Edit\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Copy\"</span>).<span class=\"hljs-property\">Id</span>)\n\t<span class=\"hljs-keyword\">let</span> newButton2 = customBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlButton, <span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Edit\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Paste\"</span>).<span class=\"hljs-property\">Id</span>)\n    customBar.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Type",
+          "type": "Variant",
+          "description": "要添加到指定命令栏中的控件类型。可以为以下 MsoControl 常量之一：msoControlButton、msoControlEdit、msoControlDropdown、msoControlComboBox 或 msoControlPopup。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Id\t",
+          "type": "Variant",
+          "description": "指定内置控件的整数。如果该参数为 1，或者忽略该参数，将在命令栏中添加一个空的指定类型的自定义控件。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Parameter",
+          "type": "Variant",
+          "description": "对于内置控件，容器应用程序使用该参数运行命令。对于自定义控件，可以使用该参数向 JavaScript 过程传递信息，也可以用它存储有关控件的信息（类似于第二个 Tag 属性值）。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Before",
+          "type": "Variant",
+          "description": "一个指示新控件在命令栏上位置的数值。新控件将插入到位于此位置的控件之前。如果忽略该参数，控件将添加到指定命令栏的末端。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Temporary",
+          "type": "Variant",
+          "description": "设置为 true 将使新控件为临时控件。临时控件在关闭容器应用程序时自动删除。默认值为 false。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p><span style=\"white-space:normal;font-family:&quot;background-color:#FFFFFF;\">获取&nbsp;</span><b style=\"white-space:normal;font-family:&quot;\">CommandBarControls</b><span style=\"white-space:normal;font-family:&quot;background-color:#FFFFFF;\">&nbsp;集合中的一个&nbsp;</span><b style=\"white-space:normal;font-family:&quot;\"><a href=\"apiObjectTemplate.htm?page=topics/WPS 基础接口/通用 API 参考/CommandBarControl/CommandBarControl .htm#jsObject_CommandBarControl\">CommandBarControl</a></b><span style=\"white-space:normal;font-family:&quot;background-color:#FFFFFF;\"><a href=\"apiObjectTemplate.htm?page=topics/WPS 基础接口/通用 API 参考/CommandBarControl/CommandBarControl .htm#jsObject_CommandBarControl\">&nbsp;</a>对象。只读。</span> </p>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Variant",
+          "description": "要返回的对象的名称或索引号。\n",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "examples": "",
+      "returns": ""
+    }
+  ],
+  "properties": [
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p><span style=\"font-family:&quot;white-space:normal;background-color:#FFFFFF;\">获取命令栏上的控件数量。只读。</span></p>",
+      "type": "",
+      "examples": "",
+      "readonly": true
+    }
+  ]
+}

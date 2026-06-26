@@ -1,0 +1,75 @@
+{
+  "name": "CustomXMLSchema",
+  "summary": "<p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+  "description": "<p>\n</p><p>\n</p><p>代表 <b>CustomXMLSchemaCollection</b> 集合中的一个架构。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取一个代表 <b>CustomXMLSchema</b> 对象的容器应用程序的 <b>Application</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>CustomXMLSchema</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Location",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取一个 <b>String</b> 类型的值，代表计算机上架构的位置。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "NamespaceURI",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CustomXMLSchema</b> 对象的命名空间的唯一地址标识符。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CustomXMLSchema</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Delete",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>如果尝试对已经过验证或附加到数据流的集合中的架构进行此操作，则不会执行操作并会显示一条错误消息。</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>从 <b>CustomXMLSchema</b> 集合中删除指定架构。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例将架构添加到集合，然后删除该架构。</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)\n</span>{\n     <span class=\"hljs-keyword\">try</span> \n    {\n        // Adds a schema to the collection.\n    　　Application.ActivePresentation.CustomXMLParts.Item(1).SchemaCollection.Add(\"urn:invoice:namespace\") \n        // Deletes the schema.\n        Application.ActivePresentation.CustomXMLParts.Item(1).SchemaCollection.Item(1).Delete()\n    }            \n    <span class=\"hljs-comment\">// Exception handling. Show the message and resume.</span>\n    <span class=\"hljs-keyword\">catch</span>(<span class=\"hljs-built_in\">exception</span>) \n\t{\n        alert(<span class=\"hljs-built_in\">exception</span>.Description)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Reload",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>通常，此方法用于更新架构的位置或确定架构是否仍然有效。它还用于重新加载频繁更改的架构。如果尝试对集合中的已经过验证或绑定到数据流的架构执行此操作，则不执行操作，并显示一条错误消息。</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>从文件重新加载架构。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例指定了架构的位置，然后重新加载它。</span>\nfunction test()\n{\n    try{\n        let objCustomXMLSchema = Application.ActivePresentation.CustomXMLParts.Item(1).SchemaCollection.Item(1)\n        // Reload the schema.\n        bjCustomXMLSchema.Reload()\n    }catch(exception){\n\talert(exception.Description)\n\t}\n}<br/></code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

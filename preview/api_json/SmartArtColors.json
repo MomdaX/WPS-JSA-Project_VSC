@@ -1,0 +1,66 @@
+{
+  "name": "SmartArtColors",
+  "summary": "<p></p><p>模拟 WPS Office Fluent 功能区用户界面中“SmartArt 工具”上“设计”组内的“更改颜色”命令上的命令。</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*</span><span style=\"white-space: normal; word-spacing: normal; text-indent: initial; font-family: &quot;Microsoft YaHei&quot;, Arial, Tahoma, Helvetica, sans-serif;\">下面的代码设置 Smart Art 图表的配色方案。</span><span style=\"color: rgb(114, 255, 114); word-spacing: normal; text-indent: initial; --darkreader-inline-color:#69ff69;\" data-darkreader-inline-color=\"\">*/</span></code><code class=\"JavaScript\">Application.ActivePresentation.Slides.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).SmartArt.Color = Application.SmartArtColors.Item(<span class=\"hljs-number\">1</span>)</code></pre></td></tr></tbody></table></div>",
+  "description": "<p></p><p>SmartArt 颜色样式的集合。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>SmartArtColors</b> 对象的容器应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>检索包含在 <b>SmartArtColors</b> 集合中的 <b>SmartArtColor</b> 对象数的计数。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>SmartArtColors</b> 对象的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回调用对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>检索位于指定索引处或具有指定的唯一 Id 的 <b>SmartArtColor</b> 对象。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Variant",
+          "description": "指定一个代表索引的整数或一个代表 Smart Art 颜色的 Id 的字符串。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": "SmartArtColor"
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "name": "WebShape",
+  "summary": "<p>使用AddWebShapeEx(str)可以为当前文档添加一个<b>WebShape 对象，其中str表示需要渲染的网址。下面的示例表示像当前的图形中添加一个</b><b>WebShape 对象，渲染</b>\"https://www.wps.cn\"。</p><div id=\"vstable\"><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//需要用户至少有一个sheet</span>\nApplication<span class=\"hljs-selector-class\">.ActiveWorkbook</span><span class=\"hljs-selector-class\">.Sheets</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.AddWebShapeEx</span>(\"https://www.wps.cn\")</code></pre></td></tr></tbody></table></div></div>",
+  "description": "<p>代表容器应用程序的一个图形，该图形是一个浏览器对象，可以直接渲染Html网页。</p>",
+  "properties": [
+    {
+      "name": "DataSource",
+      "summary": "",
+      "description": "<p>返回DataSource对象。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "Object",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Height",
+      "summary": "",
+      "description": "<p>返回或设置WebShape对象的高。可读写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\">Application.ActiveWorkbook.Sheets.Item(1).Shapes.Item(1).WebShape.Height = 300</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "Number",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "ID",
+      "summary": "",
+      "description": "<p>返回WebShape对象的ID值。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Number",
+      "readonly": true
+    },
+    {
+      "name": "Type",
+      "summary": "<div id=\"vstable\"><div id=\"vstable\"><table border=\"0\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><th>枚举</th><th>值</th></tr><tr><td>WET_Normal</td><td>0</td></tr><tr><td>WET_DataSource</td><td>1</td></tr></tbody></table><div><p><br/></p></div></div><div><p><br/></p></div></div>",
+      "description": "<p>返回WebShape对象的类型。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\">Application<span class=\"hljs-selector-class\">.ActiveWorkbook</span><span class=\"hljs-selector-class\">.Sheets</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.WebShape</span><span class=\"hljs-selector-class\">.Type</span></code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "Number",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Url",
+      "summary": "",
+      "description": "<p>返回WebShape对象所渲染的网页网址。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\">Application<span class=\"hljs-selector-class\">.ActiveWorkbook</span><span class=\"hljs-selector-class\">.Sheets</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.WebShape</span><span class=\"hljs-selector-class\">.Url</span></code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "String",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Version",
+      "summary": "",
+      "description": "<p>返回当前版本。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "String",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Visible",
+      "summary": "<p>应注意在jsapi返回时，-1代表真，0代表假。</p>",
+      "description": "<p>返回或设置当前WebShape对象的可见性。可读写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例隐藏WebShape对象</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n\tApplication.ActiveWorkbook.Sheets.Item(<span class=\"hljs-number\">1</span>).Shapes.Item(<span class=\"hljs-number\">1</span>).WebShape.Visible = <span class=\"hljs-number\">0</span>;\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "Boolean",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Width",
+      "summary": "",
+      "description": "<p>返回或设置WebShape对象的宽度。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\">Application.ActiveWorkbook.Sheets.Item(1).Shapes.Item(1).WebShape.Width = 300</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "Number",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Copy",
+      "summary": "",
+      "description": "<p>复制当前WebShape对象至剪切板。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例复制Sheet中第一个WebShape并粘贴</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>){\n\t<span class=\"hljs-keyword\">let</span> webShape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">WebShape</span>;\n\twebShape.<span class=\"hljs-title class_\">Copy</span>();\n\t<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-title class_\">Paste</span>();\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Cut",
+      "summary": "",
+      "description": "<p>剪切当前WebShape对象至剪切板。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例剪切Sheet中第一个WebShape并粘贴</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>){\n\t<span class=\"hljs-keyword\">let</span> webShape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">WebShape</span>;\n\twebShape.<span class=\"hljs-title class_\">Cut</span>();\n\t<span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">ActiveSheet</span>.<span class=\"hljs-title class_\">Paste</span>();\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>删除当前WebShape对象。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例删除Sheet中第一个WebShape</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>){\n\t<span class=\"hljs-keyword\">let</span> webShape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">WebShape</span>;\n\twebShape.<span class=\"hljs-title class_\">Delete</span>();\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "DeleteProperty",
+      "summary": "",
+      "description": "<p>删除WebShape对象中对象属性的值。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例删除WebShape中键为wps的属性</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>){\n\t<span class=\"hljs-keyword\">let</span> webShape = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">ActiveWorkbook</span>.<span class=\"hljs-property\">Sheets</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">Shapes</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>).<span class=\"hljs-property\">WebShape</span>;\n\twebShape.<span class=\"hljs-title class_\">DeleteProperty</span>(<span class=\"hljs-string\">\"wps\"</span>);\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Key",
+          "type": "String",
+          "description": "属性的键。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "DeleteWatchingData",
+      "summary": "",
+      "description": "<p>删除对应名字的监听区域。（已废除）</p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Name",
+          "type": "String",
+          "description": "监听区域的名字",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "GetAllProperty",
+      "summary": "",
+      "description": "<p>获取当前WebShape对象的所有属性，返回JSON格式的字符串</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\">Application<span class=\"hljs-selector-class\">.ActiveWorkbook</span><span class=\"hljs-selector-class\">.Sheets</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.WebShape</span><span class=\"hljs-selector-class\">.GetAllProperty</span>()</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": "String"
+    },
+    {
+      "name": "GetAllWatchingData",
+      "summary": "",
+      "description": "<p>获取所有的监听区域。（已废除）</p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "GetProperty",
+      "summary": "",
+      "description": "<p>获取WebShape对象对应键的属性。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\">Application<span class=\"hljs-selector-class\">.ActiveWorkbook</span><span class=\"hljs-selector-class\">.Sheets</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.WebShape</span><span class=\"hljs-selector-class\">.GetProperty</span>(\"wps\")</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Key",
+          "type": "String",
+          "description": "属性的键。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "GetWatchingData",
+      "summary": "",
+      "description": "<p>获取对应的监听区域。（已废除）</p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "SaveAsPicture",
+      "summary": "",
+      "description": "<p>将当前WebShape对象保存为图片。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\">Application<span class=\"hljs-selector-class\">.ActiveWorkbook</span><span class=\"hljs-selector-class\">.Sheets</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.WebShape</span><span class=\"hljs-selector-class\">.SaveAsPicture</span>()</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Select",
+      "summary": "",
+      "description": "<p>选中当前WebShape对象。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\">Application<span class=\"hljs-selector-class\">.ActiveWorkbook</span><span class=\"hljs-selector-class\">.Sheets</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.WebShape</span><span class=\"hljs-selector-class\">.Select</span>()</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "SetImageData",
+      "summary": "",
+      "description": "<p>读取图片，并将其展示在WebShape对象上。</p>",
+      "examples": "<div id=\"vstable\"><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例将c://tmp.png的图片读取为边长为100的正方形，并显示在WebShape的坐标（100，100）处</span>\nApplication<span class=\"hljs-selector-class\">.ActiveWorkbook</span><span class=\"hljs-selector-class\">.Sheets</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.WebShape</span><span class=\"hljs-selector-class\">.SetImageData</span>(\"c://tmp.png\", <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>, <span class=\"hljs-number\">100</span>)</code></pre></td></tr></tbody></table></div></div>",
+      "parameters": [
+        {
+          "name": "Path",
+          "type": "String",
+          "description": "图片路径",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "X",
+          "type": "Number",
+          "description": "图片展示的横坐标",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Y",
+          "type": "Number",
+          "description": "图片展示的纵坐标",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Width",
+          "type": "Number",
+          "description": "图片展示的宽",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Height",
+          "type": "Number",
+          "description": "图片展示的高",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "SetProperty",
+      "summary": "",
+      "description": "<p>设置WebShape属性的键值对。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\">Application<span class=\"hljs-selector-class\">.ActiveWorkbook</span><span class=\"hljs-selector-class\">.Sheets</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.Shapes</span><span class=\"hljs-selector-class\">.Item</span>(<span class=\"hljs-number\">1</span>)<span class=\"hljs-selector-class\">.WebShape</span><span class=\"hljs-selector-class\">.SetProperty</span>(\"wps\", \"wps\")</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Key",
+          "type": "String",
+          "description": "属性的键",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Value",
+          "type": "String",
+          "description": "属性的值",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "SetWatchingData",
+      "summary": "",
+      "description": "<p>设置监听区域。（已废除）</p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

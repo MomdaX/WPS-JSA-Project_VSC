@@ -1,0 +1,153 @@
+{
+  "name": "CustomXMLSchemaCollection",
+  "summary": "<p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table><p>\n</p><p>以下示例向 <b>CustomXMLSchemaCollection</b> 对象添加 <b>CustomXMLSchema</b> 对象。</p><p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th>示例代码</th></tr>\n<tr>\n<td><pre><code>let SchemaCollection\nSchemaCollection.Add(\"http://tempuri.org/XMLSchema.xsd\")</code></pre></td></tr></tbody></table>",
+  "description": "<p>\n</p><p>\n</p><p>代表附加到数据流的 <b>CustomXMLSchema</b> 对象的集合。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取一个代表 <b>CustomXMLSchemaCollection</b> 对象的容器应用程序的 <b>Application</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取一个 <b>Long</b> 类型的值，指示 <b>CustomXMLSchemaCollection</b> 集合中的项数。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>CustomXMLSchemaCollection</b> \n对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Item",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CustomXMLSchemaCollection</b> 集合中的一个 <b>CustomXMLSchema</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Variant",
+          "description": "要返回的 CustomXMLSchema 对象的名称或索引号。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "NamespaceURI",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CustomXMLSchemaCollection</b> 对象的命名空间的唯一地址标识符。只读。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Long",
+          "description": "CustomXMLSchema 对象的索引号。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CustomXMLSchemaCollection</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>通过该方法，可以将一个或多个架构添加到架构集合中，该集合然后可被添加到数据存储中的流以及架构库中。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例将架构添加到架构集合，从集合中选择单一的节点，然后将该节点返回到调用过程。</span>\nfunction test()\n{\n    let cxp1\n    let cxn\n    // Adds a schema to the collection.\n    cxp1 = Application.ActivePresentation.CustomXMLParts.Item(1).SchemaCollection.Add(\"urn:invoice:namespace\", \"coreDefinitions\", \"wdCore.xsd\", true)\n    cxn = Application.ActivePresentation.CustomXMLParts.Item(1).SelectSingleNode(\"//*[@quantity &lt; 4]\")\n    return cxn\n}\n\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "NamespaceURI",
+          "type": "String",
+          "description": "包含要添加到集合中的架构的命名空间。如果架构在架构库中已存在，则方法将从该处检索架构。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Alias",
+          "type": "String",
+          "description": "包含要添加到集合中的架构的别名。如果别名在架构库中已存在，则方法可以使用此参数找到它。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "FileName",
+          "type": "String",
+          "description": " 包含架构在磁盘上的位置。如果指定此参数，则架构将被添加到集合以及架构库。 ",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "InstallForAllUsers",
+          "type": "Boolean",
+          "description": "指定在该方法将架构添加到架构库的情况下，是否应将架构库项写入注册表（针对所有用户的 HKey_Local_Machine，或仅针对当前用户的 HKey_Current_User）。该参数默认为 False 并写入 HKey_Current_User。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "AddCollection",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>如果在导入集合时命名空间之间存在冲突（例如，如果已将 x.xsd 链接到“urn:invoice:namespace”，但是传入的集合具有同一命名空间的 \nz.xsd），则优先采用传入的集合。</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>将现有的架构集合添加到当前架构集合。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例接收目标架构集合和传入架构集合的参数，然后将一个集合添加到另一个集合。</span>\nfunction test(objTargetCustomXMLSchemaCollection, objIncomingCustomXMLSchemaCollection) \n{\n    // Adds a schema collection to another schema the collection.\n    objTargetCustomXMLSchemaCollection.AddCollection(objIncomingCustomXMLSchemaCollection)          \n}<br/></code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "SchemaCollection",
+          "type": "CustomXMLSchemaCollection",
+          "description": "代表要导入到当前架构集合中的架构集合。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Validate",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>除了确定架构是否有效之外，此方法还遍历集合中每个架构的 <b>include</b> \n语句，并将引用的架构添加到源架构。</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>不支持从自定义 XML 部件中引用 DTD。自定义 XML 部件中的 DTD \n引用将无法解析，并且在尝试将文件的内容保存到平面 XML 文件中时，包含 DTD 引用的自定义 XML 部件将产生异常。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>指定架构集合中的架构是否有效（符合 XML 的语法规则以及指定词汇的规则；用于结构化 XML 的标准）。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的示例验证架构集合，并将 Boolean 结果返回给调用过程。</span>\nfunction test(objSourceCustomXMLSchemaCollection) {\n    let boolValid\n    // Validates the schemas in a schema collection.\n    boolValid = objSourceCustomXMLSchemaCollection.Validate()\n    ValidateSchemas = boolValid\n}<br/></code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

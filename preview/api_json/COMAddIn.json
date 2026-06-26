@@ -1,0 +1,88 @@
+{
+  "name": "COMAddIn",
+  "summary": "<p>可以使用 COMAddIns.Item(index)，其中 index 既可以是一个能够返回 COMAddIns 集合中相应位置的加载项的序数值，也可以是代表指定 COM 加载项的 ProgID 的 String 值。<br/><br/><br/><br/></p>",
+  "description": "<p>\n</p><p>\n</p><p>代表 WPS Office宿主应用程序中的一个 COM 加载项。<b>COMAddIn</b> 对象是 <b>COMAddIns</b> 集合的成员。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>COMAddIn</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Connect",
+      "summary": "<p>\n</p><p>\n</p><p></p><p>如果该加载项是活动的，那么 <b>Connect</b> 属性返回 <b>True</b>，反之返回 <b>False</b>。活动加载项是经过注册并建立了连接的加载项；非活动加载项是经过注册但当前没有连接的加载项。</p>",
+      "description": "<p>\n</p><p></p><p>获取或设置指定的 <b>COMAddIn</b> 对象的连接状态。可读/写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的示例显示一个消息框，并在其中指示第一个 COM 加载项是否已经注册以及当前是否已经连接。</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)\n</span>{\n    <span class=\"hljs-keyword\">if</span>(Application.COMAddIns.Item(<span class=\"hljs-number\">1</span>).Connect) \n    {\n        alert(<span class=\"hljs-string\">\"The add-in is connected.\"</span>)\n    }\n    <span class=\"hljs-keyword\">else</span> \n    {\n        alert(<span class=\"hljs-string\">\"The add-in is not connected.\"</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>COMAddIn</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Description",
+      "summary": "",
+      "description": "<p>\n</p><p></p><p>获取或设置指定的 <b>COMAddin</b> 对象的说明性 <b>String</b> 值。可读/写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的示例显示用于绘图的 COM 加载项的说明文本。</span>\nalert(<span class=\"hljs-string\">\"The description of this COMAddIn is <span class=\"hljs-subst\">\\\"</span>\"</span> <span class=\"hljs-operator\">+</span> <span class=\"hljs-type\">Application</span>.<span class=\"hljs-type\">COMAddIns</span>.<span class=\"hljs-type\">Item</span>(<span class=\"hljs-string\">\"msodraa9.ShapeSelect\"</span>).<span class=\"hljs-type\">Description</span> <span class=\"hljs-operator\">+</span> <span class=\"hljs-string\">\"<span class=\"hljs-subst\">\\\"</span>\"</span>)</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Guid",
+      "summary": "",
+      "description": "<p>\n</p><p></p><p>获取指定 <b>COMAddIn</b> 对象的类标识符 (CLSID)。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的示例在消息框中显示 COMAddIns 集合中第一个 COM 加载项的 ProgID 和 CLSID。</span>\nalert(<span class=\"hljs-string\">\"My ProgID is \"</span> + Application.COMAddIns.Item(<span class=\"hljs-number\">1</span>).ProgID + <span class=\"hljs-string\">\" and my CLSID is \"</span>+ Application.COMAddIns.Item(<span class=\"hljs-number\">1</span>).Guid)\n</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Object",
+      "summary": "<p>\n</p><p><b>Object</b> \n属性是一个可读写属性，可存储任何对象引用。从这个角度来讲，它类似于某些 ActiveX 控件的通用 <b>Tag</b> \n属性。</p><p>\n</p><p>在某些情况下，<b>Object</b> 属性返回指定的 <b>COMAddIn</b> 对象所代表的对象。其他情况下，它默认返回 <b>Nothing</b>。</p>",
+      "description": "<p>\n</p><p></p><p>获取或设置一个对象引用。可读/写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的示例返回 COM 加载项 msodraa9.ShapeSelect 所代表的对象。</span>\n<span class=\"hljs-keyword\">let</span> objBaseObject = Application.COMAddIns.Item(<span class=\"hljs-string\">\"msodraa9.ShapeSelect\"</span>).Object</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>COMAddIn</b> 对象的 <b>Parent</b> \n对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "ProgId",
+      "summary": "",
+      "description": "<p>\n</p><p></p><p>获取指定 <b>COMAddIn</b> 对象的编程标识符 (ProgID)。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的示例在消息框中显示 COMAddIns 集合中第一个 COM 加载项的 ProgID 和 CLSID。</span>\nalert(<span class=\"hljs-string\">\"My ProgID is \"</span> + Application.COMAddIns.Item(<span class=\"hljs-number\">1</span>).ProgID + <span class=\"hljs-string\">\" and my CLSID is \"</span>+ Application.COMAddIns.Item(<span class=\"hljs-number\">1</span>).Guid)</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

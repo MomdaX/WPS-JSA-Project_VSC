@@ -1,0 +1,480 @@
+{
+  "name": "CommandBarComboBox",
+  "summary": "<p>\n</p><p>\n</p><p>使用 <b>Controls(index)</b> 可返回一个 <b>CommandBarComboBox</b> 对象，其中 <i>index</i> 为该控件的索引号。请注意，该控件的 <b>Type</b> 属性必须是 <b>msoControlEdit</b>、<b>msoControlDropdown</b>、<b>msoControlComboBox</b>、<b>msoControlButtonDropdown</b>、<b>msoControlSplitDropdown</b>、<b>msoControlOCXDropdown</b>、<b>msoControlGraphicCombo</b> 或 <b>msoControlGraphicDropdown</b>。</p><p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+  "description": "<p>\n</p><p>\n</p><p>代表命令栏中的一个组合框控件。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>CommandBarComboBox</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "BeginGroup",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>如果指定的命令栏控件显示在命令栏上控件组的最前面，则获取 True。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "BuiltIn",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>如果指定的命令栏控件是容器应用程序的内置控件，则获取 <b>True</b>。如果是自定义控件或是已设置了 <b>OnAction</b> 属性的内置控件，则返回 <b>False</b>。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Caption",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr><tr><td>控件的标题也可作为默认的“屏幕提示”显示。</td></tr></tbody></table><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置命令栏控件的标题文字。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>CommandBarComboBox</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "DescriptionText",
+      "summary": "<p>该说明不显示给用户，但有助于其他开发者将控件行为归档。<br/></p><table><tbody><tr><th><img/>注释</th></tr><tr><td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置命令栏组合框控件的说明。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "DropDownLines",
+      "summary": "<p>\n</p><p>\n</p><p>如果将此属性设置为 0（零），则控件中的行数将取决于列表中的项数。</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>如果试图设置该属性的组合框控件是编辑框或内置组合框控件，则会出现错误。</td></tr></tbody></table><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取或设置命令栏组合框控件中的行数。该组合框控件必须为自定义控件并且是下拉列表框或组合框。可读写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例在命令栏“Custom”中添加一个包含两项的组合框控件。此外，本示例还设置项的行数，组合框的宽度，并将该组合框的默认值设置为空。 </span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>)\n    <span class=\"hljs-keyword\">let</span> myControl = myBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlComboBox, <span class=\"hljs-number\">1</span>)\t\t\t\t\t\t\t\t\t\n    myControl.<span class=\"hljs-property\">AddItem</span> (<span class=\"hljs-string\">\"First Item\"</span>, <span class=\"hljs-number\">1</span>)\n    myControl.<span class=\"hljs-property\">AddItem</span> (<span class=\"hljs-string\">\"Second Item\"</span>, <span class=\"hljs-number\">2</span>)\n    myControl.<span class=\"hljs-property\">DropDownLines</span> = <span class=\"hljs-number\">3</span>\n    myControl.<span class=\"hljs-property\">DropDownWidth</span> = <span class=\"hljs-number\">75</span>\n    myControl.<span class=\"hljs-property\">ListHeaderCount</span> = <span class=\"hljs-number\">0</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "DropDownWidth",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>如果将该属性设置为 -1，那么将根据组合框列表中最长的项来设置列表的宽度。如果将该属性设置为 0，那么将根据控件的宽度来设置列表的宽度。<br/></p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>如果为内置的组合框控件设置该属性，则会出现错误。</td></tr></tbody></table><p>\n</p><table><tbody><tr><th><img/>注释</th></tr><tr><td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取或设置指定命令栏组合框控件的列表宽度（以像素为单位）。可读写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例在命令栏“Custom”中添加一个包含两项的组合框控件。此外，本示例还设置项的行数，组合框的宽度，并将该组合框的默认值设置为空。 </span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>)\n    <span class=\"hljs-keyword\">let</span> myControl = myBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlComboBox, <span class=\"hljs-number\">1</span>)\t\t\t\t\t\t\t\t\t\n    myControl.<span class=\"hljs-property\">AddItem</span> (<span class=\"hljs-string\">\"First Item\"</span>, <span class=\"hljs-number\">1</span>)\n    myControl.<span class=\"hljs-property\">AddItem</span> (<span class=\"hljs-string\">\"Second Item\"</span>, <span class=\"hljs-number\">2</span>)\n    myControl.<span class=\"hljs-property\">DropDownLines</span> = <span class=\"hljs-number\">3</span>\n    myControl.<span class=\"hljs-property\">DropDownWidth</span> = <span class=\"hljs-number\">75</span>\n    myControl.<span class=\"hljs-property\">ListHeaderCount</span> = <span class=\"hljs-number\">0</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Enabled",
+      "summary": "<p>对于命令栏，如果将该属性设置为 <b>True</b>，则该命令栏的名称将出现在可用命令栏列表中。<br/></p><p>\n</p><p>对于内置控件，如果将 <b>Enabled</b> 属性设置为 <b>True</b>，则将由应用程序确定其状态。但如果将该属性设置为 <b>False</b>，则强行禁用该控件。</p><p>\n</p><p>\n</p><p></p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置用于指定是否启用 <b>CommandBarComboBox</b> 的 <b>Boolean</b> 值。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Height",
+      "summary": "<p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取或设置 <b>CommandBarComboBox</b> 控件的高度。可读写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例在名为 Custom 的命令栏上添加一个自定义控件。本示例设置该自定义控件的高度为命令栏高度的两倍，并设置该控件宽度为 50 像素。请注意命令栏如何根据控件的大小自我调整。 </span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>)\n    <span class=\"hljs-keyword\">let</span> barHeight = myBar.<span class=\"hljs-property\">Height</span>\n    <span class=\"hljs-keyword\">let</span> myControl = myBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlButton,<span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Standard\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Save\"</span>).<span class=\"hljs-property\">Id</span>,<span class=\"hljs-literal\">null</span>,<span class=\"hljs-literal\">null</span>,<span class=\"hljs-literal\">true</span>)\n    myControl.<span class=\"hljs-property\">Height</span> = barHeight * <span class=\"hljs-number\">2</span>\n    myControl.<span class=\"hljs-property\">Width</span> = <span class=\"hljs-number\">50</span>\n    myBar.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "HelpContextId",
+      "summary": "<p>\n</p><p>\n</p><p>若要使用此属性，必须同时设置 HelpFile 属性。帮助主题响应 Shift+F1 按键操作。</p><p>\n</p><p>\n</p><p>\n</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取或设置附加于 <b>CommandBarComboBox</b> 控件的“帮助”主题的帮助上下文 ID \n号。可读写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的示例添加了一个自定义命令栏以及跟踪股票的组合框。该示例也指定了在用户按下 Shift+F1 时所显示的组合框“帮助”主题。 </span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"Custom\"</span>, Application.Enum.msoBarTop, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">true</span>)\n    myBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlComboBox, <span class=\"hljs-number\">1</span>)\n    myBar.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span> \n                      \n    <span class=\"hljs-keyword\">let</span> cont = <span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    cont.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"Get Stock Quote\"</span>, <span class=\"hljs-number\">1</span>)\n    cont.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"View Chart\"</span>, <span class=\"hljs-number\">2</span>)\n    cont.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"View Fundamentals\"</span>, <span class=\"hljs-number\">3</span>)\n    cont.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"View News\"</span>, <span class=\"hljs-number\">4</span>)\n    cont.<span class=\"hljs-property\">Caption</span> = <span class=\"hljs-string\">\"Stock Data\"</span>\n    cont.<span class=\"hljs-property\">DescriptionText</span> = <span class=\"hljs-string\">\"View Data For Stock\"</span>\n    cont.<span class=\"hljs-property\">HelpFile</span> = <span class=\"hljs-string\">\"C:\\\\corphelp\\\\custom.hlp\"</span>\n    cont.<span class=\"hljs-property\">HelpContextID</span> = <span class=\"hljs-number\">47</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "HelpFile",
+      "summary": "<p>\n</p><p>\n</p><p>若要使用该属性，必须同时设置 HelpContextID 属性。帮助主题响应 Shift+F1 用户按键操作。</p><p>\n</p><p>\n</p><p>\n</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取或设置附加于 <b>CommandBarComboBox</b> 控件的“帮助”主题的文件名。可读写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的示例添加了一个自定义命令栏以及跟踪股票的组合框。该示例也指定了在用户按下 Shift+F1 时所显示的组合框“帮助”主题。 </span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"Custom\"</span>, Application.Enum.msoBarTop, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">true</span>)\n    myBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlComboBox, <span class=\"hljs-number\">1</span>)\n    myBar.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span> \n                      \n    <span class=\"hljs-keyword\">let</span> cont = <span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    cont.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"Get Stock Quote\"</span>, <span class=\"hljs-number\">1</span>)\n    cont.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"View Chart\"</span>, <span class=\"hljs-number\">2</span>)\n    cont.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"View Fundamentals\"</span>, <span class=\"hljs-number\">3</span>)\n    cont.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"View News\"</span>, <span class=\"hljs-number\">4</span>)\n    cont.<span class=\"hljs-property\">Caption</span> = <span class=\"hljs-string\">\"Stock Data\"</span>\n    cont.<span class=\"hljs-property\">DescriptionText</span> = <span class=\"hljs-string\">\"View Data For Stock\"</span>\n    cont.<span class=\"hljs-property\">HelpFile</span> = <span class=\"hljs-string\">\"C:\\\\corphelp\\\\custom.hlp\"</span>\n    cont.<span class=\"hljs-property\">HelpContextID</span> = <span class=\"hljs-number\">47</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Id",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>控件的 ID 号决定了该控件的内置操作。所有自定义控件的 <b>Id</b> 属性的值都是 1。</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>WPS Office Assistant 在 WPS Office system 2015 版中已被淘汰。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取内置的 <b>CommandBarComboBox</b> 控件的 ID。只读。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的示例将名为“Standard”的工具栏上每个控件的标题更改为该控件当前的 Id 属性值。 </span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> ctl = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Standard\"</span>).<span class=\"hljs-property\">Controls</span>\n    <span class=\"hljs-keyword\">for</span>(<span class=\"hljs-keyword\">let</span> i=<span class=\"hljs-number\">1</span>; i&lt;=ctl.<span class=\"hljs-property\">Count</span>; i++)\n    {\n        ctl.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Caption</span> = <span class=\"hljs-title class_\">String</span>(ctl.<span class=\"hljs-property\">Id</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Index",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>\n</p><p>第一个命令栏控件的位置为 1。<b>CommandBarControls</b> 集合中的分隔符不计算在内。</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取一个 <b>Long</b> 类型的值，该值代表集合中 <b>CommandBarComboBox </b>对象的索引号。只读。</p>",
+      "examples": "<div id=\"vstable\"><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例在名为“Custom”的命令栏中搜索 Id 值为 23 的控件。如果能找到这样的控件，并且其索引号大于 5，则将该控件放置在命令栏上的第一个位置上。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myBar = <span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>)\n    <span class=\"hljs-keyword\">let</span> ctrl1 = myBar.<span class=\"hljs-title class_\">FindControl</span>(<span class=\"hljs-literal\">null</span>,<span class=\"hljs-number\">23</span>)\n    <span class=\"hljs-keyword\">if</span> (ctrl1 &amp;&amp; ctrl1.<span class=\"hljs-property\">Index</span> &gt; <span class=\"hljs-number\">5</span>)\n    {\n        ctrl1.<span class=\"hljs-property\">Move</span> (<span class=\"hljs-literal\">null</span>,<span class=\"hljs-number\">1</span>)\n    }\n}</code></pre></td></tr></tbody></table></div></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "IsPriorityDropped",
+      "summary": "<p>如果 <b>IsPriorityDropped</b> 为 <b>True</b>，则 <b>Visible</b> 属性设置为 <b>True</b> 的控件将不能在个性化菜单或工具栏中立即显示出来。<br/></p><p>为了确定何时将某一特定菜单项的 <b>IsPriorityDropped</b> 属性设置为 <b>True</b>，WPS \nOffice会记录下该菜单项的使用次数的总和，并记录下用户使用了同一菜单中的其他菜单项而没有使用该特定菜单项的应用程序会话数。当该会话数达到一定的阈值之后，便会减少使用次数总和。当总次数减为零时，便将 \n<b>IsPriorityDropped</b> 设置为 <b>True</b>。编程人员不能设置会话值和阈值，也不能设置 <b>IsPriorityDropped</b> 属性。但他们可以使用 <b>AdaptiveMenus</b> 属性来禁用应用程序中特定菜单的自适应菜单。</p><p>为了确定何时将某一特定工具栏控件的 <b>IsPriorityDropped</b> 属性设置为 <b>True</b>，Office \n维护了一个列表，记录下了该工具栏中各个控件的最后使用顺序。工具栏会在空间允许的前提下尽可能多地显示控件，控件按使用时间由近向远排列，最近使用过的控件显示在最前面。<b>Priority</b> 设置为 1 的控件将始终显示，而且为了显示这样的控件，在必要时工具栏还将换行。编程人员可使用 \n<b>Priority</b> \n属性来确保始终显示特定的工具栏控件，或重新定位工具栏以便使其有足够的空间显示所有的控件。</p><p>使用下表可以预测在菜单项的 <b>IsPriorityDropped</b> 属性被设置为 <b>True</b> 之前，它仍将出现在个性化菜单中的会话数。</p><p>\n</p><p>\n\n\n\n</p><table>\n<tbody>\n<tr>\n<th>命令栏控件的使用次数</th>\n<th>应用程序的会话数</th></tr>\n<tr>\n<td>0, 1</td>\n<td>3</td></tr>\n<tr>\n<td>2</td>\n<td>6</td></tr>\n<tr>\n<td>3</td>\n<td>9</td></tr>\n<tr>\n<td>4, 5</td>\n<td>12</td></tr>\n<tr>\n<td>6- 8</td>\n<td>17</td></tr>\n<tr>\n<td>9-13</td>\n<td>23</td></tr>\n<tr>\n<td>14-24</td>\n<td>29</td></tr>\n<tr>\n<td>25 及 25 以上</td>\n<td>31</td></tr></tbody></table>",
+      "description": "<p>如果当前已根据使用统计信息和布局空间将控件从菜单或���具栏中删除，则返回 <b>True</b>。（请注意，这与通过 \n<b>Visible</b> 属性设置的控件可见性不同）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Left",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CommandBarComboBox</b> \n控件相对于屏幕左边缘的水平位置（以像素为单位）。返回距离停靠区域左侧的距离。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "List",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table><p>\n</p><p>\n</p><p><br/>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>对于内置的组合框控件，该属性为只读。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取或设置 <b>CommandBarComboBox</b> 控件中的某一项。可读/写。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Integer",
+          "description": "要设置的列表项。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "ListCount",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取 <b>CommandBarComboBox</b> 控件中列表项的数目。只读。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "ListHeaderCount",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><p>\n</p><p><b>ListHeaderCount</b> 属性值为 -1 表示组合框控件中没有分隔行。</p><p>\n</p><p>\n</p><p>\n</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>对于内置的组合框控件，该属性为只读。</td></tr></tbody></table><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取或设置出现在分隔行之上的 <b>CommandBarComboBox</b> 控件中的列表项数目。可读写。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "ListIndex",
+      "summary": "<p>\n</p><p>\n</p><p>设置 <b>ListIndex</b> 属性会使指定控件选择给定的项并在应用程序中执行与相应的操作。</p><p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>此属性只能用于列表控件。</td></tr></tbody></table><p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取或设置 <b>CommandBarComboBox</b> \n控件的列表部分中选定项的索引号。如果没有选择列表中的任何项，此属性将返回 0。可读写。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "OLEUsage",
+      "summary": "<p>本属性允许用户在某 Office 应用程序与另一个 Office \n应用程序合并时，指定加载应用程序的各个命令栏控件在该 Office \n应用程序中的表示方法。如果客户端和服务器均提供命令栏，那么命令栏控件将逐个嵌入客户端。系统将从服务器中略去标记为只用于客户端（或既不用于客户端也不用于服务器）的自定义控件，而从客户端中略去标记为只用于服务器（或既不用于客户端也不用于服务器）的控件。剩下的控件再进行合并。<br/></p><p>\n</p><p>如果要合并的应用程序之一不是 Office 应用程序，则使用常规 OLE 菜单合并，该过程将由 \nOLEMenuGroup 属性控制。</p><p>\n</p><p>\n</p><p></p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置特定的 OLE 客户端和 OLE 服务器角色，在合并两个 WPS Office应用程序时，会用到这些角色中的 <b>CommandBarComboBox</b> 控件。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "OnAction",
+      "summary": "<p>容器应用程序将确定该值是否是一个合法的宏名。<br/></p><table><tbody><tr><th><img/>注释</th></tr><tr><td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置一个 JavaScript 过程的名称，该过程在用户单击或更改 <b>CommandBarComboBox</b> 控件的值时运行。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parameter",
+      "summary": "<p>如果为内置控件设置一个指定的参数，那么应用程序将修改其默认的操作，前提是该应用程序能分析和使用这个新值。如果为自定义控件设置参数，那么该参数可用来为 \nJavaScript 程序传送信息，或保存关于该控件的信息（类似于另一个 Tag 属性值）。<br/></p><table><tbody><tr><th><img/>注释</th></tr><tr><td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置一个应用程序可用于执行 <b>CommandBarComboBox</b> 控件中命令的字符串。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CommandBarComboBox</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Priority",
+      "summary": "<p>有效的优先级数为从 0（零）至 7 之间的数字，默认值为 3。优先级为 1 \n表示不能从工具栏中删除该控件。而优先级为其他值的控件将被忽略。<br/></p><p>\n</p><p>菜单项的命令栏控件不能使用 <b>Priority</b> 属性。</p><p>\n</p><p>\n</p><p></p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置 <b>CommandBarComboBox</b> \n控件的优先级。对于固定命令栏，当一行中无法容纳其中的所有控件时，控件的优先级将决定该控件是否会从命令栏中删除。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Style",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置 <b>CommandBarComboBox</b> 控件的显示方式。该属性值可设置为以下 <b>MsoComboStyle</b> 常量之一：<b>msoComboLabel</b> 或 <b>msoComboNormal</b>。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Tag",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“��能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置有关 <b>CommandBarComboBox</b> \n控件的信息，例如，可作为过程参数的数据或用于识别该控件的信息。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Text",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>获取或设置 <b>CommandBarComboBox</b> 控件的显示或编辑区中的文字。可读写。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例创建一个名为“Custom”的新命令栏，并向其添加一个包含有四个列表项的组合框。然后用 Text 属性将“Item 3”设置为默认列表项。 </span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"Custom\"</span>, Application.Enum.msoBarTop, <span class=\"hljs-literal\">null</span>, <span class=\"hljs-literal\">true</span>)\n    myBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlComboBox, <span class=\"hljs-number\">1</span>)\n    myBar.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span>\n    <span class=\"hljs-keyword\">let</span> testComboBox = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    testComboBox.<span class=\"hljs-property\">Text</span> = <span class=\"hljs-string\">\"Item 3\"</span>\n\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "TooltipText",
+      "summary": "<p></p><p>默认情况下，<b>Caption</b> 属性的值将用作<b>“屏幕提示”</b>。<br/></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置 <b>CommandBarComboBox</b>的<b>“屏幕提示”</b>中显示的文本。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Top",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取指定的 <b>CommandBarComboBox</b> 控件顶边到屏幕顶边的距离（以像素为单位）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Type",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取 <b>CommandBarComboBox</b> 控件的类型。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Visible",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置 <b>CommandBarComboBox</b> 控件的 <b>Visible</b> ���性。如果 <b>CommandBarControl</b> 可见，则此属性为 <b>True</b>。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Width",
+      "summary": "<p></p><table><tbody><tr><th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>获取或设置指定的 <b>CommandBarComboBox</b> 控件的宽度（以像素为单位）。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "AddItem",
+      "summary": "<p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table><p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>此方法不能用于编辑框或内置的组合框控件。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>向指定命令栏组合框控件添加列表项。该组合框控件必须是自定义控件，并且必须是下拉列表框或组合框。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例在命令栏中添加一个组合框控件，然后在该控件中添加两项。本示例还设置项的行数和组合框的宽度。 </span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>)\n    <span class=\"hljs-keyword\">let</span> myControl = myBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlComboBox, <span class=\"hljs-number\">1</span>)\n    myControl.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"First Item\"</span>, <span class=\"hljs-number\">1</span>)\n    myControl.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"Second Item\"</span>, <span class=\"hljs-number\">2</span>)\n    myControl.<span class=\"hljs-property\">DropDownLines</span> = <span class=\"hljs-number\">3</span>\n    myControl.<span class=\"hljs-property\">DropDownWidth</span> = <span class=\"hljs-number\">75</span>\n    myControl.<span class=\"hljs-property\">ListHeaderCount</span> = <span class=\"hljs-number\">0</span>\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Text",
+          "type": "String",
+          "description": "要添加到控件的文字。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "Index",
+          "type": "Variant",
+          "description": "项在列表中的位置。如果省略该参数，项会被添加到列表的尾部。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Clear",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>如果将此方法应用于内置命令栏控件（WPS Office附带的控件），此方法将失败。</td></tr></tbody></table><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>从命令栏组合框控件（下拉列表框或组合框）中删除所有列表项。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例将检查名为“自定义栏”的命令栏上组合框控件中的项目数。如果组合框的列表中的项目数少于 3，那么本示例清除该列表，在其中添加新的第一项，然后将该新项目显示为组合框控件的默认值。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom Bar\"</span>)\n    <span class=\"hljs-keyword\">let</span> myControl = myBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(Application.Enum.msoControlComboBox)\n    myControl.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"First Item\"</span>, <span class=\"hljs-number\">1</span>)\n    myControl.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"Second Item\"</span>, <span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-keyword\">if</span>(myControl.<span class=\"hljs-property\">ListCount</span> &lt; <span class=\"hljs-number\">3</span>)\n    {\n        myControl.<span class=\"hljs-title class_\">Clear</span>()\n        myControl.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"New Item\"</span>, <span class=\"hljs-number\">1</span>)\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Copy",
+      "summary": "<table><tbody><tr><th><img/>注释</th></tr><tr><td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>将一个命令栏组合框控件复制到已有的命令栏中。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Bar",
+          "type": "Variant",
+          "description": "一个代表目标命令栏的 CommandBar 对象。如果省略此参数，控件将被复制到它原来所在的命令栏中。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Before",
+          "type": "Variant",
+          "description": "一个指示新控件在命令栏上位置的数值。新控件将插入到位于此位置的控件之前。如果省略此参数，控件将被复制到命令栏的末尾。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": "CommandBarControl"
+    },
+    {
+      "name": "Delete",
+      "summary": "",
+      "description": "<p>将 <b>CommandBarCombo</b>&nbsp;控件对象从其集合中删除。在某些 WPS \nOffice应用程序中，CommandBar 已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Temporary",
+          "type": "Variant",
+          "description": "如果为 True，则从当前会话中删除此控件。应用程序在下次会话中将再次显示该控件。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "Execute",
+      "summary": "<p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>运行分配给指定 <b>CommandBarComboBox</b> 控件的过程或内置命令。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本 ET 示例创建一个命令栏，然后向其中添加内置命令栏按钮控件。该按钮将执行 ET AutoSum 函数。本示例使用 Execute 方法在显示该命令栏时计算选定单元格区域的总计。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> cbrCustBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"Custom\"</span>)\n    <span class=\"hljs-keyword\">let</span> ctlAutoSum = cbrCustBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlButton, <span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Standard\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"AutoSum\"</span>).<span class=\"hljs-property\">Id</span>)\n    cbrCustBar.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span> \n    ctlAutoSum.<span class=\"hljs-title class_\">Execute</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Move",
+      "summary": "<p>\n</p><p>\n</p><p>\n</p><table>\n<tbody><tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>将指定的控件移动到已有的命令栏。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例将名为 Custom 的命令栏上的第一个组合框控件移动到该命令栏上的第七个控件之前。本示例将 Tag 设置为“Selection box”并赋予控件较低的优先级，以便在一行容纳不下所有控件时将其隐藏。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> allcontrols = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>).<span class=\"hljs-property\">Controls</span>\n    <span class=\"hljs-keyword\">for</span>(<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>; i &lt;= allControls.<span class=\"hljs-property\">Count</span>; i++)\n    {\n        <span class=\"hljs-keyword\">if</span>(allControls.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Type</span> == Application.Enum.msoControlComboBox)\n    \t{\n            allControls.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-title class_\">Move</span>(<span class=\"hljs-literal\">undefined</span>,<span class=\"hljs-number\">7</span>)\n            allControls.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Tag</span> = <span class=\"hljs-string\">\"Selection box\"</span>\n            allControls.<span class=\"hljs-title class_\">Item</span>(i).<span class=\"hljs-property\">Priority</span> = <span class=\"hljs-number\">5</span>\n        }\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Bar",
+          "type": "Variant",
+          "description": "一个代表控件的目标命令栏的 Command 对象。如果忽略该参数，则控件将移动到当前所在命令栏的末端。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "Before",
+          "type": "Variant",
+          "description": "表示控件位置的数字。控件将插到该位置的控件之前。如果忽略该参数，控件插入到同一命令栏。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    },
+    {
+      "name": "RemoveItem",
+      "summary": "<p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>本属性只能用于列表框控件。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>从 <b>CommandBarComboBox</b> 控件中删除一项。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例确定指定组合框所含的列表项是否多于三项。如果多于三项，那么本示例将删除第二项，更改样式并设置一个新值。此外，本示例还设置了父对象（即 CommandBarControl 对象）的 Tag 属性以表明该列表发生了变化。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> myBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"Custom\"</span>, Application.Enum.msoBarTop,<span class=\"hljs-literal\">undefined</span>, <span class=\"hljs-literal\">true</span>)\n    myBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlComboBox, <span class=\"hljs-number\">1</span>)\n    myBar.<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span> \n    <span class=\"hljs-keyword\">let</span> myControls = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    myControls.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"Get Stock Quote\"</span>, <span class=\"hljs-number\">1</span>)\n    myControls.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"View Chart\"</span>, <span class=\"hljs-number\">2</span>)\n    myControls.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"View Fundamentals\"</span>, <span class=\"hljs-number\">3</span>)\n    myControls.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"View News\"</span>, <span class=\"hljs-number\">4</span>)\n    myControls.<span class=\"hljs-property\">Caption</span> = <span class=\"hljs-string\">\"Stock Data\"</span>\n    myControls.<span class=\"hljs-property\">DescriptionText</span> = <span class=\"hljs-string\">\"View Data For Stock\"</span>\n    <span class=\"hljs-keyword\">let</span> myControl = myBar.<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">1</span>)\n    <span class=\"hljs-keyword\">if</span>(myControl.<span class=\"hljs-property\">ListCount</span> &gt; <span class=\"hljs-number\">3</span>)\n    {\n       myControl.<span class=\"hljs-title class_\">RemoveItem</span>(<span class=\"hljs-number\">2</span>)\n       myControl.<span class=\"hljs-property\">Style</span> = Application.Enum.msoComboNormal\n       myControl.<span class=\"hljs-property\">Text</span> = <span class=\"hljs-string\">\"New Default\"</span>\n       <span class=\"hljs-keyword\">let</span> ctrl = myControl.<span class=\"hljs-property\">Parent</span>\n    }\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "Reset",
+      "summary": "<p>\n</p><p>\n</p><p></p><p>\n</p><p>\n</p><p></p><p>重置一个内置控件将恢复该控件原来对应的动作，并将各属性恢复成初始状态。重置一个内置命令栏将删除其中的自定义控件并恢复其内置控件。</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p></p><p>将内置命令栏重置为其默认配置，或将内置 <b>CommandBarComboBox</b> \n控件重置为其初始功能和图符。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例自定义一个命令栏组合框。首先，将组合框重置为其默认状态。然后将两个行项添加到组合框，并设置各种属性。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> combo = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-number\">2</span>)\n    combo.<span class=\"hljs-title class_\">Reset</span>()\n    combo.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"First Item\"</span>, <span class=\"hljs-number\">1</span>)\n    combo.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"Second Item\"</span>, <span class=\"hljs-number\">2</span>)\n    combo.<span class=\"hljs-property\">DropDownLines</span> = <span class=\"hljs-number\">3</span>\n    combo.<span class=\"hljs-property\">DropDownWidth</span> = <span class=\"hljs-number\">75</span>\n    combo.<span class=\"hljs-property\">ListIndex</span> = <span class=\"hljs-number\">0</span>\n\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    },
+    {
+      "name": "SetFocus",
+      "summary": "<p>\n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th><img/>注释</th></tr>\n<tr>\n<td>在某些 WPS Office应用程序中，CommandBar \n已被新的功能区用户界面取代。有关详细信息，请在帮助中搜索关键字“功能区”。</td></tr></tbody></table>",
+      "description": "<p>\n</p><p>将键盘的焦点移到指定 <b>CommandBarComboBox</b> \n控件。如果该控件被禁用或不可见，那么此方法将失败。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//本示例创建一个名为“Custom”的命令栏，并在其中添加一个 ComboBox 控件和一个 Button 控件，然后使用 SetFocus 方法为 ComboBox 控件设置焦点。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-keyword\">let</span> focusBar = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"Custom\"</span>)\n    <span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>).<span class=\"hljs-property\">Visible</span> = <span class=\"hljs-literal\">true</span> \n    <span class=\"hljs-title class_\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>).<span class=\"hljs-property\">Position</span> = Application.Enum.msoBarTop\n    \t\t\t\t\t\t\t\t\t\n    <span class=\"hljs-keyword\">let</span> testComboBox = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlComboBox, <span class=\"hljs-number\">1</span>)\n    testComboBox.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"First Item\"</span>, <span class=\"hljs-number\">1</span>)\n    testComboBox.<span class=\"hljs-title class_\">AddItem</span>(<span class=\"hljs-string\">\"Second Item\"</span>, <span class=\"hljs-number\">2</span>)\n    <span class=\"hljs-keyword\">let</span> testButton = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">CommandBars</span>.<span class=\"hljs-title class_\">Item</span>(<span class=\"hljs-string\">\"Custom\"</span>).<span class=\"hljs-property\">Controls</span>.<span class=\"hljs-title class_\">Add</span>(Application.Enum.msoControlButton)\n    testButton.<span class=\"hljs-property\">FaceId</span> = <span class=\"hljs-number\">17</span>\n    <span class=\"hljs-comment\">// Set the focus to the combo box.</span>\n    testComboBox.<span class=\"hljs-title class_\">SetFocus</span>()\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

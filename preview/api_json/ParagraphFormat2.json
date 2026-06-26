@@ -1,0 +1,218 @@
+{
+  "name": "ParagraphFormat2",
+  "summary": "<p>\n</p><p>\n</p><p>以下示例将活动 PowerPoint 演示文稿第一张幻灯片第二个形状中的段落左对齐。 \n</p><p>\n</p><table>\n<tbody>\n<tr>\n<th>示例代码</th></tr>\n<tr>\n<td><pre><code>Application.ActiveWorkbook.ActiveChart.Shapes.Item(1).SmartArt.AllNodes.Item(1).TextFrame2.TextRange.Text=\"Node 1\"\n</code></pre></td></tr></tbody></table>",
+  "description": "<p>\n</p><p>\n</p><p>代表文本范围的段落格式。</p>",
+  "properties": [
+    {
+      "name": "Alignment",
+      "summary": "",
+      "description": "<p>获取或设置一个值，该值指定段落的对齐方式。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个代表包含该对象的应用程序的对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "BaseLineAlignment",
+      "summary": "",
+      "description": "<p>获取或设置一个常量，该常量代表段落中字体的垂直位置。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Bullet",
+      "summary": "",
+      "description": "<p>获取段落的 <b>BulletFormat2</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个值，该值代表创建 <b>ParagraphFormat2</b> 对象的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "FarEastLineBreakLevel",
+      "summary": "",
+      "description": "<p>获取或设置指定段落的东亚换行符控制级别。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "FirstLineIndent",
+      "summary": "",
+      "description": "<p>&nbsp;获取或设置首行缩进或悬挂缩进的值（以磅值表示）。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "HangingPunctuation",
+      "summary": "",
+      "description": "<p>确定指定段落中的标点是否可以溢出边界。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "IndentLevel",
+      "summary": "",
+      "description": "<p>获取或设置一个值，该值代表分配给选定段落中的文本的缩进级别。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "LeftIndent",
+      "summary": "",
+      "description": "<p>返回或设置一个值，该值代表指定段落的左缩进值（以磅为单位）。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "LineRuleAfter",
+      "summary": "",
+      "description": "<p>确定是否将每段最后一行后面的行距设为特定的磅数或行数。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "LineRuleBefore",
+      "summary": "",
+      "description": "<p>确定是否将每段首行前面的行距设为特定的磅数或行数。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "LineRuleWithin",
+      "summary": "",
+      "description": "<p>确定是否将基线间的行距设为特定的磅数或行数。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>ParagraphFormat2</b> 对象的父对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "RightIndent",
+      "summary": "",
+      "description": "<p>获取或设置指定段落的右缩进量（以磅为单位）。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "SpaceAfter",
+      "summary": "",
+      "description": "<p>获取或设置指定段落的段后间距（以磅为单位）。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "SpaceBefore",
+      "summary": "",
+      "description": "<p>获取或设置指定段落的段前间距（以磅为单位）。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "SpaceWithin",
+      "summary": "",
+      "description": "<p>获取或设置指定段落中基准行之间的距离（以磅或行为单位）。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "TabStops",
+      "summary": "",
+      "description": "<p>获取一个代表指定段落的所有自定义制表位的 <b>TabStops2</b> 集合。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "TextDirection",
+      "summary": "",
+      "description": "<p>获取或设置指定段落的文本方向。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "WordWrap",
+      "summary": "",
+      "description": "<p>确定应用程序是否在指定段落的语句中对拉丁语文本换行。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

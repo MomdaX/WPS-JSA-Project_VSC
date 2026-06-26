@@ -1,0 +1,58 @@
+{
+  "name": "SoftEdgeFormat",
+  "summary": "",
+  "description": "<p>代表形状或形状区域的软边缘格式。<br/></p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>返回一个代表 WPS  Office 应用程序的 <a>Application</a>对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "<p>如果对象是在 WPS  中创建的，则 <b>Creator</b> 属性返回十六进制数 4D535744，代表 <b>string</b>“WPS”。该属性主要设计用于 Apple Macintosh 平台，在该平台上，每个应用程序都有一个由四个字符组成的创建者代码。例如， WPS 的创建者代码是 WPS。有关该属性的详细信息，请参考 WPS  OfficeMacintosh Edition 附带的语言参考帮助。</p><noscript>\t    &lt;STYLE TYPE=\"text/CSS\"&gt;\t\t    .ACICollapsed\t\t    {\t\t\t    display: inline;\t\t    }\t\t    .ACECollapsed\t\t    {\t\t\t    display: block;\t\t    }\t    &lt;/STYLE&gt;     </noscript>\t     \n\n    \n      <table><tbody><tr><th><br/></th></tr><tr><td>该值也可用常量 <b>wdCreatorCode</b> 表示。</td></tr></tbody></table>",
+      "description": "<p>返回表示用于创建指定对象的应用程序的 32 位整数。只读 <b>。</b><br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>返回代表指定 <b>SoftEdgeFormat</b> 对象的父对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object ",
+      "readonly": true
+    },
+    {
+      "name": "Radius",
+      "summary": "",
+      "description": "<p>返回或设置 <b>Single</b> 类型值，该值代表柔化边缘效果的辐射长度。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Single",
+      "readonly": true
+    },
+    {
+      "name": "Type",
+      "summary": "",
+      "description": "<p>返回或设置一个 <b>MsoBevelType</b> 常量，该常量代表使用软边缘格式的图像边缘的棱台类型。可读写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "MsoBevelType",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

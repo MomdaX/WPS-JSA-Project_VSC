@@ -1,0 +1,57 @@
+{
+  "name": "FileDialogSelectedItems",
+  "summary": "<p>\n</p><p><b>示例</b><br/>\n</p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-keyword\">function</span> <span style=\"white-space: normal; word-spacing: normal; text-indent: initial;\">test</span><span style=\"word-spacing: normal; text-indent: initial;\">(</span><span class=\"hljs-params\" style=\"word-spacing: normal; text-indent: initial;\"></span><span style=\"word-spacing: normal; text-indent: initial;\">) {</span><br/>\n    <span class=\"hljs-comment\">//Declare a variable as a FileDialog object.</span>\n\n    <span class=\"hljs-comment\">//Create a FileDialog object as a File Picker dialog box.</span>\n    <span class=\"hljs-keyword\">let</span> fd = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-title class_\">FileDialog</span>(Application.Enum.msoFileDialogFilePicker)\n\n    <span class=\"hljs-comment\">//Declare a variable to contain the path</span>\n    <span class=\"hljs-comment\">//of each selected item. Even though the path is aString,</span>\n    <span class=\"hljs-comment\">//the variable must be a Variant because For Each...Next</span>\n    <span class=\"hljs-comment\">//routines only work with Variants and Objects.</span>\n\n    <span class=\"hljs-comment\">//Use a With...End With block to reference the FileDialog object.</span>\n            \n         <span class=\"hljs-comment\">//Allow the selection of multiple file. </span>\n        fd.<span class=\"hljs-property\">AllowMultiSelect</span> = <span class=\"hljs-literal\">true</span> \n\n        <span class=\"hljs-comment\">//Use the Show method to display the File Picker dialog box and return the user's action.</span>\n        <span class=\"hljs-comment\">//The user pressed the button.</span>\n        <span class=\"hljs-keyword\">if</span>(fd.<span class=\"hljs-title class_\">Show</span>() == -<span class=\"hljs-number\">1</span>) {\n\n            <span class=\"hljs-comment\">//Step through each string in the FileDialogSelectedItems collection</span>\n            <span class=\"hljs-keyword\">for</span>(<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">1</span>;i &lt;= fd.<span class=\"hljs-property\">SelectedItems</span>.<span class=\"hljs-property\">Count</span>;i++) {\n                <span class=\"hljs-keyword\">let</span> vrtSelectedItem = fd.<span class=\"hljs-property\">SelectedItems</span>.<span class=\"hljs-title class_\">Item</span>(i)\n                <span class=\"hljs-comment\">//vrtSelectedItem is aString that contains the path of each selected item.</span>\n                <span class=\"hljs-comment\">//You can use any file I/O functions that you want to work with this path.</span>\n                <span class=\"hljs-comment\">//This example displays the path in a message box.</span>\n                <font color=\"#55d4ff\" data-darkreader-inline-color=\"\" style=\"--darkreader-inline-color:#55d4ff;\">alert</font>(<span class=\"hljs-string\">\"Selected item's path: \"</span> + vrtSelectedItem)\n\n            }\n        }\n        <span class=\"hljs-comment\">//The user pressed Cancel.</span>\n        <span class=\"hljs-keyword\">else</span> { }\n        \n\n    <span class=\"hljs-comment\">//Set the object variable to Nothing.</span>\n    fd = <span class=\"hljs-literal\">null</span>\n\n}</code></pre></td></tr></tbody></table></div><p>使用 <b>FileDialog</b> 对象的 <b>SelectedItems</b> 属性可返回一个 <b>FileDialogSelectedItems</b> 集合。下面的示例显示一个<b>“File Picker”</b>对话框，并在消息框中显示每个选定的文件。</p>",
+  "description": "<p>\n</p><p><b>String</b> 值的集合，这些值对应于通过 <b>FileDialog</b> 对象显示的文件对话框中用户所选文件或文件夹路径。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>FileDialogSelectedItems</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>\n</p><p>获取一个 <b>Long</b> 类型的值，指示 <b>FileDialogSelectedItem</b>s 集合中的项数。只读。</p>",
+      "examples": "<p>下面的示例显示一个“File Picker”对话框，并在消息框中显示每个选定的文件。<br/></p><div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>) {\n\n    <span class=\"hljs-comment\">//Declare a variable as a FileDialog object.</span>\n\n    <span class=\"hljs-comment\">//Create a FileDialog object as a File Picker dialog box.</span>\n    <span class=\"hljs-keyword\">let</span> fd = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-title class_\">FileDialog</span>(Application.Enum.msoFileDialogFilePicker)\n\n    <span class=\"hljs-comment\">//Declare a variable to contain the path</span>\n    <span class=\"hljs-comment\">//of each selected item. Even though the path is aString,</span>\n    <span class=\"hljs-comment\">//the variable must be a Variant because For Each...Next</span>\n    <span class=\"hljs-comment\">//routines only work with Variants and Objects.</span>\n\n    <span class=\"hljs-comment\">//Use a With...End With block to reference the FileDialog object.</span>\n            \n        <span class=\"hljs-comment\">//Allow the selection of multiple file.</span>\n        fd.<span class=\"hljs-property\">AllowMultiSelect</span> = <span class=\"hljs-literal\">true</span> \n\n        <span class=\"hljs-comment\">//Use the Show method to display the File Picker dialog box and return the user's action.</span>\n        <span class=\"hljs-comment\">//The user pressed the button.</span>\n        <span class=\"hljs-keyword\">if</span>(fd.<span class=\"hljs-title class_\">Show</span>() == -<span class=\"hljs-number\">1</span>) {\n\n            <span class=\"hljs-comment\">//Step through each string in the FileDialogSelectedItems collection</span>\n            <span class=\"hljs-keyword\">for</span>(<span class=\"hljs-keyword\">let</span> cnt = <span class=\"hljs-number\">1</span>;cnt &lt;= fd.<span class=\"hljs-property\">SelectedItems</span>.<span class=\"hljs-property\">Count</span>;cnt++) {\n                <span class=\"hljs-keyword\">let</span> vrtSelectedItem = fd.<span class=\"hljs-property\">SelectedItems</span>\n                <span class=\"hljs-comment\">//vrtSelectedItem is aString that contains the path of each selected item.</span>\n                <span class=\"hljs-comment\">//You can use any file I/O functions that you want to work with this path.</span>\n                <span class=\"hljs-comment\">//This example displays the path in a message box.</span>\n                <span class=\"hljs-title class_\">alert</span>(<span class=\"hljs-string\">\"Selected item's path: \"</span> + vrtSelectedItem.<span class=\"hljs-title class_\">Item</span>(cnt))\n\n            }\n        }\n        <span class=\"hljs-comment\">//The user pressed Cancel.</span>\n        <span class=\"hljs-keyword\">else</span> { }\n\n\n    <span class=\"hljs-comment\">//Set the object variable to Nothing.</span>\n    fd = <span class=\"hljs-literal\">null</span>\n\n}</code></pre></td></tr></tbody></table></div>",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>FileDialogSelectedItems</b> \n对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": " Long",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>FileDialogSelectedItems</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "Object",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>获取一个 <b>String</b> 类型的值，对应于用户在使用 <b>FileDialog</b> 对象的 <b>Show</b> \n方法显示的文件对话框中所选择的文件之一的路径。</p>",
+      "examples": "",
+      "parameters": [],
+      "returns": ""
+    }
+  ]
+}

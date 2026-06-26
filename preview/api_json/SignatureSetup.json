@@ -1,0 +1,128 @@
+{
+  "name": "SignatureSetup",
+  "summary": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">/*以下示例将设置签名数据包的 SignatureSetup 对象的各种属性。*/</span>\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">test</span>(<span class=\"hljs-params\"></span>)</span>{\n    <span class=\"hljs-keyword\">var</span> objSigSetup = Application.ActiveWorkbook.Signatures\n    objSigSetup.AllowComments = <span class=\"hljs-literal\">true</span> \n    objSigSetup.ShowSignDate = <span class=\"hljs-literal\">true</span> \n    objSigSetup.SigningInstructions = <span class=\"hljs-string\">\"Please sign this document.\"</span> \n    objSigSetup.SuggestedSignerEmail = <span class=\"hljs-string\">\"jdow@example.com\"</span>\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p></p><p>代表用于设置签名数据包的信息。</p>",
+  "properties": [
+    {
+      "name": "AdditionalXml",
+      "summary": "",
+      "description": "<p>获取或设置在设置过程中添加到签名的任何附加 XML 信息。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "AllowComments",
+      "summary": "",
+      "description": "<p>获取或设置一个 <b>Boolean</b> 类型的值，指定签署人是否可以在<b>“签名”</b>对话框中输入注释。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Boolean",
+      "readonly": true
+    },
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个代表 <b>SignatureSetup</b> 对象的容器应用程序的 <b>Application</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Object",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>SignatureSetup</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Long",
+      "readonly": true
+    },
+    {
+      "name": "Id",
+      "summary": "",
+      "description": "<p>获取文档的签名提供程序的 ID。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "ReadOnly",
+      "summary": "",
+      "description": "<p>获取一个 <b>Boolean</b> 类型的值，指示 <b>SignatureSetup</b> 对象是否为只读。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Boolean",
+      "readonly": true
+    },
+    {
+      "name": "ShowSignDate",
+      "summary": "",
+      "description": "<p>获取或设置一个 <b>Boolean</b> 类型的值，指示是否应显示文档的签署日期。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "Boolean",
+      "readonly": true
+    },
+    {
+      "name": "SignatureProvider",
+      "summary": "",
+      "description": "<p>获取一个标识所安装的签名提供程序加载项的值。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "SigningInstructions",
+      "summary": "",
+      "description": "<p>获取或设置用于签署文档的指令。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "SuggestedSigner",
+      "summary": "",
+      "description": "<p>获取或设置文档主要签署人的名称。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "SuggestedSignerEmail",
+      "summary": "",
+      "description": "<p>获取或设置文档签署人的电子邮件地址。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    },
+    {
+      "name": "SuggestedSignerLine2",
+      "summary": "",
+      "description": "<p>获取或设置建议签署人信息的第二行（例如，职务）。可读/写。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "String",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

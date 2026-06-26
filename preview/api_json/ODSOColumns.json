@@ -1,0 +1,66 @@
+{
+  "name": "ODSOColumns",
+  "summary": "<p>\n</p><p><br/></p><p>\n</p>",
+  "description": "<p>\n</p><p>\n</p><p>代表邮件合并数据源中的数据字段的 <b>ODSOColumn</b> 对象的集合。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>ODSOColumns</b> 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>获取一个 <b>Long</b> 类型的值，指示 <b>ODSOColumns</b> 集合中的项数。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>ODSOColumns</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>ODSOColumns</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>\n</p><p>指定 <b>ODSOColumns</b> 集合中的 <b>ODSOColumn</b> 对象。</p>",
+      "examples": "<div id=\"vstable\"><br/></div>",
+      "parameters": [
+        {
+          "name": "varIndex",
+          "type": "Variant",
+          "description": "项目的索引号。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    }
+  ]
+}

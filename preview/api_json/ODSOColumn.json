@@ -1,0 +1,68 @@
+{
+  "name": "ODSOColumn",
+  "summary": "<p>\n</p><p><b>ODSOColumns</b> \n集合包括邮件合并数据源中的所有数据字段（例如，姓名、地址和城市）。</p><p>不能向 <b>ODSOColumns</b> 集合添加字段。<b>ODSOColumns</b> 集合自动包括数据源中的所有数据字段。</p><p>\n\n</p><p>使用 <a>Columns</a> (<i>index</i>) \n返回单个 <b>ODSOColumn</b> 对象，其中 <i>index</i> \n��数据字段名或索引号。索引号表示数据字段在邮件合并数据源中的位置。</p><p>\n</p><br/>",
+  "description": "<p>\n</p><p>\n</p><p>代表数据源中的一个字段。<b>ODSOColumn</b> 对象是 <b>ODSOColumns</b> 集合的成员。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，代表 <b>ODSOColum</b>n 对象的容器应用程序（可以使用 <b>Automation</b> 对象的此属性返回该对象的容器应用程序）。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>ODSOColumn</b> 对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Index",
+      "summary": "",
+      "description": "<p>获取一个 <b>Long</b> 类型的值，代表集合中 <b>ODSOColumn</b> 对象的索引号。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Name",
+      "summary": "",
+      "description": "<p>获取邮件合并数据源中的数据字段的名称。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>ODSOColumn</b> 对象的 <b>Parent</b> \n对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Value",
+      "summary": "",
+      "description": "<p>获取邮件合并数据源中的数据字段的值。只读。</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

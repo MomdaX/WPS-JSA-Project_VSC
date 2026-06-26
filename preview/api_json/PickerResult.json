@@ -1,0 +1,108 @@
+{
+  "name": "PickerResult",
+  "summary": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//下面的代码设置选取器对话框的属性，然后显示选取器对话框。</span>\n<span class=\"hljs-keyword\">function</span> <span class=\"hljs-title function_\">test</span>(<span class=\"hljs-params\"></span>)\n{\n    <span class=\"hljs-comment\">// Configure the Picker Dialog properties.</span>\n    <span class=\"hljs-keyword\">let</span> objPickerDialog = <span class=\"hljs-title class_\">Application</span>.<span class=\"hljs-property\">PickerDialog</span>\n    objPickerDialog.<span class=\"hljs-property\">DataHandlerId</span> = <span class=\"hljs-string\">\"{000CDF0A-0000-0000-C000-000000000046}\"</span>\n    objPickerDialog.<span class=\"hljs-property\">Title</span> = <span class=\"hljs-string\">\"Sample Picker Dialog\"</span>\n    <span class=\"hljs-keyword\">let</span> objPickerProperties = objPickerDialog.<span class=\"hljs-property\">Properties</span>\n    <span class=\"hljs-keyword\">let</span> objPickerProperty = objPickerProperties.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"SiteUrl\"</span>, <span class=\"hljs-string\">\"http://my\"</span>, Application.Enum.msoPickerFieldText)\n    <span class=\"hljs-keyword\">let</span> objPickerExistingResults = objPickerDialog.<span class=\"hljs-title class_\">CreatePickerResults</span>()\n    <span class=\"hljs-keyword\">let</span> objPickerExistingResult = objPickerExistingResults.<span class=\"hljs-title class_\">Add</span>(<span class=\"hljs-string\">\"johndoe@contoso.com\"</span>, <span class=\"hljs-string\">\"John Doe\"</span>, <span class=\"hljs-string\">\"User\"</span>)\n     \n    <span class=\"hljs-comment\">// Show the Picker Dialog and get the results.</span>\n    <span class=\"hljs-keyword\">let</span> objPickerResults = objPickerDialog.<span class=\"hljs-title class_\">Show</span>(<span class=\"hljs-literal\">true</span>, objPickerExistingResult)\n}</code></pre></td></tr></tbody></table></div>",
+  "description": "<p>\n</p><p>\n</p><p>代表解析的或选定的项目数据。</p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个 <b>Application</b> 对象，该对象代表 <b>PickerResult</b> 对象的容器应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，该整数指示在其中创建了 <b>PickerResult</b> 对象的应用程序。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "DisplayName",
+      "summary": "",
+      "description": "<p>代表 PickerResult 的显示名称。可读/写<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "DuplicateResults",
+      "summary": "",
+      "description": "<p>如果对结果进行解析的结果有多个候选项，则获取 PickerResult 集合。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Fields",
+      "summary": "",
+      "description": "<p>代表 PickerFields 集合内子项的字段定义。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Id",
+      "summary": "",
+      "description": "<p>检索关联的 <b>PickerResult</b> 对象的唯一 Id。只读<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "ItemData",
+      "summary": "",
+      "description": "<p>获取或设置绑定到数据的不用于显示的项。可读/写<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "SIPId",
+      "summary": "",
+      "description": "<p>是 Office Communication Server 的标识符。它仅用于人员选取方案。可读/写<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "SubItems",
+      "summary": "",
+      "description": "<p>显示用于显示或不用于显示的 PickerResult 对象的字段数据。它用于在选取器对话框中传递列值。可读/写<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Type",
+      "summary": "",
+      "description": "<p>\n</p><p></p><p>代表 <b>PickerResult</b> 对象的类型。可读/写</p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": []
+}

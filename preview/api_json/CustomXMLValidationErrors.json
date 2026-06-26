@@ -1,0 +1,109 @@
+{
+  "name": "CustomXMLValidationErrors",
+  "summary": "",
+  "description": "<p>代表 <b>CustomXMLValidationError</b> 对象的集合。<br/></p>",
+  "properties": [
+    {
+      "name": "Application",
+      "summary": "",
+      "description": "<p>获取一个代表 <b>CustomXMLValidationErrors</b> 对象的容器应用程序的 <b>Application</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Count",
+      "summary": "",
+      "description": "<p>获取一个 <b>Long</b> 类型的值，指示 <b>CustomXMLValidationErrors</b> 集合中的项数。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Creator",
+      "summary": "",
+      "description": "<p>获取一个 32 位整数，指示创建 <b>CustomXMLValidationErrors</b> \n对象时所使用的应用程序。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Item",
+      "summary": "",
+      "description": "<p>获取 <b>CustomXMLValidationErrors</b> 集合中的一个 <b>CustomXMLValidationError</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [
+        {
+          "name": "Index",
+          "type": "Long",
+          "description": "要返回的 CustomXMLValidationError 对象的名称或索引号。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        }
+      ],
+      "type": "",
+      "value": "",
+      "readonly": true
+    },
+    {
+      "name": "Parent",
+      "summary": "",
+      "description": "<p>获取 <b>CustomXMLValidationErrors</b> 对象的 <b>Parent</b> 对象。只读。<br/></p>",
+      "examples": "",
+      "parameters": [],
+      "type": "",
+      "value": "",
+      "readonly": true
+    }
+  ],
+  "functions": [
+    {
+      "name": "Add",
+      "summary": "",
+      "description": "<p>\n</p><p>将包含 XML 验证错误的 <b>CustomXMLValidationError</b> 对象添加到 <b>CustomXMLValidationErrors</b> 集合。</p>",
+      "examples": "<div id=\"vstable\"><table width=\"100%\"><tbody><tr><th>示例代码<span class=\"copy\" onclick=\"copyCode(this)\">复制</span></th></tr><tr><td><pre><code class=\"JavaScript\"><span class=\"hljs-comment\">//以下示例将一个错误消息添加到集合。</span>\nfunction test()\n{\n    let coreNode = Application.ActivePresentation.CustomXMLParts.Item(1).SelectSingleNode(\"/ns1:coreProperties[1]\")\n    Application.ActivePresentation.CustomXMLParts.Item(1).Errors.Add(coreNode , \"ValidationError\", \"To add content to this stream, it must be valid, well-formed XML.\", true)\n}<br/></code></pre></td></tr></tbody></table></div>",
+      "parameters": [
+        {
+          "name": "Node",
+          "type": "CustomXMLNode",
+          "description": "代表其中发生了错误的节点。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "ErrorName",
+          "type": "String",
+          "description": "包含错误的名称。",
+          "default": "",
+          "optional": false,
+          "nullable": ""
+        },
+        {
+          "name": "ErrorText",
+          "type": "String",
+          "description": "包含描述性错误文本。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        },
+        {
+          "name": "ClearedOnUpdate",
+          "type": "Boolean",
+          "description": "指定在更正并更新了 XML 后是否要从 CustomXMLValidationErrors 集合中清除错误。",
+          "default": "",
+          "optional": true,
+          "nullable": ""
+        }
+      ],
+      "returns": ""
+    }
+  ]
+}
