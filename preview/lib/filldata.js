@@ -51,8 +51,17 @@ function FillObjectSummary(jsData) {
     return;
   }
   template_summary.innerHTML = '<p><b class="mainheaders">说明</b></p>';
+
+  // 预处理：将 <p>xxx</p><div id="vstable">...<th>示例代码 → <div id="vstable">...<th><span>xxx</span>
+  var summaryHtml = jsData.summary.replace(
+    /<p>([\s\S]*?)<\/p>(\s*)<div id="vstable">([\s\S]*?)<th>示例代码/g,
+    function(match, pContent, space, vsContent) {
+      return '<div id="vstable">' + vsContent + '<th><span>' + pContent + '</span>';
+    }
+  );
+
   var p = document.createElement('p');
-  p.innerHTML = jsData.summary;
+  p.innerHTML = summaryHtml;
   template_summary.appendChild(p);
 }
 
@@ -70,7 +79,7 @@ function FillFunctionTable(jsData) {
     var rowElem = document.createElement('tr');
     var itemId = jsData.name + '.' + fItem.name;
     rowElem.innerHTML =
-      '<td class="icon-cell"><img src="img/methods.gif" alt="方法" style="width:16px;height:16px;"></td>' +
+      '<td class="icon-cell"><img src="img/methods.gif" alt="方法" style="width:32px;height:32px;"></td>' +
       '<td class="name-cell"><b><a href="javascript:void(0)" onclick="expandOnly(\'' + itemId + '\')">' + fItem.name + '</a></b></td>' +
       '<td class="desc-cell">' + (fItem.description || '') + '</td>';
     tplFuncs.appendChild(rowElem);
@@ -91,7 +100,7 @@ function FillPropertyTable(jsData) {
     var rowElem = document.createElement('tr');
     var itemId = jsData.name + '.' + pItem.name;
     rowElem.innerHTML =
-      '<td class="icon-cell"><img src="img/properties.gif" alt="属性" style="width:16px;height:16px;"></td>' +
+      '<td class="icon-cell"><img src="img/properties.gif" alt="属性" style="width:32px;height:32px;"></td>' +
       '<td class="name-cell"><b><a href="javascript:void(0)" onclick="expandOnly(\'' + itemId + '\')">' + pItem.name + '</a></b></td>' +
       '<td class="desc-cell">' + (pItem.description || '') + '</td>';
     tplProps.appendChild(rowElem);
@@ -105,7 +114,12 @@ function FillFunctionsDetail(jsData) {
     functions_details.innerHTML = '';
     return;
   }
-  functions_details.innerHTML = '<p><b class="mainheaders">成员方法</b></p><div id="funcs_details_content"></div>';
+  functions_details.innerHTML = '<p><b class="mainheaders">成员方法</b>' +
+    '<button id="toggleAllBtn" onclick="toggleAll()" ' +
+    'style="float:right;padding:2px 10px;border:1px solid var(--color-primary);' +
+    'background:rgba(0,180,216,0.1);color:var(--color-primary);border-radius:4px;' +
+    'cursor:pointer;font-size:12px;line-height:1.6;">展开全部</button></p>' +
+    '<div id="funcs_details_content"></div>';
   var tplDetailFuns = document.getElementById('funcs_details_content');
   _.forEach(jsData.functions, function(fItem) {
     tplDetailFuns.appendChild(createMemDetailHtml('functions', jsData.name, fItem));

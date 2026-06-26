@@ -24,7 +24,7 @@
       --bg-sidebar-active: rgba(0, 180, 255, 0.15);
       --bg-group-title: rgba(255,255,255,0.03);
       --bg-footer: rgba(255,255,255,0.03);
-      --bg-detail-item: rgba(255,255,255,0.04);
+      --bg-detail-item: rgba(10, 36, 60, 0.6);
       --bg-detail-hover: rgba(0, 180, 255, 0.08);
       --bg-search: rgba(255,255,255,0.06);
       --bg-signature: rgba(0, 180, 255, 0.08);
@@ -60,36 +60,35 @@
 
       --bg-pre: #0d1117;
       --text-pre: #c9d1d9;
-      --bg-pre-alt: #0d1117;
     }
 
     /* ===== 代码块深色主题（hljs 原生类名） ===== */
     pre {
       background: var(--bg-pre) !important;
       color: var(--text-pre);
+      border-radius: 6px;
+      padding: 16px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 12px 0;
     }
     pre code {
+      font-family: "Consolas", "Courier New", monospace;
       color: var(--text-pre);
     }
+    code { font-family: "Consolas", "Courier New", monospace; font-size: 13px; }
     .hljs-comment { color: #6a9955 !important; font-style: italic; }
-    .hljs-keyword { color: #569cd6 !important; }
+    .hljs-keyword, .hljs-literal, .hljs-meta { color: #569cd6 !important; }
     .hljs-string { color: #ce9178 !important; }
     .hljs-number { color: #b5cea8 !important; }
-    .hljs-built_in { color: #4ec9b0 !important; }
-    .hljs-title.function_ { color: #dcdcaa !important; }
-    .hljs-title.class_ { color: #4ec9b0 !important; }
-    .hljs-params { color: #9cdcfe !important; }
-    .hljs-property { color: #9cdcfe !important; }
-    .hljs-attr { color: #9cdcfe !important; }
-    .hljs-literal { color: #569cd6 !important; }
-    .hljs-type { color: #4ec9b0 !important; }
-    .hljs-meta { color: #569cd6 !important; }
-    .hljs-selector-class { color: #dcdcaa !important; }
-    .hljs-variable { color: #9cdcfe !important; }
+    .hljs-built_in, .hljs-title.class_, .hljs-type { color: #4ec9b0 !important; }
+    .hljs-title.function_, .hljs-selector-class { color: #dcdcaa !important; }
+    .hljs-params, .hljs-property, .hljs-attr, .hljs-variable { color: #9cdcfe !important; }
     .hljs-operator { color: #d4d4d4 !important; }
 
     /* ===== 全局样式重置 ===== */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0;}
     html, body { height: 100%; overflow: hidden; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
@@ -219,18 +218,10 @@
       padding: 8px 0;
     }
     /* 导航滚动条 */
-    .nav-container::-webkit-scrollbar {
-      width: 4px;
-    }
-    .nav-container::-webkit-scrollbar-track {
-      background: transparent;
-    }
+    .nav-container::-webkit-scrollbar { width: 4px; }
     .nav-container::-webkit-scrollbar-thumb {
       background: rgba(0, 180, 255, 0.15);
       border-radius: 2px;
-    }
-    .nav-container::-webkit-scrollbar-thumb:hover {
-      background: rgba(0, 180, 255, 0.3);
     }
     .nav-group {
       margin-bottom: 8px;
@@ -243,7 +234,26 @@
       background: var(--bg-group-title);
       letter-spacing: 1px;
       transition: background .3s, color .3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
     }
+    .nav-group-toggle {
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0;
+      transition: color .2s, transform .2s;
+    }
+    .nav-group-toggle:hover {
+      color: var(--color-primary);
+    }
+    .nav-group.collapsed .nav-item { display: none; }
+    .nav-group.collapsed .nav-group-toggle { transform: rotate(-90deg); }
     .nav-item {
       display: block;
       padding: 6px 20px 6px 28px;
@@ -284,12 +294,25 @@
       margin-left: 300px;
       height: 100vh;
       overflow-y: auto;
-      background: rgba(6, 12, 30, 0.5);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      transition: background .3s;
-      position: relative;
+      background: rgba(6, 12, 30, 0.6);/* 半透明深色背景 */
+      backdrop-filter: blur(8px);/* 毛玻璃模糊（标准） */
+      -webkit-backdrop-filter: blur(8px);/* 毛玻璃模糊（webkit） */
+      transition: background .3s;/* 背景颜色过渡 */
+      position: relative;/* 相对定位 */
       z-index: 1;
+    }
+    /* 主内容区滚动条 */
+    #mainContent::-webkit-scrollbar { width: 6px; }
+    #mainContent::-webkit-scrollbar-thumb {
+      background: rgba(0, 180, 255, 0.12);
+      border-radius: 3px;
+    }
+    /* 滚动条通用：轨道透明 + hover 加深 */
+    .nav-container::-webkit-scrollbar-track,
+    #mainContent::-webkit-scrollbar-track { background: transparent; }
+    .nav-container::-webkit-scrollbar-thumb:hover,
+    #mainContent::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 180, 255, 0.3);
     }
     .content-inner {
       max-width: 960px;
@@ -298,11 +321,16 @@
     }
 
     /* 页面头部 */
-    #header { margin-bottom: 24px; }
-    #nsrTitle { font-size: 22px; }
+    #header { margin-bottom: 26px; }
+    #template_header { font-size: 26px; }
     #topTable { width: 100%; }
+    #headerTableRow2 {
+      background: linear-gradient(135deg, rgba(0, 180, 216, 0.36) 0%, rgba(185, 75, 28, 0.36) 100%);
+      border-left: 6px solid var(--color-primary);
+      border-radius: 8px;
+    }
 
-    /* 面包屑 */
+    /* 导航屑 */
     .cdclvBreadcrumbs {
       padding: 8px 0;
       margin-bottom: 16px;
@@ -331,7 +359,7 @@
     }
     th, td {
       border: 1px solid var(--border-color);
-      padding: 10px 12px;
+      padding: 6px 10px;
       text-align: left;
       vertical-align: middle;
       transition: border-color .3s;
@@ -343,24 +371,23 @@
       transition: background .3s, color .3s;
     }
     tr:hover { background: var(--bg-tr-hover); }
-    pre {
-      background: var(--bg-pre-alt);
-      border-radius: 6px;
-      padding: 16px;
-      overflow-x: auto;
-      font-size: 13px;
-      line-height: 1.6;
-      margin: 12px 0;
-    }
-    pre code {
-      font-family: "Consolas", "Courier New", monospace;
-    }
-    code { font-family: "Consolas", "Courier New", monospace; font-size: 13px; }
 
     /* 成员列表表格 */
-    .icon-cell { width: 40px; text-align: center; font-size: 12px; color: var(--text-secondary); }
+    .icon-cell { width: 48px; text-align: center; font-size: 12px; color: var(--text-secondary); }
+    .icon-cell img { width: 32px; height: 32px; vertical-align: middle; }
     .name-cell { width: 140px; }
     .desc-cell { word-break: break-all; }
+
+    /* 成员列表容器毛玻璃效果 */
+    #vstable {
+      background: rgba(66, 66, 88, 0.66);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid #ccc2c2;
+      border-radius: 12px;
+      box-shadow: 0 1px 12px rgba(0,0.3,0.01);
+      margin-bottom: 12px;
+    }
 
     /* 详情区 */
     #template_details { margin-top: 30px; }
@@ -523,28 +550,28 @@
       <input type="text" id="navSearch" placeholder="🔍 搜索对象名称..." oninput="filterNav()">
     </div>
     <div class="nav-container" id="navContainer">
-      <div class="nav-group" id="navGroupA"></div>
-      <div class="nav-group" id="navGroupB"></div>
-      <div class="nav-group" id="navGroupC"></div>
-      <div class="nav-group" id="navGroupD"></div>
-      <div class="nav-group" id="navGroupE"></div>
-      <div class="nav-group" id="navGroupF"></div>
-      <div class="nav-group" id="navGroupG"></div>
-      <div class="nav-group" id="navGroupH"></div>
-      <div class="nav-group" id="navGroupI"></div>
-      <div class="nav-group" id="navGroupL"></div>
-      <div class="nav-group" id="navGroupM"></div>
-      <div class="nav-group" id="navGroupN"></div>
-      <div class="nav-group" id="navGroupO"></div>
-      <div class="nav-group" id="navGroupP"></div>
-      <div class="nav-group" id="navGroupQ"></div>
-      <div class="nav-group" id="navGroupR"></div>
-      <div class="nav-group" id="navGroupS"></div>
-      <div class="nav-group" id="navGroupT"></div>
-      <div class="nav-group" id="navGroupU"></div>
-      <div class="nav-group" id="navGroupV"></div>
-      <div class="nav-group" id="navGroupW"></div>
-      <div class="nav-group" id="navGroupX"></div>
+      <div class="nav-group collapsed" id="navGroupA"></div>
+      <div class="nav-group collapsed" id="navGroupB"></div>
+      <div class="nav-group collapsed" id="navGroupC"></div>
+      <div class="nav-group collapsed" id="navGroupD"></div>
+      <div class="nav-group collapsed" id="navGroupE"></div>
+      <div class="nav-group collapsed" id="navGroupF"></div>
+      <div class="nav-group collapsed" id="navGroupG"></div>
+      <div class="nav-group collapsed" id="navGroupH"></div>
+      <div class="nav-group collapsed" id="navGroupI"></div>
+      <div class="nav-group collapsed" id="navGroupL"></div>
+      <div class="nav-group collapsed" id="navGroupM"></div>
+      <div class="nav-group collapsed" id="navGroupN"></div>
+      <div class="nav-group collapsed" id="navGroupO"></div>
+      <div class="nav-group collapsed" id="navGroupP"></div>
+      <div class="nav-group collapsed" id="navGroupQ"></div>
+      <div class="nav-group collapsed" id="navGroupR"></div>
+      <div class="nav-group collapsed" id="navGroupS"></div>
+      <div class="nav-group collapsed" id="navGroupT"></div>
+      <div class="nav-group collapsed" id="navGroupU"></div>
+      <div class="nav-group collapsed" id="navGroupV"></div>
+      <div class="nav-group collapsed" id="navGroupW"></div>
+      <div class="nav-group collapsed" id="navGroupX"></div>
     </div>
     <div class="sidebar-footer">
       <div class="stat-item"><span>📦 对象总数</span><span id="totalCount">0</span></div>
@@ -616,10 +643,6 @@
                 </div>
               </div>
               <div id="template_details">
-                <div style="margin-bottom: 12px; display: flex; gap: 8px;">
-                  <button onclick="expandAll()" style="padding: 4px 12px; border: 1px solid var(--color-primary); background: rgba(0,180,216,0.1); color: var(--color-primary); border-radius: 4px; cursor: pointer; font-size: 12px;">全部展开</button>
-                  <button onclick="collapseAll()" style="padding: 4px 12px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: var(--text-secondary); border-radius: 4px; cursor: pointer; font-size: 12px;">全部折叠</button>
-                </div>
                 <div id="functions_details">
                   <p><b class="mainheaders">成员方法</b></p>
                   <div id="funcs_details_content"></div>
@@ -695,7 +718,8 @@
           return;
         }
 
-        groupEl.innerHTML = '<div class="nav-group-title">' + letter + '</div>';
+        groupEl.innerHTML = '<div class="nav-group-title" onclick="toggleNavGroup(this)">' + letter +
+          '<button class="nav-group-toggle" onclick="event.stopPropagation();toggleNavGroup(this.parentElement);">▼</button></div>';
 
         _.forEach(items, function(objName) {
           var a = document.createElement('a');
@@ -730,6 +754,14 @@
 
       currentObjName = objName;
       loadAndRender(objName);
+    }
+
+    // ========== 折叠/展开导航分组 ==========
+    function toggleNavGroup(titleEl) {
+      var group = titleEl.parentElement;
+      var isOpen = !group.classList.contains('collapsed');
+      _.forEach(document.querySelectorAll('.nav-group'), function(g) { g.classList.add('collapsed'); });
+      if (!isOpen) group.classList.remove('collapsed');
     }
 
     // ========== 搜索过滤 ==========
@@ -821,18 +853,20 @@
       }
     }
 
-    // 全部展开
-    function expandAll() {
-      _.forEach(document.querySelectorAll('.detail-item'), function(item) {
-        item.classList.add('expanded');
+    // 切换全部展开/折叠
+    function toggleAll() {
+      var btn = document.getElementById('toggleAllBtn');
+      var items = document.querySelectorAll('.detail-item');
+      var allExpanded = _.every(items, function(item) {
+        return item.classList.contains('expanded');
       });
-    }
-
-    // 全部折叠
-    function collapseAll() {
-      _.forEach(document.querySelectorAll('.detail-item'), function(item) {
-        item.classList.remove('expanded');
-      });
+      if (allExpanded) {
+        _.forEach(items, function(item) { item.classList.remove('expanded'); });
+        if (btn) btn.textContent = '展开全部';
+      } else {
+        _.forEach(items, function(item) { item.classList.add('expanded'); });
+        if (btn) btn.textContent = '折叠全部';
+      }
     }
 
     // ========== JSON 加载逻辑 ==========
