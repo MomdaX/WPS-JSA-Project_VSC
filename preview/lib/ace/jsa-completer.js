@@ -5536,7 +5536,7 @@
   }
 
   var jsaCompleter = {
-    identifierRegexps: [/[a-zA-Z_0-9\.\-\$\(\)]/],
+    identifierRegexps: [/[a-zA-Z_0-9\-\$]/],
     getCompletions: function(editor, session, pos, prefix, callback) {
       var results = [];
       var line = session.getLine(pos.row);
@@ -5578,7 +5578,7 @@
               var isMethod = kind === 'method';
               results.push({
                 caption: mm.name,
-                value: fullPrefix + mm.name + (isMethod ? '()' : ''),
+                value: mm.name + (isMethod ? '()' : ''),
                 meta: mm.type || mm.kind,
                 className: isMethod ? 'jsac-method' : 'jsac-prop',
                 docHTML: '<div style="max-width:400px"><b>' + fullPrefix + mm.name + '</b> — ' + kind + '<br>' + (mm.desc || '') + '</div>',
