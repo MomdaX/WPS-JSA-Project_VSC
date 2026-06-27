@@ -12,18 +12,6 @@
       "env": {
         "NODE_OPTIONS": ""
       }
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "🔵 同步代码到 WPS (VSC)",
-      "program": "${workspaceFolder}/index_vsc.js",
-      "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal",
-      "outputCapture": "std",
-      "env": {
-        "NODE_OPTIONS": ""
-      }
     }
   ]
 }
