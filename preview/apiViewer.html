@@ -1628,6 +1628,8 @@
       if (!codeEditor) return;
       var code = codeEditor.getValue();
       localStorage.setItem('jsa_editor_code', code);
+      var output = document.getElementById('editorOutput');
+      if (output) { output.value = '✅ 代码已保存 (' + new Date().toLocaleTimeString() + ')'; }
       var btn = document.getElementById('btnSaveCode');
       if (btn) { var orig = btn.textContent; btn.textContent = '✅ 已保存'; setTimeout(function() { btn.textContent = orig; }, 1500); }
     }
