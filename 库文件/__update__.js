@@ -13,7 +13,9 @@ function __update__(){
 		'update_folder_path': String.raw`D:\wps-jsaIDE\WPS-JSA\WPS-JSA-Project`,
 		/** 不需要同步更新的.js文件 */
 		'exclude': new Set([
-			'index.js', 
+			'index_trae.js', 
+			'index_vsc.js', 
+			'server.js'
 		])
 	}
 	

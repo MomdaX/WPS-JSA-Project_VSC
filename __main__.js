@@ -1,5 +1,6 @@
 // WPS JSA 代码编辑器
 // 在此编写您的 JSA 代码，点击 📤 发送到WPS 运行
+// Ctrl+S 保存代码
 
 function __main__() {
   // 九九乘法表
@@ -11,5 +12,6 @@ function __main__() {
     }
     data.push(row);
   }
-  Range('A1:I9').offset(10, 10).Value2 = data;
+  Range('A1:I9').Resize(9,9).Value2 = data;
+  console.log('九九乘法表已生成');
 }

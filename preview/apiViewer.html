@@ -1192,9 +1192,9 @@
     <div class="editor-output-section">
       <div class="output-header">
         <span class="output-title">输出结果</span>
-        <button class="editor-btn editor-btn-run" onclick="runEditorCode()">▶ 运行</button>
+        <button class="editor-btn editor-btn-run" onclick="runEditorCode()" title="运行代码 (F5)">▶ 运行</button>
         <button class="editor-btn editor-btn-copy" id="btnCopyOutput" onclick="copyOutput()">📋 复制结果</button>
-        <button class="editor-btn editor-btn-wps" id="btnRunInWps" onclick="runInWps();return false;">📤 发送到WPS</button>
+        <button class="editor-btn editor-btn-wps" id="btnRunInWps" onclick="runInWps();return false;" title="发送代码到WPS执行 (Ctrl+Q)">📤 发送到WPS</button>
         <button class="editor-btn editor-btn-clear" onclick="clearEditorCode()">清空</button>
         <button class="output-clear-btn" onclick="clearEditorOutput()">清除</button>
       </div>
@@ -1457,6 +1457,24 @@
         }
       });
 
+      // Ctrl+Q 发送到WPS
+      codeEditor.commands.addCommand({
+        name: 'sendToWps',
+        bindKey: { win: 'Ctrl-Q', mac: 'Command-Q' },
+        exec: function(editor) {
+          runInWps();
+        }
+      });
+
+      // F5 运行
+      codeEditor.commands.addCommand({
+        name: 'runCode',
+        bindKey: { win: 'F5', mac: 'F5' },
+        exec: function(editor) {
+          runEditorCode();
+        }
+      });
+
       // 命令面板快捷键
       codeEditor.commands.addCommand({
         name: 'openCommandPalette',
@@ -1631,7 +1649,7 @@
       var output = document.getElementById('editorOutput');
       if (output) { output.value = '✅ 代码已保存 (' + new Date().toLocaleTimeString() + ')'; }
       var btn = document.getElementById('btnSaveCode');
-      if (btn) { var orig = btn.textContent; btn.textContent = '✅ 已保存'; setTimeout(function() { btn.textContent = orig; }, 1500); }
+      if (btn) { var orig = btn.textContent; btn.textContent = '✅ 保存'; setTimeout(function() { btn.textContent = orig; }, 1500); }
     }
 
     function toggleEditorPanel() {
