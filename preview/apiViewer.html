@@ -1710,7 +1710,7 @@
       btn.textContent = '⏳ 发送中...';
       output.value = '⏳ 正在发送代码到 WPS...';
 
-      fetch('/api/run-jsa', {
+      fetch('http://127.0.0.1:5501/api/run-jsa', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: code })
