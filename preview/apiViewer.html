@@ -1176,6 +1176,7 @@
       <button class="editor-toolbar-btn" onclick="editorCopyAll()" title="复制全部代码">📋 复制</button>
       <button class="editor-toolbar-btn" onclick="openCommandPalette()" title="命令面板 (Ctrl+Shift+P)">⚡ 命令</button>
       <span style="flex:1;"></span>
+      <button class="editor-toolbar-btn" id="btnSaveCode" onclick="editorSave()" title="保存代码 (Ctrl+S)">💾 保存</button>
       <button class="editor-toolbar-btn editor-toolbar-close" onclick="toggleEditorPanel()" title="关闭编辑器">✕</button>
     </div>
     <div id="codeEditor"></div>
@@ -1447,6 +1448,15 @@
         codeEditor.setOption('elasticTabstops', false);
       });
 
+      // Ctrl+S 保存
+      codeEditor.commands.addCommand({
+        name: 'saveCode',
+        bindKey: { win: 'Ctrl-S', mac: 'Command-S' },
+        exec: function(editor) {
+          editorSave();
+        }
+      });
+
       // 命令面板快捷键
       codeEditor.commands.addCommand({
         name: 'openCommandPalette',
@@ -1474,7 +1484,12 @@
         }
       });
 
-      codeEditor.setValue("// WPS JSA 代码编辑器\n// 在此编写您的 JSA 代码，点击 📤 发送到WPS 运行\n\nfunction __main__() {\n  // 九九乘法表\n  const data = [];\n  for (let i = 1; i <= 9; i++) {\n    const row = [];\n    for (let j = 1; j <= 9; j++) {\n      row.push(j <= i ? i + '×' + j + '=' + (i * j) : '');\n    }\n    data.push(row);\n  }\n  Range('A1:I9').Value2 = data;\n  console.log('九九乘法表已生成');\n}");
+      // 恢复上次保存的代码，没有则用默认模板
+      var savedCode = localStorage.getItem('jsa_editor_code');
+      if (!savedCode) {
+        savedCode = "// WPS JSA 代码编辑器\n// 在此编写您的 JSA 代码，点击 📤 发送到WPS 运行\n// Ctrl+S 保存代码\n\nfunction __main__() {\n  // 九九乘法表\n  const data = [];\n  for (let i = 1; i <= 9; i++) {\n    const row = [];\n    for (let j = 1; j <= 9; j++) {\n      row.push(j <= i ? i + '×' + j + '=' + (i * j) : '');\n    }\n    data.push(row);\n  }\n  Range('A1:I9').Value2 = data;\n  console.log('九九乘法表已生成');\n}";
+      }
+      codeEditor.setValue(savedCode);
       codeEditor.clearSelection();
     }
 
@@ -1606,6 +1621,15 @@
         document.execCommand('copy');
         document.body.removeChild(ta);
       }
+    }
+
+    // 保存编辑器代码到 localStorage
+    function editorSave() {
+      if (!codeEditor) return;
+      var code = codeEditor.getValue();
+      localStorage.setItem('jsa_editor_code', code);
+      var btn = document.getElementById('btnSaveCode');
+      if (btn) { var orig = btn.textContent; btn.textContent = '✅ 已保存'; setTimeout(function() { btn.textContent = orig; }, 1500); }
     }
 
     function toggleEditorPanel() {
