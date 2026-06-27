@@ -1,20 +1,4 @@
-// ========== 更新统计信息 ==========
-function updateStats(jsData) {
-  document.getElementById('totalCount').textContent = ALL_OBJECTS.length;
-  document.getElementById('funcCount').textContent = _.get(jsData, 'functions.length', 0);
-  document.getElementById('propCount').textContent = _.get(jsData, 'properties.length', 0);
-}
-
 // ========== 工具函数 ==========
-
-function backToTop() {
-  document.getElementById('mainContent').scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function backToMember() {
-  var member = document.querySelector('[data-id="jsMember_' + currentObjName + '"]');
-  if (member) { member.scrollIntoView({ behavior: 'smooth' }); }
-}
 
 function copyCode(ele) {
   var codeEl = null;
@@ -95,7 +79,6 @@ function FillObjectWrapper(jsData) {
   previousObjName = currentObjName;
   currentObjName = jsData.name;
   FillObject(jsData);
-  updateStats(jsData);
 
   var pageContent = document.getElementById('pageContent');
   if (pageContent && typeof Prism !== 'undefined') {

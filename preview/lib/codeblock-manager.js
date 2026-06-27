@@ -179,7 +179,6 @@ CodeBlockManager.prototype = {
     try {
       this._injectStyles();
       this.createAll();
-      console.log('✅ CodeBlockManager 初始化完成 (' + this.instances.length + ' 个代码块)');
     } catch (e) {
       console.warn('⚠️ CodeBlockManager 初始化异常:', e.message || e);
     }
@@ -209,7 +208,7 @@ CodeBlockManager.prototype = {
       + '.code-block-wrapper pre::-webkit-scrollbar-corner,#vstable pre::-webkit-scrollbar-corner,article pre::-webkit-scrollbar-corner,.article-wrap pre::-webkit-scrollbar-corner{background:transparent;}'
       + '#vstable{background:rgba(66,66,88,0.66)!important;backdrop-filter:blur(6px)!important;-webkit-backdrop-filter:blur(6px)!important;border:1px solid rgba(0,180,255,0.2)!important;border-radius:12px!important;box-shadow:0 4px 16px rgba(0,0,0,0.4)!important;margin-bottom:12px!important;width:100%!important;box-sizing:border-box!important;overflow:hidden!important;}'
       + '#vstable table{width:100%!important;table-layout:fixed!important;border-collapse:collapse!important;}'
-      + '#vstable td{padding:0!important;vertical-align:top!important;position:relative!important;}'
+      + '#vstable td{padding:0 10px!important;vertical-align:top!important;position:relative!important;}'
       + '#vstable pre{margin:0!important;padding:' + c.padding + '!important;max-height:' + c.maxHeight + '!important;overflow:auto!important;background:#0d1117!important;border-radius:0!important;font-size:' + c.fontSize + '!important;line-height:' + c.lineHeight + '!important;font-family:' + c.fontFamily + '!important;}'
       + '#vstable pre code{font-family:' + c.fontFamily + '!important;font-size:' + c.fontSize + '!important;display:block!important;white-space:pre!important;word-wrap:normal!important;overflow-wrap:normal!important;}';
 

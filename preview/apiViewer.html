@@ -16,6 +16,7 @@
   <script src="lib/clock/flipclock.min.js"></script>
   <script src="prism/prism.js"></script>
   <script src="lib/lodash.min.js"></script>
+  <script src="lib/Fireworks.js"></script>
   <script src="lib/filldata.js"></script>
   <script src="lib/theme.js"></script>
   <script src="lib/codeblock-manager.js"></script>
@@ -24,7 +25,52 @@
   <script src="lib/modules/navigation.js"></script>
   <script src="lib/modules/search.js"></script>
   <script src="lib/modules/detail.js"></script>
-  <script src="lib/sidebar-fireworks.js"></script>
+  <script src="lib/ace/ace.js"></script>
+  <script>
+    ace.config.set('modePath', 'lib/ace/modes');
+    ace.config.set('themePath', 'lib/ace/themes');
+    ace.config.set('workerPath', 'lib/ace/workers');
+    ace.config.set('basePath', 'lib/ace');
+  </script>
+  <script src="lib/ace/ext/ext-language_tools.js"></script>
+  <script src="lib/ace/ext/ext-searchbox.js"></script>
+  <script src="lib/ace/ext/ext-settings_menu.js"></script>
+  <script src="lib/ace/ext/ext-beautify.js"></script>
+  <script src="lib/ace/ext/ext-statusbar.js"></script>
+  <script src="lib/ace/ext/ext-themelist.js"></script>
+  <script src="lib/ace/ext/ext-command_bar.js"></script>
+  <script src="lib/ace/ext/ext-inline_autocomplete.js"></script>
+  <script src="lib/ace/ext/ext-modelist.js"></script>
+  <script src="lib/ace/ext/ext-code_lens.js"></script>
+  <script src="lib/ace/ext/ext-spellcheck.js"></script>
+  <script src="lib/ace/ext/ext-elastic_tabstops_lite.js"></script>
+  <script src="lib/ace/ext/ext-keybinding_menu.js"></script>
+  <script src="lib/ace/keybindings/keybinding-vscode.js"></script>
+  <script src="lib/ace/keybindings/keybinding-sublime.js"></script>
+  <script src="lib/ace/modes/mode-javascript.js"></script>
+  <script src="lib/ace/modes/mode-typescript.js"></script>
+  <script src="lib/ace/modes/mode-json.js"></script>
+  <script src="lib/ace/modes/mode-markdown.js"></script>
+  <script src="lib/ace/snippets/javascript.js"></script>
+  <script src="lib/ace/snippets/typescript.js"></script>
+  <script src="lib/ace/themes/theme-github_dark.js"></script>
+  <script src="lib/ace/themes/theme-one_dark.js"></script>
+  <script src="lib/ace/themes/theme-solarized_dark.js"></script>
+  <script src="lib/ace/themes/theme-tomorrow_night.js"></script>
+  <script src="lib/ace/themes/theme-vibrant_ink.js"></script>
+  <script src="lib/ace/themes/theme-terminal.js"></script>
+  <script src="lib/ace/themes/theme-dracula.js"></script>
+  <script src="lib/ace/themes/theme-monokai.js"></script>
+  <script src="lib/ace/themes/theme-nord_dark.js"></script>
+  <script src="lib/ace/themes/theme-github.js"></script>
+  <script src="lib/ace/themes/theme-solarized_light.js"></script>
+  <script src="lib/ace/themes/theme-tomorrow.js"></script>
+  <script src="lib/ace/themes/theme-chrome.js"></script>
+  <script src="lib/ace/themes/theme-clouds.js"></script>
+  <script src="lib/ace/jsa-types-data.js"></script>
+  <script src="lib/ace/js-builtin-completer.js"></script>
+  <script src="lib/ace/jsa-completer.js"></script>
+
   <style>
     /* ===== CSS 变量：科技蓝主题（默认） ===== */
     :root {
@@ -44,6 +90,7 @@
       --bg-tr-hover: rgba(255,255,255,0.03);
       --bg-copy: rgba(0, 180, 255, 0.12);
       --bg-float-btn: rgba(10, 20, 50, 0.8);
+      --sidebar-width: 260px;
       --bg-highlight: rgba(0, 212, 255, 0.2);
 
       --text-body: #c8d6e5;
@@ -121,15 +168,17 @@
     /* ===== 主内容区 ===== */
     #mainContent {
       flex: 1;
-      margin-left: 300px;
       height: 100vh;
       overflow-y: auto;
       background: rgba(6, 12, 30, 0.6);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      transition: background .3s;
+      transition: background .3s, margin-right .3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-      z-index: 1;
+      z-index: 2;
+    }
+    #mainContent.editor-open {
+      margin-right: var(--editor-width, 480px);
     }
     #mainContent::-webkit-scrollbar { width: 6px; }
     #mainContent::-webkit-scrollbar-thumb {
@@ -144,21 +193,524 @@
     }
     .content-inner {
       max-width: 960px;
-      margin: 0 auto;
+      margin-right: auto;
       padding: 24px 32px;
+    }
+    @media (min-width: 1400px) {
+      .content-inner {
+        max-width: 90%;
+      }
+    }
+
+    /* 小屏幕：内容占满可用空间 */
+    @media (max-width: 1200px) {
+      .content-inner {
+        max-width: 100%;
+        padding: 20px 24px;
+      }
+    }
+
+    /* ===== 页脚网格布局 ===== */
+    .sidebar-footer .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4px;
+      text-align: center;
+    }
+    .footer-cell {
+      font-size: 12px;
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-cell-value {
+      font-weight: bold;
+    }
+    .footer-cell-fireworks {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .toggle-btn {
+      position: relative;
+      width: 40px;
+      height: 22px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--border-color);
+      border-radius: 11px;
+      cursor: pointer;
+      transition: all 0.3s;
+      outline: none;
+    }
+    .toggle-btn.active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    .toggle-slider {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border-radius: 8px;
+      transition: all 0.3s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .toggle-btn.active .toggle-slider {
+      left: 20px;
+    }
+
+    /* ===== 代码编辑器面板 ===== */
+    #editorPanel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 480px;
+      height: 100vh;
+      background: rgba(10, 20, 50, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-left: 1px solid var(--border-color);
+      z-index: 100;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      min-width: 320px;
+      max-width: 800px;
+    }
+
+    #editorPanel.open {
+      transform: translateX(0);
+    }
+
+    /* 拖拽手柄 */
+    .editor-resize-handle {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 6px;
+      height: 100%;
+      cursor: ew-resize;
+      background: transparent;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+
+    .editor-resize-handle:hover {
+      background: var(--color-primary);
+    }
+
+    .editor-resize-handle.dragging {
+      background: var(--color-primary);
+    }
+
+    .editor-btn {
+      padding: 6px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .editor-btn-run {
+      background: #22c55e;
+      color: #fff;
+    }
+
+    .editor-btn-run:hover {
+      background: #16a34a;
+    }
+
+    .editor-btn-clear {
+      background: #374151;
+      color: #d1d5db;
+    }
+
+    .editor-btn-clear:hover {
+      background: #4b5563;
+    }
+
+    .editor-btn-wps {
+      background: #f97316;
+      color: #fff;
+    }
+
+    .editor-btn-wps:hover {
+      background: #ea580c;
+    }
+
+    .editor-btn-wps:disabled {
+      background: #374151;
+      color: #6b7280;
+      cursor: not-allowed;
+    }
+
+    .editor-btn-copy {
+      background: #374151;
+      color: #d1d5db;
+    }
+
+    .editor-btn-copy:hover {
+      background: #4b5563;
+    }
+
+    .editor-toolbar-close {
+      color: var(--text-secondary);
+      border: none;
+      background: transparent;
+      padding: 2px 8px;
+      font-size: 15px;
+      line-height: 1;
+      opacity: 0.6;
+    }
+    .editor-toolbar-close:hover {
+      color: #ef4444;
+      opacity: 1;
+    }
+
+    .editor-toolbar {
+      display: flex;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(0, 0, 0, 0.15);
+      border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap;
+    }
+
+    .editor-toolbar-btn {
+      padding: 4px 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .editor-toolbar-btn:hover {
+      background: rgba(0, 180, 255, 0.1);
+      color: var(--text-body);
+      border-color: var(--color-primary);
+    }
+
+    .editor-toolbar-btn.active {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+
+    select.editor-toolbar-btn {
+      background: rgba(0, 0, 0, 0.3);
+      color: var(--text-secondary);
+    }
+    select.editor-toolbar-btn option {
+      background: #1f2937;
+      color: #e5e7eb;
+    }
+
+    .editor-statusbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 16px;
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      font-size: 11px;
+      color: var(--text-muted);
+      cursor: grab;
+      user-select: none;
+    }
+    .editor-statusbar:active {
+      cursor: grabbing;
+    }
+
+    .editor-statusbar-left {
+      display: flex;
+      gap: 16px;
+    }
+
+    .editor-statusbar-right {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* 设置菜单深色主题 */
+    #ace_settingsmenu {
+      background: #1f2937 !important;
+      color: #e5e7eb !important;
+      border: 1px solid #374151 !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+    }
+    #ace_settingsmenu table {
+      color: #e5e7eb !important;
+      border-collapse: collapse;
+    }
+    #ace_settingsmenu td,
+    #ace_settingsmenu th {
+      border-color: #374151 !important;
+      padding: 6px 10px !important;
+      color: #e5e7eb !important;
+    }
+    #ace_settingsmenu input[type="text"],
+    #ace_settingsmenu input[type="number"],
+    #ace_settingsmenu select {
+      background: #111827 !important;
+      color: #e5e7eb !important;
+      border: 1px solid #374151 !important;
+      border-radius: 4px;
+      padding: 3px 6px;
+    }
+    #ace_settingsmenu button {
+      background: #374151 !important;
+      color: #e5e7eb !important;
+      border: 1px solid #4b5563 !important;
+      border-radius: 4px;
+      padding: 2px 8px;
+      cursor: pointer;
+    }
+    #ace_settingsmenu button:hover {
+      background: #4b5563 !important;
+    }
+    #ace_settingsmenu button[ace_selected_button="true"] {
+      background: #3b82f6 !important;
+      border-color: #3b82f6 !important;
+      color: #fff !important;
+    }
+    #ace_settingsmenu input[type="checkbox"] {
+      accent-color: #3b82f6;
+    }
+    #ace_settingsmenu tr:hover {
+      background: rgba(59, 130, 246, 0.1) !important;
+    }
+    #ace_settingsmenu .ace_closeButton {
+      background: #ef4444 !important;
+      border-color: #ef4444 !important;
+    }
+
+    /* 命令面板深色主题 */
+    .ace_editor.ace_autocomplete,
+    .ace_editor .ace_commandBar {
+      background: #1f2937 !important;
+      color: #e5e7eb !important;
+      border: 1px solid #374151 !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+    }
+    /* ===== 补全弹窗样式优化 ===== */
+    /* 行高和字体 */
+    .ace_editor.ace_autocomplete .ace_line,
+    .ace_editor .ace_commandBar .ace_line {
+      color: #e5e7eb !important;
+      font-size: 13px !important;
+      line-height: 22px !important;
+      height: 22px !important;
+      padding: 0 6px !important;
+    }
+    .ace_editor.ace_autocomplete .ace_line:hover,
+    .ace_editor .ace_commandBar .ace_line:hover,
+    .ace_editor.ace_autocomplete .ace_selected,
+    .ace_editor .ace_commandBar .ace_selected {
+      background: rgba(59, 130, 246, 0.3) !important;
+    }
+
+    /* 内容区内边距 */
+    .ace_editor.ace_autocomplete .ace_content {
+      padding: 2px 0 !important;
+    }
+
+    /* 文字部分最小宽度保留 */
+    .ace_editor.ace_autocomplete .ace_line .ace_ {
+      padding-left: 2px;
+    }
+
+    /* meta 文本样式 */
+    .ace_editor.ace_autocomplete .ace_completion-meta {
+      opacity: 0.55;
+      font-style: italic;
+      font-size: 11px;
+      margin-left: 10px;
+    }
+
+    /* 属性/方法图标 — 作为 flex 子元素，自然对齐 */
+    .ace_editor.ace_autocomplete .ace_line img.jsa-icon {
+      width: 14px;
+      height: 14px;
+      margin-right: 5px;
+      flex: 0 0 14px;
+      object-fit: contain;
+    }
+
+    /* 滚动条（弹窗使用虚拟渲染器，滚动条在 .ace_scrollbar 上） */
+    .ace_editor.ace_autocomplete .ace_scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .ace_editor.ace_autocomplete .ace_scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .ace_editor.ace_autocomplete .ace_scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+    }
+    .ace_editor.ace_autocomplete .ace_scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    /* 同时覆盖 .ace_scroller 的滚动条（兼容） */
+    .ace_editor.ace_autocomplete .ace_scroller::-webkit-scrollbar {
+      width: 5px;
+    }
+    .ace_editor.ace_autocomplete .ace_scroller::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .ace_editor.ace_autocomplete .ace_scroller::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+    }
+    .ace_editor.ace_autocomplete .ace_scroller::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .ace_editor .ace_commandBar_input {
+      background: #111827 !important;
+      color: #e5e7eb !important;
+      border-bottom: 1px solid #374151 !important;
+    }
+
+    /* 行内自动补全 Ghost Text 样式 */
+    .ace_ghost_text {
+      opacity: 0.4 !important;
+    }
+
+    #codeEditor {
+      flex: 1;
+      min-height: 200px;
+      font-size: 13px;
+    }
+
+    .editor-output-section {
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      max-height: 40%;
+    }
+
+    .output-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+      background: rgba(0, 0, 0, 0.2);
+      gap: 8px;
+    }
+
+    .output-header .output-title {
+      flex: 1;
+    }
+
+    .output-header .editor-btn {
+      padding: 4px 12px;
+      font-size: 12px;
+    }
+
+    .output-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .output-clear-btn {
+      padding: 4px 10px;
+      font-size: 11px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .output-clear-btn:hover {
+      color: var(--text-body);
+      border-color: var(--color-primary);
+    }
+
+    #editorOutput {
+      flex: 1;
+      padding: 10px 16px;
+      background: rgba(0, 0, 0, 0.3);
+      color: #d1d5db;
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      white-space: pre;
+      overflow: auto;
+      resize: vertical;
+      min-height: 80px;
+      outline: none;
+      border: none;
+    }
+
+    #editorOutput::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    #editorOutput::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    #editorOutput::-webkit-scrollbar-thumb {
+      background: rgba(0, 180, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    #editorOutput::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 180, 255, 0.4);
+    }
+
+    @media (max-width: 1200px) {
+      :root { --sidebar-width: 240px; }
+    }
+
+    @media (max-width: 768px) {
+      #editorPanel {
+        width: 100%;
+      }
+      #mainContent.editor-open {
+        margin-right: 100%;
+      }
     }
   </style>
 </head>
 
 <body>
+  <script>(function() {
+    var allowedDomains = ['momdax.github.io', 'localhost', '127.0.0.1'];
+    var hostname = window.location.hostname;
+    var isAllowed = allowedDomains.some(function(domain) {
+      return hostname === domain || hostname.endsWith('.' + domain);
+    });
+    if (!isAllowed) {
+      setTimeout(function() {
+        document.body.innerHTML = '<style>body{background:#000;color:#ddd;padding:20px;text-align:center;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;}</style><h1>🚫 未授权访问</h1><p>此页面仅供学习参考，禁止未经授权复制或部署。</p><p>原始地址：<a href="https://momdax.github.io/WPS-JSA-Project_VSC/preview/apiViewer.html" style="color:#fff;">momdax.github.io</a></p>';
+      }, 3000);
+    }
+  })();</script>
   <!-- ===== 左侧导航栏 ===== -->
   <div id="sidebar">
+    <div class="sidebar-inner">
     <div class="sidebar-header">
       <div>
         <h1>📘 WPS API 文档</h1>
         <p>223 个表格对象参考</p>
       </div>
       <div class="header-buttons">
+        <button class="sidebar-collapse-btn" onclick="toggleSidebar()" title="收起导航栏">◀</button>
         <button class="home-btn" onclick="showHome()" title="首页指南">🏠</button>
         <button class="theme-toggle" onclick="toggleTheme()" title="切换主题" id="themeBtn">🌙</button>
       </div>
@@ -194,9 +746,19 @@
       <div class="nav-group collapsed" id="navGroupX"></div>
     </div>
     <div class="sidebar-footer">
-      <div class="stat-item"><span>📦 对象总数</span><span id="totalCount">0</span></div>
-      <div class="stat-item"><span>📋 方法总数</span><span id="funcCount">0</span></div>
-      <div class="stat-item"><span>🏷️ 属性总数</span><span id="propCount">0</span></div>
+      <div class="footer-grid">
+        <div class="footer-cell">⭐ Stars</div>
+        <div class="footer-cell footer-cell-value" id="ghStars">0</div>
+        <div class="footer-cell footer-cell-fireworks">
+          <button class="toggle-btn" id="fireworksToggle" onclick="toggleFireworks()" title="开关烟花效果">
+            <span class="toggle-slider"></span>
+          </button>
+        </div>
+        <div class="footer-cell">🍴 Forks</div>
+        <div class="footer-cell footer-cell-value" id="ghForks">0</div>
+        <div class="footer-cell footer-cell-fireworks">🎆 烟花</div>
+      </div>
+    </div>
     </div>
   </div>
 
@@ -281,11 +843,6 @@
     </div>
   </div>
 
-  <div id="floatCommit" style="display:none;">
-    <button class="floatButton" onclick="backToTop()" title="回到顶部">▲</button>
-    <button class="floatButton" onclick="backToMember()" title="返回列表">▼</button>
-  </div>
-
   <script>
     // ========== JSON 加载逻辑 ==========
 
@@ -323,7 +880,6 @@
         .then(function (jsData) {
           document.getElementById('loading').style.display = 'none';
           document.getElementById('pageContent').style.display = 'block';
-          document.getElementById('floatCommit').style.display = 'flex';
           FillObjectWrapper(jsData);
         })
         .catch(function (err) {
@@ -347,7 +903,6 @@
       document.getElementById('loading').style.display = 'none';
       document.getElementById('pageContent').style.display = 'none';
       document.getElementById('error').style.display = 'none';
-      document.getElementById('floatCommit').style.display = 'none';
 
       var articleEl = document.getElementById('articleContent');
       if (articleEl.innerHTML === '') {
@@ -397,14 +952,84 @@
       return params.get('home') === '1';
     }
 
+    function fetchGitHubStats() {
+      fetch('https://api.github.com/repos/MomdaX/WPS-JSA-Project_VSC')
+        .then(function(res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function(data) {
+          if (document.getElementById('ghStars')) {
+            document.getElementById('ghStars').textContent = data.stargazers_count || 0;
+          }
+          if (document.getElementById('ghForks')) {
+            document.getElementById('ghForks').textContent = data.forks_count || 0;
+          }
+        })
+        .catch(function(err) {
+          console.warn('⚠️ GitHub API 请求失败:', err);
+        });
+    }
+
     // ========== 初始化 ==========
     function init() {
       loadObjectList(function() {
         buildNav();
 
-        if (typeof SidebarFireworks !== 'undefined') {
-          SidebarFireworks.init();
+        // 初始化布局管理器
+        LayoutManager.init();
+
+        fireworksEnabled = localStorage.getItem('fireworksEnabled') !== '0';
+        var btn = document.getElementById('fireworksToggle');
+        if (btn) {
+          btn.classList.toggle('active', fireworksEnabled);
         }
+        var sidebar = document.getElementById('sidebar');
+        var mainContent = document.getElementById('mainContent');
+        if (sidebar) {
+          sidebar.style.background = fireworksEnabled ? 'rgba(8, 16, 40, 0)' : 'rgba(8, 16, 40, 0.75)';
+          sidebar.style.backdropFilter = fireworksEnabled ? 'none' : 'blur(20px)';
+        }
+        if (mainContent) {
+          mainContent.style.background = fireworksEnabled ? 'rgba(6, 12, 30, 0)' : 'rgba(6, 12, 30, 0.6)';
+          mainContent.style.backdropFilter = fireworksEnabled ? 'none' : 'blur(8px)';
+        }
+        updateContentWidth();
+        var groupTitles = document.querySelectorAll('.nav-group-title');
+        groupTitles.forEach(function(el) {
+          el.style.background = fireworksEnabled ? 'rgba(0, 180, 255, 0.15)' : '';
+        });
+
+        if (typeof Fireworks !== 'undefined' && fireworksEnabled) {
+          window.fireworks = new Fireworks({ container: document.body, quality: 2 });
+          window.fireworks.init();
+        }
+
+        window.addEventListener('resize', function() {
+          updateContentWidth();
+          LayoutManager.applyLayout();
+        });
+
+        // 主内容区双击事件：左侧展开侧边栏，右侧打开编辑器
+        var mainContent = document.getElementById('mainContent');
+        mainContent.addEventListener('dblclick', function(e) {
+          var rect = mainContent.getBoundingClientRect();
+          var rightEdgeDistance = rect.right - e.clientX;
+          var leftEdgeDistance = e.clientX - rect.left;
+
+          // 左侧100px范围内双击展开侧边栏
+          if (leftEdgeDistance <= 100 && LayoutManager.isSidebarCollapsed()) {
+            LayoutManager.toggleSidebar();
+          }
+          // 右侧100px范围内双击打开编辑器
+          else if (rightEdgeDistance <= 100 && !LayoutManager.isEditorOpen()) {
+            LayoutManager.toggleEditorPanel();
+          }
+        });
+
+        setTimeout(updateContentWidth, 100);
+
+        fetchGitHubStats();
 
         if (isHomePage()) {
           showHome();
@@ -485,7 +1110,776 @@
       });
     }
 
+    var fireworksEnabled = true;
+
+    function updateContentWidth() {
+      var contentInner = document.querySelector('.content-inner');
+      if (!contentInner) return;
+      var isLandscape = window.innerWidth >= window.innerHeight;
+
+      // 编辑器打开时，宽度为100%
+      if (LayoutManager && LayoutManager.isEditorOpen()) {
+        contentInner.style.maxWidth = '100%';
+      } else if (fireworksEnabled && isLandscape) {
+        contentInner.style.maxWidth = '66%';
+      } else {
+        contentInner.style.maxWidth = '';
+      }
+    }
+
+    function toggleFireworks() {
+      fireworksEnabled = !fireworksEnabled;
+      var btn = document.getElementById('fireworksToggle');
+      if (btn) {
+        btn.classList.toggle('active', fireworksEnabled);
+      }
+      var sidebar = document.getElementById('sidebar');
+      var mainContent = document.getElementById('mainContent');
+      if (sidebar) {
+        sidebar.style.background = fireworksEnabled ? 'rgba(8, 16, 40, 0)' : 'rgba(8, 16, 40, 0.75)';
+        sidebar.style.backdropFilter = fireworksEnabled ? 'none' : 'blur(20px)';
+      }
+      if (mainContent) {
+        mainContent.style.background = fireworksEnabled ? 'rgba(6, 12, 30, 0)' : 'rgba(6, 12, 30, 0.6)';
+        mainContent.style.backdropFilter = fireworksEnabled ? 'none' : 'blur(8px)';
+      }
+      updateContentWidth();
+      var groupTitles = document.querySelectorAll('.nav-group-title');
+      groupTitles.forEach(function(el) {
+        el.style.background = fireworksEnabled ? 'rgba(0, 180, 255, 0.15)' : '';
+      });
+      if (typeof Fireworks !== 'undefined') {
+        if (fireworksEnabled) {
+          window.fireworks = new Fireworks({ container: document.body, quality: 2 });
+          window.fireworks.init();
+        } else {
+          if (window.fireworks) {
+            window.fireworks.destroy();
+            window.fireworks = null;
+          }
+        }
+      }
+      localStorage.setItem('fireworksEnabled', fireworksEnabled ? '1' : '0');
+    }
+  </script>
+  <script>
     window.onload = init;
+  </script>
+
+  <!-- ===== 代码编辑器面板 ===== -->
+  <div id="editorPanel">
+    <div class="editor-resize-handle" id="editorResizeHandle"></div>
+    <div class="editor-toolbar">
+      <button class="editor-toolbar-btn" onclick="editorSearch()" title="搜索替换 (Ctrl+F)">🔍 搜索</button>
+      <button class="editor-toolbar-btn" onclick="editorSettings()" title="编辑器设置">⚙ 设置</button>
+      <button class="editor-toolbar-btn" onclick="editorBeautify()" title="格式化代码">✨ 美化</button>
+      <button class="editor-toolbar-btn" onclick="editorCopyAll()" title="复制全部代码">📋 复制</button>
+      <button class="editor-toolbar-btn" onclick="openCommandPalette()" title="命令面板 (Ctrl+Shift+P)">⚡ 命令</button>
+      <span style="flex:1;"></span>
+      <button class="editor-toolbar-btn editor-toolbar-close" onclick="toggleEditorPanel()" title="关闭编辑器">✕</button>
+    </div>
+    <div id="codeEditor"></div>
+    <div class="editor-statusbar">
+      <div class="editor-statusbar-left">
+        <span id="editorCursorPos">行 1, 列 1</span>
+        <span id="editorLangDisplay">JavaScript</span>
+      </div>
+      <div class="editor-statusbar-right">
+        <span id="editorTabSize">Tab: 2</span>
+      </div>
+    </div>
+    <div class="editor-output-section">
+      <div class="output-header">
+        <span class="output-title">输出结果</span>
+        <button class="editor-btn editor-btn-run" onclick="runEditorCode()">▶ 运行</button>
+        <button class="editor-btn editor-btn-copy" id="btnCopyOutput" onclick="copyOutput()">📋 复制结果</button>
+        <button class="editor-btn editor-btn-wps" id="btnRunInWps" onclick="runInWps();return false;">📤 发送到WPS</button>
+        <button class="editor-btn editor-btn-clear" onclick="clearEditorCode()">清空</button>
+        <button class="output-clear-btn" onclick="clearEditorOutput()">清除</button>
+      </div>
+      <textarea id="editorOutput" readonly placeholder="// 运行代码后，输出将显示在这里"></textarea>
+    </div>
+  </div>
+
+  <script>
+    var codeEditor = null;
+
+    // ===== 布局管理器 =====
+    var LayoutManager = {
+      config: {
+        sidebarWidth: 260,
+        editorWidth: 480,
+        animationDuration: 300
+      },
+      state: {
+        sidebarCollapsed: false,
+        editorPanelOpen: false
+      },
+      elements: {},
+
+      init: function() {
+        this.elements.sidebar = document.getElementById('sidebar');
+        this.elements.mainContent = document.getElementById('mainContent');
+        this.elements.editorPanel = document.getElementById('editorPanel');
+        this.elements.collapseBtn = document.querySelector('.sidebar-collapse-btn');
+
+        // 恢复状态
+        this.state.sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === '1';
+        this.applyLayout();
+
+        // 更新按钮图标
+        this.updateCollapseBtn();
+      },
+
+      toggleSidebar: function() {
+        this.state.sidebarCollapsed = !this.state.sidebarCollapsed;
+        this.applyLayout();
+        this.updateCollapseBtn();
+
+        // 联动：收起侧边栏时，如果编辑器也收起，则展开编辑器
+        if (this.state.sidebarCollapsed && !this.state.editorPanelOpen) {
+          this.openEditorPanel();
+        }
+
+        // 保存状态
+        localStorage.setItem('sidebarCollapsed', this.state.sidebarCollapsed ? '1' : '0');
+      },
+
+      toggleEditorPanel: function() {
+        if (this.state.editorPanelOpen) {
+          this.closeEditorPanel();
+        } else {
+          this.openEditorPanel();
+        }
+      },
+
+      openEditorPanel: function() {
+        this.state.editorPanelOpen = true;
+        this.applyLayout();
+
+        if (!codeEditor) {
+          setTimeout(function() {
+            initCodeEditor();
+            if (codeEditor) { codeEditor.resize(); codeEditor.focus(); }
+            restoreOutputHeight();
+          }, this.config.animationDuration);
+        } else {
+          setTimeout(function() {
+            if (codeEditor) { codeEditor.resize(); codeEditor.focus(); }
+            restoreOutputHeight();
+          }, this.config.animationDuration);
+        }
+      },
+
+      closeEditorPanel: function() {
+        this.state.editorPanelOpen = false;
+        this.applyLayout();
+
+        // 联动：收起编辑器时，如果侧边栏也收起，则展开侧边栏
+        if (!this.state.editorPanelOpen && this.state.sidebarCollapsed) {
+          this.toggleSidebar();
+        }
+      },
+
+      applyLayout: function() {
+        var sidebar = this.elements.sidebar;
+        var mainContent = this.elements.mainContent;
+        var editorPanel = this.elements.editorPanel;
+
+        if (sidebar) {
+          sidebar.classList.toggle('collapsed', this.state.sidebarCollapsed);
+        }
+
+        if (mainContent) {
+          mainContent.style.marginRight = this.state.editorPanelOpen ? this.config.editorWidth + 'px' : '0';
+          mainContent.style.transform = '';
+          mainContent.style.width = '';
+        }
+
+        if (editorPanel) {
+          editorPanel.classList.toggle('open', this.state.editorPanelOpen);
+        }
+
+        updateContentWidth();
+      },
+
+      updateCollapseBtn: function() {
+        var btn = this.elements.collapseBtn;
+        if (btn) {
+          btn.textContent = this.state.sidebarCollapsed ? '▶' : '◀';
+          btn.title = this.state.sidebarCollapsed ? '展开导航栏' : '收起导航栏';
+        }
+      },
+
+      isSidebarCollapsed: function() {
+        return this.state.sidebarCollapsed;
+      },
+
+      isEditorOpen: function() {
+        return this.state.editorPanelOpen;
+      }
+    };
+
+    // ===== 侧边栏收起/展开 =====
+    function toggleSidebar() {
+      LayoutManager.toggleSidebar();
+    }
+
+    // ===== 打开编辑器面板（内部函数） =====
+    function openEditorPanel() {
+      LayoutManager.openEditorPanel();
+    }
+
+    // ===== 切换编辑器面板 =====
+    function toggleEditorPanel() {
+      LayoutManager.toggleEditorPanel();
+    }
+
+    // ===== 代码编辑器 =====
+    function initCodeEditor() {
+      codeEditor = ace.edit("codeEditor");
+      codeEditor.setTheme("ace/theme/github_dark");
+      codeEditor.session.setMode("ace/mode/javascript");
+      codeEditor.setShowPrintMargin(false);
+      codeEditor.session.setTabSize(2);
+      codeEditor.session.setUseSoftTabs(true);
+      codeEditor.setHighlightActiveLine(true);
+
+      // 代码提示和补全（JS + JSA）
+      ace.require(["ace/ext/language_tools", "ace/autocomplete"], function(languageTools, AutoComplete) {
+        // 先注册补全器，再开启补全功能
+        if (window.jsBuiltinCompleter) {
+          languageTools.addCompleter(window.jsBuiltinCompleter);
+        }
+        if (window.jsaCompleter) {
+          languageTools.addCompleter(window.jsaCompleter);
+        }
+        codeEditor.setOptions({
+          enableBasicAutocompletion: true,
+          enableLiveAutocompletion: true,
+          enableSnippets: true
+        });
+
+        // Fix: 点补全时 FilteredList 按 value（完整链）过滤，caption 只显示成员名
+        var FilteredList = AutoComplete.FilteredList;
+        var origSetFilter = FilteredList.prototype.setFilter;
+        FilteredList.prototype.setFilter = function(filterText) {
+          if (filterText.indexOf('.') !== -1) {
+            this.ignoreCaption = true;
+          }
+          origSetFilter.call(this, filterText);
+        };
+
+        // Fix: 补全弹窗需 resize + className 图标 + 自动定位最佳匹配
+        var origOpenPopup = AutoComplete.Autocomplete.prototype.openPopup;
+        AutoComplete.Autocomplete.prototype.openPopup = function(editor, prefix, keepPopup) {
+          origOpenPopup.call(this, editor, prefix, keepPopup);
+          var self = this;
+          setTimeout(function() {
+            if (!self.popup || !self.popup.renderer) return;
+            var popup = self.popup;
+            // 强制适配 font-size
+            if (popup.setFontSize) popup.setFontSize(13);
+            popup.renderer.updateCharacterSize();
+            popup.renderer.updateFull();
+            popup.resize(true);
+            popup.renderer.onResize(true);
+            // 给弹窗每行加 className 和图标 <img>
+            if (popup.data) {
+              var container = popup.container;
+              if (container) {
+                var lines = container.querySelectorAll('.ace_line');
+                var data = popup.data;
+                for (var i = 0; i < lines.length && i < data.length; i++) {
+                  var line = lines[i];
+                  var item = data[i];
+                  if (!item || !item.className) {
+                    // 移除非 JSA 行的旧图标
+                    var oldIcon = line.querySelector('img.jsa-icon');
+                    if (oldIcon) oldIcon.remove();
+                    continue;
+                  }
+                  // 避免重复添加 className
+                  if (!line.classList.contains(item.className)) {
+                    line.classList.add(item.className);
+                  }
+                  // 注入 <img> 图标作为 flex 子元素（避免重复创建）
+                  var existingIcon = line.querySelector('img.jsa-icon');
+                  if (!existingIcon) {
+                    var iconSrc = item.className === 'jsac-method'
+                      ? 'img/methods.gif'
+                      : 'img/properties.gif';
+                    var img = document.createElement('img');
+                    img.src = iconSrc;
+                    img.className = 'jsa-icon';
+                    img.alt = item.className === 'jsac-method' ? 'M' : 'P';
+                    line.insertBefore(img, line.firstChild);
+                  }
+                }
+              }
+            }
+            // 强制选中第一项（最佳匹配）并滚动到可见位置
+            if (popup.autoSelect !== false && popup.data && popup.data.length > 0) {
+              popup.setRow(0);
+              popup.renderer.scrollCursorIntoView();
+            }
+          }, 0);
+        };
+      });
+
+      // 行内自动补全 (Ghost Text)
+      ace.require(["ace/ext/inline_autocomplete"], function() {
+        codeEditor.setOption('enableInlineAutocomplete', true);
+      });
+
+      // 代码镜头
+      ace.require(["ace/ext/code_lens"], function(codeLens) {
+        codeEditor.setOption('enableCodeLens', false);
+      });
+
+      // 拼写检查
+      ace.require(["ace/ext/spellcheck"], function() {
+        codeEditor.setOption('spellcheck', false);
+      });
+
+      // 弹性制表位
+      ace.require(["ace/ext/elastic_tabstops_lite"], function() {
+        codeEditor.setOption('elasticTabstops', false);
+      });
+
+      // 命令面板快捷键
+      codeEditor.commands.addCommand({
+        name: 'openCommandPalette',
+        bindKey: { win: 'Ctrl-Shift-P', mac: 'Command-Shift-P' },
+        exec: function(editor) {
+          openCommandPalette();
+        }
+      });
+
+      // 光标位置更新
+      codeEditor.on('changeSelection', updateCursorPosition);
+
+      // 键入 . 时触发点补全提示
+      codeEditor.on('change', function(delta) {
+        if (delta.action === 'insert' && delta.lines && delta.lines.length === 1 && delta.lines[0] === '.') {
+          var pos = codeEditor.getCursorPosition();
+          var line = codeEditor.session.getLine(pos.row);
+          var beforeDot = line.substring(0, pos.column);
+          // 检查 . 前是否有对象名
+          if (/([a-zA-Z_][a-zA-Z0-9_]*)\s*\.$/.test(beforeDot)) {
+            setTimeout(function() {
+              codeEditor.execCommand('startAutocomplete');
+            }, 50);
+          }
+        }
+      });
+
+      codeEditor.setValue("// WPS JSA 代码编辑器\n// 在此编写您的 JSA 代码，点击 📤 发送到WPS 运行\n\nfunction __main__() {\n  // 九九乘法表\n  const data = [];\n  for (let i = 1; i <= 9; i++) {\n    const row = [];\n    for (let j = 1; j <= 9; j++) {\n      row.push(j <= i ? i + '×' + j + '=' + (i * j) : '');\n    }\n    data.push(row);\n  }\n  Range('A1:I9').Value2 = data;\n  console.log('九九乘法表已生成');\n}");
+      codeEditor.clearSelection();
+    }
+
+    // ===== 主题切换 =====
+    // ===== 命令面板 =====
+    function openCommandPalette() {
+      if (!codeEditor) return;
+      ace.require(["ace/ext/command_bar"], function(commandBar) {
+        if (commandBar && commandBar.open) {
+          commandBar.open(codeEditor);
+        } else {
+          codeEditor.execCommand('openCommandBar');
+        }
+      });
+    }
+
+    function updateLangDisplay(lang) {
+      var langDisplay = document.getElementById('editorLangDisplay');
+      if (langDisplay) {
+        langDisplay.textContent = lang.charAt(0).toUpperCase() + lang.slice(1);
+      }
+    }
+
+    // ===== 光标位置更新 =====
+    function updateCursorPosition() {
+      if (!codeEditor) return;
+      var pos = codeEditor.getCursorPosition();
+      var cursorPosEl = document.getElementById('editorCursorPos');
+      if (cursorPosEl) {
+        cursorPosEl.textContent = '行 ' + (pos.row + 1) + ', 列 ' + (pos.column + 1);
+      }
+    }
+
+    // ===== 搜索功能 =====
+    function editorSearch() {
+      if (codeEditor) {
+        codeEditor.execCommand('find');
+      }
+    }
+
+    // ===== 设置菜单 =====
+    function editorSettings() {
+      if (codeEditor) {
+        codeEditor.execCommand('showSettingsMenu');
+        // 打开后持续翻译（5次，每次100ms）
+        for (var i = 1; i <= 5; i++) {
+          setTimeout(translateSettingsMenu, i * 100);
+        }
+      }
+    }
+
+    // 翻译对照表
+    var settingsI18n = {
+      "Main": "主设置", "More": "更多",
+      "Mode": "语言模式", "Theme": "主题", "Keybinding": "快捷键风格",
+      "Font Size": "字体大小", "Soft Wrap": "自动换行", "Cursor Style": "光标样式",
+      "Folding": "代码折叠", "Soft Tabs": "软制表符", "Overscroll": "超出滚动",
+      "Atomic soft tabs": "原子软制表符", "Enable Behaviours": "启用自动配对",
+      "Wrap with quotes": "引号包裹", "Enable Auto Indent": "启用自动缩进",
+      "Full Line Selection": "整行选择", "Highlight Active Line": "高亮当前行",
+      "Show Invisibles": "显示不可见字符", "Show Indent Guides": "显示缩进参考线",
+      "Highlight Indent Guides": "高亮缩进参考线",
+      "Persistent HScrollbar": "始终显示水平滚动条",
+      "Persistent VScrollbar": "始终显示垂直滚动条",
+      "Animate scrolling": "滚动动画", "Show Gutter": "显示装订线",
+      "Show Line Numbers": "显示行号", "Relative Line Numbers": "相对行号",
+      "Fixed Gutter Width": "固定装订线宽度", "Show Print Margin": "显示打印边距",
+      "Indented Soft Wrap": "缩进软换行", "Highlight selected word": "高亮选中单词",
+      "Fade Fold Widgets": "淡化折叠按钮", "Use textarea for IME": "使用文本框输入法",
+      "Merge Undo Deltas": "合并撤销增量", "Elastic Tabstops": "弹性制表位",
+      "Incremental Search": "增量搜索", "Read-only": "只读模式",
+      "Copy without selection": "无选中时复制",
+      "Live Autocompletion": "实时自动补全", "Custom scrollbar": "自定义滚动条",
+      "Use SVG gutter icons": "使用SVG装订线图标",
+      "Annotations for folded lines": "折叠行注释",
+      "Keyboard Accessibility Mode": "键盘无障碍模式",
+      "Gutter tooltip follows mouse": "装订线提示跟随鼠标",
+      "Off": "关闭", "On": "开启", "Ace": "Ace默认",
+      "Sublime": "Sublime", "VSCode": "VSCode", "Vim": "Vim",
+      "Emacs": "Emacs", "Slim": "细", "Smooth": "平滑",
+      "Smooth And Slim": "平滑细", "Wide": "宽",
+      "Manual": "手动", "Mark begin": "标记开始",
+      "Mark begin and end": "标记首尾", "None": "无",
+      "Half": "半屏", "Full": "全屏", "View": "视图",
+      "margin": "边距", "Always": "始终", "Never": "从不",
+      "Timed": "定时", "Tab Size": "Tab大小",
+      "Print Margin": "打印边距", "12px": "12px", "24px": "24px",
+      "40": "40"
+    };
+
+    // 翻译设置菜单
+    function translateSettingsMenu() {
+      var menu = document.getElementById('ace_settingsmenu');
+      if (!menu) return;
+      var nodes = menu.querySelectorAll('td, th, span, button, label');
+      for (var i = 0; i < nodes.length; i++) {
+        var txt = nodes[i].textContent.trim();
+        if (settingsI18n[txt]) {
+          nodes[i].firstChild && nodes[i].firstChild.nodeType === 3
+            ? nodes[i].firstChild.nodeValue = settingsI18n[txt]
+            : nodes[i].textContent = settingsI18n[txt];
+        }
+      }
+    }
+
+    // ===== 代码美化 =====
+    function editorBeautify() {
+      if (codeEditor) {
+        var beautify = ace.require('ace/ext/beautify');
+        if (beautify) {
+          beautify.beautify(codeEditor.session);
+        }
+      }
+    }
+
+    // ===== 复制编辑器全部代码 =====
+    function editorCopyAll() {
+      if (!codeEditor) return;
+      var code = codeEditor.getValue();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = code;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+    }
+
+    function toggleEditorPanel() {
+      LayoutManager.toggleEditorPanel();
+    }
+
+    function runEditorCode() {
+      if (!codeEditor) return;
+      var output = document.getElementById('editorOutput');
+      output.value = '';
+
+      var outputLines = [];
+      var originalLog = console.log.bind(console);
+      console.log = function() {
+        var args = Array.prototype.slice.call(arguments);
+        var line = args.map(function(v) {
+          if (typeof v === 'object' && v !== null) {
+            try {
+              return JSON.stringify(v);
+            } catch (e) {
+              return String(v);
+            }
+          }
+          return String(v);
+        }).join(' ');
+        outputLines.push(line);
+        output.value = outputLines.join('\n');
+        output.scrollTop = output.scrollHeight;
+      };
+
+      try {
+        var code = codeEditor.getValue();
+        eval(code);
+      } catch (error) {
+        output.value = '❌ 错误: ' + error.message;
+        output.style.color = '#ef4444';
+        setTimeout(function() {
+          output.style.color = '#d1d5db';
+        }, 3000);
+      } finally {
+        console.log = originalLog;
+      }
+    }
+
+    function clearEditorCode() {
+      if (codeEditor) {
+        codeEditor.setValue('');
+        codeEditor.clearSelection();
+      }
+    }
+
+    function clearEditorOutput() {
+      var output = document.getElementById('editorOutput');
+      output.value = '';
+    }
+
+    // ===== 恢复输出窗口高度 =====
+    function restoreOutputHeight() {
+      var saved = localStorage.getItem('outputHeight');
+      if (!saved) return;
+      var outputSection = document.querySelector('.editor-output-section');
+      var codeEditorEl = document.getElementById('codeEditor');
+      if (!outputSection || !codeEditorEl) return;
+      outputSection.style.height = saved;
+      setTimeout(function() {
+        if (codeEditor) codeEditor.resize();
+      }, 50);
+    }
+
+    // ===== 复制输出结果 =====
+    function copyOutput() {
+      var output = document.getElementById('editorOutput');
+      var btn = document.getElementById('btnCopyOutput');
+      if (!output.value) return;
+      navigator.clipboard.writeText(output.value).then(function() {
+        var orig = btn.textContent;
+        btn.textContent = '✅ 已复制';
+        setTimeout(function() { btn.textContent = orig; }, 1500);
+      }).catch(function() {
+        output.select();
+        document.execCommand('copy');
+        var orig = btn.textContent;
+        btn.textContent = '✅ 已复制';
+        setTimeout(function() { btn.textContent = orig; }, 1500);
+      });
+    }
+
+    // ===== 发送代码到本地 WPS 运行 =====
+    function runInWps() {
+      if (!codeEditor) return;
+      var btn = document.getElementById('btnRunInWps');
+      var output = document.getElementById('editorOutput');
+      var code = codeEditor.getValue();
+
+      if (!code.trim()) {
+        output.value = '⚠ 请先编写 JSA 代码';
+        return;
+      }
+
+      // 禁用按钮防重复点击
+      btn.disabled = true;
+      btn.textContent = '⏳ 发送中...';
+      output.value = '⏳ 正在发送代码到 WPS...';
+
+      fetch('/api/run-jsa', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: code })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        var outLines = [];
+        // 语法检查结果
+        if (data.syntax && data.syntax.length > 0) {
+          outLines.push('── 语法检查 ──');
+          for (var si = 0; si < data.syntax.length; si++) {
+            var s = data.syntax[si];
+            outLines.push((s.ok ? '  ✅ ' : '  ❌ ') + s.file + (s.error ? '  → ' + s.error : ''));
+          }
+          var allOk = data.syntax.every(function(s) { return s.ok; });
+          outLines.push(allOk ? '  全部通过' : '  存在语法错误，请修复后重试');
+          outLines.push('');
+        }
+        if (data.ok) {
+          outLines.push('✅ 代码已发送到 WPS 并执行');
+          if (data.output) outLines.push(data.output);
+        } else {
+          outLines.push('❌ 发送失败: ' + (data.error || '未知错误'));
+          output.style.color = '#ef4444';
+          setTimeout(function() { output.style.color = '#d1d5db'; }, 3000);
+        }
+        output.value = outLines.join('\n');
+      })
+      .catch(function(err) {
+        output.value = '❌ 网络错误: ' + err.message + '\n\n请确保已启动本地服务器 (npm run server)';
+        output.style.color = '#ef4444';
+        setTimeout(function() { output.style.color = '#d1d5db'; }, 3000);
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.textContent = '📤 发送到WPS';
+      });
+    }
+
+    // ===== 拖拽调整编辑器大小 =====
+    var isDragging = false;
+    var editorWidth = 480;
+    var startX = 0;
+    var startWidth = 0;
+
+    function initResizeHandle() {
+      var handle = document.getElementById('editorResizeHandle');
+      var panel = document.getElementById('editorPanel');
+      var mainContent = document.getElementById('mainContent');
+
+      handle.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        startX = e.clientX;
+        startWidth = panel.offsetWidth;
+        handle.classList.add('dragging');
+        document.body.style.cursor = 'ew-resize';
+        document.body.style.userSelect = 'none';
+        e.preventDefault();
+      });
+
+      document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+
+        var deltaX = startX - e.clientX;
+        var newWidth = startWidth + deltaX;
+
+        // 限制最小和最大宽度
+        newWidth = Math.max(320, Math.min(800, newWidth));
+
+        editorWidth = newWidth;
+        panel.style.width = newWidth + 'px';
+        mainContent.style.marginRight = newWidth + 'px';
+
+        // 更新 CSS 变量
+        document.documentElement.style.setProperty('--editor-width', newWidth + 'px');
+
+        // 调整编辑器大小
+        if (codeEditor) {
+          codeEditor.resize();
+        }
+      });
+
+      document.addEventListener('mouseup', function() {
+        if (isDragging) {
+          isDragging = false;
+          handle.classList.remove('dragging');
+          document.body.style.cursor = '';
+          document.body.style.userSelect = '';
+        }
+      });
+    }
+
+    // 初始化拖拽手柄
+    initResizeHandle();
+
+    // ===== 垂直拖动调节编辑器和输出高度 =====
+    var isVerticalDragging = false;
+    var startY = 0;
+    var startEditorHeight = 0;
+    var startOutputHeight = 0;
+
+    function initVerticalResize() {
+      var statusbar = document.querySelector('.editor-statusbar');
+      var codeEditorEl = document.getElementById('codeEditor');
+      var outputSection = document.querySelector('.editor-output-section');
+      var editorPanel = document.getElementById('editorPanel');
+
+      statusbar.addEventListener('mousedown', function(e) {
+        isVerticalDragging = true;
+        startY = e.clientY;
+        startEditorHeight = codeEditorEl.offsetHeight;
+        startOutputHeight = outputSection.offsetHeight;
+        statusbar.classList.add('dragging');
+        document.body.style.cursor = 'grabbing';
+        document.body.style.userSelect = 'none';
+        e.preventDefault();
+      });
+
+      document.addEventListener('mousemove', function(e) {
+        if (!isVerticalDragging) return;
+
+        var deltaY = e.clientY - startY;
+        var panelHeight = editorPanel.offsetHeight;
+        var statusbarHeight = statusbar.offsetHeight;
+        var toolbarHeight = document.querySelector('.editor-toolbar').offsetHeight;
+        var availableHeight = panelHeight - toolbarHeight - statusbarHeight;
+
+        var newEditorHeight = startEditorHeight + deltaY;
+        var newOutputHeight = startOutputHeight - deltaY;
+
+        // 限制最小高度
+        var minHeight = 100;
+        newEditorHeight = Math.max(minHeight, newEditorHeight);
+        newOutputHeight = Math.max(minHeight, newOutputHeight);
+
+        // 重新计算，确保总和正确
+        var total = newEditorHeight + newOutputHeight;
+        if (total > availableHeight) {
+          var ratio = availableHeight / total;
+          newEditorHeight *= ratio;
+          newOutputHeight *= ratio;
+        }
+
+        codeEditorEl.style.flex = 'none';
+        codeEditorEl.style.height = newEditorHeight + 'px';
+        outputSection.style.flex = 'none';
+        outputSection.style.maxHeight = 'none';
+        outputSection.style.height = newOutputHeight + 'px';
+
+        // 调整编辑器大小
+        if (codeEditor) {
+          codeEditor.resize();
+        }
+      });
+
+      document.addEventListener('mouseup', function() {
+        if (isVerticalDragging) {
+          isVerticalDragging = false;
+          statusbar.classList.remove('dragging');
+          document.body.style.cursor = '';
+          document.body.style.userSelect = '';
+          // 记住输出窗口高度
+          var outputH = outputSection.style.height;
+          if (outputH) localStorage.setItem('outputHeight', outputH);
+        }
+      });
+    }
+
+    initVerticalResize();
   </script>
 </body>
 
