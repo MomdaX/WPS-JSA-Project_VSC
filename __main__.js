@@ -11,6 +11,5 @@ function __main__() {
     }
     data.push(row);
   }
-  Range('A1:I9').Value2 = data;
-  console.log('九九乘法表已生成');
+  Range('A1:I9').offset(10, 10).Value2 = data;
 }
