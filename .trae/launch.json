@@ -5,7 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "🟢 同步代码到 WPS (Trae)",
-      "program": "${workspaceFolder}/index_trae.js",
+      "program": "${workspaceFolder}/dev/index_trae.js",
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "outputCapture": "std",
