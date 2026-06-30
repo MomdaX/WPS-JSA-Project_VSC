@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import { FileSystem } from '../types/JSA-Common'
 import { Range } from '../types/et'
+import '../types/Ming-Lodash'
 
 /** JS宏程序入口 */
 function __main__() {
