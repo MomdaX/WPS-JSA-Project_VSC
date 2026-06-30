@@ -7,7 +7,7 @@
       "name": "🟢 同步代码到 WPS (Trae)",
       "program": "${workspaceFolder}/dev/index_trae.js",
       "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal",
+      "console": "internalConsole",
       "outputCapture": "std",
       "env": {
         "NODE_OPTIONS": ""
@@ -19,7 +19,7 @@
       "name": "🔵 同步代码到 WPS (VSC)",
       "program": "${workspaceFolder}/dev/index_vsc.js",
       "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal",
+      "console": "internalConsole",
       "outputCapture": "std",
       "env": {
         "NODE_OPTIONS": ""

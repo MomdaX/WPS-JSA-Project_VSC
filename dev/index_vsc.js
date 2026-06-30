@@ -33,16 +33,21 @@ function checkSyntaxWithAcorn(filePath) {
     }
 }
 
-console.log('-'.repeat(80))
-for await (const file of await fs.promises.readdir('./')) {
-    if (!file.endsWith('.js') || file == 'index.js' || file == 'index_vsc.js' || file == 'index_trae.js' || file == 'server.js')
-        continue
-    const filePath = path.join(process.cwd(), file)
-    if (!checkSyntaxWithAcorn(filePath)) {
-        console.error('代码同步失败，请检查代码语法')
-        process.exit(1)
+async function check(folderPath) {
+    for await (const file of await fs.promises.readdir(folderPath)) {
+        if (!file.endsWith('.js') || file == 'index.js')
+            continue
+        const filePath = path.join(folderPath, file)
+        if (!checkSyntaxWithAcorn(filePath)) {
+            console.error('代码同步失败，请检查代码语法')
+            process.exit(1)
+        }
     }
 }
+
+await check('./lib')
+await check('./src')
+console.log('-'.repeat(80))
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 const windows = windowManager.getWindows()

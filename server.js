@@ -45,17 +45,44 @@ function checkSyntax(code) {
   }
 }
 
-// 批量检查项目根目录所有 .js 文件（排除 index.js）
+// 批量检查项目根目录所有 .js 文件（排除 Node.js 工具脚本）
 async function checkAllJsFiles() {
   const results = [];
+  const skipFiles = new Set([
+    'index.js', 'server.js',
+    'dev/index_trae.js', 'dev/index_vsc.js', 'dev/index.js',
+    '__update__.js', '__update__[20260620].js', '__update__[20260626].js'
+  ]);
   try {
-    const files = await fs.promises.readdir(__dirname);
-    for (const file of files) {
-      if (!file.endsWith('.js') || file === 'index.js' || file === 'server.js') continue;
-      const filePath = path.join(__dirname, file);
-      const code = fs.readFileSync(filePath, 'utf-8');
+    // 扫描根目录
+    const rootFiles = await fs.promises.readdir(__dirname);
+    for (const file of rootFiles) {
+      if (!file.endsWith('.js') || skipFiles.has(file)) continue;
+      const code = fs.readFileSync(path.join(__dirname, file), 'utf-8');
       const r = checkSyntax(code);
       results.push({ file, ok: r.ok, error: r.ok ? null : r.error });
+    }
+    // 扫描 src/
+    const srcDir = path.join(__dirname, 'src');
+    if (fs.existsSync(srcDir)) {
+      const srcFiles = await fs.promises.readdir(srcDir);
+      for (const file of srcFiles) {
+        if (!file.endsWith('.js')) continue;
+        const code = fs.readFileSync(path.join(srcDir, file), 'utf-8');
+        const r = checkSyntax(code);
+        results.push({ file: 'src/' + file, ok: r.ok, error: r.ok ? null : r.error });
+      }
+    }
+    // 扫描 dev/
+    const devDir = path.join(__dirname, 'dev');
+    if (fs.existsSync(devDir)) {
+      const devFiles = await fs.promises.readdir(devDir);
+      for (const file of devFiles) {
+        if (!file.endsWith('.js') || skipFiles.has('dev/' + file)) continue;
+        const code = fs.readFileSync(path.join(devDir, file), 'utf-8');
+        const r = checkSyntax(code);
+        results.push({ file: 'dev/' + file, ok: r.ok, error: r.ok ? null : r.error });
+      }
     }
   } catch (e) {
     results.push({ file: '*', ok: false, error: e.message });
@@ -94,10 +121,10 @@ app.post('/api/run-jsa', async (req, res) => {
     return res.json({ ok: false, error: `语法错误: ${syntax.error}` });
   }
 
-  const mainPath = path.join(__dirname, '__main__.js');
+  const mainPath = path.join(__dirname, 'src', '__main__.js');
   try {
     fs.writeFileSync(mainPath, code, 'utf-8');
-    console.log('[API] 代码已写入 __main__.js');
+    console.log('[API] 代码已写入 src/__main__.js');
   } catch (e) {
     return res.json({ ok: false, error: '写入文件失败: ' + e.message });
   }

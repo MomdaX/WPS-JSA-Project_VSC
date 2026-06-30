@@ -22,7 +22,7 @@ function checkSyntaxWithAcorn(filePath) {
         return true;
     } catch (error) {
         console.error(`❌ ${filePath}: 语法错误`);
-        console.error(`  错误: ${error.message}`);
+        console.error(`❌ 错误: ${error.message}`);
         return false;
     }
 }
@@ -47,22 +47,27 @@ async function runWPSFunction(funcName) {
 }
 
 // ---------- 主流程 ----------
-const TARGET_DIR = './';
-const EXCLUDED_FILES = ['index.js', 'index_trae.js', 'index_vsc.js', 'server.js'];//排除 Node.js 工具脚本
-
-// 1. 语法检查
-const files = await fs.promises.readdir(TARGET_DIR);
-for (const file of files) {
-    if (!file.endsWith('.js') || EXCLUDED_FILES.includes(file)) continue;
-    const filePath = path.join(process.cwd(), file);
-    if (!checkSyntaxWithAcorn(filePath)) {
-        process.exit(1);
+async function check(folderPath) {
+    for await (const file of await fs.promises.readdir(folderPath)) {
+        if (!file.endsWith('.js') || file == 'index.js')
+            continue
+        const filePath = path.join(folderPath, file)
+        if (!checkSyntaxWithAcorn(filePath)) {
+            console.error('❌ 代码同步失败，请检查代码语法')
+            process.exit(1)
+        }
     }
 }
 
+// 1. 语法检查
+//await check('./lib')
+await check('./src')
+console.log('-'.repeat(80))
+
 // 2. 同步代码到 WPS（调用 __update__）
 const syncResult = await runWPSFunction('__update__');
-console.log(`【${new Date().toLocaleTimeString()}】${syncResult.includes('OK') ? '同步成功并执行__main__函数' : '同步失败'}`);
+console.log(`【${new Date().toLocaleTimeString()}】${syncResult.includes('OK') ? ' 同步成功并执行__main__函数 ✅' : ' 同步失败 ❌'}`);
+process.exit(0);
 
 // 3. 同步成功后运行 __main__,在__update__最后一行也有执行了：Application.OnTime(new Date(new Date() + 3600000 * 8 + 1000), '__main__')
 // if (syncResult.includes('OK')) {
